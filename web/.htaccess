@@ -1,0 +1,25 @@
+RewriteEngine on
+# If a directory or a file exists, use the request directly
+        RewriteCond %{REQUEST_FILENAME} !-f
+        RewriteCond %{REQUEST_FILENAME} !-d
+
+        RedirectPermanent /services_sub1_sub1.html  /services_moscow.html
+        RedirectPermanent /services_sub1.html  /services_russia.html
+        RedirectPermanent /services_sub2.html  /services_negabarit.html
+        RedirectPermanent /pereezd.html  /pereezd_all.html
+        RedirectPermanent /pereezd_sub1.html  /pereezd_office.html
+        RedirectPermanent /pereezd_sub2.html   /pereezd_kvartira.html
+        RedirectPermanent /pereezd_sub3.html    /gruzchiki.html
+        RedirectPermanent /services_sub3.html  /services_strahovanie.html
+        RedirectPermanent /services_sub4.html  /services_partnership.html
+
+
+
+        # Otherwise forward the request to frontend/web/index.php
+        RewriteRule ^(.*)$ index.php
+
+
+        #RewriteRule ^x-([^-]+)-([^-]+)-([^-]+)-([^-]+)$  exercise.php?ex=$1&kind=$2&warn=$3&tx=$4 [L]
+        #RewriteRule ^xstep-([^-]+)-([^-]+)-([^-]+)-([^-]+)$  exercise.php?ex=$1&kind=$2&step=$3&tx=$4 [L]
+        #RewriteRule ^xthnx-([^-]+)-([^-]+)-([^-]+)$  exercise.php?ex=$1&kind=$2&tx=$3 [L]
+        #RewriteRule ^lo-([^-]+)-([^-]+)-([^-]+)-([^-]+)$  live_out.php?cont=$1&act=$2&id=$3&step=$4 [L]
