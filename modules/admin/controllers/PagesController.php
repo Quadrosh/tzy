@@ -13,7 +13,7 @@ use yii\helpers\Url;
 /**
  * PagesController implements the CRUD actions for Pages model.
  */
-class PagesController extends Controller
+class PagesController extends AdminController
 {
     /**
      * @inheritdoc

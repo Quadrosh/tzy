@@ -38,8 +38,8 @@ AppAsset::register($this);
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
 //            ['label' => 'Gii', 'url' => ['/gii']],
-            ['label' => 'Feedback', 'url' => ['/admin/feedback']],
-            ['label' => 'Pages', 'url' => ['/admin/pages']],
+//            ['label' => 'Feedback', 'url' => ['/admin/feedback']],
+//            ['label' => 'Pages', 'url' => ['/admin/pages']],
 //            ['label' => 'Articles', 'url' => ['/site/contact']],
             Yii::$app->user->isGuest ? (
             ['label' => 'Login', 'url' => ['/admin/default/login']]
@@ -59,9 +59,7 @@ AppAsset::register($this);
     ?>
 
     <div class="container">
-        <?= Breadcrumbs::widget([
-            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
+
         <?= $content ?>
     </div>
 </div>
