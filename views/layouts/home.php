@@ -167,7 +167,7 @@ $feedback = Yii::$app->view->params['feedback'];
         <div class="row">
             <div class="col-xs-6 col-sm-4 b-footer__info">
                 <div class="b-footer__info__content">
-                    <p>&copy; Транспортная компания ООО &ldquo;Трансзаказ&rdquo;, 2014<br/>
+                    <p>&copy; Транспортная компания ООО &ldquo;Трансзаказ&rdquo;, <?= date('Y') ?><br/>
                         117535, Москва, 3-й дорожный проезд, д.3а<br/>
                         Телефон: +7 (495) 381-99-56</p>
                 </div>

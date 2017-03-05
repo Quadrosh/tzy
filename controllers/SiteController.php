@@ -83,6 +83,36 @@ class SiteController extends Controller
     }
 
     /**
+     * Displays page.
+     *
+     * @return string
+     */
+    public function actionPage()
+    {
+
+        $pageName = Yii::$app->request->get('pagename');
+        $this->view->params['feedback'] = new Feedback();
+
+        $page = Pages::find()->where(['hrurl'=>$pageName])->one();
+        $topMenuItem = MenuTop::find()->where(['link'=>$pageName.'.html'])->one();
+        $this->view->params['pageName']=$pageName;
+        $this->view->params['currentItem'] = $topMenuItem['id'];
+        if (trim(strtolower($page->seo_logo)) =='title') {
+            $page->seo_logo = $page->title;
+        }
+        $this->view->params['meta']=$page;
+        if ($pageName == 'sitemap') {
+            return $this->render('sitemap',[
+                'page' => $page,
+            ]);
+        }
+        return $this->render('page',[
+            'page' => $page,
+        ]);
+
+
+    }
+    /**
      * Login action.
      *
      * @return string
@@ -133,32 +163,7 @@ class SiteController extends Controller
     }
 
 
-    /**
-     * Displays page.
-     *
-     * @return string
-     */
-    public function actionPage()
-    {
 
-        $pageName = Yii::$app->request->get('pagename');
-        $this->view->params['feedback'] = new Feedback();
-
-        $page = Pages::find()->where(['hrurl'=>$pageName])->one();
-        $topMenuItem = MenuTop::find()->where(['link'=>$pageName.'.html'])->one();
-        $this->view->params['pageName']=$pageName;
-        $this->view->params['currentItem'] = $topMenuItem['id'];
-        if (trim(strtolower($page->seo_logo)) =='title') {
-            $page->seo_logo = $page->title;
-        }
-        $this->view->params['meta']=$page;
-
-        return $this->render('page',[
-            'page' => $page,
-        ]);
-
-
-    }
 
     public function actionFeedback()
     {

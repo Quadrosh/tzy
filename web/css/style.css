@@ -496,8 +496,14 @@ header .b-top__banner .b-top__banner__shadow {
     display: inline-block;
     line-height: 1;
 }
-
-
+.sitemap .list-inline > li {
+    display: block;
+}
+.sitemap {
+    padding-top: 20px;
+    font-size: 16px;
+    line-height: 20px;
+}
 
 
 
