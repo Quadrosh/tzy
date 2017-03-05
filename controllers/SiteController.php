@@ -12,6 +12,7 @@ use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\Feedback;
+use yii\web\HttpException;
 
 class SiteController extends Controller
 {
@@ -47,7 +48,8 @@ class SiteController extends Controller
      */
     public function actions()
     {
-        return [
+        return
+            [
             'error' => [
                 'class' => 'yii\web\ErrorAction',
             ],
@@ -57,7 +59,33 @@ class SiteController extends Controller
             ],
         ];
     }
+//    public function actionError()
+//    {
+//        $exception = Yii::$app->errorHandler->exception;
+//        if ($exception !== null) {
+//            return $this->render('error', ['exception' => $exception]);
+//        }
+//    }
 
+//    public function actionError()
+//    {
+//        $exception = Yii::$app->errorHandler->exception;
+//
+//        if ($exception !== null) {
+//            $statusCode = $exception->getCode();
+//            $name = $exception->getMessage();
+//            $message = $exception->getMessage();
+//
+//            $this->layout = 'home';
+//
+//            return $this->render('error', [
+//                'exception' => $exception,
+//                'statusCode' => $statusCode,
+//                'name' => $name,
+//                'message' => $message
+//            ]);
+//        }
+//    }
     /**
      * Displays homepage.
      *
@@ -94,6 +122,9 @@ class SiteController extends Controller
         $this->view->params['feedback'] = new Feedback();
 
         $page = Pages::find()->where(['hrurl'=>$pageName])->one();
+        if ($page == false) {
+            throw new \yii\web\NotFoundHttpException(404,'Страница не существует');
+        };
         $topMenuItem = MenuTop::find()->where(['link'=>$pageName.'.html'])->one();
         $this->view->params['pageName']=$pageName;
         $this->view->params['currentItem'] = $topMenuItem['id'];
@@ -112,7 +143,9 @@ class SiteController extends Controller
 
 
     }
-    /**
+
+
+        /**
      * Login action.
      *
      * @return string
@@ -195,7 +228,7 @@ class SiteController extends Controller
             }
         } else {
 
-            echo 'error, try again';  die;
+//            echo 'error, Во время отправки произошла ошибка, попробуйте еще раз';  die;
             Yii::$app->session->setFlash('error', 'Во время отправки произошла ошибка, попробуйте еще раз. Или отправьте заявку в свободной форме на transzakaz@gmail.com');
             return $this->redirect(Url::previous());
         }

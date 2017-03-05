@@ -70,7 +70,8 @@ class Feedback extends \yii\db\ActiveRecord
     public function sendEmail($subject)
     {
         return Yii::$app->mailer->compose()
-            ->setTo('quadrosh@gmail.com')
+//            ->setTo('quadrosh@gmail.com')
+            ->setTo('transzakaz@gmail.com')
             ->setFrom('sender@tszakaz.ru')
             ->setSubject($subject)
             ->setTextBody(" Имя: ".$this->name ." Со страницы: ".$this->from_page ." Город: ".$this->city ." Телефон: ".$this->phone ." Email: ".$this->email ." Контакты: ".$this->contacts ." Текст: ".$this->text)

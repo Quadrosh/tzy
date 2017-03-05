@@ -9,6 +9,7 @@ return [
     'id' => 'basic-tests',
     'basePath' => dirname(__DIR__),    
     'language' => 'en-US',
+//    'defaultRoute' => 'index',
     'components' => [
         'db' => $dbParams,
         'mailer' => [

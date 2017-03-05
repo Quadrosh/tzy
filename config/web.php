@@ -7,11 +7,11 @@ $config = [
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'language' => 'ru-RU',
+    'defaultRoute' => '/site/index',
     'modules' => [
         'admin' => [
             'class' => 'app\modules\admin\Module',
             'layout' => 'admin',
-//            'defaultRoute' => 'order/index',
         ],
 
     ],
@@ -29,7 +29,7 @@ $config = [
             'loginUrl' => ['/admin/default/login'],
         ],
         'errorHandler' => [
-            'errorAction' => 'site/error',
+            'errorAction' => '/site/error',
         ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
@@ -52,11 +52,10 @@ $config = [
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
+            'baseUrl' => '/site/index',
             'rules' => [
-//                'master/<hrurl:[0-9a-z\-\_]+>' => 'master/page',
-//                'about.html' => 'site/page',
-//                '<pagename:[0-9a-z\-\_]+>.html' => 'site/page',
                 '<pagename:[0-9a-z\-\_]+>.html' => 'site/page',
+//
 
             ],
         ],
