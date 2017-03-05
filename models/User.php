@@ -25,6 +25,7 @@ class User extends ActiveRecord implements IdentityInterface
 {
     const STATUS_DELETED = 0;
     const STATUS_ACTIVE = 10;
+    public $password;
 
 
     /**
@@ -32,7 +33,7 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public static function tableName()
     {
-        return '{{%admin}}';
+        return 'admin';
     }
 
     /**
@@ -42,6 +43,10 @@ class User extends ActiveRecord implements IdentityInterface
     {
         return [
             TimestampBehavior::className(),
+//            'class' => TimestampBehavior::className(),
+//            'createdAtAttribute' => 'created_at',
+//            'updatedAtAttribute' => 'updated_at',
+//            'value' => function(){ return date('Y-m-d');},
         ];
     }
 
@@ -53,11 +58,35 @@ class User extends ActiveRecord implements IdentityInterface
         return [
             ['status', 'default', 'value' => self::STATUS_ACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
-            [['city'], 'string', 'max' => 255],
-            [['comment'], 'string'],
+            [['username', 'password_hash', 'email', 'created_at', 'updated_at'], 'required'],
+            [['status'], 'integer'],
+            [['username', 'password_hash', 'password_reset_token', 'email'], 'string', 'max' => 255],
+            [['auth_key'], 'string', 'max' => 32],
+            [['password'], 'string'],
+            [['username'], 'unique'],
+            [['email'], 'unique'],
+            [['password_reset_token'], 'unique'],
+//            [[ 'created_at', 'updated_at'], 'safe'],
+//            [[ 'created_at', 'updated_at'], 'integer'],
         ];
     }
 
+    public function attributeLabels()
+    {
+        return [
+            'id' => 'ID',
+            'username' => 'Username',
+            'auth_key' => 'Auth Key',
+            'password_hash' => 'Password Hash',
+            'password' => 'Password',
+            'password_reset_token' => 'Password Reset Token',
+            'email' => 'Email',
+            'status' => 'Status',
+            'created_at' => 'created_at',
+            'updated_at' => 'updated_at',
+
+        ];
+    }
     /**
      * @inheritdoc
      */
@@ -84,6 +113,8 @@ class User extends ActiveRecord implements IdentityInterface
     {
         return static::findOne(['username' => $username, 'status' => self::STATUS_ACTIVE]);
     }
+
+
 
     /**
      * Finds user by password reset token
@@ -188,4 +219,6 @@ class User extends ActiveRecord implements IdentityInterface
     {
         $this->password_reset_token = null;
     }
+
+
 }

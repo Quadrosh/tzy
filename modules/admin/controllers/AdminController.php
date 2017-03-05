@@ -13,7 +13,7 @@ class AdminController extends Controller
 
     public function behaviors()
     {
-        \Yii::$app->user->loginUrl = ['/admin/default/login'];
+//        \Yii::$app->user->loginUrl = ['/admin/default/login'];
         return [
             'access' => [
                 'class' => \yii\filters\AccessControl::className(),
