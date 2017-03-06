@@ -17,6 +17,7 @@ use yii\web\HttpException;
 class SiteController extends Controller
 {
     public $layout = 'main';
+    public $defaultAction = 'index';
     /**
      * @inheritdoc
      */
@@ -125,7 +126,7 @@ class SiteController extends Controller
 
         $page = Pages::find()->where(['hrurl'=>$pageName])->one();
         if ($page == false) {
-            throw new \yii\web\NotFoundHttpException(404,'Страница не существует');
+            throw new \yii\web\NotFoundHttpException('Страница не существует');
         };
         $topMenuItem = MenuTop::find()->where(['link'=>$pageName.'.html'])->one();
         $this->view->params['pageName']=$pageName;

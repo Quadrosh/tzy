@@ -7,7 +7,7 @@ $config = [
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'language' => 'ru-RU',
-    'defaultRoute' => '/site/index',
+    'defaultRoute' => 'site/index',
     'modules' => [
         'admin' => [
             'class' => 'app\modules\admin\Module',
@@ -54,13 +54,32 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
 //            'enableStrictParsing' => true,
+//            'suffix' => '.html',
 //            'baseUrl' => 'site/index',
             'rules' => [
+//                '<controller:\w+>/' => '<controller>/index',
                 '<pagename:[0-9a-z\-\_]+>.html' => 'site/page',
-//                '[a-z]'=>'site/index',
-//
+
+
+//                [
+//                    'pattern' => '<pagename:[0-9a-z\-\_]+>.html',
+//                    'route' => 'site/page',
+//                     'defaults' => ['pagename' => 'index'],
+//                ],
+//                [
+//                    'class' => 'app\components\TzUrlRule',
+//                ],
+//                [
+//                    'pattern' => 'admin',
+//                    'route' => 'admin/index',
+//                    'normalizer' => [
+//                        // do not collapse consecutive slashes for this rule
+//                        'collapseSlashes' => false,
+//                    ],
+//                ],
 
             ],
+
         ],
 
     ],
