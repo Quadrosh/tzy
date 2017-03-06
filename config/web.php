@@ -57,27 +57,9 @@ $config = [
 //            'suffix' => '.html',
 //            'baseUrl' => 'site/index',
             'rules' => [
-//                '<controller:\w+>/' => '<controller>/index',
                 '<pagename:[0-9a-z\-\_]+>.html' => 'site/page',
-
-
-//                [
-//                    'pattern' => '<pagename:[0-9a-z\-\_]+>.html',
-//                    'route' => 'site/page',
-//                     'defaults' => ['pagename' => 'index'],
-//                ],
-//                [
-//                    'class' => 'app\components\TzUrlRule',
-//                ],
-//                [
-//                    'pattern' => 'admin',
-//                    'route' => 'admin/index',
-//                    'normalizer' => [
-//                        // do not collapse consecutive slashes for this rule
-//                        'collapseSlashes' => false,
-//                    ],
-//                ],
-
+                ['pattern'=>'admin', 'route'=>'admin/'],
+                ['pattern'=>'<action>', 'route'=>'site/index'],
             ],
 
         ],
