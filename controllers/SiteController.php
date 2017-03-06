@@ -65,6 +65,7 @@ class SiteController extends Controller
 //        if ($exception !== null) {
 //            return $this->render('error', ['exception' => $exception]);
 //        }
+//        return $this->render('error');
 //    }
 
 //    public function actionError()
@@ -93,6 +94,7 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+        Url::remember();
         $this->layout = 'home';
         $this->view->params['feedback'] = new Feedback();
 
@@ -117,7 +119,7 @@ class SiteController extends Controller
      */
     public function actionPage()
     {
-
+        Url::remember();
         $pageName = Yii::$app->request->get('pagename');
         $this->view->params['feedback'] = new Feedback();
 
@@ -219,7 +221,7 @@ class SiteController extends Controller
 //            echo 'success';  die;
 
 
-            if ($feedback->sendEmail( 'заявка с сайта Трансзаказ, ')) {
+            if ($feedback->sendEmail( 'TSZAKAZ.RU: Запрос обратного звонка')) {
                 Yii::$app->session->setFlash('success', 'Ваша заявка отправлена. <br> Мы свяжемся с Вами в ближайшее время.');
                 return $this->redirect(Url::previous());
             } else {

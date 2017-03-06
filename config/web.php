@@ -16,6 +16,7 @@ $config = [
 
     ],
     'components' => [
+//        'defaultRoute' => '/site/index',
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'Oqt7HoFcW8hC7Pe7KDhyOQiR1U-JQb88',
@@ -29,7 +30,7 @@ $config = [
             'loginUrl' => ['/admin/default/login'],
         ],
         'errorHandler' => [
-            'errorAction' => '/site/error',
+            'errorAction' => 'site/error',
         ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
@@ -52,9 +53,11 @@ $config = [
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
-            'baseUrl' => '/site/index',
+//            'enableStrictParsing' => true,
+//            'baseUrl' => 'site/index',
             'rules' => [
                 '<pagename:[0-9a-z\-\_]+>.html' => 'site/page',
+//                '[a-z]'=>'site/index',
 //
 
             ],
