@@ -59,7 +59,8 @@ $config = [
             'rules' => [
                 '<pagename:[0-9a-z\-\_]+>.html' => 'site/page',
                 ['pattern'=>'admin', 'route'=>'admin/'],
-                ['pattern'=>'<action>', 'route'=>'site/index'],
+//                ['pattern'=>'<action>', 'route'=>'site/index'],
+                ['pattern'=>'<action>', 'route'=>'site/page'],
             ],
 
         ],

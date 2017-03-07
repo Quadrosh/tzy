@@ -60,34 +60,7 @@ class SiteController extends Controller
             ],
         ];
     }
-//    public function actionError()
-//    {
-//        $exception = Yii::$app->errorHandler->exception;
-//        if ($exception !== null) {
-//            return $this->render('error', ['exception' => $exception]);
-//        }
-//        return $this->render('error');
-//    }
 
-//    public function actionError()
-//    {
-//        $exception = Yii::$app->errorHandler->exception;
-//
-//        if ($exception !== null) {
-//            $statusCode = $exception->getCode();
-//            $name = $exception->getMessage();
-//            $message = $exception->getMessage();
-//
-//            $this->layout = 'home';
-//
-//            return $this->render('error', [
-//                'exception' => $exception,
-//                'statusCode' => $statusCode,
-//                'name' => $name,
-//                'message' => $message
-//            ]);
-//        }
-//    }
     /**
      * Displays homepage.
      *
