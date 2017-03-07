@@ -53,11 +53,11 @@ class Feedback extends \yii\db\ActiveRecord
             'name' => 'Имя',
             'city' => 'Город',
             'from_page' => 'From Page',
-            'phone' => 'Phone',
+            'phone' => 'Телефон',
             'email' => 'Email',
-            'contacts' => 'Contacts',
-            'text' => 'Text',
-            'date' => 'Date',
+            'contacts' => 'Контакты',
+            'text' => 'Текст',
+            'date' => 'Дата',
             'done' => 'Done',
         ];
     }
