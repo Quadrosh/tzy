@@ -38,6 +38,14 @@ AppAsset::register($this);
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
 //            ['label' => 'Gii', 'url' => ['/gii']],
+            [
+                'label' => 'АБ Тесты',
+                'items' => [
+                    ['label' => 'test', 'url' => ['/admin/test/index']],
+                    ['label' => 'test page', 'url' => ['/admin/testpage/index']],
+                    ['label' => 'test target', 'url' => ['/admin/testtarget/index']],
+                ],
+            ],
             ['label' => 'Feedback', 'url' => ['/admin/feedback']],
             ['label' => 'Pages', 'url' => ['/admin/pages']],
             ['label' => 'Images', 'url' => ['/admin/imagefiles']],

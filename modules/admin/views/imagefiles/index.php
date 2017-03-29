@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use \yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -38,3 +39,24 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]); ?>
 </div>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-6 col-sm-3">
+                <h4>Image Upload</h4>
+                <?php $form = ActiveForm::begin([
+                    'method' => 'post',
+                    'action' => ['/admin/imagefiles/upload'],
+                    'options' => ['enctype' => 'multipart/form-data'],
+                ]); ?>
+
+                <?= $form->field($uploadmodel, 'imageFile')->fileInput()->label(false) ?>
+
+                <?= Html::submitButton('Upload', ['class' => 'btn btn-success']) ?>
+                <?php ActiveForm::end() ?>
+            </div>
+
+        </div>
+    </div>
+
+</section>

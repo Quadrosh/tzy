@@ -42,4 +42,19 @@ class Imagefiles extends \yii\db\ActiveRecord
             'name' => 'Name',
         ];
     }
+    public function addNew($name)
+    {
+        $this->name = $name;
+        if ($this->validate()) {
+            if ($this->save()) {
+                return true;
+            } else {
+                Yii::$app->session->setFlash('error', 'Ошибка сохранения imagefile');
+                return false;
+            }
+        } else {
+            Yii::$app->session->setFlash('error', 'Ошибка валидации - '.$this->errors['name'][0]);
+            return false;
+        }
+    }
 }

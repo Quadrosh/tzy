@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use \yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Imagefiles */
@@ -39,4 +40,28 @@ $this->params['breadcrumbs'][] = $this->title;
 
     </div>
 </div>
+<section>
+    <div class="container">
+        <div class="row">
+
+            <div class="col-sm-6">
+
+                <h4>Image Change</h4>
+                <?php $form = ActiveForm::begin([
+                    'method' => 'post',
+                    'action' => ['/admin/imagefiles/change'],
+                    'options' => ['enctype' => 'multipart/form-data'],
+                ]); ?>
+
+                <?= $form->field($uploadmodel, 'imageFile')->fileInput()->label(false) ?>
+                <?= $form->field($uploadmodel, 'toModelId')->hiddenInput(['value'=>$model->id])->label(false) ?>
+
+
+                <?= Html::submitButton('Change', ['class' => 'btn btn-danger']) ?>
+                <?php ActiveForm::end() ?>
+
+            </div>
+        </div>
+    </div>
+</section>
 

@@ -2,20 +2,19 @@
 
 namespace app\modules\admin\controllers;
 
-use app\models\UploadForm;
+use app\models\TestPage;
 use Yii;
-use app\models\Imagefiles;
+use app\models\Test;
 use yii\data\ActiveDataProvider;
 use yii\helpers\Url;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use yii\web\UploadedFile;
 
 /**
- * ImagefilesController implements the CRUD actions for Imagefiles model.
+ * TestController implements the CRUD actions for Test model.
  */
-class ImagefilesController extends Controller
+class TestController extends Controller
 {
     /**
      * @inheritdoc
@@ -33,46 +32,45 @@ class ImagefilesController extends Controller
     }
 
     /**
-     * Lists all Imagefiles models.
+     * Lists all Test models.
      * @return mixed
      */
     public function actionIndex()
     {
         Url::remember();
-        $uploadmodel = new UploadForm();
         $dataProvider = new ActiveDataProvider([
-            'query' => Imagefiles::find(),
+            'query' => Test::find(),
         ]);
 
         return $this->render('index', [
             'dataProvider' => $dataProvider,
-            'uploadmodel' => $uploadmodel,
         ]);
     }
 
     /**
-     * Displays a single Imagefiles model.
+     * Displays a single Test model.
      * @param integer $id
      * @return mixed
      */
     public function actionView($id)
     {
         Url::remember();
-        $uploadmodel = new UploadForm();
+//        $test = Test::find()->where(['id'=>$id])->one();
+        $testPages = TestPage::find()->where(['test_id'=>$id])->all();
         return $this->render('view', [
             'model' => $this->findModel($id),
-            'uploadmodel' => $uploadmodel,
+            'testPages'=>$testPages,
         ]);
     }
 
     /**
-     * Creates a new Imagefiles model.
+     * Creates a new Test model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Imagefiles();
+        $model = new Test();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -84,7 +82,7 @@ class ImagefilesController extends Controller
     }
 
     /**
-     * Updates an existing Imagefiles model.
+     * Updates an existing Test model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -103,7 +101,7 @@ class ImagefilesController extends Controller
     }
 
     /**
-     * Deletes an existing Imagefiles model.
+     * Deletes an existing Test model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -116,51 +114,18 @@ class ImagefilesController extends Controller
     }
 
     /**
-     * Finds the Imagefiles model based on its primary key value.
+     * Finds the Test model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Imagefiles the loaded model
+     * @return Test the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Imagefiles::findOne($id)) !== null) {
+        if (($model = Test::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
-        }
-    }
-    /**
-     * Change existing image file for QuotepadImg model with same file name
-     */
-    public function actionChange()
-    {
-        $uploadmodel = new UploadForm();
-        if (Yii::$app->request->isPost) {
-            $uploadmodel->imageFile = UploadedFile::getInstance($uploadmodel, 'imageFile');
-            $data=Yii::$app->request->post('UploadForm');
-            $model = Imagefiles::find()->where(['id'=>$data['toModelId']])->one();
-            if ($uploadmodel->change($model->name)) {
-
-                Yii::$app->session->setFlash('success', 'Файл обновлен успешно');
-            } else {
-                Yii::$app->session->setFlash('error', 'Что то пошло не так');
-            }
-            return $this->redirect(Url::previous());
-        }
-    }
-    /**
-     * Upload images
-     */
-    public function actionUpload()
-    {
-        $uploadmodel = new UploadForm();
-        if (Yii::$app->request->isPost) {
-            $uploadmodel->imageFile = UploadedFile::getInstance($uploadmodel, 'imageFile');
-            if ($uploadmodel->upload()) {
-                Yii::$app->session->setFlash('success', 'Файл загружен успешно');
-            }
-            return $this->redirect(Url::previous());
         }
     }
 }
