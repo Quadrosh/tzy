@@ -3,6 +3,7 @@
 namespace app\modules\admin\controllers;
 
 use app\models\TestPage;
+use app\models\TestTarget;
 use Yii;
 use app\models\Test;
 use yii\data\ActiveDataProvider;
@@ -55,11 +56,15 @@ class TestController extends Controller
     public function actionView($id)
     {
         Url::remember();
-//        $test = Test::find()->where(['id'=>$id])->one();
+        $testTargets =[];
         $testPages = TestPage::find()->where(['test_id'=>$id])->all();
+        foreach ($testPages as $testPage) {$allPages =
+            $testTargets [] = TestTarget::find()->where(['testpage_id'=>$testPage['id']])->all();
+        }
         return $this->render('view', [
             'model' => $this->findModel($id),
             'testPages'=>$testPages,
+            'testTargets'=>$testTargets,
         ]);
     }
 

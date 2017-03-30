@@ -12,7 +12,8 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'testpage_id')->textInput() ?>
+<!--    --><?//= $form->field($model, 'testpage_id')->textInput() ?>
+    <?= $form->field($model, 'testpage_id')->dropDownList(\yii\helpers\ArrayHelper::map(\app\models\TestPage::find()->all(), 'id','title'),[ 'options'=>[Yii::$app->request->get('testpage_id')=>["Selected"=>true]]]) ?>
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 

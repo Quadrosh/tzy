@@ -36,6 +36,7 @@ class TestpageController extends Controller
      */
     public function actionIndex()
     {
+        Url::remember();
         $dataProvider = new ActiveDataProvider([
             'query' => TestPage::find(),
         ]);
@@ -86,7 +87,7 @@ class TestpageController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(Url::previous());
         } else {
             return $this->render('update', [
                 'model' => $model,

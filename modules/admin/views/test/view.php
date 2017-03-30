@@ -62,6 +62,9 @@ $this->params['breadcrumbs'][] = $this->title;
                 <a href="/admin/testpage/update?id=<?= $testPage['id'] ?>">
                     <span class="glyphicon glyphicon-pencil"></span>
                 </a>
+                <a href="/admin/testtarget/create?testpage_id=<?= $testPage['id'] ?>">
+                    <span style="color: #c55;" class=" glyphicon glyphicon-screenshot"></span>
+                </a>
             </td>
         </tr>
         <?php endforeach; ?>
@@ -69,5 +72,43 @@ $this->params['breadcrumbs'][] = $this->title;
     </table>
 
     <?= Html::a('Create Test Page', ['/admin/testpage/create', 'test_id'=>$model->id], ['class' => 'btn btn-success']) ?>
+
+<h2>Цели</h2>
+    <table class="table table-striped table-bordered">
+        <thead>
+        <tr>
+            <th><a href="/admin/testtarget/index?sort=id" data-sort="id">ID</a></th>
+            <th><a href="/admin/testtarget/index?sort=testpage_id" data-sort="testpage_id">Testpage ID</a></th>
+            <th><a href="/admin/testtarget/index?sort=testpage_id" data-sort="testpage_id">Testpage Name</a></th>
+            <th><a href="/admin/testtarget/index?sort=name" data-sort="name">Name</a></th>
+            <th><a href="/admin/testtarget/index?sort=link" data-sort="link">Link</a></th>
+            <th><a href="/admin/testtarget/index?sort=achieve" data-sort="achieve">Achieve</a></th>
+            <th class="action-column">&nbsp;</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php foreach ($testTargets as $testPageTargets) : ?>
+            <?php foreach ($testPageTargets as $testTarget) : ?>
+        <tr data-key="1">
+            <td><?= $testTarget['id'] ?></td>
+            <td><?= $testTarget['testpage_id'] ?></td>
+            <td><?= \app\models\TestPage::find()->where(['id'=>$testTarget['testpage_id']])->one()['title']; ?></td>
+            <td><?= $testTarget['name'] ?></td>
+            <td><?= $testTarget['link'] ?></td>
+            <td><?= $testTarget['achieve'] ?></td>
+
+            <td>
+                <a href="/admin/testtarget/view?id=<?= $testTarget['id'] ?>" title="View" aria-label="View" data-pjax="0">
+                    <span class="glyphicon glyphicon-eye-open"></span>
+                </a>
+
+
+            </td>
+        </tr>
+            <?php endforeach; ?>
+        <?php endforeach; ?>
+
+        </tbody>
+    </table>
 
 </div>
