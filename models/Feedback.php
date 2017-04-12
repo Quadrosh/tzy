@@ -78,8 +78,8 @@ class Feedback extends \yii\db\ActiveRecord
     {
         if ($subject == 'TSZAKAZ.RU: Запрос обратного звонка') {
             return Yii::$app->mailer->compose()
-                ->setTo('quadrosh@gmail.com')
-//            ->setTo('transzakaz@gmail.com')
+//                ->setTo('quadrosh@gmail.com')
+                ->setTo('transzakaz@gmail.com')
                 ->setFrom('noreply@tszakaz.ru')
                 ->setSubject($subject)
 //            ->setTextBody(" Имя: ".$this->name ." Со страницы: ".$this->from_page ." Город: ".$this->city ." Телефон: ".$this->phone ." Email: ".$this->email ." Контакты: ".$this->contacts ." Текст: ".$this->text)
@@ -98,8 +98,8 @@ class Feedback extends \yii\db\ActiveRecord
         }
         if ($subject == 'TSZAKAZ.RU: Заявка на грузоперевозку') {
             return Yii::$app->mailer->compose()
-                ->setTo('quadrosh@gmail.com')
-//            ->setTo('transzakaz@gmail.com')
+//                ->setTo('quadrosh@gmail.com')
+                ->setTo('transzakaz@gmail.com')
                 ->setFrom('noreply@tszakaz.ru')
                 ->setSubject($subject)
                 ->setHtmlBody(
