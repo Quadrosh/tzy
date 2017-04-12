@@ -57,7 +57,7 @@ class TestPage extends \yii\db\ActiveRecord
             'hrurl' => 'Hrurl',
             'title' => 'Title',
             'description' => 'Description',
-            'keywords' => 'Keywords',
+            'keywords' => 'Примечание',
             'pagehead' => 'Pagehead',
             'pagedescription' => 'Pagedescription',
             'text' => 'HTML',

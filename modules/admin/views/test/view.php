@@ -42,9 +42,9 @@ $this->params['breadcrumbs'][] = $this->title;
         <thead>
         <tr>
             <th>ID</th>
-            <th>Test ID</th>
-            <th>Title</th>
-            <th>Description</th>
+            <th>Layout</th>
+            <th>hrurl</th>
+            <th>Примечание</th>
             <th class="action-column">&nbsp;</th>
         </tr>
         </thead>
@@ -52,15 +52,24 @@ $this->params['breadcrumbs'][] = $this->title;
         <?php foreach ($testPages as $testPage) : ?>
         <tr data-key="1">
             <td><?= $testPage['id'] ?></td>
-            <td><?= $testPage['test_id'] ?></td>
-            <td><?= $testPage['title'] ?></td>
-            <td><?= $testPage['description'] ?></td>
+            <td><?= $testPage['layout'] ?></td>
+            <td> <?= Html::a($testPage['hrurl'], ['/t/'.$testPage['hrurl']]) ?></td>
+            <td><?= $testPage['keywords'] ?></td>
+
             <td>
                 <a href="/admin/testpage/view?id=<?= $testPage['id'] ?>">
                     <span class="glyphicon glyphicon-eye-open"></span>
                 </a>
                 <a href="/admin/testpage/update?id=<?= $testPage['id'] ?>">
                     <span class="glyphicon glyphicon-pencil"></span>
+                </a>
+                <a href="/admin/testpage/delete?id=<?= $testPage['id'] ?>" data-confirm="Уверен, что хочешь удалить?" data-method="post">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+
+                <a href="/admin/testpage/copy?id=<?= $testPage['id'] ?>">
+                    <span class="glyphicon glyphicon-duplicate"></span>
                 </a>
                 <a href="/admin/testtarget/create?testpage_id=<?= $testPage['id'] ?>">
                     <span style="color: #c55;" class=" glyphicon glyphicon-screenshot"></span>
@@ -78,10 +87,9 @@ $this->params['breadcrumbs'][] = $this->title;
         <thead>
         <tr>
             <th><a href="/admin/testtarget/index?sort=id" data-sort="id">ID</a></th>
-            <th><a href="/admin/testtarget/index?sort=testpage_id" data-sort="testpage_id">Testpage ID</a></th>
+            <th><a href="/admin/testtarget/index?sort=testpage_id" data-sort="testpage_id">Testpage</a></th>
             <th><a href="/admin/testtarget/index?sort=testpage_id" data-sort="testpage_id">Testpage Name</a></th>
             <th><a href="/admin/testtarget/index?sort=name" data-sort="name">Name</a></th>
-            <th><a href="/admin/testtarget/index?sort=link" data-sort="link">Link</a></th>
             <th><a href="/admin/testtarget/index?sort=achieve" data-sort="achieve">Achieve</a></th>
             <th class="action-column">&nbsp;</th>
         </tr>
@@ -92,9 +100,8 @@ $this->params['breadcrumbs'][] = $this->title;
         <tr data-key="1">
             <td><?= $testTarget['id'] ?></td>
             <td><?= $testTarget['testpage_id'] ?></td>
-            <td><?= \app\models\TestPage::find()->where(['id'=>$testTarget['testpage_id']])->one()['title']; ?></td>
+            <td><?= \app\models\TestPage::find()->where(['id'=>$testTarget['testpage_id']])->one()['hrurl']; ?></td>
             <td><?= $testTarget['name'] ?></td>
-            <td><?= $testTarget['link'] ?></td>
             <td><?= $testTarget['achieve'] ?></td>
 
             <td>

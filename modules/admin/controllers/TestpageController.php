@@ -53,6 +53,7 @@ class TestpageController extends Controller
      */
     public function actionView($id)
     {
+        Url::remember();
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -74,6 +75,40 @@ class TestpageController extends Controller
                 'model' => $model,
             ]);
         }
+    }
+
+    public function actionCopy($id)
+    {
+        $source = $this->findModel($id);
+        $model = new TestPage();
+        $model->id = 0;
+        $model->test_id = $source->test_id;
+        $model->title = $source->title;
+        $model->description = $source->description;
+        $model->keywords = $source->keywords;
+        $model->pagehead = $source->pagehead;
+        $model->pagedescription = $source->pagedescription;
+        $model->text = $source->text;
+        $model->imagelink = $source->imagelink;
+        $model->imagelink_alt = $source->imagelink_alt;
+        $model->sendtopage = $source->sendtopage;
+        $model->promolink = $source->promolink;
+        $model->promoname = $source->promoname;
+        $model->layout = $source->layout;
+
+//        $model->save();
+//        return $this->render('create', [
+//            'model' => $model,
+//        ]);
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(Url::previous());
+        } else {
+            return $this->render('create', [
+                'model' => $model,
+            ]);
+        }
+
     }
 
     /**
@@ -105,7 +140,7 @@ class TestpageController extends Controller
     {
         $this->findModel($id)->delete();
 
-        return $this->redirect(['index']);
+        return $this->redirect(Url::previous());
     }
 
     /**

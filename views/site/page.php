@@ -1,11 +1,9 @@
 <?php
 
-/* @var $this yii\web\View */
-
 use yii\helpers\Html;
+use yii\widgets\Pjax;
+use \yii\widgets\ActiveForm;
 
-$this->title = 'Page View';
-$this->params['breadcrumbs'][] = $this->title;
 ?>
 
     <h1 class="text-center"><?= $page->pagehead ?></h1>
@@ -15,5 +13,37 @@ $this->params['breadcrumbs'][] = $this->title;
 
             <?= $page->text ?>
 
+<div class="text-center">
+    <?= Html::a('Оформить заявку', '#orderForm',['class' => 'btn btn-primary order-btn mt10 mb20', 'data-toggle'=>'collapse']) ?>
+</div>
+
+<?php Pjax::begin(); ?>
+<?//= Html::beginForm(['site/order'], 'post', ['data-pjax' => '', 'class' => 'form-group']); ?>
+<div class="feedback-form panel-collapse collapse" id="orderForm">
+
+    <?php $form = ActiveForm::begin(['action' =>['site/order'], 'id' => 'order', 'method' => 'post',]); ?>
 
 
+    <div class="row">
+        <div class="col-sm-6"><?= $form->field($feedbackForm, 'user_id')->textInput(['maxlength' => true])->label('Откуда') ?></div>
+        <div class="col-sm-6"><?= $form->field($feedbackForm, 'city')->textInput(['maxlength' => true])->label('Куда') ?></div>
+
+        <div class="col-sm-6"><?= $form->field($feedbackForm, 'phone')->textInput(['maxlength' => true]) ?></div>
+        <div class="col-sm-6"><?= $form->field($feedbackForm, 'email')->textInput(['maxlength' => true]) ?></div>
+
+        <div class="col-sm-6"><?= $form->field($feedbackForm, 'name')->textInput(['maxlength' => true])->label('Характер груза')  ?></div>
+        <div class="col-sm-6"><?= $form->field($feedbackForm, 'contacts')->textInput(['maxlength' => true])->label('Вес')  ?></div>
+
+        <div class="col-sm-12"> <?= $form->field($feedbackForm, 'text')->textarea(['rows' => 1])->label('Комментарий') ?></div>
+        <?= $form->field($feedbackForm, 'from_page')->hiddenInput(['value'=>$page->hrurl])->label(false) ?>
+        <div class="col-sm-6 col-sm-offset-3 text-center">
+            <?= Html::submitButton('отправить заявку', ['class' => 'btn btn-primary order-btn mt10']) ?>
+        </div>
+    </div>
+
+
+    <?php $form = ActiveForm::end(); ?>
+
+
+</div>
+<?php Pjax::end(); ?>

@@ -6,6 +6,7 @@ use Yii;
 use app\models\User;
 use yii\data\ActiveDataProvider;
 use yii\db\Expression;
+use yii\helpers\Url;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -36,6 +37,7 @@ class UsermanageController extends Controller
      */
     public function actionIndex()
     {
+        Url::remember();
         $dataProvider = new ActiveDataProvider([
             'query' => User::find(),
         ]);
@@ -52,6 +54,7 @@ class UsermanageController extends Controller
      */
     public function actionView($id)
     {
+        Url::remember();
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);

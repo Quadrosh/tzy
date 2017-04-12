@@ -5,6 +5,7 @@ namespace app\modules\admin\controllers;
 use Yii;
 use app\models\Feedback;
 use yii\data\ActiveDataProvider;
+use yii\helpers\Url;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -35,6 +36,7 @@ class FeedbackController extends AdminController
      */
     public function actionIndex()
     {
+        Url::remember();
         $dataProvider = new ActiveDataProvider([
             'query' => Feedback::find(),
             'pagination'=> [
@@ -59,6 +61,7 @@ class FeedbackController extends AdminController
      */
     public function actionView($id)
     {
+        Url::remember();
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);

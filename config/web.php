@@ -57,7 +57,22 @@ $config = [
 //            'suffix' => '.html',
 //            'baseUrl' => 'site/index',
             'rules' => [
+                't/<testpage:[0-9a-z\-\_]+>' => 'test/test',
+
+                't/target/<tid:[0-9]+>' => 'test/target',
+
+                'target/<tid:[0-9]+>' => 'test/target',
+
+                'target/<tid:[0-9]+>/<action:[a-z\-\_]+>' => 'test/target',
+//                't/target/<tid:[0-9]+>/<action:[a-z\-\_]+>' => 'test/target',
+//                'ts/target/<tid:[0-9a-z\-\_]+>/<action:[0-9a-z\-\_]+>' => 'test/target',
+
+//                'ts/target/<t:[0-9a-z\-\_]+>' => 'test/target',
+
+                'ts/<testpage:[0-9a-z\-\_]+>' => 'test/test',
+
                 '<pagename:[0-9a-z\-\_]+>.html' => 'site/page',
+
                 ['pattern'=>'admin', 'route'=>'admin/'],
 //                ['pattern'=>'<action>', 'route'=>'site/index'],
                 ['pattern'=>'<action>', 'route'=>'site/page'],

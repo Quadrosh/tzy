@@ -15,12 +15,14 @@ use yii\widgets\ActiveForm;
             <div class="row">
 <!--                <div class="col-sm-6">--><?//= $form->field($model, 'test_id')->dropDownList(\yii\helpers\ArrayHelper::map(\app\models\Test::find()->all(), 'id','name')) ?><!--</div>-->
                 <div class="col-sm-6"><?= $form->field($model, 'test_id')->dropDownList(\yii\helpers\ArrayHelper::map(\app\models\Test::find()->all(), 'id','name'),[ 'options'=>[Yii::$app->request->get('test_id')=>["Selected"=>true]]]) ?></div>
-
+                <div class="col-sm-6"><?= $form->field($model, 'keywords')->textarea(['rows' => 1]) ?></div>
             </div>
             <div class="row">
-                <!--            <div class="col-sm-6">--><?//= $form->field($model, 'hrurl')->textInput(['maxlength' => true]) ?><!--</div>-->
+
+                <div class="col-sm-12"><?= $form->field($model, 'hrurl')->textInput(['maxlength' => true]) ?></div>
+
                 <div class="col-sm-6"><?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?></div>
-                <!--            <div class="col-sm-6">--><?//= $form->field($model, 'keywords')->textarea(['rows' => 1]) ?><!--</div>-->
+
                 <div class="col-sm-6"><?= $form->field($model, 'pagehead')->textInput(['maxlength' => true]) ?></div>
                 <div class="col-sm-6"><?= $form->field($model, 'description')->textarea(['rows' => 1]) ?></div>
 
@@ -35,7 +37,7 @@ use yii\widgets\ActiveForm;
                 <!--            <div class="col-sm-4">--><?//= $form->field($model, 'promoname')->textInput(['maxlength' => true]) ?><!--</div>-->
 
 
-                <div class="col-sm-4"><?= $form->field($model, 'layout')->dropDownList(['main'=>'Сайт', 'clear'=>'Чистый']) ?></div>
+                <div class="col-sm-4"><?= $form->field($model, 'layout')->dropDownList(['test1'=>'Тест1', 'test2'=>'Тест2']) ?></div>
             </div>
 
                 <div class="form-group">

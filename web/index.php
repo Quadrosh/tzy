@@ -1,6 +1,6 @@
 <?php
 
-// comment to production
+// comment to production (и проверить адрес в модели feedback)
 defined('YII_DEBUG') or define('YII_DEBUG', true);
 defined('YII_ENV') or define('YII_ENV', 'dev');
 
