@@ -18,9 +18,11 @@ use Yii;
  * @property string $text
  * @property string $date
  * @property int $done
+ *
  */
 class Feedback extends \yii\db\ActiveRecord
 {
+    public $emailForSend = 'quadrosh@gmail.com';
     /**
      * @inheritdoc
      */
@@ -76,30 +78,30 @@ class Feedback extends \yii\db\ActiveRecord
      */
     public function sendEmail($subject)
     {
+
+
+        if ($GLOBALS['YII_APP_MODE']=='DEV') {
+            $this->emailForSend = 'quadrosh@gmail.com';
+        } elseif ($GLOBALS['YII_APP_MODE']=='PROD') {
+            $this->emailForSend = 'transzakaz@gmail.com';
+        }
+
         if ($subject == 'TSZAKAZ.RU: Запрос обратного звонка') {
             return Yii::$app->mailer->compose()
-//                ->setTo('quadrosh@gmail.com')
-                ->setTo('transzakaz@gmail.com')
+                ->setTo($this->emailForSend)
                 ->setFrom('noreply@tszakaz.ru')
                 ->setSubject($subject)
-//            ->setTextBody(" Имя: ".$this->name ." Со страницы: ".$this->from_page ." Город: ".$this->city ." Телефон: ".$this->phone ." Email: ".$this->email ." Контакты: ".$this->contacts ." Текст: ".$this->text)
                 ->setHtmlBody(
                     "Данные запроса <br>".
                     " <br/> Имя: ".$this->name .
                     " <br/> Телефон: ".$this->phone .
                     " <br/> Со страницы: ".$this->from_page
-//                " <br/> Город: ".$this->city .
-//                " <br/> Email: ".$this->email .
-//                " <br/> доп. инфо: " . $this->contacts .
-//                " <br/> Комментарий: <br/> " .
-//                nl2br($this->text)
                 )
                 ->send();
         }
         if ($subject == 'TSZAKAZ.RU: Заявка на грузоперевозку') {
             return Yii::$app->mailer->compose()
-//                ->setTo('quadrosh@gmail.com')
-                ->setTo('transzakaz@gmail.com')
+                ->setTo($this->emailForSend)
                 ->setFrom('noreply@tszakaz.ru')
                 ->setSubject($subject)
                 ->setHtmlBody(
@@ -109,10 +111,8 @@ class Feedback extends \yii\db\ActiveRecord
                     " <br/> Куда: ".$this->city .
                     " <br/> Телефон: ".$this->phone .
                     " <br/> Email: ".$this->email .
-
                     " <br/> Груз: ".$this->name .
                     " <br/> Вес: ".$this->contacts .
-
                     " <br/> Комментарий: <br/> " .
                     nl2br($this->text)
                 )
