@@ -166,9 +166,11 @@ class TestController extends Controller
         if ($testPageName!=null) {
             $this->testPage = TestPage::find()->where(['hrurl'=>$testPageName])->one();
         }
-
+        $oldViews = $this->testPage['sendtopage'];
+        $newViews = $oldViews+1;
+        $this->testPage['sendtopage']= $newViews;
+        $this->testPage->save();
         $this->view->params['feedback'] = new Feedback();
-
 
         $this->layout = $this->testPage->layout;
 
@@ -178,8 +180,6 @@ class TestController extends Controller
 
         $this->view->params['pageName']='testPage-'. $this->testPage->id;
         $this->view->params['currentItem'] = '1';
-
-
         $this->view->params['meta']['seo_logo'] = $this->testPage->title;
         $this->view->params['meta']['title'] = $this->testPage->title;
         $this->view->params['meta']['description'] = $this->testPage->description;

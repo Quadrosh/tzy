@@ -2,8 +2,9 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use app\models\TestPage;
 
-/* @var $this yii\web\View */
+    /* @var $this yii\web\View */
 /* @var $model app\models\Test */
 
 $this->title = $model->name;
@@ -45,6 +46,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <th>Layout</th>
             <th>hrurl</th>
             <th>Примечание</th>
+            <th>Просмотры</th>
             <th class="action-column">&nbsp;</th>
         </tr>
         </thead>
@@ -55,6 +57,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <td><?= $testPage['layout'] ?></td>
             <td> <?= Html::a($testPage['hrurl'], ['/t/'.$testPage['hrurl']]) ?></td>
             <td><?= $testPage['keywords'] ?></td>
+            <td><?= $testPage['sendtopage'] ?></td>
 
             <td>
                 <a href="/admin/testpage/view?id=<?= $testPage['id'] ?>">
@@ -91,6 +94,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <th><a href="/admin/testtarget/index?sort=testpage_id" data-sort="testpage_id">Testpage Name</a></th>
             <th><a href="/admin/testtarget/index?sort=name" data-sort="name">Name</a></th>
             <th><a href="/admin/testtarget/index?sort=achieve" data-sort="achieve">Achieve</a></th>
+            <th>Конверсия</th>
             <th class="action-column">&nbsp;</th>
         </tr>
         </thead>
@@ -100,9 +104,11 @@ $this->params['breadcrumbs'][] = $this->title;
         <tr data-key="1">
             <td><?= $testTarget['id'] ?></td>
             <td><?= $testTarget['testpage_id'] ?></td>
-            <td><?= \app\models\TestPage::find()->where(['id'=>$testTarget['testpage_id']])->one()['hrurl']; ?></td>
+            <td><?= TestPage::find()->where(['id'=>$testTarget['testpage_id']])->one()['hrurl']; ?></td>
             <td><?= $testTarget['name'] ?></td>
             <td><?= $testTarget['achieve'] ?></td>
+            <td><?= round($testTarget['achieve'] / TestPage::find()->where(['id'=>$testTarget['testpage_id']])->one()['sendtopage'] * 100,1) ?>%</td>
+<!--            <td>--><?//=  (new \yii\db\Expression($testTarget['achieve'] / TestPage::find()->where(['id'=>$testTarget['testpage_id']])->one()['sendtopage'] * 100))->scalar() ?><!--%</td>-->
 
             <td>
                 <a href="/admin/testtarget/view?id=<?= $testTarget['id'] ?>" title="View" aria-label="View" data-pjax="0">

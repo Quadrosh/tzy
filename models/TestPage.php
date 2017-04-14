@@ -40,9 +40,9 @@ class TestPage extends \yii\db\ActiveRecord
     {
         return [
             [['test_id'], 'required'],
-            [['test_id'], 'integer'],
+            [['test_id','sendtopage'], 'integer'],
             [['description', 'keywords', 'pagedescription', 'text'], 'string'],
-            [['hrurl', 'title', 'pagehead', 'imagelink', 'imagelink_alt', 'sendtopage', 'promolink', 'promoname', 'layout'], 'string', 'max' => 255],
+            [['hrurl', 'title', 'pagehead', 'imagelink', 'imagelink_alt', 'promolink', 'promoname', 'layout'], 'string', 'max' => 255],
         ];
     }
 
@@ -63,7 +63,7 @@ class TestPage extends \yii\db\ActiveRecord
             'text' => 'HTML',
             'imagelink' => 'Imagelink',
             'imagelink_alt' => 'Imagelink Alt',
-            'sendtopage' => 'Sendtopage',
+            'sendtopage' => 'Просмотры',
             'promolink' => 'Promolink',
             'promoname' => 'Promoname',
             'layout' => 'Layout',

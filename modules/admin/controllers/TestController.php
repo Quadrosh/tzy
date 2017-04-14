@@ -58,7 +58,7 @@ class TestController extends Controller
         Url::remember();
         $testTargets =[];
         $testPages = TestPage::find()->where(['test_id'=>$id])->all();
-        foreach ($testPages as $testPage) {$allPages =
+        foreach ($testPages as $testPage) {
             $testTargets [] = TestTarget::find()->where(['testpage_id'=>$testPage['id']])->all();
         }
         return $this->render('view', [
