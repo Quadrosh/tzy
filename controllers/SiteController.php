@@ -62,6 +62,10 @@ class SiteController extends Controller
             ],
         ];
     }
+//    public function actionError()
+//    {
+//
+//    }
 
     /**
      * Displays homepage.
@@ -101,7 +105,6 @@ class SiteController extends Controller
         $pageName = Yii::$app->request->get('pagename');
         $this->view->params['feedback'] = new Feedback();
         $feedbackForm = new Feedback();
-//        debug($feedbackForm); die;
 
         $page = Pages::find()->where(['hrurl'=>$pageName])->one();
         if ($page == false) {

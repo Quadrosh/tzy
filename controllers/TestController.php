@@ -4,9 +4,11 @@ namespace app\controllers;
 
 use app\models\MenuTop;
 use app\models\Pages;
+use app\models\Test;
 use app\models\TestPage;
 use app\models\TestTarget;
 use Yii;
+use yii\base\Exception;
 use yii\filters\AccessControl;
 use yii\helpers\Url;
 use yii\web\Controller;
@@ -15,12 +17,14 @@ use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\Feedback;
 use yii\web\HttpException;
+use yii\web\NotFoundHttpException;
 
 class TestController extends Controller
 {
     public $layout = 'main';
     public $defaultAction = 'index';
     public $testPage;
+    public $test;
     /**
      * @inheritdoc
      */
@@ -56,6 +60,8 @@ class TestController extends Controller
             [
             'error' => [
                 'class' => 'yii\web\ErrorAction',
+                'view' => '@app/views/site/custom_error.php',
+//                'layout'=> '@app/views/layouts/clear.php',
             ],
             'captcha' => [
                 'class' => 'yii\captcha\CaptchaAction',
@@ -89,7 +95,63 @@ class TestController extends Controller
         ]);
     }
 
+    /**
+     * Displays test.
+     *
+     */
+    public function actionTest()
+    {
+        Url::remember();
+        $testPageName = Yii::$app->request->get('testpage');
+        if ($testPageName!=null) {
+            $this->testPage = TestPage::find()->where(['hrurl'=>$testPageName])->one();
+            $this->test = Test::find()->where(['id'=> $this->testPage['test_id']])->one();
+            if(!isset($this->test['publish'])|| $this->test['publish'] != true){
 
+                $this->view->params['feedback'] = new Feedback();
+                throw new NotFoundHttpException('Страница в разработке');
+
+            }
+        }
+
+        $oldViews = $this->testPage['sendtopage'];
+        $newViews = $oldViews+1;
+        $this->testPage['sendtopage']= $newViews;
+        $this->testPage->save();
+        $this->view->params['feedback'] = new Feedback();
+
+        $this->layout = $this->testPage->layout;
+
+        if ($this->testPage == false) {
+            $this->view->params['feedback'] = new Feedback();
+            throw new \yii\web\NotFoundHttpException('Страница не существует');
+        };
+
+        $this->view->params['pageName']='testPage-'. $this->testPage->id;
+        $this->view->params['currentItem'] = '1';
+        $this->view->params['meta']['seo_logo'] = $this->testPage->title;
+        $this->view->params['meta']['title'] = $this->testPage->title;
+        $this->view->params['meta']['description'] = $this->testPage->description;
+        $this->view->params['meta']['keywords'] = $this->testPage->keywords;
+        $this->view->params['page']= $this->testPage;
+
+
+        return $this->render('test',[
+            'page' => $this->testPage,
+        ]);
+    }
+
+    public function actionTarget(){
+        $targetId = Yii::$app->request->get('id');
+        $target = TestTarget::find()->where(['id'=> $targetId])->one();
+
+        $this->layout = false;
+
+        $newCount = $target['achieve']+1;
+        $target['achieve'] = $newCount;
+        $target->save();
+
+    }
 
 
 
@@ -154,54 +216,6 @@ class TestController extends Controller
     }
 
 
-    /**
-     * Displays test.
-     *
-     * @return string
-     */
-    public function actionTest()
-    {
-        Url::remember();
-        $testPageName = Yii::$app->request->get('testpage');
-        if ($testPageName!=null) {
-            $this->testPage = TestPage::find()->where(['hrurl'=>$testPageName])->one();
-        }
-        $oldViews = $this->testPage['sendtopage'];
-        $newViews = $oldViews+1;
-        $this->testPage['sendtopage']= $newViews;
-        $this->testPage->save();
-        $this->view->params['feedback'] = new Feedback();
 
-        $this->layout = $this->testPage->layout;
-
-        if ($this->testPage == false) {
-            throw new \yii\web\NotFoundHttpException('Страница не существует');
-        };
-
-        $this->view->params['pageName']='testPage-'. $this->testPage->id;
-        $this->view->params['currentItem'] = '1';
-        $this->view->params['meta']['seo_logo'] = $this->testPage->title;
-        $this->view->params['meta']['title'] = $this->testPage->title;
-        $this->view->params['meta']['description'] = $this->testPage->description;
-        $this->view->params['meta']['keywords'] = $this->testPage->keywords;
-        $this->view->params['page']= $this->testPage;
-
-
-        return $this->render('test',[
-            'page' => $this->testPage,
-        ]);
-    }
-
-    public function actionTarget(){
-        $targetId = Yii::$app->request->get('id');
-        $target = TestTarget::find()->where(['id'=> $targetId])->one();
-
-        $this->layout = false;
-
-        $newCount = $target['achieve']+1;
-        $target['achieve'] = $newCount;
-        $target->save();
-
-    }
 
 }

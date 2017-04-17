@@ -31,8 +31,8 @@ app\assets\MainAsset::register($this);
 <body>
 <?php $this->beginBody() ?>
 
-<h1>форма заказа</h1>
-
+<!--<h1>форма заказа</h1>-->
+<?//= Html::errorSummary($feedback, ['class' => 'errors']) ?>
 
 
 

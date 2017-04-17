@@ -25,7 +25,15 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'name',
             'description:ntext',
-            'publish',
+//            'publish',
+            [
+                'attribute'=>'publish',
+                'value'=> function($data)
+                {
+                    return $data->publish ? '<span   class="text-primary">Публикуется</span>' : '<span   class="text-danger">Не публикуется</span>';
+                },
+                'format'=> 'html',
+            ],
             'start_date',
              'end_date',
 

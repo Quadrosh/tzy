@@ -33,7 +33,12 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'name',
             'description:ntext',
-            'publish',
+//            'publish',
+            [
+                'attribute'=>'publish',
+                'value'=> $model->publish ? '<span class="text-primary">Публикуется</span>' : '<span class="text-danger">Не опубликован</span>',
+                'format'=> 'html',
+            ],
             'start_date',
             'end_date',
         ],

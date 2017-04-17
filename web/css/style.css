@@ -88,6 +88,11 @@ header .b-top__header {
     line-height: 150px;
     background: url(/img/b-header__background.png) 0 0 repeat-x scroll;
 }
+ .logo_v2 {
+
+     width: 80%;
+
+}
 .b-top__header .b-top__logo .b-top__logo__corner {
     position: absolute;
     width: 57px;

@@ -16,7 +16,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'publish')->textInput() ?>
+    <?= $form->field($model, 'publish')->dropDownList([ true =>'Опубликован', false =>'Не опубликован']) ?>
 
     <?= $form->field($model, 'start_date')->textInput() ?>
 
