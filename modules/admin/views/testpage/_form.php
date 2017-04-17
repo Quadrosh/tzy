@@ -31,7 +31,7 @@ use yii\widgets\ActiveForm;
 
                 <!--            <div class="col-sm-4">--><?//= $form->field($model, 'imagelink')->textInput(['maxlength' => true]) ?><!--</div>-->
                 <!--            <div class="col-sm-4">--><?//= $form->field($model, 'imagelink_alt')->textInput(['maxlength' => true]) ?><!--</div>-->
-                <!--            <div class="col-sm-4">--><?//= $form->field($model, 'sendtopage')->textInput(['maxlength' => true]) ?><!--</div>-->
+                            <div class="col-sm-4"><?= $form->field($model, 'sendtopage')->textInput(['maxlength' => true]) ?></div>
                 <!---->
                 <!--            <div class="col-sm-4">--><?//= $form->field($model, 'promolink')->textInput(['maxlength' => true]) ?><!--</div>-->
                 <!--            <div class="col-sm-4">--><?//= $form->field($model, 'promoname')->textInput(['maxlength' => true]) ?><!--</div>-->
