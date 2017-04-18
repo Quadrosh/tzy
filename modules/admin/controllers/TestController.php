@@ -2,10 +2,12 @@
 
 namespace app\modules\admin\controllers;
 
+use app\models\Feedback;
 use app\models\TestPage;
 use app\models\TestTarget;
 use Yii;
 use app\models\Test;
+use yii\base\Exception;
 use yii\data\ActiveDataProvider;
 use yii\helpers\Url;
 use yii\web\Controller;
@@ -48,6 +50,43 @@ class TestController extends Controller
         ]);
     }
 
+    public function actionPublish($id){
+
+        $model = Test::find()->where(['id'=>$id])->one();
+        $model->publish = true;
+        if ($model->save()) {
+            return $this->redirect(Url::previous());
+        } else {
+            $this->view->params['feedback'] = new Feedback();
+            throw new Exception('Не получается, свяжитесь с программистом');
+        }
+    }
+    public function actionUnpublish($id){
+        $model = Test::find()->where(['id'=>$id])->one();
+        $model->publish = 0;
+        if ($model->save()) {
+            return $this->redirect(Url::previous());
+        } else {
+            $this->view->params['feedback'] = new Feedback();
+            throw new Exception('Не получается, свяжитесь с программистом');
+        }
+    }
+    public function actionReset($id){
+        $test = Test::find()->where(['id'=>$id])->one();
+        $testPages = TestPage::find()->where(['test_id'=>$test->id])->all();
+        foreach ($testPages as $testPage) {
+            $testPage['sendtopage'] = 0;
+            $testPage->save();
+            $targets = TestTarget::find()->where(['testpage_id'=>$testPage['id']])->all();
+            foreach ($targets as $target) {
+                $target['achieve'] = 0;
+                $target->save();
+            }
+
+        }
+        return $this->redirect(Url::previous());
+
+    }
     /**
      * Displays a single Test model.
      * @param integer $id

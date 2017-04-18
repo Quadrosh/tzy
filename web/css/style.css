@@ -541,6 +541,22 @@ header .b-top__banner .b-top__banner__shadow {
     box-shadow: 0 5.67px 20px 5px rgba(72,154,213,.31);
 }
 
+.panel-default > .panel-heading {
+    color: #333;
+    background-color: #f5f5f5;
+    border-color: #ddd;
+    width: 100%;
+}
+.panel-default .russia_prices {
+    width: 100%;
+    font-size: 16px;
+}
+.panel-default .russia_prices td,
+.panel-default .russia_prices th {
+    padding: 7px;
+}
+
+
 
 
 

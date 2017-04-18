@@ -25,6 +25,9 @@ $this->params['breadcrumbs'][] = $this->title;
                 'method' => 'post',
             ],
         ]) ?>
+        <?= Html::a('Опубликовать', ['publish', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Снять с публикации', ['unpublish', 'id' => $model->id], ['class' => 'btn btn-default']) ?>
+        <?= Html::a('Сбросить показания', ['reset', 'id' => $model->id], ['class' => 'btn btn-warning','data-confirm'=>'хорошо подумал?']) ?>
     </p>
 
     <?= DetailView::widget([
@@ -60,7 +63,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <tr data-key="1">
             <td><?= $testPage['id'] ?></td>
             <td><?= $testPage['layout'] ?></td>
-            <td> <?= Html::a($testPage['hrurl'], ['/t/'.$testPage['hrurl']]) ?></td>
+            <td> <?= $model->publish ? Html::a($testPage['hrurl'], ['/t/'.$testPage['hrurl']]) : Html::a($testPage['hrurl'], ['/dev/'.$testPage['hrurl']]) ?></td>
             <td><?= $testPage['keywords'] ?></td>
             <td><?= $testPage['sendtopage'] ?></td>
 
@@ -112,8 +115,10 @@ $this->params['breadcrumbs'][] = $this->title;
             <td><?= TestPage::find()->where(['id'=>$testTarget['testpage_id']])->one()['hrurl']; ?></td>
             <td><?= $testTarget['name'] ?></td>
             <td><?= $testTarget['achieve'] ?></td>
-            <td><?= round($testTarget['achieve'] / TestPage::find()->where(['id'=>$testTarget['testpage_id']])->one()['sendtopage'] * 100,1) ?>%</td>
-<!--            <td>--><?//=  (new \yii\db\Expression($testTarget['achieve'] / TestPage::find()->where(['id'=>$testTarget['testpage_id']])->one()['sendtopage'] * 100))->scalar() ?><!--%</td>-->
+            <td><?=
+                TestPage::find()->where(['id'=>$testTarget['testpage_id']])->one()['sendtopage']!=0 ?
+                round($testTarget['achieve'] / TestPage::find()->where(['id'=>$testTarget['testpage_id']])->one()['sendtopage'] * 100,1): 0 ?>%</td>
+
 
             <td>
                 <a href="/admin/testtarget/view?id=<?= $testTarget['id'] ?>" title="View" aria-label="View" data-pjax="0">

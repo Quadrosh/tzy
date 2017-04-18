@@ -141,16 +141,55 @@ class TestController extends Controller
         ]);
     }
 
+
+    /**
+     * Displays test on development.
+     *
+     */
+    public function actionDev()
+    {
+        Url::remember();
+        $testPageName = Yii::$app->request->get('testpage');
+        if ($testPageName!=null) {
+            $this->testPage = TestPage::find()->where(['hrurl'=>$testPageName])->one();
+            $this->test = Test::find()->where(['id'=> $this->testPage['test_id']])->one();
+        }
+
+
+        $this->view->params['feedback'] = new Feedback();
+
+        $this->layout = $this->testPage->layout;
+
+        if ($this->testPage == false) {
+            $this->view->params['feedback'] = new Feedback();
+            throw new \yii\web\NotFoundHttpException('Страница не существует');
+        };
+
+        $this->view->params['pageName']='testPage-'. $this->testPage->id;
+        $this->view->params['currentItem'] = '1';
+        $this->view->params['meta']['seo_logo'] = $this->testPage->title;
+        $this->view->params['meta']['title'] = $this->testPage->title;
+        $this->view->params['meta']['description'] = $this->testPage->description;
+        $this->view->params['meta']['keywords'] = $this->testPage->keywords;
+        $this->view->params['page']= $this->testPage;
+
+
+        return $this->render('test',[
+            'page' => $this->testPage,
+        ]);
+    }
+
     public function actionTarget(){
         $targetId = Yii::$app->request->get('id');
         $target = TestTarget::find()->where(['id'=> $targetId])->one();
-
+        $testPage = TestPage::find()->where(['id'=>$target->testpage_id])->one();
+        $test = Test::find()->where(['id'=>$testPage->test_id])->one();
         $this->layout = false;
-
-        $newCount = $target['achieve']+1;
-        $target['achieve'] = $newCount;
-        $target->save();
-
+        if($test->publish == true){
+            $newCount = $target['achieve']+1;
+            $target['achieve'] = $newCount;
+            $target->save();
+        }
     }
 
 
