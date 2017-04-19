@@ -143,18 +143,18 @@ $feedback = Yii::$app->view->params['feedback'];
                 <div class="feedback-form panel-collapse collapse" id="orderForm">
                     <?php $form = ActiveForm::begin(['action' =>['test/order'], 'id' => 'order', 'method' => 'post',]); ?>
                     <div class="row">
-                        <div class="col-sm-6"><?= $form->field($feedback, 'user_id')->textInput(['maxlength' => true])->label('Откуда') ?></div>
-                        <div class="col-sm-6"><?= $form->field($feedback, 'city')->textInput(['maxlength' => true])->label('Куда') ?></div>
-                        <div class="col-sm-6"><?= $form->field($feedback, 'phone')->textInput(['maxlength' => true]) ?></div>
+                        <div class="col-sm-6"><?= $form->field($feedback, 'user_id')->textInput(['required' => true])->label('Откуда') ?></div>
+                        <div class="col-sm-6"><?= $form->field($feedback, 'city')->textInput(['required' => true])->label('Куда') ?></div>
+                        <div class="col-sm-6"><?= $form->field($feedback, 'phone')->textInput(['required' => true]) ?></div>
                         <div class="col-sm-6"><?= $form->field($feedback, 'email')->textInput(['maxlength' => true]) ?></div>
-                        <div class="col-sm-6"><?= $form->field($feedback, 'name')->textInput(['maxlength' => true])->label('Характер груза')  ?></div>
+                        <div class="col-sm-6"><?= $form->field($feedback, 'name')->textInput(['required' => true])->label('Характер груза')  ?></div>
                         <div class="col-sm-6"><?= $form->field($feedback, 'contacts')->textInput(['maxlength' => true])->label('Вес')  ?></div>
                         <div class="col-sm-12"> <?= $form->field($feedback, 'text')->textarea(['rows' => 1])->label('Комментарий') ?></div>
                         <?= $form->field($feedback, 'from_page')->hiddenInput(['value'=>Yii::$app->view->params['pageName']])->label(false) ?>
                         <div class="col-sm-6 col-sm-offset-3 text-center">
 
                             <?= Html::submitButton('отправить заявку', [
-                                'class' => 'btn btn-primary test-target order-btn mt10',
+                                'class' => 'btn btn-primary test-target sendorder-btn mt10',
                                 'data-tid'=>'9',
                             ]) ?>
                         </div>

@@ -25,19 +25,19 @@ use \yii\widgets\ActiveForm;
 
 
     <div class="row">
-        <div class="col-sm-6"><?= $form->field($feedbackForm, 'user_id')->textInput(['maxlength' => true])->label('Откуда') ?></div>
-        <div class="col-sm-6"><?= $form->field($feedbackForm, 'city')->textInput(['maxlength' => true])->label('Куда') ?></div>
+        <div class="col-sm-6"><?= $form->field($feedbackForm, 'user_id')->textInput(['required' => true])->label('Откуда') ?></div>
+        <div class="col-sm-6"><?= $form->field($feedbackForm, 'city')->textInput(['required' => true])->label('Куда') ?></div>
 
-        <div class="col-sm-6"><?= $form->field($feedbackForm, 'phone')->textInput(['maxlength' => true]) ?></div>
+        <div class="col-sm-6"><?= $form->field($feedbackForm, 'phone')->textInput(['required' => true]) ?></div>
         <div class="col-sm-6"><?= $form->field($feedbackForm, 'email')->textInput(['maxlength' => true]) ?></div>
 
-        <div class="col-sm-6"><?= $form->field($feedbackForm, 'name')->textInput(['maxlength' => true])->label('Характер груза')  ?></div>
+        <div class="col-sm-6"><?= $form->field($feedbackForm, 'name')->textInput(['required' => true])->label('Характер груза')  ?></div>
         <div class="col-sm-6"><?= $form->field($feedbackForm, 'contacts')->textInput(['maxlength' => true])->label('Вес')  ?></div>
 
         <div class="col-sm-12"> <?= $form->field($feedbackForm, 'text')->textarea(['rows' => 1])->label('Комментарий') ?></div>
         <?= $form->field($feedbackForm, 'from_page')->hiddenInput(['value'=>$page->hrurl])->label(false) ?>
         <div class="col-sm-6 col-sm-offset-3 text-center">
-            <?= Html::submitButton('отправить заявку', ['class' => 'btn btn-primary order-btn mt10']) ?>
+            <?= Html::submitButton('отправить заявку', ['class' => 'btn btn-primary sendorder-btn mt10']) ?>
         </div>
     </div>
 
