@@ -32,8 +32,8 @@ class Test extends \yii\db\ActiveRecord
         return [
             [['name'], 'required'],
             [['description'], 'string'],
-            [['publish', 'start_date', 'end_date'], 'integer'],
-            [['name'], 'string', 'max' => 255],
+            [['publish'], 'integer'],
+            [['name', 'start_date', 'end_date'], 'string', 'max' => 255],
         ];
     }
 

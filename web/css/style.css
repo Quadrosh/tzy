@@ -567,15 +567,19 @@ header .b-top__banner .b-top__banner__shadow {
     border-color: #ddd;
     width: 100%;
 }
-.panel-default .russia_prices {
+.panel-default .russia_prices,
+.test_clean_collapse .russia_prices {
     width: 100%;
     font-size: 16px;
     margin-top: 5px;
 }
 .panel-default .russia_prices td,
-.panel-default .russia_prices th {
+.panel-default .russia_prices th,
+.test_clean_collapse .russia_prices td,
+.test_clean_collapse .russia_prices th{
     padding: 7px;
     border: 1px solid #0090d7;
+    text-align: left;
 }
 
 .panel-default .panel-heading {
@@ -597,8 +601,12 @@ header .b-top__banner .b-top__banner__shadow {
 .panel-default {
     border: none;
 }
-
-
+.test_clean_collapse {
+    text-align: center;
+}
+.test_clean_collapse a:active {
+    box-shadow: none;
+}
 
 /*              MEDIA              */
 /*==========  Less than  ==========*/
