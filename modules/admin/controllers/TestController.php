@@ -55,7 +55,7 @@ class TestController extends Controller
         $model = Test::find()->where(['id'=>$id])->one();
         $model->publish = true;
         $now = new \DateTime();
-        $date=$now->format('i:H_d-m-Y');
+        $date=$now->format('H:i_d-m-Y');
         $model->start_date = $date;
         if ($model->save()) {
             return $this->redirect(Url::previous());
@@ -67,7 +67,7 @@ class TestController extends Controller
     public function actionUnpublish($id){
         $model = Test::find()->where(['id'=>$id])->one();
         $now = new \DateTime();
-        $date=$now->format('i:H_d-m-Y');
+        $date=$now->format('H:i_d-m-Y');
         $model->end_date = $date;
         $testPages = TestPage::find()->where(['test_id'=>$model->id])->all();
         foreach ($testPages as $testPage) {

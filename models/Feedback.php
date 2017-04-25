@@ -41,6 +41,7 @@ class Feedback extends \yii\db\ActiveRecord
             [['text'], 'string'],
             [['date'], 'safe'],
             [['user_id','name', 'city', 'from_page', 'phone', 'email', 'contacts'], 'string', 'max' => 255],
+            [['name', 'phone'], 'required'],
         ];
     }
 
