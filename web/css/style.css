@@ -608,6 +608,22 @@ header .b-top__banner .b-top__banner__shadow {
     box-shadow: none;
 }
 
+.alert-success {
+    color: #f39200;
+    background-color: rgba(243,187,0,0.15);
+    border-color: rgba(243,187,0,0.3);
+}
+
+/*f39200*/
+
+/*orange #f39200*/
+/*yellow #F3BB00     rgba(243,187,0,2)        */
+/*blue1  #0090d7*/
+/*blue2  #0e3e74*/
+
+
+
+
 /*              MEDIA              */
 /*==========  Less than  ==========*/
 

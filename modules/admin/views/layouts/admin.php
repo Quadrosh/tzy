@@ -46,6 +46,7 @@ AppAsset::register($this);
                     ['label' => 'test target', 'url' => ['/admin/testtarget/index']],
                 ],
             ],
+            ['label' => 'Preorders', 'url' => ['/admin/preorders']],
             ['label' => 'Feedback', 'url' => ['/admin/feedback']],
             ['label' => 'Pages', 'url' => ['/admin/pages']],
             ['label' => 'Images', 'url' => ['/admin/imagefiles']],

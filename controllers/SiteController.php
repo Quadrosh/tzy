@@ -4,6 +4,8 @@ namespace app\controllers;
 
 use app\models\MenuTop;
 use app\models\Pages;
+use app\models\Preorders;
+use app\models\PreordersCaptcha;
 use app\models\TestPage;
 use app\models\TestTarget;
 use Yii;
@@ -15,6 +17,7 @@ use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\Feedback;
 use yii\web\HttpException;
+use yii\base\ErrorException;
 
 class SiteController extends Controller
 {
@@ -75,9 +78,20 @@ class SiteController extends Controller
     public function actionIndex()
     {
         Url::remember();
+
+        try {
+            10/0;
+        } catch (ErrorException $e) {
+            Yii::warning("Division by zero.");
+        };
+
+
+
         $this->layout = 'home';
         $this->view->params['feedback'] = new Feedback();
         $feedbackForm = new Feedback();
+        $preorderForm = new Preorders();
+//        $preorderForm = new PreordersCaptcha();
 
         $pageName = 'about';
         $this->view->params['currentItem'] = 1;
@@ -91,6 +105,7 @@ class SiteController extends Controller
         return $this->render('page',[
             'page' => $page,
             'feedbackForm' => $feedbackForm,
+            'preorderForm' => $preorderForm,
         ]);
     }
 
@@ -105,6 +120,7 @@ class SiteController extends Controller
         $pageName = Yii::$app->request->get('pagename');
         $this->view->params['feedback'] = new Feedback();
         $feedbackForm = new Feedback();
+        $preorderForm = new Preorders();
 
         $page = Pages::find()->where(['hrurl'=>$pageName])->one();
         if ($page == false) {
@@ -121,11 +137,13 @@ class SiteController extends Controller
             return $this->render('sitemap',[
                 'page' => $page,
                 'feedbackForm' => $feedbackForm,
+                'preorderForm' => $preorderForm,
             ]);
         }
         return $this->render('page',[
             'page' => $page,
             'feedbackForm' => $feedbackForm,
+            'preorderForm' => $preorderForm,
         ]);
 
 
@@ -215,22 +233,81 @@ class SiteController extends Controller
     }
 
 
+//    public function actionOrder()
+//    {
+//        $data = Yii::$app->request->post('Feedback');
+//        $feedback = new Feedback();
+//        $feedback->user_id = $data['user_id']; //откуда
+//        $feedback->city = $data['city']; // куда
+//        $feedback->phone = $data['phone']; // телефон
+//        $feedback->email = $data['email']; // email
+//        $feedback->name = $data['name']; // характер груза
+//        $feedback->contacts = $data['contacts']; // вес
+//        $feedback->text = $data['text']; // комментарий
+//        $feedback->from_page = $data['from_page'];
+//        $feedback->date = '';
+//        $feedback->done = '';
+//        if ($feedback->load(Yii::$app->request->post()) && $feedback->save()) {
+//            if ($feedback->sendEmail( 'TSZAKAZ.RU: Заявка на грузоперевозку')) {
+//                Yii::$app->session->setFlash('success', 'Ваша заявка отправлена. <br> Мы свяжемся с Вами в ближайшее время.');
+//                return $this->redirect(Url::previous());
+//            } else {
+//                Yii::$app->session->setFlash('error', 'Во время отправки произошла ошибка, попробуйте еще раз.');
+//                return $this->redirect(Url::previous());
+//            }
+//        } else {
+//
+//            Yii::$app->session->setFlash('error', 'Во время отправки произошла ошибка, попробуйте еще раз. Или отправьте заявку в свободной форме на transzakaz@gmail.com');
+//            return $this->redirect(Url::previous());
+//        }
+//
+//    }
+
     public function actionOrder()
     {
-        $data = Yii::$app->request->post('Feedback');
-        $feedback = new Feedback();
-        $feedback->user_id = $data['user_id']; //откуда
-        $feedback->city = $data['city']; // куда
-        $feedback->phone = $data['phone']; // телефон
-        $feedback->email = $data['email']; // email
-        $feedback->name = $data['name']; // характер груза
-        $feedback->contacts = $data['contacts']; // вес
-        $feedback->text = $data['text']; // комментарий
-        $feedback->from_page = $data['from_page'];
-        $feedback->date = '';
-        $feedback->done = '';
-        if ($feedback->load(Yii::$app->request->post()) && $feedback->save()) {
-            if ($feedback->sendEmail( 'TSZAKAZ.RU: Заявка на грузоперевозку')) {
+        $data = Yii::$app->request->post('Preorders');
+        $preorder = new Preorders();
+        $preorder->dispatch = $data['dispatch']; //откуда
+        $preorder->destination = $data['destination']; // куда
+        $preorder->phone = $data['phone']; // телефон
+        $preorder->email = $data['email']; // email
+        $preorder->cargo = $data['cargo']; // характер груза
+        $preorder->weight = $data['weight']; // вес
+        $preorder->text = $data['text']; // комментарий
+        $preorder->from_page = $data['from_page'];
+        $preorder->date = '';
+        $preorder->done = '';
+        if ($preorder->save()) {
+            if ($preorder->sendEmail( 'TSZAKAZ.RU: Заявка на грузоперевозку')) {
+                Yii::$app->session->setFlash('success', 'Ваша заявка отправлена. <br> Мы свяжемся с Вами в ближайшее время.');
+                return $this->redirect(Url::previous());
+            } else {
+                Yii::$app->session->setFlash('error', 'Во время отправки произошла ошибка, попробуйте еще раз.');
+                return $this->redirect(Url::previous());
+            }
+        } else {
+
+            Yii::$app->session->setFlash('error', 'Во время отправки произошла ошибка, попробуйте еще раз. Или отправьте заявку в свободной форме на transzakaz@gmail.com');
+            return $this->redirect(Url::previous());
+        }
+
+    }
+    public function actionOrdercaptcha()
+    {
+        $data = Yii::$app->request->post('PreordersCaptcha');
+        $preorder = new Preorders();
+        $preorder->dispatch = $data['dispatch']; //откуда
+        $preorder->destination = $data['destination']; // куда
+        $preorder->phone = $data['phone']; // телефон
+        $preorder->email = $data['email']; // email
+        $preorder->cargo = $data['cargo']; // характер груза
+        $preorder->weight = $data['weight']; // вес
+        $preorder->text = $data['text']; // комментарий
+        $preorder->from_page = $data['from_page'];
+        $preorder->date = '';
+        $preorder->done = '';
+        if ($preorder->save()) {
+            if ($preorder->sendEmail( 'TSZAKAZ.RU: Заявка на грузоперевозку')) {
                 Yii::$app->session->setFlash('success', 'Ваша заявка отправлена. <br> Мы свяжемся с Вами в ближайшее время.');
                 return $this->redirect(Url::previous());
             } else {
