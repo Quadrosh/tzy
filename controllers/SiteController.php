@@ -79,14 +79,6 @@ class SiteController extends Controller
     {
         Url::remember();
 
-        try {
-            10/0;
-        } catch (ErrorException $e) {
-            Yii::warning("Division by zero.");
-        };
-
-
-
         $this->layout = 'home';
         $this->view->params['feedback'] = new Feedback();
         $feedbackForm = new Feedback();
