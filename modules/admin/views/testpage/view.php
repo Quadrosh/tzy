@@ -42,6 +42,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'sendtopage',
             'promolink',
             'promoname',
+            'view',
             'layout',
         ],
     ]) ?>

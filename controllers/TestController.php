@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\models\MenuTop;
 use app\models\Pages;
+use app\models\Preorders;
 use app\models\Test;
 use app\models\TestPage;
 use app\models\TestTarget;
@@ -119,8 +120,12 @@ class TestController extends Controller
         $this->testPage['sendtopage']= $newViews;
         $this->testPage->save();
         $this->view->params['feedback'] = new Feedback();
+        $this->view->params['preorderForm'] = new Preorders();
 
-        $this->layout = $this->testPage->layout;
+        if (!empty($this->testPage->layout)) {
+            $this->layout = $this->testPage->layout;
+        }
+
 
         if ($this->testPage == false) {
             $this->view->params['feedback'] = new Feedback();
@@ -134,10 +139,20 @@ class TestController extends Controller
         $this->view->params['meta']['description'] = $this->testPage->description;
         $this->view->params['meta']['keywords'] = $this->testPage->keywords;
         $this->view->params['page']= $this->testPage;
+        $feedbackForm = new Feedback();
+        $preorderForm = new Preorders();
 
-
+        if (!empty($this->testPage->view)) {
+            return $this->render($this->testPage->view,[
+                'page' => $this->testPage,
+                'feedbackForm' => $feedbackForm,
+                'preorderForm' => $preorderForm,
+            ]);
+        }
         return $this->render('test',[
             'page' => $this->testPage,
+            'feedbackForm' => $feedbackForm,
+            'preorderForm' => $preorderForm,
         ]);
     }
 
@@ -157,8 +172,11 @@ class TestController extends Controller
 
 
         $this->view->params['feedback'] = new Feedback();
+        $this->view->params['preorderForm'] = new Preorders();
 
-        $this->layout = $this->testPage->layout;
+        if (!empty($this->testPage->layout)) {
+            $this->layout = $this->testPage->layout;
+        }
 
         if ($this->testPage == false) {
             $this->view->params['feedback'] = new Feedback();
@@ -173,9 +191,20 @@ class TestController extends Controller
         $this->view->params['meta']['keywords'] = $this->testPage->keywords;
         $this->view->params['page']= $this->testPage;
 
+        $feedbackForm = new Feedback();
+        $preorderForm = new Preorders();
 
+        if (!empty($this->testPage->view)) {
+            return $this->render($this->testPage->view,[
+                'page' => $this->testPage,
+                'feedbackForm' => $feedbackForm,
+                'preorderForm' => $preorderForm,
+            ]);
+        }
         return $this->render('test',[
             'page' => $this->testPage,
+            'feedbackForm' => $feedbackForm,
+            'preorderForm' => $preorderForm,
         ]);
     }
 

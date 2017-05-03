@@ -52,6 +52,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <tr>
             <th>ID</th>
             <th>Layout</th>
+            <th>View</th>
             <th>hrurl</th>
             <th>Примечание</th>
             <th>Просмотры</th>
@@ -63,6 +64,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <tr data-key="1">
             <td><?= $testPage['id'] ?></td>
             <td><?= $testPage['layout'] ?></td>
+            <td><?= $testPage['view'] ?></td>
             <td> <?= $model->publish ? Html::a($testPage['hrurl'], ['/t/'.$testPage['hrurl']]) : Html::a($testPage['hrurl'], ['/dev/'.$testPage['hrurl']]) ?></td>
             <td><?= $testPage['keywords'] ?></td>
             <td><?= $testPage['sendtopage'] ?></td>

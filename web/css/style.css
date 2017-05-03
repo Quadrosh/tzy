@@ -60,6 +60,12 @@ body {
 .mt30{
     margin-top: 30px;
 }
+.mt50{
+    margin-top: 50px;
+}
+.mt100{
+    margin-top: 100px;
+}
 .mb10{
     margin-bottom: 10px;
 }
@@ -71,6 +77,9 @@ body {
 }
 .mb50{
     margin-bottom: 50px;
+}
+.mb100{
+    margin-bottom: 100px;
 }
 .pt10{
     padding-top: 10px;

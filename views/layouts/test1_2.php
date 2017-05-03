@@ -31,11 +31,11 @@ $feedback = Yii::$app->view->params['feedback'];
 <body>
 <?php $this->beginBody() ?>
 
-<div class="b-feedback modal fade" id="feedbackForm">
+<div class="b-feedback modal fade" id="feedbackForm"> <!-- feedbackForm modal -->
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close test-target" data-tid="1" data-dismiss="modal" onclick="yaCounter42636264.reachGoal('callMeButtonTest1'); return true;"><span aria-hidden="true" class="b-icon b-icon__close"></span><span class="sr-only"></span></button>
+                <button type="button" class="close " data-dismiss="modal" ><span aria-hidden="true" class="b-icon b-icon__close"></span><span class="sr-only"></span></button>
 
                 <h4 class="modal-title">Заказать обратный звонок</h4>
             </div>
@@ -71,14 +71,50 @@ $feedback = Yii::$app->view->params['feedback'];
             <div class="modal-footer">
                 <?= Html::submitButton('Отправить', [
                     'class' => 'btn btn-primary btn-sm test-target',
-                    'onclick'=>'yaCounter42636264.reachGoal("callMeSendFormTest1");',
-                    'data-tid'=>'2',
+                    'data-tid'=>'4',
                 ]) ?>
             </div>
             <?php ActiveForm::end(); ?>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+</div><!-- / feedbackForm modal -->
+
+<div class="b-feedback modal fade" id="orderForm"> <!-- orderForm modal -->
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close "  data-dismiss="modal" ><span aria-hidden="true" class="b-icon b-icon__close"></span><span class="sr-only"></span></button>
+
+                <h4 class="modal-title">Заказ доставки груза</h4>
+            </div>
+            <div class="modal-body">
+
+                <?php $form = ActiveForm::begin(['action' =>['test/order'], 'id' => 'order', 'method' => 'post',]); ?>
+                <div class="row">
+                    <div class="col-sm-6"><?= $form->field($feedback, 'user_id')->textInput(['required' => true])->label('Откуда') ?></div>
+                    <div class="col-sm-6"><?= $form->field($feedback, 'city')->textInput(['required' => true])->label('Куда') ?></div>
+                    <div class="col-sm-6"><?= $form->field($feedback, 'phone')->textInput(['required' => true]) ?></div>
+                    <div class="col-sm-6"><?= $form->field($feedback, 'email')->textInput(['maxlength' => true]) ?></div>
+                    <div class="col-sm-6"><?= $form->field($feedback, 'name')->textInput(['required' => true])->label('Характер груза')  ?></div>
+                    <div class="col-sm-6"><?= $form->field($feedback, 'contacts')->textInput(['maxlength' => true])->label('Вес')  ?></div>
+                    <div class="col-sm-12"> <?= $form->field($feedback, 'text')->textarea(['rows' => 1])->label('Комментарий') ?></div>
+                    <?= $form->field($feedback, 'from_page')->hiddenInput(['value'=>Yii::$app->view->params['pageName']])->label(false) ?>
+                    <div class="col-sm-6 col-sm-offset-3 text-center">
+
+                        <?= Html::submitButton('отправить заявку', [
+                            'class' => 'btn btn-primary test-target sendorder-btn mt20 mb30',
+
+                            'data-tid'=>'7',
+                        ]) ?>
+                    </div>
+                </div>
+                <?php $form = ActiveForm::end(); ?>
+
+            </div>
+
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- / orderForm modal -->
 
 
 <div class="wrap ">
@@ -86,7 +122,7 @@ $feedback = Yii::$app->view->params['feedback'];
         <div class="container">
             <div class="row b-top__header">
                 <div class="col-sm-5 text-center b-top__logo">
-                    <a href="/" title="<?= Yii::$app->view->params['meta']['seo_logo'] ?>"><img  src="/img/logo.png" alt="<?= Yii::$app->view->params['meta']['seo_logo'] ?>"/></a>
+                    <a href="/" title="<?= Yii::$app->view->params['meta']['seo_logo'] ?>"><img class="logo_v2" src="/img/transzakaz_logo_v2-1.png" alt="<?= Yii::$app->view->params['meta']['seo_logo'] ?>"/></a>
                     <div class="hidden-xs b-top__logo__corner"></div>
                 </div>
                 <div class="col-sm-7 b-top__info">
@@ -97,7 +133,7 @@ $feedback = Yii::$app->view->params['feedback'];
                             </p>
                         </div>
                         <div class="col-md-6 col-md-pull-6">
-                            <a class="btn btn-primary b-top-btn" href="#" data-toggle="modal" data-target="#feedbackForm" title="Заказать обратный звонок">
+                            <a class="btn btn-primary b-top-btn test-target" href="#" data-toggle="modal" data-tid="3"  data-target="#feedbackForm" title="Заказать обратный звонок">
                                 <i class="b-icon b-icon__phone"></i>
                                 <span>Заказать обратный звонок</span>
                             </a>
@@ -132,39 +168,18 @@ $feedback = Yii::$app->view->params['feedback'];
 
                 <?= $content ?>
 
+
+
+<!--                Last  -->
                 <div class="text-center">  <!-- order form -->
 
-                    <?= Html::a('Оформить заявку', ['#orderForm'],[
-                        'class' => 'btn btn-primary test-target order-btn mt10 mb20',
-                        'data-toggle'=>'collapse',
-                        'data-tid'=>'8',
+                    <?= Html::a('Оформить заявку', ['#'],[
+                        'class' => 'btn btn-primary test-target order-btn mt30 mb30',
+                        'data-toggle'=>'modal',
+                        'data-target'=>'#orderForm',
+                        'data-tid'=>'6',
                     ]) ?>
                 </div>
-                <div class="feedback-form panel-collapse collapse" id="orderForm">
-                    <?php $form = ActiveForm::begin(['action' =>['test/order'], 'id' => 'order', 'method' => 'post',]); ?>
-                    <div class="row">
-                        <div class="col-sm-6"><?= $form->field($feedback, 'user_id')->textInput(['required' => true])->label('Откуда') ?></div>
-                        <div class="col-sm-6"><?= $form->field($feedback, 'city')->textInput(['required' => true])->label('Куда') ?></div>
-                        <div class="col-sm-6"><?= $form->field($feedback, 'phone')->textInput(['required' => true]) ?></div>
-                        <div class="col-sm-6"><?= $form->field($feedback, 'email')->textInput(['maxlength' => true]) ?></div>
-                        <div class="col-sm-6"><?= $form->field($feedback, 'name')->textInput(['required' => true])->label('Характер груза')  ?></div>
-                        <div class="col-sm-6"><?= $form->field($feedback, 'contacts')->textInput(['maxlength' => true])->label('Вес')  ?></div>
-                        <div class="col-sm-12"> <?= $form->field($feedback, 'text')->textarea(['rows' => 1])->label('Комментарий') ?></div>
-                        <?= $form->field($feedback, 'from_page')->hiddenInput(['value'=>Yii::$app->view->params['pageName']])->label(false) ?>
-                        <div class="col-sm-6 col-sm-offset-3 text-center">
-
-                            <?= Html::submitButton('отправить заявку', [
-                                'class' => 'btn btn-primary test-target sendorder-btn mt10',
-                                'data-tid'=>'9',
-                            ]) ?>
-                        </div>
-                    </div>
-                    <?php $form = ActiveForm::end(); ?>
-                </div>  <!-- / order form -->
-
-
-
-
 
             </div><!-- /.b-content -->
             <div id="push"></div>
