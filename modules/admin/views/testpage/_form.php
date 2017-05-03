@@ -37,7 +37,8 @@ use yii\widgets\ActiveForm;
                 <!--            <div class="col-sm-4">--><?//= $form->field($model, 'promoname')->textInput(['maxlength' => true]) ?><!--</div>-->
 
 
-                <div class="col-sm-4"><?= $form->field($model, 'layout')->dropDownList(['test1'=>'Тест1', 'test2'=>'Тест2','test1R'=>'Тест1R']) ?></div>
+                <div class="col-sm-4"><?= $form->field($model, 'view')->textInput(['maxlength' => true]) ?></div>
+                <div class="col-sm-4"><?= $form->field($model, 'layout')->textInput(['maxlength' => true]) ?></div>
             </div>
 
                 <div class="form-group">

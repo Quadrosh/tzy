@@ -29,6 +29,9 @@ use yii\widgets\ActiveForm;
         <div class="col-sm-4"><?= $form->field($model, 'sendtopage')->textInput(['maxlength' => true]) ?></div>
         <div class="col-sm-4"><?= $form->field($model, 'promolink')->textInput(['maxlength' => true]) ?></div>
         <div class="col-sm-4"><?= $form->field($model, 'promoname')->textInput(['maxlength' => true]) ?></div>
+
+        <div class="col-sm-6"><?= $form->field($model, 'view')->textInput(['maxlength' => true]) ?></div>
+        <div class="col-sm-6"><?= $form->field($model, 'layout')->textInput(['maxlength' => true]) ?></div>
         <div class="col-sm-12">
             <div class="form-group">
                 <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

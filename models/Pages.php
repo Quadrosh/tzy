@@ -39,7 +39,7 @@ class Pages extends \yii\db\ActiveRecord
             [['title', 'description','hrurl' ], 'required'],
             [['hrurl'],'unique'],
             [['description', 'seo_logo','keywords', 'pagedescription', 'text'], 'string'],
-            [['title', 'pagehead', 'imagelink', 'hrurl', 'imagelink_alt', 'sendtopage', 'promolink', 'promoname'], 'string', 'max' => 255],
+            [['title', 'pagehead', 'imagelink', 'hrurl', 'imagelink_alt', 'sendtopage', 'promolink', 'promoname','layout','view'], 'string', 'max' => 255],
         ];
     }
 
@@ -63,6 +63,8 @@ class Pages extends \yii\db\ActiveRecord
             'sendtopage' => 'Sendtopage',
             'promolink' => 'Promolink',
             'promoname' => 'Promoname',
+            'layout' => 'Custom Layout',
+            'view' => 'Custom View',
         ];
     }
 }

@@ -69,6 +69,9 @@ body {
 .mb30{
     margin-bottom: 30px;
 }
+.mb50{
+    margin-bottom: 50px;
+}
 .pt10{
     padding-top: 10px;
 }
@@ -607,7 +610,9 @@ header .b-top__banner .b-top__banner__shadow {
 .test_clean_collapse a:active {
     box-shadow: none;
 }
-
+.test_clean_collapse .panel-heading{
+    padding: 0px 15px;
+}
 .alert-success {
     color: #f39200;
     background-color: rgba(243,187,0,0.15);

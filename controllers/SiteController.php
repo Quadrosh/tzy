@@ -110,7 +110,7 @@ class SiteController extends Controller
     {
         Url::remember();
         $pageName = Yii::$app->request->get('pagename');
-        $this->view->params['feedback'] = new Feedback();
+
         $feedbackForm = new Feedback();
         $preorderForm = new Preorders();
 
@@ -118,6 +118,12 @@ class SiteController extends Controller
         if ($page == false) {
             throw new \yii\web\NotFoundHttpException('Страница не существует');
         };
+        if (!empty($page->layout)) {
+            $this->layout = $page->layout;
+        }
+
+        $this->view->params['feedback'] = new Feedback();
+
         $topMenuItem = MenuTop::find()->where(['link'=>$pageName.'.html'])->one();
         $this->view->params['pageName']=$pageName;
         $this->view->params['currentItem'] = $topMenuItem['id'];
@@ -127,6 +133,13 @@ class SiteController extends Controller
         $this->view->params['meta']=$page;
         if ($pageName == 'sitemap') {
             return $this->render('sitemap',[
+                'page' => $page,
+                'feedbackForm' => $feedbackForm,
+                'preorderForm' => $preorderForm,
+            ]);
+        }
+        if (!empty($page->view)) {
+            return $this->render($page->view,[
                 'page' => $page,
                 'feedbackForm' => $feedbackForm,
                 'preorderForm' => $preorderForm,
