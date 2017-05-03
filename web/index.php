@@ -1,6 +1,6 @@
 <?php
 
-$GLOBALS['YII_APP_MODE']='DEV'; // PROD <-> DEV
+$GLOBALS['YII_APP_MODE']='PROD'; // PROD <-> DEV
 
 
 if ($GLOBALS['YII_APP_MODE']=='DEV') {
