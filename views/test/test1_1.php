@@ -7,7 +7,7 @@ use yii\captcha\Captcha;
 use app\widgets\Alert;
 
 ?>
-<?= Alert::widget() ?>
+
     <h1 class="text-center"><?= $page->pagehead ?></h1>
 
 
@@ -23,7 +23,7 @@ use app\widgets\Alert;
 </div>
 
 <div class="feedback-form panel-collapse collapse" id="orderForm">
-    <?php $form = ActiveForm::begin(['action' =>['site/order'], 'method' => 'post',]); ?>
+    <?php $form = ActiveForm::begin(['action' =>['/test/order'], 'method' => 'post',]); ?>
     <div class="row">
         <div class="col-sm-6"><?= $form->field($preorderForm, 'dispatch')->textInput(['required' => true])->label('Откуда') ?></div>
         <div class="col-sm-6"><?= $form->field($preorderForm, 'destination')->textInput(['required' => true])->label('Куда') ?></div>
@@ -34,7 +34,7 @@ use app\widgets\Alert;
         <div class="col-sm-12"> <?= $form->field($preorderForm, 'text')->textarea(['rows' => 1])->label('Комментарий') ?></div>
 
 
-        <?= $form->field($preorderForm, 'from_page')->hiddenInput(['value'=>$page->hrurl])->label(false) ?>
+        <?= $form->field($preorderForm, 'from_page')->hiddenInput(['value'=>$pageName])->label(false) // тест ID ?>
         <div class="col-sm-6 col-sm-offset-3 text-center">
 
             <?= Html::submitButton('отправить заявку', [

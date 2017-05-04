@@ -35,9 +35,14 @@ $feedback = Yii::$app->view->params['feedback'];
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" onclick="yaCounter42636264.reachGoal('callMeButton'); return true;" data-dismiss="modal"><span aria-hidden="true" class="b-icon b-icon__close"></span><span class="sr-only"></span></button>
+                <button type="button" class="close"  data-dismiss="modal"><span aria-hidden="true" class="b-icon b-icon__close"></span><span class="sr-only"></span></button>
                 <h4 class="modal-title">Заказать обратный звонок</h4>
             </div>
+            <?php $form = ActiveForm::begin([
+                'id' => 'feedback-form',
+                'method' => 'post',
+                'action' => ['/site/feedback'],
+            ]); ?>
             <div class="modal-body">
                 <p>Оставьте ваши контактные данные,<br/>
                     и наш специалист свяжется с Вами в течение 30 минут.</p>
@@ -48,12 +53,7 @@ $feedback = Yii::$app->view->params['feedback'];
                 <div id="feedbackNote"></div>
 
                 <div class="form-group clearfix">
-                    <?php $form = ActiveForm::begin([
 
-                        'id' => 'feedback-form',
-                        'method' => 'post',
-                        'action' => ['/site/feedback'],
-                    ]); ?>
                     <?= Html::errorSummary($feedback, ['class' => 'errors']) ?>
 
                     <div class="col-xs-6">
@@ -68,7 +68,7 @@ $feedback = Yii::$app->view->params['feedback'];
 
             </div>
             <div class="modal-footer">
-                <?= Html::submitButton('Отправить', ['class' => 'btn btn-primary btn-sm','onclick'=>'yaCounter42636264.reachGoal("callMeSendForm");']) ?>
+                <?= Html::submitButton('Отправить', ['class' => 'btn btn-primary btn-sm','onclick'=>'yaCounter30134129.reachGoal("callMe");']) ?>
             </div>
             <?php ActiveForm::end(); ?>
         </div><!-- /.modal-content -->

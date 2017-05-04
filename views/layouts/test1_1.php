@@ -13,6 +13,8 @@ use yii\bootstrap\ActiveForm;
 //AppAsset::register($this);
 app\assets\MainAsset::register($this);
 $feedback = Yii::$app->view->params['feedback'];
+$preorderForm = Yii::$app->view->params['preorderForm'];
+
 
 ?>
 <?php $this->beginPage() ?>
@@ -35,10 +37,16 @@ $feedback = Yii::$app->view->params['feedback'];
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close test-target" data-tid="1" data-dismiss="modal" onclick="yaCounter42636264.reachGoal('callMeButtonTest1'); return true;"><span aria-hidden="true" class="b-icon b-icon__close"></span><span class="sr-only"></span></button>
+                <button type="button" class="close test-target" data-tid="1" data-dismiss="modal"><span aria-hidden="true" class="b-icon b-icon__close"></span><span class="sr-only"></span></button>
 
                 <h4 class="modal-title">Заказать обратный звонок</h4>
             </div>
+            <?php $form = ActiveForm::begin([
+
+                'id' => 'feedback-form',
+                'method' => 'post',
+                'action' => ['/test/feedback'],
+            ]); ?>
             <div class="modal-body">
                 <p>Оставьте ваши контактные данные,<br/>
                     и наш специалист свяжется с Вами в течение 30 минут.</p>
@@ -49,12 +57,7 @@ $feedback = Yii::$app->view->params['feedback'];
                 <div id="feedbackNote"></div>
 
                 <div class="form-group clearfix">
-                    <?php $form = ActiveForm::begin([
 
-                        'id' => 'feedback-form',
-                        'method' => 'post',
-                        'action' => ['/site/feedback'],
-                    ]); ?>
                     <?= Html::errorSummary($feedback, ['class' => 'errors']) ?>
 
                     <div class="col-xs-6">
@@ -65,8 +68,6 @@ $feedback = Yii::$app->view->params['feedback'];
                     </div>
                     <?= $form->field($feedback, 'from_page')->hiddenInput(['value'=>Yii::$app->view->params['pageName']])->label(false) ?>
                 </div>
-
-
             </div>
             <div class="modal-footer">
                 <?= Html::submitButton('Отправить', [
@@ -129,7 +130,7 @@ $feedback = Yii::$app->view->params['feedback'];
             </div><!-- /.b-sidebar -->
             <div class="col-sm-9 col-xs-12  b-content pt20">
 
-
+                <?= \app\widgets\Alert::widget() ?>
                 <?= $content ?>
 
 

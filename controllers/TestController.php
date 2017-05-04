@@ -131,8 +131,8 @@ class TestController extends Controller
             $this->view->params['feedback'] = new Feedback();
             throw new \yii\web\NotFoundHttpException('Страница не существует');
         };
-
-        $this->view->params['pageName']='testPage-'. $this->testPage->id;
+        $pageName = 'testPage-'. $this->testPage->id;
+        $this->view->params['pageName']=$pageName;
         $this->view->params['currentItem'] = '1';
         $this->view->params['meta']['seo_logo'] = $this->testPage->title;
         $this->view->params['meta']['title'] = $this->testPage->title;
@@ -147,12 +147,14 @@ class TestController extends Controller
                 'page' => $this->testPage,
                 'feedbackForm' => $feedbackForm,
                 'preorderForm' => $preorderForm,
+                'pageName' => $pageName,
             ]);
         }
         return $this->render('test',[
             'page' => $this->testPage,
             'feedbackForm' => $feedbackForm,
             'preorderForm' => $preorderForm,
+            'pageName' => $pageName,
         ]);
     }
 
@@ -183,7 +185,8 @@ class TestController extends Controller
             throw new \yii\web\NotFoundHttpException('Страница не существует');
         };
 
-        $this->view->params['pageName']='testPage-'. $this->testPage->id;
+        $pageName = 'testPage-'. $this->testPage->id;
+        $this->view->params['pageName']=$pageName;
         $this->view->params['currentItem'] = '1';
         $this->view->params['meta']['seo_logo'] = $this->testPage->title;
         $this->view->params['meta']['title'] = $this->testPage->title;
@@ -199,12 +202,14 @@ class TestController extends Controller
                 'page' => $this->testPage,
                 'feedbackForm' => $feedbackForm,
                 'preorderForm' => $preorderForm,
+                'pageName' => $pageName,
             ]);
         }
         return $this->render('test',[
             'page' => $this->testPage,
             'feedbackForm' => $feedbackForm,
             'preorderForm' => $preorderForm,
+            'pageName' => $pageName,
         ]);
     }
 
@@ -226,6 +231,11 @@ class TestController extends Controller
     public function actionFeedback()
     {
         $data = Yii::$app->request->post('Feedback');
+
+
+        $testPageID = substr($data['from_page'], 9);
+        $testPage = TestPage::find()->where(['id'=>$testPageID])->one();
+
         $feedback = new Feedback();
         $feedback->name = $data['name'];
         $feedback->city = '';
@@ -237,7 +247,8 @@ class TestController extends Controller
         $feedback->text =  '';
         $feedback->date = '';
         $feedback->done = '';
-        if ($feedback->load(Yii::$app->request->post()) && $feedback->save()) {
+        if ( $feedback->save()) {
+            $feedback->from_page = $data['from_page'].' '.$testPage->keywords;
             if ($feedback->sendEmail( 'TSZAKAZ.RU: Запрос обратного звонка')) {
                 Yii::$app->session->setFlash('success', 'Ваша заявка отправлена. <br> Мы свяжемся с Вами в ближайшее время.');
                 return $this->redirect(Url::previous());
@@ -255,20 +266,25 @@ class TestController extends Controller
 
     public function actionOrder()
     {
-        $data = Yii::$app->request->post('Feedback');
-        $feedback = new Feedback();
-        $feedback->user_id = $data['user_id']; //откуда
-        $feedback->city = $data['city']; // куда
-        $feedback->phone = $data['phone']; // телефон
-        $feedback->email = $data['email']; // email
-        $feedback->name = $data['name']; // характер груза
-        $feedback->contacts = $data['contacts']; // вес
-        $feedback->text = $data['text']; // комментарий
-        $feedback->from_page = 'Test '.$data['from_page'];
-        $feedback->date = '';
-        $feedback->done = '';
-        if ($feedback->load(Yii::$app->request->post()) && $feedback->save()) {
-            if ($feedback->sendEmail( 'TSZAKAZ.RU: Заявка на грузоперевозку')) {
+        $data = Yii::$app->request->post('Preorders');
+
+        $testPageID = substr($data['from_page'], 9);
+        $testPage = TestPage::find()->where(['id'=>$testPageID])->one();
+
+        $preorder = new Preorders();
+        $preorder->dispatch = $data['dispatch']; //откуда
+        $preorder->destination = $data['destination']; // куда
+        $preorder->phone = $data['phone']; // телефон
+        $preorder->email = $data['email']; // email
+        $preorder->cargo = $data['cargo']; // характер груза
+        $preorder->weight = $data['weight']; // вес
+        $preorder->text = $data['text']; // комментарий
+        $preorder->from_page = $data['from_page'];
+        $preorder->date = '';
+        $preorder->done = '';
+        if ($preorder->save()) {
+            $preorder->from_page = $data['from_page'].' '.$testPage->keywords;
+            if ($preorder->sendEmail( 'TSZAKAZ.RU: Заявка на грузоперевозку')) {
                 Yii::$app->session->setFlash('success', 'Ваша заявка отправлена. <br> Мы свяжемся с Вами в ближайшее время.');
                 return $this->redirect(Url::previous());
             } else {

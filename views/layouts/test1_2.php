@@ -13,6 +13,7 @@ use yii\bootstrap\ActiveForm;
 //AppAsset::register($this);
 app\assets\MainAsset::register($this);
 $feedback = Yii::$app->view->params['feedback'];
+$preorderForm = Yii::$app->view->params['preorderForm'];
 
 ?>
 <?php $this->beginPage() ?>
@@ -39,6 +40,12 @@ $feedback = Yii::$app->view->params['feedback'];
 
                 <h4 class="modal-title">Заказать обратный звонок</h4>
             </div>
+            <?php $form = ActiveForm::begin([
+
+                'id' => 'feedback-form',
+                'method' => 'post',
+                'action' => ['/test/feedback'],
+            ]); ?>
             <div class="modal-body">
                 <p>Оставьте ваши контактные данные,<br/>
                     и наш специалист свяжется с Вами в течение 30 минут.</p>
@@ -49,12 +56,7 @@ $feedback = Yii::$app->view->params['feedback'];
                 <div id="feedbackNote"></div>
 
                 <div class="form-group clearfix">
-                    <?php $form = ActiveForm::begin([
 
-                        'id' => 'feedback-form',
-                        'method' => 'post',
-                        'action' => ['/site/feedback'],
-                    ]); ?>
                     <?= Html::errorSummary($feedback, ['class' => 'errors']) ?>
 
                     <div class="col-xs-6">
@@ -89,21 +91,22 @@ $feedback = Yii::$app->view->params['feedback'];
             </div>
             <div class="modal-body">
 
-                <?php $form = ActiveForm::begin(['action' =>['test/order'], 'id' => 'order', 'method' => 'post',]); ?>
+                <?php $form = ActiveForm::begin(['action' =>['/test/order'], 'method' => 'post',]); ?>
                 <div class="row">
-                    <div class="col-sm-6"><?= $form->field($feedback, 'user_id')->textInput(['required' => true])->label('Откуда') ?></div>
-                    <div class="col-sm-6"><?= $form->field($feedback, 'city')->textInput(['required' => true])->label('Куда') ?></div>
-                    <div class="col-sm-6"><?= $form->field($feedback, 'phone')->textInput(['required' => true]) ?></div>
-                    <div class="col-sm-6"><?= $form->field($feedback, 'email')->textInput(['maxlength' => true]) ?></div>
-                    <div class="col-sm-6"><?= $form->field($feedback, 'name')->textInput(['required' => true])->label('Характер груза')  ?></div>
-                    <div class="col-sm-6"><?= $form->field($feedback, 'contacts')->textInput(['maxlength' => true])->label('Вес')  ?></div>
-                    <div class="col-sm-12"> <?= $form->field($feedback, 'text')->textarea(['rows' => 1])->label('Комментарий') ?></div>
-                    <?= $form->field($feedback, 'from_page')->hiddenInput(['value'=>Yii::$app->view->params['pageName']])->label(false) ?>
+                    <div class="col-sm-6"><?= $form->field($preorderForm, 'dispatch')->textInput(['required' => true])->label('Откуда') ?></div>
+                    <div class="col-sm-6"><?= $form->field($preorderForm, 'destination')->textInput(['required' => true])->label('Куда') ?></div>
+                    <div class="col-sm-6"><?= $form->field($preorderForm, 'phone')->textInput(['required' => true]) ?></div>
+                    <div class="col-sm-6"><?= $form->field($preorderForm, 'email')->textInput(['maxlength' => true]) ?></div>
+                    <div class="col-sm-6"><?= $form->field($preorderForm, 'cargo')->textInput(['required' => true])->label('Характер груза')  ?></div>
+                    <div class="col-sm-6"><?= $form->field($preorderForm, 'weight')->textInput(['maxlength' => true])->label('Вес')  ?></div>
+                    <div class="col-sm-12"> <?= $form->field($preorderForm, 'text')->textarea(['rows' => 1])->label('Комментарий') ?></div>
+
+
+                    <?= $form->field($preorderForm, 'from_page')->hiddenInput(['value'=>Yii::$app->view->params['pageName']])->label(false) // тест ID ?>
                     <div class="col-sm-6 col-sm-offset-3 text-center">
 
                         <?= Html::submitButton('отправить заявку', [
                             'class' => 'btn btn-primary test-target sendorder-btn mt20 mb30',
-
                             'data-tid'=>'7',
                         ]) ?>
                     </div>
@@ -165,7 +168,7 @@ $feedback = Yii::$app->view->params['feedback'];
             </div><!-- /.b-sidebar -->
             <div class="col-sm-9 col-xs-12  b-content pt20">
 
-
+                <?= \app\widgets\Alert::widget() ?>
                 <?= $content ?>
 
 
