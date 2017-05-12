@@ -41,7 +41,7 @@ use app\widgets\Alert;
 </div>
 <!-- / order form -->
 
-<table class="russia_prices" border="1" cellpadding="2" cellspacing="0" >
+<table class="russia_prices table-striped" border="1" cellpadding="2" cellspacing="0" >
     <tbody>
     <tr class="top_bigtable">
         <td align="center"  width="13%">
@@ -70,28 +70,28 @@ use app\widgets\Alert;
         </td>
     </tr>
     <tr valign="TOP">
-        <td bgcolor="#f5e3ff" >
+        <td  >
             <p >Абакан</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >99000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >114000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >119000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >159000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >195000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >197000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff" >
+        <td align="center"  >
             <p >201000</p>
         </td>
     </tr>
@@ -122,28 +122,28 @@ use app\widgets\Alert;
         </td>
     </tr>
     <tr valign="TOP">
-        <td bgcolor="#f5e3ff" >
+        <td  >
             <p >Астрахань</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >28000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >32000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >37000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >49000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >60000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >62000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff" >
+        <td align="center"  >
             <p >66000</p>
         </td>
     </tr>
@@ -174,28 +174,28 @@ use app\widgets\Alert;
         </td>
     </tr>
     <tr valign="TOP">
-        <td bgcolor="#f5e3ff" >
+        <td  >
             <p >Белгород</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >16000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >18000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >20000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >23000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >25000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >27000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff" >
+        <td align="center"  >
             <p >31000</p>
         </td>
     </tr>
@@ -226,28 +226,28 @@ use app\widgets\Alert;
         </td>
     </tr>
     <tr valign="TOP">
-        <td bgcolor="#f5e3ff" >
+        <td  >
             <p >Владимир</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >8000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >12000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >13000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >16000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >18000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >20000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff" >
+        <td align="center"  >
             <p >24000</p>
         </td>
     </tr>
@@ -278,28 +278,28 @@ use app\widgets\Alert;
         </td>
     </tr>
     <tr valign="TOP">
-        <td bgcolor="#f5e3ff" >
+        <td  >
             <p >Волгоград</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >24000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >27000 </p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >30000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >40000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >47000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >49000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff" >
+        <td align="center"  >
             <p >53000</p>
         </td>
     </tr>
@@ -330,28 +330,28 @@ use app\widgets\Alert;
         </td>
     </tr>
     <tr valign="TOP">
-        <td bgcolor="#f5e3ff" >
+        <td  >
             <p >Воронеж</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >15000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >16000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >19000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >23000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >26000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >28000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff" >
+        <td align="center"  >
             <p >32000</p>
         </td>
     </tr>
@@ -382,28 +382,28 @@ use app\widgets\Alert;
         </td>
     </tr>
     <tr valign="TOP">
-        <td bgcolor="#f5e3ff" >
+        <td  >
             <p >Иваново</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >16000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >18000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >19000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >22000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >23000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >26000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff" >
+        <td align="center"  >
             <p >28000</p>
         </td>
     </tr>
@@ -434,28 +434,28 @@ use app\widgets\Alert;
         </td>
     </tr>
     <tr valign="TOP">
-        <td bgcolor="#f5e3ff" >
+        <td  >
             <p >Иркутск</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >115000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >130000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >135000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >140000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >230000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >240000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff" >
+        <td align="center"  >
             <p >245000</p>
         </td>
     </tr>
@@ -486,28 +486,28 @@ use app\widgets\Alert;
         </td>
     </tr>
     <tr valign="TOP">
-        <td bgcolor="#f5e3ff" >
+        <td  >
             <p >Казань</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >19000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >21000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >26000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >36000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >47000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >50000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff" >
+        <td align="center"  >
             <p >52000</p>
         </td>
     </tr>
@@ -538,28 +538,28 @@ use app\widgets\Alert;
         </td>
     </tr>
     <tr valign="TOP">
-        <td bgcolor="#f5e3ff" >
+        <td  >
             <p >Калуга</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >10000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >12000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >14000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >16000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >19000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >22000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff" >
+        <td align="center"  >
             <p >24000</p>
         </td>
     </tr>
@@ -590,28 +590,28 @@ use app\widgets\Alert;
         </td>
     </tr>
     <tr valign="TOP">
-        <td bgcolor="#f5e3ff" >
+        <td  >
             <p >Киров</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >30000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >35000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >44000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >50000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >60000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >62000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff" >
+        <td align="center"  >
             <p >67000</p>
         </td>
     </tr>
@@ -642,28 +642,28 @@ use app\widgets\Alert;
         </td>
     </tr>
     <tr valign="TOP">
-        <td bgcolor="#f5e3ff" >
+        <td  >
             <p >Краснодар</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >35000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >42000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >49000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >56000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >63000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >66000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff" >
+        <td align="center"  >
             <p >68000</p>
         </td>
     </tr>
@@ -694,28 +694,28 @@ use app\widgets\Alert;
         </td>
     </tr>
     <tr valign="TOP">
-        <td bgcolor="#f5e3ff" >
+        <td  >
             <p >Курган</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >44000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >49000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >56000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >109000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >110000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >114000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff" >
+        <td align="center"  >
             <p >119000</p>
         </td>
     </tr>
@@ -746,28 +746,28 @@ use app\widgets\Alert;
         </td>
     </tr>
     <tr valign="TOP">
-        <td bgcolor="#f5e3ff" >
+        <td  >
             <p >Липецк</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >15000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >17000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >19000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >21000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >24000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >26000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff" >
+        <td align="center"  >
             <p >29000</p>
         </td>
     </tr>
@@ -798,28 +798,28 @@ use app\widgets\Alert;
         </td>
     </tr>
     <tr valign="TOP">
-        <td bgcolor="#f5e3ff" >
+        <td  >
             <p >Мурманск</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >36000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >42000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >47000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >73000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >87000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >91000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff" >
+        <td align="center"  >
             <p >96000</p>
         </td>
     </tr>
@@ -850,28 +850,28 @@ use app\widgets\Alert;
         </td>
     </tr>
     <tr valign="TOP">
-        <td bgcolor="#f5e3ff" >
+        <td  >
             <p >Наб.Челны</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >34000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >39000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >43000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >56000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >60000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >65000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff" >
+        <td align="center"  >
             <p >70000</p>
         </td>
     </tr>
@@ -902,28 +902,28 @@ use app\widgets\Alert;
         </td>
     </tr>
     <tr valign="TOP">
-        <td bgcolor="#f5e3ff" >
+        <td  >
             <p >Новокузнецк</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >74000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >79000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >84000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >114000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >154000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >159000 </p>
         </td>
-        <td align="center" bgcolor="#f5e3ff" >
+        <td align="center"  >
             <p >164000</p>
         </td>
     </tr>
@@ -954,28 +954,28 @@ use app\widgets\Alert;
         </td>
     </tr>
     <tr valign="TOP">
-        <td bgcolor="#f5e3ff" >
+        <td  >
             <p >Новосибирск</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >80000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >98000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >104000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >140000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >175000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >180000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff" >
+        <td align="center"  >
             <p >189000</p>
         </td>
     </tr>
@@ -1006,28 +1006,28 @@ use app\widgets\Alert;
         </td>
     </tr>
     <tr valign="TOP">
-        <td bgcolor="#f5e3ff" >
+        <td  >
             <p >Омск</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >72000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >79000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >84000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >104000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >131000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >137000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff" >
+        <td align="center"  >
             <p >140000</p>
         </td>
     </tr>
@@ -1058,28 +1058,28 @@ use app\widgets\Alert;
         </td>
     </tr>
     <tr valign="TOP">
-        <td bgcolor="#f5e3ff" >
+        <td  >
             <p >Оренбург</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >38000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >43000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >48000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >64000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >72000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >77000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff" >
+        <td align="center"  >
             <p >83000</p>
         </td>
     </tr>
@@ -1110,28 +1110,28 @@ use app\widgets\Alert;
         </td>
     </tr>
     <tr valign="TOP">
-        <td bgcolor="#f5e3ff" >
+        <td  >
             <p >Пенза</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >19000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >23000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >29000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >35000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >40000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >41000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff" >
+        <td align="center"  >
             <p >45000</p>
         </td>
     </tr>
@@ -1162,28 +1162,28 @@ use app\widgets\Alert;
         </td>
     </tr>
     <tr valign="TOP">
-        <td bgcolor="#f5e3ff" >
+        <td  >
             <p >Петрозаводск</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >26000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >30000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >35000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >39000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >45000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >50000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff" >
+        <td align="center"  >
             <p >55000</p>
         </td>
     </tr>
@@ -1214,28 +1214,28 @@ use app\widgets\Alert;
         </td>
     </tr>
     <tr valign="TOP">
-        <td bgcolor="#f5e3ff" >
+        <td  >
             <p >Пятигорск</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >36000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >41000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >46000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >55000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >67000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >70000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff" >
+        <td align="center"  >
             <p >72000</p>
         </td>
     </tr>
@@ -1266,26 +1266,26 @@ use app\widgets\Alert;
         </td>
     </tr>
     <tr valign="TOP">
-        <td bgcolor="#f5e3ff" >
+        <td  >
             <p >Рязань</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff"><span style="font-family: Arial, sans-serif; font-size: small; text-align: -webkit-center; background-color: rgb(245, 227, 255);">11000</span></td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" ><span style="font-family: Arial, sans-serif; font-size: small; text-align: -webkit-center; background-color: rgb(245, 227, 255);">11000</span></td>
+        <td align="center" >
             <p >12000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >14000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >16000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >16000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >20000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff" >
+        <td align="center"  >
             <p >21000</p>
         </td>
     </tr>
@@ -1316,28 +1316,28 @@ use app\widgets\Alert;
         </td>
     </tr>
     <tr valign="TOP">
-        <td bgcolor="#f5e3ff" >
+        <td  >
             <p >Саранск</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >24000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >27000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >29000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >34000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >38000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >41000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff" >
+        <td align="center"  >
             <p >44000</p>
         </td>
     </tr>
@@ -1368,29 +1368,55 @@ use app\widgets\Alert;
         </td>
     </tr>
     <tr valign="TOP">
-        <td bgcolor="#f5e3ff" >
+        <td  >
             <p >С.Петербург</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >14000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >18000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >20000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >25000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >28000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >30000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff" >
+        <td align="center"  >
             <p >32000</p>
+        </td>
+    </tr>
+    <tr valign="TOP">
+        <td  >
+            <p >Симферополь</p>
+        </td>
+        <td align="center" >
+            <p >45000</p>
+        </td>
+        <td align="center" >
+            <p >55000</p>
+        </td>
+        <td align="center" >
+            <p >85000</p>
+        </td>
+        <td align="center" >
+            <p >105000</p>
+        </td>
+        <td align="center" >
+            <p >150000</p>
+        </td>
+        <td align="center" >
+            <p >152000</p>
+        </td>
+        <td align="center"  >
+            <p >155000</p>
         </td>
     </tr>
     <tr valign="TOP">
@@ -1420,28 +1446,28 @@ use app\widgets\Alert;
         </td>
     </tr>
     <tr valign="TOP">
-        <td bgcolor="#f5e3ff" >
+        <td  >
             <p >Сочи</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >35000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >43000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >62000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >71000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >100000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >104000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff" >
+        <td align="center"  >
             <p >107000</p>
         </td>
     </tr>
@@ -1472,28 +1498,28 @@ use app\widgets\Alert;
         </td>
     </tr>
     <tr valign="TOP">
-        <td bgcolor="#f5e3ff" >
+        <td  >
             <p >Сыктывкар</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >30000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >36000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >41000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >55000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >64000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >66000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff" >
+        <td align="center"  >
             <p >70000</p>
         </td>
     </tr>
@@ -1524,28 +1550,28 @@ use app\widgets\Alert;
         </td>
     </tr>
     <tr valign="TOP">
-        <td bgcolor="#f5e3ff" >
+        <td  >
             <p >Тверь</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >9000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >11000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >12000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >14000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >15000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >17000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff" >
+        <td align="center"  >
             <p >18000</p>
         </td>
     </tr>
@@ -1576,28 +1602,28 @@ use app\widgets\Alert;
         </td>
     </tr>
     <tr valign="TOP">
-        <td bgcolor="#f5e3ff" >
+        <td  >
             <p >Тула</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >8000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >10000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >12000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >14000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >16000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >18000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff" >
+        <td align="center"  >
             <p >20000</p>
         </td>
     </tr>
@@ -1628,28 +1654,28 @@ use app\widgets\Alert;
         </td>
     </tr>
     <tr valign="TOP">
-        <td bgcolor="#f5e3ff" >
+        <td  >
             <p >Ульяновск</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >19000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >21000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >26000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >41000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >47000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >51000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff" >
+        <td align="center"  >
             <p >55000</p>
         </td>
     </tr>
@@ -1680,28 +1706,28 @@ use app\widgets\Alert;
         </td>
     </tr>
     <tr valign="TOP">
-        <td bgcolor="#f5e3ff" >
+        <td  >
             <p >Ханты-Мансийск</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >58000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >68000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >75000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >100000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >130000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >135000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff" >
+        <td align="center"  >
             <p >140000</p>
         </td>
     </tr>
@@ -1732,28 +1758,28 @@ use app\widgets\Alert;
         </td>
     </tr>
     <tr valign="TOP">
-        <td bgcolor="#f5e3ff" >
+        <td  >
             <p >Череповец</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >14000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >16000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >18000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >20000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >26000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >28000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff" >
+        <td align="center"  >
             <p >31000</p>
         </td>
     </tr>
@@ -1784,28 +1810,28 @@ use app\widgets\Alert;
         </td>
     </tr>
     <tr valign="TOP">
-        <td bgcolor="#f5e3ff" height=""  " width="120">
+        <td  height=""  " width="120">
         <p >Ярославль</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >10000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >11000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >13000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >17000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >20000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff">
+        <td align="center" >
             <p >22000</p>
         </td>
-        <td align="center" bgcolor="#f5e3ff" >
+        <td align="center"  >
             <p >25000</p>
         </td>
     </tr>
