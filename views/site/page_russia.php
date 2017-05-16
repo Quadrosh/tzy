@@ -1269,7 +1269,9 @@ use app\widgets\Alert;
         <td  >
             <p >Рязань</p>
         </td>
-        <td align="center" ><span style="font-family: Arial, sans-serif; font-size: small; text-align: -webkit-center; background-color: rgb(245, 227, 255);">11000</span></td>
+        <td align="center" >
+            <p >11000</p >
+        </td>
         <td align="center" >
             <p >12000</p>
         </td>
