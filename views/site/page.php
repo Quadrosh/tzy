@@ -35,7 +35,7 @@ use app\widgets\Alert;
 
         <?= $form->field($preorderForm, 'from_page')->hiddenInput(['value'=>$page->hrurl])->label(false) ?>
         <div class="col-sm-6 col-sm-offset-3 text-center">
-            <?= Html::submitButton('отправить заявку', ['class' => 'btn btn-primary sendorder-btn mt10', 'onclick'=>'yaCounter30134129.reachGoal("preorderSend");']) ?>
+            <?= Html::submitButton('отправить заявку', ['class' => 'btn btn-primary sendorder-btn mt10', 'onclick'=>'yaCounter30134129.reachGoal("preorderSend");ga("send","event","feedback","order","sendOrder");']) ?>
         </div>
     </div>
     <?php $form = ActiveForm::end(); ?>
