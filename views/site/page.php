@@ -20,7 +20,10 @@ use app\widgets\Alert;
 </div>
 
 <div class="feedback-form panel-collapse collapse" id="orderForm">
-    <?php $form = ActiveForm::begin(['action' =>['site/order'], 'method' => 'post',]); ?>
+    <?php $form = ActiveForm::begin([
+        'action' =>['site/order'],
+        'id' => 'order-form',
+        'method' => 'post',]); ?>
 <!--    --><?php //$form = ActiveForm::begin(['action' =>['site/ordercaptcha'], 'method' => 'post',]); ?>
     <div class="row">
         <div class="col-sm-6"><?= $form->field($preorderForm, 'dispatch')->textInput(['required' => true])->label('Откуда') ?></div>
@@ -35,7 +38,7 @@ use app\widgets\Alert;
 
         <?= $form->field($preorderForm, 'from_page')->hiddenInput(['value'=>$page->hrurl])->label(false) ?>
         <div class="col-sm-6 col-sm-offset-3 text-center">
-            <?= Html::submitButton('отправить заявку', ['class' => 'btn btn-primary sendorder-btn mt10', 'onclick'=>'yaCounter30134129.reachGoal("preorderSend");ga("send","event","feedback","order","sendOrder");']) ?>
+            <?= Html::submitButton('отправить заявку', ['class' => 'btn btn-primary sendorder-btn mt10']) ?>
         </div>
     </div>
     <?php $form = ActiveForm::end(); ?>

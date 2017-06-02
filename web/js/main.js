@@ -1,6 +1,5 @@
 $(document).ready(function() {
     $('.test-target').click(function(){
-
         $.ajax({
             url: '/test/target',
             data: {
@@ -15,5 +14,15 @@ $(document).ready(function() {
 
 
     });
+    $("#feedback-form").on("afterValidate", function () {
+        yaCounter30134129.reachGoal("callMe");
+        ga("send","event","feedback","call","callMe");
+    });
+
+    $("#order-form").on("afterValidate", function () {
+        yaCounter30134129.reachGoal("preorderSend");
+        ga("send","event","feedback","order","sendOrder");
+    });
+
 
 });

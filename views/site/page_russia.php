@@ -19,7 +19,10 @@ use app\widgets\Alert;
 </div>
 
 <div class="feedback-form panel-collapse collapse" id="orderForm">
-    <?php $form = ActiveForm::begin(['action' =>['site/order'], 'method' => 'post',]); ?>
+    <?php $form = ActiveForm::begin([
+        'action' =>['site/order'],
+        'id' => 'order-form',
+        'method' => 'post',]); ?>
     <!--    --><?php //$form = ActiveForm::begin(['action' =>['site/ordercaptcha'], 'method' => 'post',]); ?>
     <div class="row">
         <div class="col-sm-6"><?= $form->field($preorderForm, 'dispatch')->textInput(['required' => true])->label('Откуда') ?></div>
