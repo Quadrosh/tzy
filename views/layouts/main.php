@@ -69,7 +69,8 @@ $feedback = Yii::$app->view->params['feedback'];
 
             </div>
             <div class="modal-footer">
-                <?= Html::submitButton('Отправить', ['class' => 'btn btn-primary btn-sm','onclick'=>'yaCounter30134129.reachGoal("callMe");ga("send","event","feedback","call","callMe");']) ?>
+<!--                --><?//= Html::submitButton('Отправить', ['class' => 'btn btn-primary btn-sm','onclick'=>'yaCounter30134129.reachGoal("callMe");ga("send","event","feedback","call","callMe");']) ?>
+                <?= Html::submitButton('Отправить', ['class' => 'btn btn-primary btn-sm']) ?>
             </div>
             <?php ActiveForm::end(); ?>
         </div><!-- /.modal-content -->
