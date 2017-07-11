@@ -238,35 +238,6 @@ class SiteController extends Controller
     }
 
 
-//    public function actionOrder()
-//    {
-//        $data = Yii::$app->request->post('Feedback');
-//        $feedback = new Feedback();
-//        $feedback->user_id = $data['user_id']; //откуда
-//        $feedback->city = $data['city']; // куда
-//        $feedback->phone = $data['phone']; // телефон
-//        $feedback->email = $data['email']; // email
-//        $feedback->name = $data['name']; // характер груза
-//        $feedback->contacts = $data['contacts']; // вес
-//        $feedback->text = $data['text']; // комментарий
-//        $feedback->from_page = $data['from_page'];
-//        $feedback->date = '';
-//        $feedback->done = '';
-//        if ($feedback->load(Yii::$app->request->post()) && $feedback->save()) {
-//            if ($feedback->sendEmail( 'TSZAKAZ.RU: Заявка на грузоперевозку')) {
-//                Yii::$app->session->setFlash('success', 'Ваша заявка отправлена. <br> Мы свяжемся с Вами в ближайшее время.');
-//                return $this->redirect(Url::previous());
-//            } else {
-//                Yii::$app->session->setFlash('error', 'Во время отправки произошла ошибка, попробуйте еще раз.');
-//                return $this->redirect(Url::previous());
-//            }
-//        } else {
-//
-//            Yii::$app->session->setFlash('error', 'Во время отправки произошла ошибка, попробуйте еще раз. Или отправьте заявку в свободной форме на transzakaz@gmail.com');
-//            return $this->redirect(Url::previous());
-//        }
-//
-//    }
 
     public function actionOrder()
     {

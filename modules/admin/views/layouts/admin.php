@@ -39,6 +39,13 @@ AppAsset::register($this);
         'items' => [
 //            ['label' => 'Gii', 'url' => ['/gii']],
             [
+                'label' => 'Landing',
+                'items' => [
+                    ['label' => 'Landing Page', 'url' => ['/admin/landingpage']],
+                    ['label' => 'Landing Section', 'url' => ['/admin/landingsection']],
+                ],
+            ],
+            [
                 'label' => 'АБ Тесты',
                 'items' => [
                     ['label' => 'test', 'url' => ['/admin/test/index']],

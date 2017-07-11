@@ -59,24 +59,8 @@ $config = [
             'rules' => [
                 't/<testpage:[0-9a-z\-\_]+>' => 'test/test',
                 'dev/<testpage:[0-9a-z\-\_]+>' => 'test/dev',
-//                'admin/test/[0-9a-z\-\_]' => 'admin/test',
-
-
-
-
-//                't/target/<tid:[0-9]+>' => 'test/target',
-//
-//                'target/<tid:[0-9]+>' => 'test/target',
-//
-//                'target/<tid:[0-9]+>/<action:[a-z\-\_]+>' => 'test/target',
-
-//                't/target/<tid:[0-9]+>/<action:[a-z\-\_]+>' => 'test/target',
-//                'ts/target/<tid:[0-9a-z\-\_]+>/<action:[0-9a-z\-\_]+>' => 'test/target',
-
-//                'ts/target/<t:[0-9a-z\-\_]+>' => 'test/target',
-
+                'lp/<landingpage:[0-9a-z\-\_]+>' => 'landing/page',
                 'ts/<testpage:[0-9a-z\-\_]+>' => 'test/test',
-
                 '<pagename:[0-9a-z\-\_]+>.html' => 'site/page',
 
                 ['pattern'=>'admin', 'route'=>'admin/'],

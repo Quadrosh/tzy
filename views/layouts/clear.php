@@ -33,7 +33,7 @@ app\assets\MainAsset::register($this);
 
 <!--<h1>форма заказа</h1>-->
 <?//= Html::errorSummary($feedback, ['class' => 'errors']) ?>
-
+<?= $content ?>
 
 
 
