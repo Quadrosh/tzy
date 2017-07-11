@@ -36,7 +36,7 @@ class LandingSection extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['page_id', 'order_num', 'head', 'lead', 'text', 'stylekey', 'image_alt', 'call2action_name', 'section_type'], 'required'],
+            [['page_id'], 'required'],
             [['page_id', 'order_num'], 'integer'],
             [['lead', 'text', 'extra'], 'string'],
             [['head', 'stylekey', 'image', 'image_alt', 'call2action_name', 'section_type'], 'string', 'max' => 255],

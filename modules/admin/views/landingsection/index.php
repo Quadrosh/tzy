@@ -21,7 +21,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+//            ['class' => 'yii\grid\SerialColumn'],
 
             'id',
             'page_id',
@@ -30,11 +30,11 @@ $this->params['breadcrumbs'][] = $this->title;
             'lead:ntext',
             // 'text:ntext',
             // 'extra:ntext',
-            // 'stylekey',
+             'stylekey',
             // 'image',
             // 'image_alt',
             // 'call2action_name',
-            // 'section_type',
+             'section_type',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

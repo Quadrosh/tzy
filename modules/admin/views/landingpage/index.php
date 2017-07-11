@@ -25,7 +25,16 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id',
             'name',
-            'hrurl:url',
+//            'hrurl:url',
+            [
+                'attribute'=>'hrurl',
+                'value' => function($data)
+                {
+                    $theData = Html::a($data['hrurl'], ['/lp/'.$data['hrurl']]);
+                    return $theData;
+                },
+                'format'=> 'html',
+            ],
             'seo_logo:ntext',
             'title',
             // 'description:ntext',

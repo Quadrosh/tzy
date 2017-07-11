@@ -2,9 +2,11 @@
 
 namespace app\modules\admin\controllers;
 
+use app\models\LandingSection;
 use Yii;
 use app\models\LandingPage;
 use yii\data\ActiveDataProvider;
+use yii\helpers\Url;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -35,6 +37,7 @@ class LandingpageController extends Controller
      */
     public function actionIndex()
     {
+        Url::remember();
         $dataProvider = new ActiveDataProvider([
             'query' => LandingPage::find(),
         ]);
@@ -51,8 +54,11 @@ class LandingpageController extends Controller
      */
     public function actionView($id)
     {
+        Url::remember();
+        $sections = LandingSection::find()->where(['page_id'=>$id])->orderBy('order_num')->all();
         return $this->render('view', [
             'model' => $this->findModel($id),
+            'sections'=> $sections,
         ]);
     }
 
@@ -66,7 +72,7 @@ class LandingpageController extends Controller
         $model = new LandingPage();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(Url::previous());
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -85,7 +91,7 @@ class LandingpageController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(Url::previous());
         } else {
             return $this->render('update', [
                 'model' => $model,
