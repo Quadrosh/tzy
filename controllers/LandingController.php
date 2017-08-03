@@ -2,7 +2,9 @@
 
 namespace app\controllers;
 
+use app\models\LandingListitem;
 use app\models\LandingPage;
+use app\models\LandingSection;
 use app\models\MenuTop;
 use app\models\Pages;
 use app\models\Preorders;
@@ -59,75 +61,88 @@ class LandingController extends Controller
     {
         return
             [
-            'error' => [
-                'class' => 'yii\web\ErrorAction',
-                'view' => '@app/views/site/custom_error.php',
-//                'layout'=> '@app/views/layouts/clear.php',
-            ],
+                'error' => [
+                    'class' => 'yii\web\ErrorAction',
+                    'view' => '@app/views/site/custom_error.php',
+                ],
 
         ];
     }
 
 
     /**
-     * Displays test.
+     * Displays page.
      *
      */
     public function actionPage()
     {
         Url::remember();
+
+//        $this->view->params['meta']=$page;
+
         $PageName = Yii::$app->request->get('landingpage');
-        if ($PageName!=null) {
-            $this->landingPage = LandingPage::find()->where(['hrurl'=>$PageName])->one();
-            if ($this->landingPage->layout == null) {
-                $this->layout = 'clear';
-            } else {
-                $this->layout = $this->landingPage->layout;
-            }
-//            $this->test = Test::find()->where(['id'=> $this->testPage['test_id']])->one();
-//
+        $this->landingPage = LandingPage::find()->where(['hrurl'=>$PageName])->one();
+        if ($PageName == null OR $this->landingPage == null)  {
+            throw new \yii\web\NotFoundHttpException('Страница не существует');
         }
+        if ($this->landingPage->layout == null) {
+            $this->layout = 'landing';
+        } else {
+            $this->layout = $this->landingPage->layout;
+        }
+        $this->view->params['meta']=$this->landingPage;
 
-//        $oldViews = $this->testPage['sendtopage'];
-//        $newViews = $oldViews+1;
-//        $this->testPage['sendtopage']= $newViews;
-//        $this->testPage->save();
-//        $this->view->params['feedback'] = new Feedback();
-//        $this->view->params['preorderForm'] = new Preorders();
-//
-//        if (!empty($this->testPage->layout)) {
-//            $this->layout = $this->testPage->layout;
-//        }
+        $allSections = LandingSection::find()->where(['page_id'=>$this->landingPage->id])->orderBy('order_num')->all();
+        $sections = [];
+        $sections['top'] = $allSections[0];
+        $sections['action'] = $allSections[1];
+        $sections['services'] = $allSections[2];
+        $sections['call2action'] = $allSections[3];
+        $sections['whyWe'] = $allSections[4];
+        $sections['howWeWork'] = $allSections[5];
+        $sections['numbers'] = $allSections[6];
+        $sections['projects'] = $allSections[7];
+        $sections['reviews'] = $allSections[8];
+        $sections['clients'] = $allSections[9];
+        $sections['order'] = $allSections[10];
+
+        $sections['servicesListItems']=LandingListitem::find()
+            ->where(['section_id'=>$sections['services']['id']])
+            ->orderBy('order_num')
+            ->all();
+        $sections['whyWeListItems']=LandingListitem::find()
+            ->where(['section_id'=>$sections['whyWe']['id']])
+            ->orderBy('order_num')
+            ->all();
+        $sections['howWeWorkListItems']=LandingListitem::find()
+            ->where(['section_id'=>$sections['howWeWork']['id']])
+            ->orderBy('order_num')
+            ->all();
+        $sections['numbersListItems']=LandingListitem::find()
+            ->where(['section_id'=>$sections['numbers']['id']])
+            ->orderBy('order_num')
+            ->all();
+        $sections['projectsListItems']=LandingListitem::find()
+            ->where(['section_id'=>$sections['projects']['id']])
+            ->orderBy('order_num')
+            ->all();
+        $sections['reviewsListItems']=LandingListitem::find()
+            ->where(['section_id'=>$sections['reviews']['id']])
+            ->orderBy('order_num')
+            ->all();
+        $sections['clientsListItems']=LandingListitem::find()
+            ->where(['section_id'=>$sections['clients']['id']])
+            ->orderBy('order_num')
+            ->all();
+        $preorderForm = new Preorders();
 
 
-//        if ($this->testPage == false) {
-//            $this->view->params['feedback'] = new Feedback();
-//            throw new \yii\web\NotFoundHttpException('Страница не существует');
-//        };
-//        $pageName = 'testPage-'. $this->testPage->id;
-//        $this->view->params['pageName']=$pageName;
-//        $this->view->params['currentItem'] = '1';
-//        $this->view->params['meta']['seo_logo'] = $this->testPage->title;
-//        $this->view->params['meta']['title'] = $this->testPage->title;
-//        $this->view->params['meta']['description'] = $this->testPage->description;
-//        $this->view->params['meta']['keywords'] = $this->testPage->keywords;
-//        $this->view->params['page']= $this->testPage;
-//        $feedbackForm = new Feedback();
-//        $preorderForm = new Preorders();
-//
-//        if (!empty($this->testPage->view)) {
-//            return $this->render($this->testPage->view,[
-//                'page' => $this->testPage,
-//                'feedbackForm' => $feedbackForm,
-//                'preorderForm' => $preorderForm,
-//                'pageName' => $pageName,
-//            ]);
-//        }
+
         return $this->render($this->landingPage->view,[
             'page' => $this->landingPage,
-//            'feedbackForm' => $feedbackForm,
-//            'preorderForm' => $preorderForm,
-//            'pageName' => $pageName,
+            'sections' => $sections,
+            'preorderForm' => $preorderForm,
+
         ]);
     }
 

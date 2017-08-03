@@ -58,6 +58,7 @@ class SiteController extends Controller
             [
             'error' => [
                 'class' => 'yii\web\ErrorAction',
+                'view' => '@app/views/site/custom_error.php',
             ],
             'captcha' => [
                 'class' => 'yii\captcha\CaptchaAction',
@@ -110,14 +111,15 @@ class SiteController extends Controller
     {
         Url::remember();
         $pageName = Yii::$app->request->get('pagename');
-
         $feedbackForm = new Feedback();
         $preorderForm = new Preorders();
 
         $page = Pages::find()->where(['hrurl'=>$pageName])->one();
         if ($page == false) {
+//            $this->layout = 'error';
             throw new \yii\web\NotFoundHttpException('Страница не существует');
         };
+
         if (!empty($page->layout)) {
             $this->layout = $page->layout;
         }

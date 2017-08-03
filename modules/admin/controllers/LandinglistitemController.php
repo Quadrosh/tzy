@@ -4,7 +4,7 @@ namespace app\modules\admin\controllers;
 
 use app\models\UploadForm;
 use Yii;
-use app\models\LandingSection;
+use app\models\LandingListitem;
 use yii\data\ActiveDataProvider;
 use yii\helpers\Url;
 use yii\web\Controller;
@@ -13,9 +13,9 @@ use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
 
 /**
- * LandingsectionController implements the CRUD actions for LandingSection model.
+ * LandingListitemController implements the CRUD actions for LandingListitem model.
  */
-class LandingsectionController extends Controller
+class LandinglistitemController extends Controller
 {
     /**
      * @inheritdoc
@@ -33,14 +33,14 @@ class LandingsectionController extends Controller
     }
 
     /**
-     * Lists all LandingSection models.
+     * Lists all LandingListitem models.
      * @return mixed
      */
     public function actionIndex()
     {
         Url::remember();
         $dataProvider = new ActiveDataProvider([
-            'query' => LandingSection::find(),
+            'query' => LandingListitem::find(),
         ]);
 
         return $this->render('index', [
@@ -49,7 +49,7 @@ class LandingsectionController extends Controller
     }
 
     /**
-     * Displays a single LandingSection model.
+     * Displays a single LandingListitem model.
      * @param integer $id
      * @return mixed
      */
@@ -64,13 +64,32 @@ class LandingsectionController extends Controller
     }
 
     /**
-     * Creates a new LandingSection model.
+     * Upload images with autofill corresponding model property
+     */
+    public function actionUpload()
+    {
+        $uploadmodel = new UploadForm();
+        if (Yii::$app->request->isPost) {
+            $uploadmodel->imageFile = UploadedFile::getInstance($uploadmodel, 'imageFile');
+            $data=Yii::$app->request->post('UploadForm');
+            $toModelProperty = $data['toModelProperty'];
+            $model = LandingListitem::find()->where(['id'=>$data['toModelId']])->one();
+            if ($uploadmodel->upload()) {
+                $model->$toModelProperty = $uploadmodel->imageFile->baseName . '.' . $uploadmodel->imageFile->extension;
+                $model->save();
+                Yii::$app->session->setFlash('success', 'Файл загружен успешно');
+            }
+            return $this->redirect(Url::previous());
+        }
+    }
+    /**
+     * Creates a new LandingListitem model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new LandingSection();
+        $model = new LandingListitem();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(Url::previous());
@@ -82,7 +101,7 @@ class LandingsectionController extends Controller
     }
 
     /**
-     * Updates an existing LandingSection model.
+     * Updates an existing LandingListitem model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -101,7 +120,7 @@ class LandingsectionController extends Controller
     }
 
     /**
-     * Deletes an existing LandingSection model.
+     * Deletes an existing LandingListitem model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -110,44 +129,22 @@ class LandingsectionController extends Controller
     {
         $this->findModel($id)->delete();
 
-        return $this->redirect(['index']);
+        return $this->redirect(Url::previous());
     }
 
     /**
-     * Finds the LandingSection model based on its primary key value.
+     * Finds the LandingListitem model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return LandingSection the loaded model
+     * @return LandingListitem the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = LandingSection::findOne($id)) !== null) {
+        if (($model = LandingListitem::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
-        }
-    }
-    /**
-     * Upload images for  model with autofill corresponding model property
-     */
-    public function actionUpload()
-    {
-        $uploadmodel = new UploadForm();
-        if (Yii::$app->request->isPost) {
-            $uploadmodel->imageFile = UploadedFile::getInstance($uploadmodel, 'imageFile');
-            $data=Yii::$app->request->post('UploadForm');
-            $toModelProperty = $data['toModelProperty'];
-            $model = LandingSection::find()->where(['id'=>$data['toModelId']])->one();
-            if ($uploadmodel->upload()) {
-
-                $model->$toModelProperty = $uploadmodel->imageFile->baseName . '.' . $uploadmodel->imageFile->extension;
-                $model->save();
-                Yii::$app->session->setFlash('success', 'Файл загружен успешно');
-            } else {
-                Yii::$app->session->setFlash('error', 'не получается');
-            }
-            return $this->redirect(Url::previous());
         }
     }
 }

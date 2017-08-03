@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use \yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\LandingSection */
@@ -34,7 +35,11 @@ $this->params['breadcrumbs'][] = $this->title;
             'head',
             'lead:ntext',
             'text:ntext',
-            'extra:ntext',
+//            'extra:ntext',
+            [
+                'attribute'=>'extra',
+                'label'=> $model->section_type == 'action_permanent' ? 'Дней до конца акции' : 'Extra',
+            ],
             'stylekey',
             'image',
             'image_alt',
@@ -44,3 +49,30 @@ $this->params['breadcrumbs'][] = $this->title;
     ]) ?>
 
 </div>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-6 col-sm-3">
+                <h4>Image Upload</h4>
+                <?php $form = ActiveForm::begin([
+                    'method' => 'post',
+                    'action' => ['/admin/landingsection/upload'],
+                    'options' => ['enctype' => 'multipart/form-data'],
+                ]); ?>
+                <?= $form->field($uploadmodel, 'toModelProperty')->dropDownList([
+                    'image'=>'Image',
+                ])->label(false) ?>
+                <?= $form->field($uploadmodel, 'imageFile')->fileInput()->label(false) ?>
+                <?= $form->field($uploadmodel, 'toModelId')->hiddenInput(['value'=>$model->id])->label(false) ?>
+                <?= Html::submitButton('Upload', ['class' => 'btn btn-success']) ?>
+                <?php ActiveForm::end() ?>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<section>
+    <h3>List Items</h3>
+    <?= Html::a('Создать List Item', ['/admin/landinglistitem/create', 'section_id' => $model->id], ['class' => 'btn btn-success']) ?>
+</section>

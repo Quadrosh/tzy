@@ -43,6 +43,7 @@ AppAsset::register($this);
                 'items' => [
                     ['label' => 'Landing Page', 'url' => ['/admin/landingpage']],
                     ['label' => 'Landing Section', 'url' => ['/admin/landingsection']],
+                    ['label' => 'Landing List Item', 'url' => ['/admin/landinglistitem']],
                 ],
             ],
             [
@@ -79,6 +80,7 @@ AppAsset::register($this);
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
+        <?= \app\widgets\Alert::widget() ?>
         <?= $content ?>
     </div>
 </div>

@@ -116,3 +116,6 @@ a.desc:after {
 .adminTableImg {
     height: 70px;
 }
+.imagefiles-view img {
+    max-width: 100%;
+}

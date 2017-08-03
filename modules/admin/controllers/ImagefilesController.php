@@ -42,6 +42,14 @@ class ImagefilesController extends Controller
         $uploadmodel = new UploadForm();
         $dataProvider = new ActiveDataProvider([
             'query' => Imagefiles::find(),
+            'pagination'=> [
+                'pageSize' => 100,
+            ],
+            'sort' =>[
+                'defaultOrder'=> [
+                    'id' => SORT_DESC
+                ]
+            ]
         ]);
 
         return $this->render('index', [
@@ -110,7 +118,13 @@ class ImagefilesController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $model = $this->findModel($id);
+        if(!unlink(Yii::$app->basePath.'/web/img/'.$model->name)) {
+            Yii::$app->session->setFlash('error', 'неполучается удалить файл');
+        }
+        if(!$model->delete()) {
+            Yii::$app->session->setFlash('error', 'неполучается удалить запись');
+        }
 
         return $this->redirect(['index']);
     }

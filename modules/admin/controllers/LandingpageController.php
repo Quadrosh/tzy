@@ -2,6 +2,7 @@
 
 namespace app\modules\admin\controllers;
 
+use app\models\LandingListitem;
 use app\models\LandingSection;
 use Yii;
 use app\models\LandingPage;
@@ -56,9 +57,17 @@ class LandingpageController extends Controller
     {
         Url::remember();
         $sections = LandingSection::find()->where(['page_id'=>$id])->orderBy('order_num')->all();
+        $listItems = [];
+        foreach ($sections as $section ) {
+            $listIt = LandingListitem::find()->where(['section_id'=>$section['id']])->orderBy('order_num')->all();
+            foreach ($listIt as $item) {
+                $listItems[] = $item;
+            }
+        }
         return $this->render('view', [
             'model' => $this->findModel($id),
             'sections'=> $sections,
+            'listItems'=> $listItems,
         ]);
     }
 

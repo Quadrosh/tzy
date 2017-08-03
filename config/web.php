@@ -60,6 +60,7 @@ $config = [
                 't/<testpage:[0-9a-z\-\_]+>' => 'test/test',
                 'dev/<testpage:[0-9a-z\-\_]+>' => 'test/dev',
                 'lp/<landingpage:[0-9a-z\-\_]+>' => 'landing/page',
+
                 'ts/<testpage:[0-9a-z\-\_]+>' => 'test/test',
                 '<pagename:[0-9a-z\-\_]+>.html' => 'site/page',
 
