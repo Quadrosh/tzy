@@ -65,8 +65,8 @@ $preorder = new \app\models\Preorders();
                 'template' => "{beginWrapper}\n{input}\n{error}\n{endWrapper}",
                 'horizontalCssClasses' => [
 //                    'label' => 'col-sm-4',
-                    'offset' => 'col-sm-offset-3',
-                    'wrapper' => 'col-sm-6',
+                    'offset' => 'col-sm-offset-3 col-lg-offset-4',
+                    'wrapper' => 'col-sm-6 col-lg-4',
 //                    'error' => '',
 //                    'hint' => 'телефон',
                 ],
@@ -220,8 +220,12 @@ $preorder = new \app\models\Preorders();
                     ],
                     'inputTemplate' => '<div class="input-group">{input}<span class="input-group-btn">'.
                         '<button type="submit" class="btn btn-submit">Получить консультацию</button></span></div>',
-                ])->textInput(['maxlength' => true, 'id' => 'services-call2action-phone'])->label(false) ?>
-            <?= $form->field($feedback, 'from_page')->hiddenInput(['value'=>'LP Перевозки по России','id' => 'services-call2action-from_page'])->label(false) ?>
+                ])
+                    ->textInput(['maxlength' => true, 'id' => 'services-call2action-phone'])
+                    ->label(false) ?>
+            <?= $form->field($feedback, 'from_page')
+                    ->hiddenInput(['value'=>'LP Перевозки по России','id' => 'services-call2action-from_page'])
+                    ->label(false) ?>
             </div>
 
             <?php ActiveForm::end(); ?>
@@ -452,24 +456,32 @@ $preorder = new \app\models\Preorders();
                         'template' => "{beginWrapper}\n{input}\n{error}\n{endWrapper}",
                         'horizontalCssClasses' => [
 //                    'label' => 'col-sm-4',
-                            'offset' => 'col-sm-offset-3',
-                            'wrapper' => 'col-sm-6',
+                            'offset' => 'col-sm-offset-3 col-lg-offset-4',
+                            'wrapper' => 'col-sm-6 col-lg-4',
 //                    'error' => '',
 //                    'hint' => 'телефон',
                         ],
                     ],
                 ]); ?>
 
+
+
                 <?= Html::errorSummary($feedback, ['class' => 'errors']) ?>
-                <?= $form->field($feedback, 'name')->hiddenInput(['value'=>'Секция - Как мы работаем - Рассчитать стоимость','id' => 'howWeWork_call2action-name'])->label(false) ?>
-                <?= $form->field($feedback, 'from_page')->hiddenInput(['value'=>'LP Перевозки по России','id' => 'howWeWork_call2action-from_page'])->label(false) ?>
+                <?= $form->field($feedback, 'name')
+                    ->hiddenInput(['value'=>'Секция - Как мы работаем - Рассчитать стоимость','id' => 'howWeWork_call2action-name'])
+                    ->label(false) ?>
+                <?= $form->field($feedback, 'from_page')
+                    ->hiddenInput(['value'=>'LP Перевозки по России','id' => 'howWeWork_call2action-from_page'])
+                    ->label(false) ?>
                 <?= $form->field($feedback, 'phone', [
                     'inputOptions' => [
                         'placeholder' => 'ТЕЛЕФОН'
                     ],
                     'inputTemplate' => '<div class="input-group">{input}<span class="input-group-btn">'.
                         '<button type="submit" class="btn btn-submit">'.$sections['howWeWork']['call2action_name'].'</button></span></div>',
-                ])->textInput(['maxlength' => true,'id' => 'howWeWork_call2action-phone'])->label(false) ?>
+                ])
+                    ->textInput(['maxlength' => true,'id' => 'howWeWork_call2action-phone'])
+                    ->label(false) ?>
                 <?php ActiveForm::end(); ?>
             </div>
         </div>

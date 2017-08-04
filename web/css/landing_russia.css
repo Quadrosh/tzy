@@ -945,6 +945,14 @@ section {
 
 /* Large Devices, Wide Screens */
 @media only screen and (min-width : 1200px) {
+    .slickPrev,
+    .slickReviewsPrev{
+        left:150px;
+    }
+    .slickNext,
+    .slickReviewsNext{
+        right:150px;
+    }
     #arrow_long_ico {
         /*width: 580px;*/
         /*height: 140px;*/
@@ -967,4 +975,17 @@ section {
     .service_type_icon #negabarit_ico{
         width: 332px;
     }
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1500px) {
+    .slickPrev,
+    .slickReviewsPrev{
+        left:250px;
+    }
+    .slickNext,
+    .slickReviewsNext{
+        right:250px;
+    }
+
 }
