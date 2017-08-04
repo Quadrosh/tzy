@@ -39,7 +39,7 @@ $preorder = new \app\models\Preorders();
 		C14.2,11.3,14.3,11.5,14.2,11.7z"/>
                         </g>
                         </svg><span class="phone_num">(495) 150-05-83</span></li>
-                <li><a href="#" id="navbarOrderBtn" class="btn btn-default">Заказать</a></li>
+                <li><a  id="navbarOrderBtn" class="btn btn-default">Заказать</a></li>
 
             </ul>
         </div>

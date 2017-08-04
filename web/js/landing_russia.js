@@ -49,6 +49,7 @@ actionTimer();
 
 window.onload = function(){
     var actionOrderButton = document.getElementById('actionOrderButton');
+    var navbarOrderBtn = document.getElementById('navbarOrderBtn');
     var orderSection = document.getElementById('mainOrderSection');
     if(actionOrderButton.addEventListener){
         actionOrderButton.addEventListener('click',
@@ -56,11 +57,19 @@ window.onload = function(){
                 orderSection.scrollIntoView();
                 document.getElementById('mainOrderForm-text').value='Заказ по акции "Страховка первой отправки в подарок"';
             }
-        )
+        );
+        navbarOrderBtn.addEventListener('click',
+            function(){
+                orderSection.scrollIntoView();
+            }
+        );
     } else {
         actionOrderButton.onclick = function(){
             orderSection.scrollIntoView();
             document.getElementById('mainOrderForm-text').value='Заказ по акции "Страховка первой отправки в подарок"';
+        };
+        navbarOrderBtn.onclick = function(){
+            orderSection.scrollIntoView();
         };
     }
 
@@ -173,8 +182,8 @@ $(document).ready(function() {
             '</div>'+
             '</div>', // Popup HTML markup. `.mfp-img` div will be replaced with img tag, `.mfp-close` by close button
 
-            cursor: null, // Class that adds zoom cursor, will be added to body. Set to null to disable zoom out cursor.
-            verticalFit: false, // Fits image in area vertically
+            cursor: null,
+            verticalFit: false,
 
             tError: '<a href="%url%">Изображение</a> не может быть загружено.' // Error message
         },
