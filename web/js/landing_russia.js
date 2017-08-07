@@ -49,13 +49,32 @@ actionTimer();
 
 window.onload = function(){
     var actionOrderButton = document.getElementById('actionOrderButton');
+    var actionName = actionOrderButton.getAttribute('data-action');
+    //var actionComment = actionOrderButton.getAttribute('data-action-comment');
+
+    function extractContent(s, space) {
+        var span= document.createElement('span');
+        span.innerHTML= s;
+        if(space) {
+            var children= span.querySelectorAll('*');
+            for(var i = 0 ; i < children.length ; i++) {
+                if(children[i].textContent)
+                    children[i].textContent+= ' ';
+                else
+                    children[i].innerText+= ' ';
+            }
+        }
+        return [span.textContent || span.innerText].toString().replace(/ +/g,' ');
+    };
+
     var navbarOrderBtn = document.getElementById('navbarOrderBtn');
     var orderSection = document.getElementById('mainOrderSection');
     if(actionOrderButton.addEventListener){
         actionOrderButton.addEventListener('click',
             function(){
                 orderSection.scrollIntoView();
-                document.getElementById('mainOrderForm-text').value='Заказ по акции "Страховка первой отправки в подарок"';
+                //document.getElementById('mainOrderForm-text').value='Заказ по акции "Страховка первой отправки в подарок"';
+                document.getElementById('mainOrderForm-text').value='Заказ по акции - '+ '"'+extractContent(actionName)+ '"';
             }
         );
         navbarOrderBtn.addEventListener('click',
@@ -66,7 +85,7 @@ window.onload = function(){
     } else {
         actionOrderButton.onclick = function(){
             orderSection.scrollIntoView();
-            document.getElementById('mainOrderForm-text').value='Заказ по акции "Страховка первой отправки в подарок"';
+            document.getElementById('mainOrderForm-text').value='Заказ по акции - '+ '"'+extractContent(actionName)+ '"';
         };
         navbarOrderBtn.onclick = function(){
             orderSection.scrollIntoView();

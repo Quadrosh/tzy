@@ -311,7 +311,7 @@ section {
 .action_permanent .lead span{
     text-transform: uppercase;
     font-family: "MyriadProRegular",sans-serif;
-    font-size:54px;
+    font-size:64px;
 }
 
 .action_permanent .comment{
@@ -669,17 +669,27 @@ section {
 
 /* order_form */
 .order_form {
-    padding-bottom:80px;
+    padding-bottom:10px;
 }
 .order_form label {
     color: #838e9a;
 }
 .order_form .btn-danger {
-    margin-top: 30px;
+    margin-top: 40px;
 }
 
-
-
+.order_form .head{
+    margin-bottom: 10px;
+}
+.order_form .top_comment{
+    margin-bottom: 60px;
+    color: #838e9a;
+}
+.order_form .footer {
+    color: #838e9a;
+    margin-top: 60px;
+    font-size: 10px;
+}
 
 
 

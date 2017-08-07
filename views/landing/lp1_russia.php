@@ -112,7 +112,10 @@ $preorder = new \app\models\Preorders();
 
 <!--                <div class="actionOrderButton">--><?//= Html::a($sections['action']['call2action_name'], ['mline/createfor', 'comment'=>'заказ по акции'], ['class' => 'btn btn-danger']) ?><!--</div>-->
                 <div class="actionOrderButton">
-                    <a  id="actionOrderButton" class="btn btn-danger"><?= $sections['action']['call2action_name'] ?></a>
+                    <a  id="actionOrderButton"
+                        data-action="<?= $sections['action']['lead'] ?>"
+                        data-action-comment="<?= $sections['action']['text'] ?>"
+                        class="btn btn-danger"><?= $sections['action']['call2action_name'] ?></a>
                 </div>
 
             </div>
@@ -691,6 +694,7 @@ $preorder = new \app\models\Preorders();
         <div class="row">
             <div class="col-sm-12 text-center">
                 <h2 class="head"><?= $sections['order']['head'] ?></h2>
+                <p class="top_comment">Вы так же можете заказать отправку по телефону (495) 150-05-83</p>
             </div>
 
             <div class="col-lg-8 col-lg-offset-2">
@@ -750,6 +754,15 @@ $preorder = new \app\models\Preorders();
                     </div>
                     <?php $form = ActiveForm::end(); ?>
                 </div>
+            </div>
+            <div class="col-md-8 col-md-offset-2 text-center">
+
+                <p class="footer">&copy; Транспортная компания &ldquo;Трансзаказ&rdquo;, <?= date('Y') ?><br/>
+                    117535, Москва, 3-й дорожный проезд, д.3а</p>
+
+<!--                <p class="footer">&copy; Транспортная компания ООО &ldquo;Трансзаказ&rdquo;, --><?//= date('Y') ?><!--<br/>-->
+<!--                    117535, Москва, 3-й дорожный проезд, д.3а<br/>-->
+<!--                    Телефон: +7 (495) 150-05-83</p>-->
             </div>
 
 
