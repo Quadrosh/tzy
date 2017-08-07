@@ -539,7 +539,7 @@ $preorder = new \app\models\Preorders();
                                     <?= $project ['head'] ?>
                                 </div>
                                 <div class="project_text">
-                                    <?= $project ['text'] ?>
+                                    <?= nl2br($project ['text']) ?>
                                 </div>
                             </div>
                         </div>

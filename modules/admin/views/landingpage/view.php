@@ -111,7 +111,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <td><?= $listItem['order_num'] ?></td>
                 <td><?= $listItem['head'] ?></td>
                 <td><?= $listItem['discr'] ?></td>
-                <td><?= $listItem['text'] ?></td>
+                <td><?= nl2br($listItem['text']) ?></td>
                 <td><?= $listItem['extra'] ?></td>
                 <td><?= $listItem['image'] ?></td>
 
