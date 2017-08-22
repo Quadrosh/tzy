@@ -27,6 +27,7 @@ app\assets\LandingRussiaAsset::register($this);
     <meta name="keywords" content="<?= Yii::$app->view->params['meta']['keywords'] ?>">
 
     <?php $this->head() ?>
+    <?php include_once("analyticstracking.php") ?>
 </head>
 <body>
 <?php $this->beginBody() ?>
@@ -43,6 +44,10 @@ app\assets\LandingRussiaAsset::register($this);
 
 
 <?php $this->endBody() ?>
+
+<!-- Yandex.Metrika NEW counter -->
+<script type="text/javascript"> (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter30134129 = new Ya.Metrika({ id:30134129, clickmap:true, trackLinks:true, accurateTrackBounce:true }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks"); </script> <noscript><div><img src="https://mc.yandex.ru/watch/30134129" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
 </body>
 </html>
 <?php $this->endPage() ?>

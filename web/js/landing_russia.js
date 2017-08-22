@@ -105,15 +105,26 @@ window.onload = function(){
 
 $(document).ready(function() {
 
-    //$("#feedback-form").on("afterValidate", function () {
-    //    yaCounter30134129.reachGoal("callMe");
-    //    ga("send","event","feedback","call","callMe");
-    //});
-    //
-    //$("#order-form").on("afterValidate", function () {
-    //    yaCounter30134129.reachGoal("preorderSend");
-    //    ga("send","event","feedback","order","sendOrder");
-    //});
+
+    $("#quickorder-form-top").on("afterValidate", function () {
+        yaCounter30134129.reachGoal("callMe");
+        ga("send","event","feedback","call","callMe");
+    });
+    $("#services-call2action").on("afterValidate", function () {
+        yaCounter30134129.reachGoal("callMe");
+        ga("send","event","feedback","call","callMe");
+    });
+    $("#howWeWork_call2action").on("afterValidate", function () {
+        yaCounter30134129.reachGoal("callMe");
+        ga("send","event","feedback","call","callMe");
+    });
+    $("#mainOrderForm").on("afterValidate", function () {
+        yaCounter30134129.reachGoal("preorderSend");
+        ga("send","event","feedback","order","sendOrder");
+    });
+
+
+
 
 
     var numbersToTop = $('#numberSection').offset().top - window.innerHeight;
