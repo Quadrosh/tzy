@@ -207,10 +207,14 @@ $preorder = new \app\models\Preorders();
             <div class="col-sm-3 col-sm-offset-1 col-md-3 col-md-offset-2">
                 <div class="styled_select">
                     <?= $form->field($feedback, 'name')->dropDownList([
-                        'консультация - догруз'=>'ДОГРУЗ',
                         'консультация - отдельной машиной'=>'ОТДЕЛЬНАЯ МАШИНА',
+                        'консультация - догруз'=>'ДОГРУЗ',
                         'консультация - негабарит'=>'НЕГАБАРИТ',
                         'консультация - страхование груза'=>'СТРАХОВАНИЕ ГРУЗА'
+                    ],  ['options' =>
+                        [
+                            'консультация - отдельной машиной' => ['selected' => true]
+                        ]
                     ])->label(false) ?>
                 </div>
 
