@@ -420,6 +420,9 @@ section {
     color: white;
 
 }
+.dark .form-control option {
+    color: #838e9a;
+}
 .dark .glyphicon{
     color: #30353b;
 }
