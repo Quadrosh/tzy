@@ -42,6 +42,10 @@ class Preorders extends \yii\db\ActiveRecord
             [['date'], 'safe'],
             [['done'], 'integer'],
             [['dispatch', 'destination', 'cargo', 'name', 'phone', 'email', 'weight', 'from_page'], 'string', 'max' => 255],
+            ['cargo', 'match', 'not'=>true, 'pattern' => '/(базы данных)/i'],
+            ['weight', 'match', 'not'=>true, 'pattern' => '/(базы данных)/i'],
+            ['text', 'match', 'not'=>true, 'pattern' => '/(базы данных)/i'],
+            ['email', 'match', 'not'=>true, 'pattern' => '/(prodawez395@gmail.com)/i'],
         ];
     }
 
