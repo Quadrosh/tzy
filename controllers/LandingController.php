@@ -81,6 +81,13 @@ class LandingController extends Controller
 //        $this->view->params['meta']=$page;
 
         $PageName = Yii::$app->request->get('landingpage');
+        $utm = [];
+        $utm['source'] = Yii::$app->request->get('utm_source');
+        $utm['medium'] = Yii::$app->request->get('utm_medium');
+        $utm['campaign'] = Yii::$app->request->get('utm_campaign');
+        $utm['term'] = Yii::$app->request->get('utm_term');
+        $utm['content'] = Yii::$app->request->get('utm_content');
+
         $this->landingPage = LandingPage::find()->where(['hrurl'=>$PageName])->one();
         if ($PageName == null OR $this->landingPage == null)  {
             throw new \yii\web\NotFoundHttpException('Страница не существует');
@@ -142,6 +149,7 @@ class LandingController extends Controller
             'page' => $this->landingPage,
             'sections' => $sections,
             'preorderForm' => $preorderForm,
+            'utm' => $utm,
 
         ]);
     }

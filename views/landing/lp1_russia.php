@@ -75,6 +75,13 @@ $preorder = new \app\models\Preorders();
 
         <?= Html::errorSummary($feedback, ['class' => 'errors']) ?>
         <?= $form->field($feedback, 'name')->hiddenInput(['value'=>'Noname from top form', 'id' => 'quickorder-form-top-name'])->label(false) ?>
+
+        <?= $form->field($feedback, 'utm_source')->hiddenInput(['value'=>$utm['source'], 'id' => 'quickorder-form-top-utm_source'])->label(false) ?>
+        <?= $form->field($feedback, 'utm_medium')->hiddenInput(['value'=>$utm['medium'], 'id' => 'quickorder-form-top-utm_medium'])->label(false) ?>
+        <?= $form->field($feedback, 'utm_campaign')->hiddenInput(['value'=>$utm['campaign'], 'id' => 'quickorder-form-top-utm_campaign'])->label(false) ?>
+        <?= $form->field($feedback, 'utm_term')->hiddenInput(['value'=>$utm['term'], 'id' => 'quickorder-form-top-utm_term'])->label(false) ?>
+        <?= $form->field($feedback, 'utm_content')->hiddenInput(['value'=>$utm['content'], 'id' => 'quickorder-form-top-utm_content'])->label(false) ?>
+
         <?= $form->field($feedback, 'from_page')->hiddenInput(['value'=>'LP Перевозки по России','id' => 'quickorder-form-top-from_page'])->label(false) ?>
         <?= $form->field($feedback, 'phone', [
             'inputOptions' => [
@@ -233,6 +240,12 @@ $preorder = new \app\models\Preorders();
             <?= $form->field($feedback, 'from_page')
                     ->hiddenInput(['value'=>'LP Перевозки по России','id' => 'services-call2action-from_page'])
                     ->label(false) ?>
+
+            <?= $form->field($feedback, 'utm_source')->hiddenInput(['value'=>$utm['source'], 'id' => 'services-call2action-utm_source'])->label(false) ?>
+            <?= $form->field($feedback, 'utm_medium')->hiddenInput(['value'=>$utm['medium'], 'id' => 'services-call2action-utm_medium'])->label(false) ?>
+            <?= $form->field($feedback, 'utm_campaign')->hiddenInput(['value'=>$utm['campaign'], 'id' => 'services-call2action-utm_campaign'])->label(false) ?>
+            <?= $form->field($feedback, 'utm_term')->hiddenInput(['value'=>$utm['term'], 'id' => 'services-call2action-utm_term'])->label(false) ?>
+            <?= $form->field($feedback, 'utm_content')->hiddenInput(['value'=>$utm['content'], 'id' => 'services-call2action-utm_content'])->label(false) ?>
             </div>
 
             <?php ActiveForm::end(); ?>
@@ -480,6 +493,13 @@ $preorder = new \app\models\Preorders();
                 <?= $form->field($feedback, 'from_page')
                     ->hiddenInput(['value'=>'LP Перевозки по России','id' => 'howWeWork_call2action-from_page'])
                     ->label(false) ?>
+
+                <?= $form->field($feedback, 'utm_source')->hiddenInput(['value'=>$utm['source'], 'id' => 'howWeWork_call2action-utm_source'])->label(false) ?>
+                <?= $form->field($feedback, 'utm_medium')->hiddenInput(['value'=>$utm['medium'], 'id' => 'howWeWork_call2action-utm_medium'])->label(false) ?>
+                <?= $form->field($feedback, 'utm_campaign')->hiddenInput(['value'=>$utm['campaign'], 'id' => 'howWeWork_call2action-utm_campaign'])->label(false) ?>
+                <?= $form->field($feedback, 'utm_term')->hiddenInput(['value'=>$utm['term'], 'id' => 'howWeWork_call2action-utm_term'])->label(false) ?>
+                <?= $form->field($feedback, 'utm_content')->hiddenInput(['value'=>$utm['content'], 'id' => 'howWeWork_call2action-utm_content'])->label(false) ?>
+
                 <?= $form->field($feedback, 'phone', [
                     'inputOptions' => [
                         'placeholder' => 'ТЕЛЕФОН'
@@ -707,7 +727,13 @@ $preorder = new \app\models\Preorders();
                         'action' =>['site/order'],
                         'id' => 'mainOrderForm',
                         'method' => 'post',]); ?>
-                    <!--    --><?php //$form = ActiveForm::begin(['action' =>['site/ordercaptcha'], 'method' => 'post',]); ?>
+
+                    <?= $form->field($preorderForm, 'utm_source')->hiddenInput(['value'=>$utm['source'], 'id' => 'mainOrderForm-utm_source'])->label(false) ?>
+                    <?= $form->field($preorderForm, 'utm_medium')->hiddenInput(['value'=>$utm['medium'], 'id' => 'mainOrderForm-utm_medium'])->label(false) ?>
+                    <?= $form->field($preorderForm, 'utm_campaign')->hiddenInput(['value'=>$utm['campaign'], 'id' => 'mainOrderForm-utm_campaign'])->label(false) ?>
+                    <?= $form->field($preorderForm, 'utm_term')->hiddenInput(['value'=>$utm['term'], 'id' => 'mainOrderForm-utm_term'])->label(false) ?>
+                    <?= $form->field($preorderForm, 'utm_content')->hiddenInput(['value'=>$utm['content'], 'id' => 'mainOrderForm-utm_content'])->label(false) ?>
+
                     <div class="row">
                         <div class="col-sm-6">
                             <?= $form->field($preorderForm, 'dispatch')

@@ -32,6 +32,11 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'email:email',
             // 'contacts',
             // 'text:ntext',
+            'utm_source',
+            'utm_medium',
+            'utm_campaign',
+            'utm_term',
+            'utm_content',
              'date',
             // 'done',
 

@@ -50,7 +50,6 @@ actionTimer();
 window.onload = function(){
     var actionOrderButton = document.getElementById('actionOrderButton');
     var actionName = actionOrderButton.getAttribute('data-action');
-    //var actionComment = actionOrderButton.getAttribute('data-action-comment');
 
     function extractContent(s, space) {
         var span= document.createElement('span');
@@ -73,7 +72,6 @@ window.onload = function(){
         actionOrderButton.addEventListener('click',
             function(){
                 orderSection.scrollIntoView();
-                //document.getElementById('mainOrderForm-text').value='Заказ по акции "Страховка первой отправки в подарок"';
                 document.getElementById('mainOrderForm-text').value='Заказ по акции - '+ '"'+extractContent(actionName)+ '"';
             }
         );
@@ -96,11 +94,6 @@ window.onload = function(){
 
 
 
-//$("#actionOrderButton").on('click',function(){
-//    var orderSection = document.getElementById('mainOrderSection');
-//    orderSection.scrollIntoView();
-//    document.getElementById('mainOrderForm-text').value='Заказ по акции "Страховка первой отправки в подарок"';
-//});
 
 
 $(document).ready(function() {

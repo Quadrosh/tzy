@@ -40,6 +40,47 @@ class Feedback extends \yii\db\ActiveRecord
             [[ 'done'], 'integer'],
             [['text'], 'string'],
             [['date'], 'safe'],
+            [['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'], 'string'],
+            ['utm_source', 'filter', 'filter' => function ($value) {
+                if (strlen($value)>=509) {
+                    $newValue = substr($value,0,509);
+                } else {
+                    $newValue = $value;
+                }
+                return $newValue;
+            }],
+            ['utm_medium', 'filter', 'filter' => function ($value) {
+                if (strlen($value)>=509) {
+                    $newValue = substr($value,0,509);
+                } else {
+                    $newValue = $value;
+                }
+                return $newValue;
+            }],
+            ['utm_campaign', 'filter', 'filter' => function ($value) {
+                if (strlen($value)>=509) {
+                    $newValue = substr($value,0,509);
+                } else {
+                    $newValue = $value;
+                }
+                return $newValue;
+            }],
+            ['utm_term', 'filter', 'filter' => function ($value) {
+                if (strlen($value)>=509) {
+                    $newValue = substr($value,0,509);
+                } else {
+                    $newValue = $value;
+                }
+                return $newValue;
+            }],
+            ['utm_content', 'filter', 'filter' => function ($value) {
+                if (strlen($value)>=509) {
+                    $newValue = substr($value,0,509);
+                } else {
+                    $newValue = $value;
+                }
+                return $newValue;
+            }],
             [['user_id','name', 'city', 'from_page', 'phone', 'email', 'contacts'], 'string', 'max' => 255],
             [['name', 'phone'], 'required'],
         ];
@@ -54,6 +95,12 @@ class Feedback extends \yii\db\ActiveRecord
             'id' => 'ID',
             'user_id' => 'Откуда',
             'city' => 'Куда',
+
+            'utm_source' => 'UTM Source',
+            'utm_medium' => 'UTM Medium',
+            'utm_campaign' => 'UTM Campaign',
+            'utm_term' => 'UTM Term',
+            'utm_content' => 'UTM Content',
 
             'phone' => 'Телефон', // используется в верхней форме
             'email' => 'Email',

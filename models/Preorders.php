@@ -41,6 +41,47 @@ class Preorders extends \yii\db\ActiveRecord
             [['text'], 'string'],
             [['date'], 'safe'],
             [['done'], 'integer'],
+            [['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'], 'string'],
+            ['utm_source', 'filter', 'filter' => function ($value) {
+                if (strlen($value)>=509) {
+                    $newValue = substr($value,0,509);
+                } else {
+                    $newValue = $value;
+                }
+                return $newValue;
+            }],
+            ['utm_medium', 'filter', 'filter' => function ($value) {
+                if (strlen($value)>=509) {
+                    $newValue = substr($value,0,509);
+                } else {
+                    $newValue = $value;
+                }
+                return $newValue;
+            }],
+            ['utm_campaign', 'filter', 'filter' => function ($value) {
+                if (strlen($value)>=509) {
+                    $newValue = substr($value,0,509);
+                } else {
+                    $newValue = $value;
+                }
+                return $newValue;
+            }],
+            ['utm_term', 'filter', 'filter' => function ($value) {
+                if (strlen($value)>=509) {
+                    $newValue = substr($value,0,509);
+                } else {
+                    $newValue = $value;
+                }
+                return $newValue;
+            }],
+            ['utm_content', 'filter', 'filter' => function ($value) {
+                if (strlen($value)>=509) {
+                    $newValue = substr($value,0,509);
+                } else {
+                    $newValue = $value;
+                }
+                return $newValue;
+            }],
             [['dispatch', 'destination', 'cargo', 'name', 'phone', 'email', 'weight', 'from_page'], 'string', 'max' => 255],
             ['cargo', 'match', 'not'=>true, 'pattern' => '/(базы данных)/i'],
             ['weight', 'match', 'not'=>true, 'pattern' => '/(базы данных)/i'],
@@ -65,8 +106,14 @@ class Preorders extends \yii\db\ActiveRecord
             'weight' => 'Вес',
             'text' => 'Комментарий',
             'from_page' => 'From Page',
+            'utm_source' => 'UTM Source',
+            'utm_medium' => 'UTM Medium',
+            'utm_campaign' => 'UTM Campaign',
+            'utm_term' => 'UTM Term',
+            'utm_content' => 'UTM Content',
             'date' => 'Дата',
             'done' => 'Done',
+
         ];
     }
 

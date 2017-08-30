@@ -32,6 +32,11 @@ $this->params['breadcrumbs'][] = $this->title;
              'weight',
              'text:ntext',
              'from_page',
+            'utm_source',
+            'utm_medium',
+            'utm_campaign',
+            'utm_term',
+            'utm_content',
              'date',
             // 'done',
 

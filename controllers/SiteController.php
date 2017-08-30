@@ -212,18 +212,18 @@ class SiteController extends Controller
 
     public function actionFeedback()
     {
-        $data = Yii::$app->request->post('Feedback');
+//        $data = Yii::$app->request->post('Feedback');
         $feedback = new Feedback();
-        $feedback->name = $data['name'];
-        $feedback->city = '';
-        $feedback->phone = $data['phone'];
-        $feedback->from_page = $data['from_page'];
-        $feedback->user_id = '';
-        $feedback->email = 'no-email@that.form';
-        $feedback->contacts = '';
-        $feedback->text =  '';
-        $feedback->date = '';
-        $feedback->done = '';
+//        $feedback->name = $data['name'];
+//        $feedback->city = '';
+//        $feedback->phone = $data['phone'];
+//        $feedback->from_page = $data['from_page'];
+//        $feedback->user_id = '';
+//        $feedback->email = 'no-email@that.form';
+//        $feedback->contacts = '';
+//        $feedback->text =  '';
+//        $feedback->date = '';
+//        $feedback->done = '';
         if ($feedback->load(Yii::$app->request->post()) && $feedback->save()) {
             if ($feedback->sendEmail( 'TSZAKAZ.RU: Запрос обратного звонка')) {
                 Yii::$app->session->setFlash('success', 'Ваша заявка отправлена. <br> Мы свяжемся с Вами в ближайшее время.');
@@ -243,19 +243,27 @@ class SiteController extends Controller
 
     public function actionOrder()
     {
-        $data = Yii::$app->request->post('Preorders');
+//        $data = Yii::$app->request->post('Preorders');
         $preorder = new Preorders();
-        $preorder->dispatch = $data['dispatch']; //откуда
-        $preorder->destination = $data['destination']; // куда
-        $preorder->phone = $data['phone']; // телефон
-        $preorder->email = $data['email']; // email
-        $preorder->cargo = $data['cargo']; // характер груза
-        $preorder->weight = $data['weight']; // вес
-        $preorder->text = $data['text']; // комментарий
-        $preorder->from_page = $data['from_page'];
-        $preorder->date = '';
-        $preorder->done = '';
-        if ($preorder->save()) {
+//        $preorder->dispatch = $data['dispatch']; //откуда
+//        $preorder->destination = $data['destination']; // куда
+//        $preorder->phone = $data['phone']; // телефон
+//        $preorder->email = $data['email']; // email
+//        $preorder->cargo = $data['cargo']; // характер груза
+//        $preorder->weight = $data['weight']; // вес
+//        $preorder->text = $data['text']; // комментарий
+//        $preorder->from_page = $data['from_page'];
+//        $preorder->date = '';
+//        $preorder->done = '';
+
+//        $preorder->utm_source = $data['utm_source'];
+//        $preorder->utm_medium = $data['utm_medium'];
+//        $preorder->utm_campaign = $data['utm_campaign'];
+//        $preorder->utm_term = $data['utm_term'];
+//        $preorder->utm_content = $data['utm_content'];
+
+//        if ($preorder->save()) {
+        if ($preorder->load(Yii::$app->request->post()) && $preorder->save()) {
             if ($preorder->sendEmail( 'TSZAKAZ.RU: Заявка на грузоперевозку')) {
                 Yii::$app->session->setFlash('success', 'Ваша заявка отправлена. <br> Мы свяжемся с Вами в ближайшее время.');
                 return $this->redirect(Url::previous());
