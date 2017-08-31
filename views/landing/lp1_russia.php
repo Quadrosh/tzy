@@ -293,15 +293,11 @@ $preorder = new \app\models\Preorders();
                 <div class="display_xs">
                     <svg version="1.1" class="arrowDown_ico"
                          xmlns="http://www.w3.org/2000/svg"
-                         xmlns:xlink="http://www.w3.org/1999/xlink"
-                         x="0px" y="0px"
+                         xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                          viewBox="0 0 90 120"
                          style="enable-background:new 0 0 90 120;"
                          xml:space="preserve">
-                    <style type="text/css">
-                        .arrowDown_ico_st0{fill:none;stroke:#FFFFFF;stroke-miterlimit:10;}
-                    </style>
-                        <polygon  class="arrowDown_ico_st0" points="45,108.5 76.8,76.7 60.4,76.7 60.4,11.5 29.6,11.5 29.6,76.7 13.2,76.7 "/>
+                        <polygon  fill="none" stroke="#FFFFFF" stroke-miterlimit="10" points="45,108.5 76.8,76.7 60.4,76.7 60.4,11.5 29.6,11.5 29.6,76.7 13.2,76.7 "/>
                     </svg>
                 </div>
             </div>
@@ -314,10 +310,7 @@ $preorder = new \app\models\Preorders();
                          viewBox="0 0 110 90"
                          style="enable-background:new 0 0 110 90;"
                          xml:space="preserve">
-                    <style type="text/css">
-                        .arrow_ico_st0{fill:none;stroke:#838e9a;stroke-miterlimit:10;}
-                    </style>
-                                            <polygon class="arrow_ico_st0" points="104.7,45 72.9,13.2 72.9,29.6 7.6,29.6 7.6,60.4 72.9,60.4 72.9,76.8 "/>
+                    <polygon fill="none" stroke="#838e9a" stroke-miterlimit="10" points="104.7,45 72.9,13.2 72.9,29.6 7.6,29.6 7.6,60.4 72.9,60.4 72.9,76.8 "/>
                     </svg>
                 </div>
             </div>
@@ -334,15 +327,11 @@ $preorder = new \app\models\Preorders();
                 <div class="display_xs">
                     <svg version="1.1" class="arrowDown_ico"
                          xmlns="http://www.w3.org/2000/svg"
-                         xmlns:xlink="http://www.w3.org/1999/xlink"
-                         x="0px" y="0px"
+                         xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                          viewBox="0 0 90 120"
                          style="enable-background:new 0 0 90 120;"
                          xml:space="preserve">
-                    <style type="text/css">
-                        .arrowDown_ico_st0{fill:none;stroke:#FFFFFF;stroke-miterlimit:10;}
-                    </style>
-                        <polygon  class="arrowDown_ico_st0" points="45,108.5 76.8,76.7 60.4,76.7 60.4,11.5 29.6,11.5 29.6,76.7 13.2,76.7 "/>
+                        <polygon  fill="none" stroke="#FFFFFF" stroke-miterlimit="10" points="45,108.5 76.8,76.7 60.4,76.7 60.4,11.5 29.6,11.5 29.6,76.7 13.2,76.7 "/>
                     </svg>
                 </div>
             </div>
@@ -354,11 +343,8 @@ $preorder = new \app\models\Preorders();
                      viewBox="0 0 110 90"
                      style="enable-background:new 0 0 110 90;"
                      xml:space="preserve">
-                    <style type="text/css">
-                        .arrow_ico_st0{fill:none;stroke:#838e9a;stroke-miterlimit:10;}
-                    </style>
-                    <polygon class="arrow_ico_st0" points="104.7,45 72.9,13.2 72.9,29.6 7.6,29.6 7.6,60.4 72.9,60.4 72.9,76.8 "/>
-                    </svg>
+                    <polygon fill="none" stroke="#838e9a" stroke-miterlimit="10" points="104.7,45 72.9,13.2 72.9,29.6 7.6,29.6 7.6,60.4 72.9,60.4 72.9,76.8 "/>
+               </svg>
             </div>
             <div class="col-sm-3 text-center">
                 <div class="howWeWork_icon">
@@ -373,15 +359,11 @@ $preorder = new \app\models\Preorders();
                 <div class="display_xs">
                     <svg version="1.1" class="arrowDown_ico"
                          xmlns="http://www.w3.org/2000/svg"
-                         xmlns:xlink="http://www.w3.org/1999/xlink"
-                         x="0px" y="0px"
+                         xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                          viewBox="0 0 90 120"
                          style="enable-background:new 0 0 90 120;"
                          xml:space="preserve">
-                    <style type="text/css">
-                        .arrowDown_ico_st0{fill:none;stroke:#FFFFFF;stroke-miterlimit:10;}
-                    </style>
-                        <polygon  class="arrowDown_ico_st0" points="45,108.5 76.8,76.7 60.4,76.7 60.4,11.5 29.6,11.5 29.6,76.7 13.2,76.7 "/>
+                        <polygon  fill="none" stroke="#FFFFFF" stroke-miterlimit="10" points="45,108.5 76.8,76.7 60.4,76.7 60.4,11.5 29.6,11.5 29.6,76.7 13.2,76.7 "/>
                     </svg>
                 </div>
             </div>
@@ -394,9 +376,9 @@ $preorder = new \app\models\Preorders();
                          viewBox="0 0 580 140"
                          style="enable-background:new 0 0 580 140;"
                          xml:space="preserve">
-<style type="text/css">
-    .arrowLong_ico_st0{fill:#838e9a;}
-</style>
+                        <style type="text/css">
+                            .arrowLong_ico_st0{fill:#838e9a;}
+                        </style>
                         <g>
                             <path class="arrowLong_ico_st0" d="M47,132.6l-33-33h17.1v-30c0-17.3,14-31.3,31.3-31.3h472.7V7.4h31.8v31.4
 		c0,17.3-14,31.3-31.3,31.3H62.9v29.5H80L47,132.6z M16.4,100.6L47,131.2l30.6-30.6H61.9V69.1h473.7c16.7,0,30.3-13.6,30.3-30.3V8.4
@@ -426,17 +408,14 @@ $preorder = new \app\models\Preorders();
                     <?= $sections['howWeWorkListItems'][3] ['text'] ?>
                 </div>
                 <div class="display_xs">
-                    <svg version="1.1" class="arrowDown_ico"
-                         xmlns="http://www.w3.org/2000/svg"
-                         xmlns:xlink="http://www.w3.org/1999/xlink"
-                         x="0px" y="0px"
-                         viewBox="0 0 90 120"
-                         style="enable-background:new 0 0 90 120;"
-                         xml:space="preserve">
-                    <style type="text/css">
-                        .arrowDown_ico_st0{fill:none;stroke:#FFFFFF;stroke-miterlimit:10;}
-                    </style>
-                                            <polygon  class="arrowDown_ico_st0" points="45,108.5 76.8,76.7 60.4,76.7 60.4,11.5 29.6,11.5 29.6,76.7 13.2,76.7 "/>
+
+                     <svg version="1.1" class="arrowDown_ico"
+                          xmlns="http://www.w3.org/2000/svg"
+                          xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                          viewBox="0 0 90 120"
+                          style="enable-background:new 0 0 90 120;"
+                          xml:space="preserve">
+                        <polygon  fill="none" stroke="#FFFFFF" stroke-miterlimit="10" points="45,108.5 76.8,76.7 60.4,76.7 60.4,11.5 29.6,11.5 29.6,76.7 13.2,76.7 "/>
                     </svg>
                 </div>
             </div>
@@ -448,11 +427,9 @@ $preorder = new \app\models\Preorders();
                      viewBox="0 0 110 90"
                      style="enable-background:new 0 0 110 90;"
                      xml:space="preserve">
-                    <style type="text/css">
-                        .arrow_ico_st0{fill:none;stroke:#838e9a;stroke-miterlimit:10;}
-                    </style>
-                    <polygon class="arrow_ico_st0" points="104.7,45 72.9,13.2 72.9,29.6 7.6,29.6 7.6,60.4 72.9,60.4 72.9,76.8 "/>
-                    </svg>
+                    <polygon fill="none" stroke="#838e9a" stroke-miterlimit="10" points="104.7,45 72.9,13.2 72.9,29.6 7.6,29.6 7.6,60.4 72.9,60.4 72.9,76.8 "/>
+               </svg>
+
             </div>
             <div class="col-sm-5 text-center">
                 <div class="howWeWork_icon">
