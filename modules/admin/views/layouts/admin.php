@@ -54,8 +54,16 @@ AppAsset::register($this);
                     ['label' => 'test target', 'url' => ['/admin/testtarget/index']],
                 ],
             ],
-            ['label' => 'Preorders', 'url' => ['/admin/preorders']],
-            ['label' => 'Feedback', 'url' => ['/admin/feedback']],
+            [
+                'label' => 'Заявки',
+                'items' => [
+                    ['label' => 'Preorders', 'url' => ['/admin/preorders/index']],
+                    ['label' => 'Feedback', 'url' => ['/admin/feedback/index']],
+                    ['label' => 'UTM', 'url' => ['/admin/preorders/utm']],
+                ],
+            ],
+//            ['label' => 'Preorders', 'url' => ['/admin/preorders']],
+//            ['label' => 'Feedback', 'url' => ['/admin/feedback']],
             ['label' => 'Pages', 'url' => ['/admin/pages']],
             ['label' => 'Images', 'url' => ['/admin/imagefiles']],
 //            ['label' => 'Articles', 'url' => ['/site/contact']],

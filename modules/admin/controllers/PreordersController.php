@@ -2,9 +2,11 @@
 
 namespace app\modules\admin\controllers;
 
+use app\models\Feedback;
 use Yii;
 use app\models\Preorders;
 use yii\data\ActiveDataProvider;
+use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -49,6 +51,47 @@ class PreordersController extends Controller
 
         return $this->render('index', [
             'dataProvider' => $dataProvider,
+        ]);
+    }
+
+    public function actionUtm()
+    {
+        $preorders = Preorders::find()->orderBy('date')->all();
+        $feedbacks = Feedback::find()->orderBy('date')->all();
+        $leads = [];
+        $leadId = 0;
+        foreach ($preorders as $preorder) {
+            $leadId ++;
+
+            $leads[$leadId]['type']= 'preOrder';
+            $leads[$leadId]['id']= $preorder['id'];
+            $leads[$leadId]['name']= $preorder['cargo'];
+            $leads[$leadId]['phone']= $preorder['phone'];
+            $leads[$leadId]['from_page']= $preorder['from_page'];
+            $leads[$leadId]['utm_source']= $preorder['utm_source'];
+            $leads[$leadId]['utm_medium']= $preorder['utm_medium'];
+            $leads[$leadId]['utm_campaign']= $preorder['utm_campaign'];
+            $leads[$leadId]['utm_term']= $preorder['utm_term'];
+            $leads[$leadId]['utm_content']= $preorder['utm_content'];
+            $leads[$leadId]['date']= $preorder['date'];
+        }
+        foreach ($feedbacks as $feedback) {
+            $leadId ++;
+            $leads[$leadId]['type']= 'quickForm';
+            $leads[$leadId]['id']= $feedback['id'];
+            $leads[$leadId]['name']= $feedback['name'];
+            $leads[$leadId]['phone']= $feedback['phone'];
+            $leads[$leadId]['from_page']= $feedback['from_page'];
+            $leads[$leadId]['utm_source']= $feedback['utm_source'];
+            $leads[$leadId]['utm_medium']= $feedback['utm_medium'];
+            $leads[$leadId]['utm_campaign']= $feedback['utm_campaign'];
+            $leads[$leadId]['utm_term']= $feedback['utm_term'];
+            $leads[$leadId]['utm_content']= $feedback['utm_content'];
+            $leads[$leadId]['date']= $feedback['date'];
+        }
+        ArrayHelper::multisort($leads,['date'],[SORT_DESC]);
+        return $this->render('utm', [
+            'leads' => $leads,
         ]);
     }
 
