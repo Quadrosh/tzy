@@ -42,7 +42,9 @@ $this->params['breadcrumbs'][] = $this->title;
                 <td><?= $lead['utm_campaign'] ?></td>
                 <td><?= $lead['utm_term'] ?></td>
                 <td><?= $lead['utm_content'] ?></td>
-                <td><?= \Yii::$app->formatter->asDatetime($lead['date'], 'short'); ?></td>
+                <td><?=
+                    \Yii::$app->formatter->asDatetime($lead['date']. \Yii::$app->getTimeZone(), 'HH:mm dd/MM/yy');
+                    ?></td>
             </tr>
         <?php endforeach; ?>
 

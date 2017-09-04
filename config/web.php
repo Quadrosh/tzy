@@ -8,6 +8,7 @@ $config = [
     'bootstrap' => ['log'],
     'language' => 'ru-RU',
     'defaultRoute' => 'site/index',
+    'timeZone' => 'Europe/Moscow',
     'modules' => [
         'admin' => [
             'class' => 'app\modules\admin\Module',
