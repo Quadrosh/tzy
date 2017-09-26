@@ -44,6 +44,7 @@ AppAsset::register($this);
                     ['label' => 'Landing Page', 'url' => ['/admin/landingpage']],
                     ['label' => 'Landing Section', 'url' => ['/admin/landingsection']],
                     ['label' => 'Landing List Item', 'url' => ['/admin/landinglistitem']],
+                    ['label' => 'visits', 'url' => ['/admin/visit']],
                 ],
             ],
             [

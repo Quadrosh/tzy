@@ -1,152 +1,19 @@
 <?php
 
-namespace app\controllers;
+namespace app\commands;
 
-use app\models\LandingListitem;
-use app\models\LandingPage;
-use app\models\LandingSection;
-use app\models\MenuTop;
-use app\models\Pages;
-use app\models\Preorders;
-use app\models\Test;
-use app\models\TestPage;
-use app\models\TestTarget;
 use app\models\Visit;
-use Yii;
-use yii\base\Exception;
-use yii\filters\AccessControl;
+use yii\console\Controller;
 use yii\helpers\ArrayHelper;
-use yii\helpers\Url;
-use yii\web\Controller;
-use yii\filters\VerbFilter;
-use app\models\LoginForm;
-use app\models\ContactForm;
-use app\models\Feedback;
-use yii\web\HttpException;
-use yii\web\NotFoundHttpException;
 
-class LandingController extends Controller
+
+class VisitController extends Controller
 {
-    public $defaultAction = 'page';
-    public $landingPage;
-
-
-
     /**
-     * @inheritdoc
+     * Compress visits by day - UTM source on days ago
+     * 2 run by cron
      */
-    public function actions()
-    {
-        return
-            [
-                'error' => [
-                    'class' => 'yii\web\ErrorAction',
-                    'view' => '@app/views/site/custom_error.php',
-                ],
-
-        ];
-    }
-
-
-    /**
-     * Displays page.
-     *
-     */
-    public function actionPage()
-    {
-        Url::remember();
-
-        $PageName = Yii::$app->request->get('landingpage');
-
-        $utm = [];
-        $utm['source'] = Yii::$app->request->get('utm_source');
-        $utm['medium'] = Yii::$app->request->get('utm_medium');
-        $utm['campaign'] = Yii::$app->request->get('utm_campaign');
-        $utm['term'] = Yii::$app->request->get('utm_term');
-        $utm['content'] = Yii::$app->request->get('utm_content');
-
-        $visit = new Visit();
-        $visit['ip'] = Yii::$app->request->userIP;
-        $visit['lp_hrurl'] = $PageName;
-        $visit['url'] = 'http://'.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
-        $visit['utm_source']=$utm['source'];
-        $visit['utm_medium']=$utm['medium'];
-        $visit['utm_campaign']=$utm['campaign'];
-        $visit['utm_term']=$utm['term'];
-        $visit['utm_content']=$utm['content'];
-        $visit['qnt']=1;
-        $visit->save();
-
-
-        $this->landingPage = LandingPage::find()->where(['hrurl'=>$PageName])->one();
-        if ($PageName == null OR $this->landingPage == null)  {
-            throw new \yii\web\NotFoundHttpException('Страница не существует');
-        }
-        if ($this->landingPage->layout == null) {
-            $this->layout = 'landing';
-        } else {
-            $this->layout = $this->landingPage->layout;
-        }
-        $this->view->params['meta']=$this->landingPage;
-
-        $allSections = LandingSection::find()->where(['page_id'=>$this->landingPage->id])->orderBy('order_num')->all();
-        $sections = [];
-        $sections['top'] = $allSections[0];
-        $sections['action'] = $allSections[1];
-        $sections['services'] = $allSections[2];
-        $sections['call2action'] = $allSections[3];
-        $sections['whyWe'] = $allSections[4];
-        $sections['howWeWork'] = $allSections[5];
-        $sections['numbers'] = $allSections[6];
-        $sections['projects'] = $allSections[7];
-        $sections['reviews'] = $allSections[8];
-        $sections['clients'] = $allSections[9];
-        $sections['order'] = $allSections[10];
-
-        $sections['servicesListItems']=LandingListitem::find()
-            ->where(['section_id'=>$sections['services']['id']])
-            ->orderBy('order_num')
-            ->all();
-        $sections['whyWeListItems']=LandingListitem::find()
-            ->where(['section_id'=>$sections['whyWe']['id']])
-            ->orderBy('order_num')
-            ->all();
-        $sections['howWeWorkListItems']=LandingListitem::find()
-            ->where(['section_id'=>$sections['howWeWork']['id']])
-            ->orderBy('order_num')
-            ->all();
-        $sections['numbersListItems']=LandingListitem::find()
-            ->where(['section_id'=>$sections['numbers']['id']])
-            ->orderBy('order_num')
-            ->all();
-        $sections['projectsListItems']=LandingListitem::find()
-            ->where(['section_id'=>$sections['projects']['id']])
-            ->orderBy('order_num')
-            ->all();
-        $sections['reviewsListItems']=LandingListitem::find()
-            ->where(['section_id'=>$sections['reviews']['id']])
-            ->orderBy('order_num')
-            ->all();
-        $sections['clientsListItems']=LandingListitem::find()
-            ->where(['section_id'=>$sections['clients']['id']])
-            ->orderBy('order_num')
-            ->all();
-        $preorderForm = new Preorders();
-
-
-
-        return $this->render($this->landingPage->view,[
-            'page' => $this->landingPage,
-            'sections' => $sections,
-            'preorderForm' => $preorderForm,
-            'utm' => $utm,
-
-        ]);
-    }
-
-
-
-    public function actionVizdel()
+    public function actionCompress()
     {
         $daysAgo = 0;
         $today = time();
@@ -256,17 +123,7 @@ class LandingController extends Controller
             $result->save();
         }
 
-//        foreach ($visitsByDay as $dayVisits) {
-//            foreach ($dayVisits as $model) {
-//                var_dump($model); die;
-//                $model->delete();
-//            }
-//
-//        }
     }
-
-
-
-
-
 }
+
+// запуск из консоли php yii visit/compress

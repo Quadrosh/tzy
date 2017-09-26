@@ -34,6 +34,7 @@ class LandingPage extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['hrurl'],'unique'],
             [['name', 'hrurl', 'seo_logo', 'title', 'description', 'keywords'], 'required'],
             [['seo_logo', 'description', 'keywords'], 'string'],
             [['name', 'hrurl', 'title', 'view', 'layout', 'color'], 'string', 'max' => 255],
