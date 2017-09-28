@@ -15,82 +15,57 @@ $preorder = new \app\models\Preorders();
 
 <nav id="w10" class="navbar-inverse  navbar" role="navigation">
     <div class="container">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="/" title="<?= $page ['seo_logo'] ?>"><img src="/img/tz_logo_w.png" alt="<?= $page['seo_logo'] ?>"></a>
-        </div>
-        <div  class="navbar-collapse">
-            <ul id="w11" class="navbar-nav navbar-right nav">
-                <li><svg version="1.1"
-                         class="phone_icon"
-                         xmlns="http://www.w3.org/2000/svg"
-                         xmlns:xlink="http://www.w3.org/1999/xlink"
-                         x="0px" y="0px"
-                         viewBox="0 0 16.2 14.6"
-                         style="enable-background:new 0 0 16.2 14.6;"
-                         xml:space="preserve">
+        <div class="row">
+            <div class="col-sm-3">
+                <a class="navbar-brand" href="/" title="<?= $page ['seo_logo'] ?>"><img src="/img/tz_logo_w.png" alt="<?= $page['seo_logo'] ?>"></a>
+            </div>
+            <div class="col-sm-6 navbar-centerlead">
+                <h1 class="lead"><?= $sections['top']['lead'] ?></h1>
+                <h2 class="text"><?= $sections['top']['text'] ?></h2>
+            </div>
+            <div class="col-sm-3">
+                <div  class="navbar-collapse">
+                    <ul id="w11" class="navbar-nav navbar-right nav">
+                        <li><svg version="1.1"
+                                 class="phone_icon"
+                                 xmlns="http://www.w3.org/2000/svg"
+                                 xmlns:xlink="http://www.w3.org/1999/xlink"
+                                 x="0px" y="0px"
+                                 viewBox="0 0 16.2 14.6"
+                                 style="enable-background:new 0 0 16.2 14.6;"
+                                 xml:space="preserve">
                         <style type="text/css">
                             .phone_icon_st0{fill:#FFFFFF;}
                         </style>
-                        <g >
-                            <path  class="phone_icon_st0" d="M13.7,12.5c0,0-0.9,0.9-2.2,1.1c0,0-2.7-1.6-3.4-2c-0.7-0.4-2.9-2.4-4.2-4.3S1.9,4,1.9,4
+                                <g >
+                                    <path  class="phone_icon_st0" d="M13.7,12.5c0,0-0.9,0.9-2.2,1.1c0,0-2.7-1.6-3.4-2c-0.7-0.4-2.9-2.4-4.2-4.3S1.9,4,1.9,4
 		S1.8,2.7,2.9,1.7l2.4,3.5c0,0-0.4,0.7,0,1.2c0.4,0.5,3.9,3.9,3.9,3.9s0.5,0.2,1-0.1L13.7,12.5z"/>
-                            <path  class="phone_icon_st0" d="M6,4.6L5.6,4.9L3.2,1.5l0.5-0.3C3.8,1,4,1.1,4.1,1.2l2,2.9C6.2,4.3,6.2,4.5,6,4.6z"/>
-                            <path  class="phone_icon_st0" d="M14.2,11.7l-0.3,0.5l-3.6-2.3l0.3-0.5c0.1-0.2,0.3-0.2,0.5-0.1l3,1.9
+                                    <path  class="phone_icon_st0" d="M6,4.6L5.6,4.9L3.2,1.5l0.5-0.3C3.8,1,4,1.1,4.1,1.2l2,2.9C6.2,4.3,6.2,4.5,6,4.6z"/>
+                                    <path  class="phone_icon_st0" d="M14.2,11.7l-0.3,0.5l-3.6-2.3l0.3-0.5c0.1-0.2,0.3-0.2,0.5-0.1l3,1.9
 		C14.2,11.3,14.3,11.5,14.2,11.7z"/>
-                        </g>
+                                </g>
                         </svg><span class="phone_num">(495) 150-05-83</span></li>
-                <li><a  id="navbarOrderBtn" class="btn btn-default">Заказать</a></li>
+                        <!--                <li><a  id="navbarOrderBtn" class="btn btn-default">Заказать</a></li>-->
 
-            </ul>
+                    </ul>
+                </div>
+            </div>
         </div>
+
     </div>
 </nav>
 <div class="container">
 <!--   dark top-->
     <section class="<?= $sections['top']['stylekey'] ?> <?= $sections['top']['section_type'] ?>" style=" background-image: url(/img/<?= $sections['top']['image'] ?>)">
-        <h1 class="lead"><?= $sections['top']['lead'] ?></h1>
-        <h2 class="text"><?= $sections['top']['text'] ?></h2>
+        <h1 class="head"><?= $sections['top']['head'] ?></h1>
+        <h2 class="extra"><?= $sections['top']['extra'] ?></h2>
         <div class="col-sm-6 col-sm-offset-3 ">
             <?= \app\widgets\Alert::widget() ?>
         </div>
 
 
 
-        <?php $form = ActiveForm::begin([
-            'id' => 'quickorder-form-top',
-            'method' => 'post',
-            'action' => ['/site/feedback'],
-            'layout' => 'horizontal',
-            'fieldConfig' => [
-                'template' => "{beginWrapper}\n{input}\n{error}\n{endWrapper}",
-                'horizontalCssClasses' => [
-//                    'label' => 'col-sm-4',
-                    'offset' => 'col-sm-offset-3 col-lg-offset-4',
-                    'wrapper' => 'col-sm-6 col-lg-4',
-//                    'error' => '',
-//                    'hint' => 'телефон',
-                ],
-            ],
-        ]); ?>
 
-        <?= Html::errorSummary($feedback, ['class' => 'errors']) ?>
-        <?= $form->field($feedback, 'name')->hiddenInput(['value'=>'Noname from top form', 'id' => 'quickorder-form-top-name'])->label(false) ?>
-
-        <?= $form->field($feedback, 'utm_source')->hiddenInput(['value'=>$utm['source'], 'id' => 'quickorder-form-top-utm_source'])->label(false) ?>
-        <?= $form->field($feedback, 'utm_medium')->hiddenInput(['value'=>$utm['medium'], 'id' => 'quickorder-form-top-utm_medium'])->label(false) ?>
-        <?= $form->field($feedback, 'utm_campaign')->hiddenInput(['value'=>$utm['campaign'], 'id' => 'quickorder-form-top-utm_campaign'])->label(false) ?>
-        <?= $form->field($feedback, 'utm_term')->hiddenInput(['value'=>$utm['term'], 'id' => 'quickorder-form-top-utm_term'])->label(false) ?>
-        <?= $form->field($feedback, 'utm_content')->hiddenInput(['value'=>$utm['content'], 'id' => 'quickorder-form-top-utm_content'])->label(false) ?>
-
-        <?= $form->field($feedback, 'from_page')->hiddenInput(['value'=>'LP Перевозки по России','id' => 'quickorder-form-top-from_page'])->label(false) ?>
-        <?= $form->field($feedback, 'phone', [
-            'inputOptions' => [
-                'placeholder' => 'ТЕЛЕФОН'
-            ],
-            'inputTemplate' => '<div class="input-group">{input}<span class="input-group-btn">'.
-                '<button type="submit" class="btn btn-submit">Заказать обратный звонок</button></span></div>',
-        ])->textInput(['maxlength' => true, 'id' => 'quickorder-form-top-phone'])->label(false) ?>
-        <?php ActiveForm::end(); ?>
     </section>
 
     <section class="<?= $sections['action']['stylekey'] ?> <?= $sections['action']['section_type'] ?>">

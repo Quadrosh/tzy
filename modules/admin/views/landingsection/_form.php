@@ -47,15 +47,17 @@ use yii\widgets\ActiveForm;
             <?= $form->field($model, 'section_type')->dropDownList([
                 'top' => 'Морда',
                 'action_permanent'=>'Акция постоянная ("Extra" дней до конца)',
-                'servces'=>'Услуги',
+                'services'=>'Услуги',
                 'why_we'=>'Почему мы',
                 'how_we_work'=>'Как мы работаем',
                 'numbers'=>'Цифры',
-                'progects'=>'Проекты',
+                'projects'=>'Проекты',
                 'reviews'=>'Отзывы',
                 'clients'=>'Клиенты',
                 'order_form'=>'Форма заказа',
                 'call2action'=>'call2action',
+                'call2action2'=>'call2action2',
+                'call2action3'=>'call2action3',
             ]); ?>
         </div>
 

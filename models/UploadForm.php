@@ -25,13 +25,18 @@ class UploadForm extends Model
         ];
     }
 
-    public function upload($add1=false,$add2=false)
+    public function upload()
     {
-        $imagefile = new Imagefiles();
-        $imagefile->addNew($this->imageFile->baseName .'.' . $this->imageFile->extension);
+        \Tinify\setKey("jTlTDnTRucf5k1bK87U_VVEUTTDtTnxe");
+        $imageListItem = new Imagefiles();
+//        $imagefile->addNew($this->imageFile->baseName .'.' . $this->imageFile->extension);
+        $fileName = $this->imageFile->baseName .'.' . $this->imageFile->extension;
 
-        if ($this->validate() && $imagefile->addNew($this->imageFile->baseName .'.' . $this->imageFile->extension)) {
-            if ($this->imageFile->saveAs('img/' . $add1 . $this->imageFile->baseName . $add2 .'.' . $this->imageFile->extension)) {
+        if ($this->validate() && $imageListItem->addNew($fileName)) {
+            if ($this->imageFile->saveAs('img/tmp-' . $fileName)) {
+                $tinify = \Tinify\fromFile(Yii::getAlias('@webroot/img/tmp-'.$fileName));
+                $tinify->toFile(Yii::getAlias('@webroot/img/' . $fileName));
+                unlink(Yii::getAlias('@webroot/img/tmp-'.$fileName));
                 return true;
             } else {
                 return false;
@@ -41,8 +46,12 @@ class UploadForm extends Model
 
     public function change($filename)
     {
+        \Tinify\setKey("jTlTDnTRucf5k1bK87U_VVEUTTDtTnxe");
         if ($this->validate()) {
-            if ($this->imageFile->saveAs(Yii::$app->basePath . '/web/img/' . $filename)) {
+            if ($this->imageFile->saveAs(Yii::$app->basePath . '/web/img/tmp-' . $filename)) {
+                $tinify = \Tinify\fromFile(Yii::getAlias('@webroot/img/tmp-'. $filename));
+                $tinify->toFile(Yii::getAlias('@webroot/img/' . $filename));
+                unlink(Yii::getAlias('@webroot/img/tmp-'. $filename));
                 return true;
             } else {
                 return false;

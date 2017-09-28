@@ -122,6 +122,39 @@ class LandingpageController extends Controller
     }
 
     /**
+     * Copy landing page with sections and list items
+     */
+    public function actionCopy($id)
+    {
+        $source = LandingPage::findOne(['id'=>$id]);
+        $newLP = new LandingPage();
+        $newLP->setAttributes($source->attributes);
+        $newLP['name']=$source['name'].' - Копия';
+        $newLP['hrurl']=$source['hrurl'].'_copy';
+        $newLP->save();
+        $sourceSections = LandingSection::find()->where(['page_id'=>$id])->orderBy('order_num')->all();
+        foreach ($sourceSections as $sourceSection) {
+            $newSection = new LandingSection();
+            $newSection->setAttributes($sourceSection->attributes);
+            $newSection['page_id']=$newLP['id'];
+            $newSection->save();
+            $sourceListItems = LandingListitem::find()->where(['section_id'=>$sourceSection['id']])->orderBy('order_num')->all();
+            if ($sourceListItems) {
+                foreach ($sourceListItems as $sourceListItem) {
+                    $newListItem = new LandingListitem();
+                    $newListItem->setAttributes($sourceListItem->attributes);
+                    $newListItem['section_id']=$newSection['id'];
+                    $newListItem->save();
+                }
+            }
+        }
+
+//        var_dump($newLP); die;
+
+        return $this->redirect(['/admin/landingpage/view','id'=>$newLP['id']]);
+    }
+
+    /**
      * Finds the LandingPage model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id

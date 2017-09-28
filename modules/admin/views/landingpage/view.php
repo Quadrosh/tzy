@@ -19,7 +19,14 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Delete', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                'confirm' => 'Прям хочешь совсем удалить?',
+                'method' => 'post',
+            ],
+        ]) ?>
+        <?= Html::a('Copy', ['copy', 'id' => $model->id], [
+            'class' => 'btn btn-success',
+            'data' => [
+                'confirm' => 'Создаем новый и копируем все это туда?',
                 'method' => 'post',
             ],
         ]) ?>
@@ -75,7 +82,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <td>
                     <a href="/admin/landingsection/view?id=<?= $section['id'] ?>" title="View" aria-label="View" data-pjax="0"><span class="glyphicon glyphicon-eye-open"></span></a>
                     <a href="/admin/landingsection/update?id=<?= $section['id'] ?>" title="Update" aria-label="Update" data-pjax="0"><span class="glyphicon glyphicon-pencil"></span></a>
-                    <a href="/admin/landinglistitem/create?section_id=<?= $section['id'] ?>" title="Create List Item" aria-label="Create Item" data-pjax="0"  data-method="post"><span class="glyphicon glyphicon-check"></span></a>
+                    <a href="/admin/landinglistitem/create?section_id=<?= $section['id'] ?>" title="Create List Item" aria-label="Create Item" data-pjax="0"  data-method="post"><span class="glyphicon glyphicon-open-file"></span></a>
 
 
                 </td>
