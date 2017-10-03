@@ -44,7 +44,7 @@ class UploadForm extends Model
 
     public function change($filename)
     {
-        \Tinify\setKey("jTlTDnTRucf5k1bK87U_VVEUTTDtTnxe");
+//        \Tinify\setKey("jTlTDnTRucf5k1bK87U_VVEUTTDtTnxe");
         if ($this->validate()) {
             if ($this->imageFile->saveAs(Yii::$app->basePath . '/web/img/' . $filename)) {
 //                $tinify = \Tinify\fromFile(Yii::getAlias('@webroot/img/tmp-'. $filename));
