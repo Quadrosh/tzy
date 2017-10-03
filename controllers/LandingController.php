@@ -110,7 +110,10 @@ class LandingController extends Controller
         $sections['order'] = $allSections[10];
 
         // list items
-
+        $sections['topListItems']=LandingListitem::find()
+            ->where(['section_id'=>$sections['top']['id']])
+            ->orderBy('order_num')
+            ->all();
         $sections['servicesListItems']=LandingListitem::find()
             ->where(['section_id'=>$sections['services']['id']])
             ->orderBy('order_num')

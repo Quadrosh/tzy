@@ -66,7 +66,7 @@ window.onload = function(){
         return [span.textContent || span.innerText].toString().replace(/ +/g,' ');
     };
 
-    //var navbarOrderBtn = document.getElementById('navbarOrderBtn');
+
     var orderSection = document.getElementById('mainOrderSection');
     if(actionOrderButton.addEventListener){
         actionOrderButton.addEventListener('click',
@@ -75,20 +75,34 @@ window.onload = function(){
                 document.getElementById('mainOrderForm-text').value='Заказ по акции - '+ '"'+extractContent(actionName)+ '"';
             }
         );
-        //navbarOrderBtn.addEventListener('click',
-        //    function(){
-        //        orderSection.scrollIntoView();
-        //    }
-        //);
     } else {
         actionOrderButton.onclick = function(){
             orderSection.scrollIntoView();
             document.getElementById('mainOrderForm-text').value='Заказ по акции - '+ '"'+extractContent(actionName)+ '"';
         };
-        //navbarOrderBtn.onclick = function(){
-        //    orderSection.scrollIntoView();
-        //};
     }
+
+    var go2order =  function(){
+        var attr = this.getAttribute('data-action');
+        //alert(attr);
+        orderSection.scrollIntoView();
+        document.getElementById('mainOrderForm-text').value='Заказ машины - '+attr;
+    }
+
+    var garageOrderBtns = document.getElementsByClassName('garageOrderButton');
+    if(garageOrderBtns[0].addEventListener){
+        for (var i = 0; i < garageOrderBtns.length; i++) {
+            garageOrderBtns[i].addEventListener('click',go2order,false);
+        }
+    } else {
+        for (var i = 0; i < garageOrderBtns.length; i++) {
+            garageOrderBtns[i].onclick = go2order;
+        }
+    }
+
+
+
+
 
 };
 
@@ -119,7 +133,7 @@ $(document).ready(function() {
 
 
 
-
+    // NUMBERS
     var numbersToTop = $('#numberSection').offset().top - window.innerHeight;
     var numCountGo = null;
 
@@ -141,27 +155,23 @@ $(document).ready(function() {
         }
     });
 
+    //Slick
+    $('.garage').slick({
+        infinite: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        easing:'easeInOutSine',
+        prevArrow:'.garagePrev',
+        nextArrow:'.garageNext',
+        //appendArrows:'.popularItems',
+    });
     $('.doneProjects').slick({
         infinite: true,
         slidesToShow: 1,
         slidesToScroll: 1,
         easing:'easeInOutSine',
         prevArrow:'.slickPrev',
-        nextArrow:'.slickNext',
-        responsive: [
-            {
-                breakpoint: 769,
-                settings: {
-                    slidesToShow: 1
-                }
-            },
-            {
-                breakpoint: 480,
-                settings: {
-                    slidesToShow: 1
-                }
-            }
-        ],
+        nextArrow:'.slickNext'
         //appendArrows:'.popularItems',
     });
 

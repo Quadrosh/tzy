@@ -24,7 +24,7 @@ $preorder = new \app\models\Preorders();
                 <h2 class="text"><?= $sections['top']['text'] ?></h2>
             </div>
             <div class="col-sm-3">
-                <div  class="navbar-collapse">
+                <div  class="navbar-collapse_">
                     <ul id="w11" class="navbar-nav navbar-right nav">
                         <li><svg version="1.1"
                                  class="phone_icon"
@@ -62,12 +62,74 @@ $preorder = new \app\models\Preorders();
         <div class="col-sm-6 col-sm-offset-3 ">
             <?= \app\widgets\Alert::widget() ?>
         </div>
+        <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 garageBox">
+            <div class="garage">
+                <?php foreach ($sections['topListItems'] as $car) : ?>
+                    <div class="row">
+                        <div class="col-sm-12 text-center">
+                            <div class="car_head">
+                                <?= $car ['head'] ?>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 text-center">
+                            <div class="car_image">
+                                <?= Html::img('/img/'.$car ['image'],['alt'=>$car ['image_alt']]) ?>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 text-center">
+                            <div class="car_text">
+                                <?= nl2br($car ['text']) ?>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 text-center">
+                            <a data-action="<?= $car ['head'] ?>"
+                                class="btn btn-danger garageOrderButton">Заказать</a>
+                        </div>
+                    </div>
 
+                <?php endforeach; ?>
 
+            </div>
+            <a class="carouselControl garagePrev"><svg version="1.1"
+                                                      xmlns="http://www.w3.org/2000/svg"
+                                                      xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                      x="0px" y="0px"
+                                                      viewBox="0 0 100 100"
+                                                      style="enable-background:new 0 0 100 100;"
+                                                      xml:space="preserve">
+    <style type="text/css">
+        .button_x5F_left_st0{fill:none;stroke-width:3;stroke-miterlimit:10;}
+        .button_x5F_left_st1{fill:none;stroke-width:3;stroke-linecap:round;stroke-miterlimit:10;}
+    </style>
+                    <g >
+                        <circle  class="button_x5F_left_st0" cx="49.7" cy="50" r="46.4"/>
+                        <line  class="button_x5F_left_st1" x1="38.9" y1="50" x2="61.5" y2="27.5"/>
+                        <line  class="button_x5F_left_st1" x1="38.9" y1="50.5" x2="61.5" y2="73"/>
+                    </g>
+    </svg></a>
 
+            <a class="carouselControl garageNext" ><svg version="1.1"
+                                                       xmlns="http://www.w3.org/2000/svg"
+                                                       xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                       x="0px" y="0px"
+                                                       viewBox="0 0 100 100"
+                                                       style="enable-background:new 0 0 100 100;"
+                                                       xml:space="preserve">
+    <style type="text/css">
+        .button_x5F_right_st0{fill:none;stroke-width:3;stroke-miterlimit:10;}
+        .button_x5F_right_st1{fill:none;stroke-width:3;stroke-linecap:round;stroke-miterlimit:10;}
+    </style>
+                    <g >
+                        <circle  class="button_x5F_right_st0" cx="49.7" cy="50" r="46.4"/>
+                        <line  class="button_x5F_right_st1" x1="61.5" y1="50.5" x2="38.9" y2="73"/>
+                        <line  class="button_x5F_right_st1" x1="61.5" y1="50" x2="38.9" y2="27.5"/>
+                    </g>
+    </svg></a>
 
+        </div>
     </section>
 
+<!--  Акция  -->
     <section class="<?= $sections['action']['stylekey'] ?> <?= $sections['action']['section_type'] ?>">
         <div class="row">
             <div class="col-sm-3">
@@ -104,6 +166,7 @@ $preorder = new \app\models\Preorders();
         </div>
     </section>
 
+<!--Услуги-->
     <section class="<?= $sections['services']['stylekey'] ?> <?= $sections['services']['section_type'] ?>">
         <div class="row">
             <div class="col-sm-12 text-center">
@@ -169,10 +232,9 @@ $preorder = new \app\models\Preorders();
                 </div>
             </div>
         </div>
-
-
     </section>
 
+<!-- услуги call2action -->
     <section class="<?= $sections['call2action']['stylekey'] ?> <?= $sections['call2action']['section_type'] ?>">
         <div class="row">
             <?php $form = ActiveForm::begin([
@@ -227,6 +289,9 @@ $preorder = new \app\models\Preorders();
 
          </div>
     </section>
+
+
+<!-- Почему мы -->
     <section class="<?= $sections['whyWe']['stylekey'] ?> <?= $sections['whyWe']['section_type'] ?>">
         <div class="row">
             <div class="col-sm-12 text-center">
@@ -234,20 +299,24 @@ $preorder = new \app\models\Preorders();
             </div>
             <?php foreach ($sections['whyWeListItems'] as $listItem ) : ?>
                 <div class="row">
-                    <div class="col-xs-3 col-sm-offset-2 col-xs-offset-1">
+                    <div class="col-xs-3  col-sm-2 col-sm-offset-2 ">
                         <div class="whyWe_icon">
                             <?= $listItem ['image'] ?>
                         </div>
                     </div>
-                    <div class="col-sm-5 col-xs-6">
-                        <div class="whyWe_text">
+                    <div class="col-xs-9 col-sm-6 less480noPl noPl ">
+                        <div class="whyWe_head">
                             <?= $listItem ['head'] ?>
+                        </div>
+                        <div class="whyWe_text">
+                            <?= $listItem ['text'] ?>
                         </div>
                     </div>
                 </div>
             <?php endforeach; ?>
         </div>
     </section>
+
 
 <!-- how we work -->
     <section class="<?= $sections['howWeWork']['stylekey'] ?> <?= $sections['howWeWork']['section_type'] ?>">
@@ -436,8 +505,6 @@ $preorder = new \app\models\Preorders();
                     ],
                 ]); ?>
 
-
-
                 <?= Html::errorSummary($feedback, ['class' => 'errors']) ?>
                 <?= $form->field($feedback, 'name')
                     ->hiddenInput(['value'=>'Секция - Как мы работаем - Рассчитать стоимость','id' => 'howWeWork_call2action-name'])
@@ -464,8 +531,11 @@ $preorder = new \app\models\Preorders();
                 <?php ActiveForm::end(); ?>
             </div>
         </div>
-
     </section>
+
+
+
+<!--  Цифры  -->
     <section id="numberSection" class="<?= $sections['numbers']['stylekey'] ?> <?= $sections['numbers']['section_type'] ?>"  style=" background-image: url(/img/<?= $sections['numbers']['image'] ?>)">
         <div class="row">
             <div class="col-sm-4 text-center">

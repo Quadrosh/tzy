@@ -67,6 +67,9 @@ onBright gray #525e64
 .noMargin{
     margin: 0!important;
 }
+.noPl {
+    padding-left: 0;
+}
 .container {
     width: 100%;
     margin:0;
@@ -137,7 +140,7 @@ section {
 }
 
 .navbar {
-    background-color: rgba(0,0,0,0.4);
+    background-color: rgba(0,0,0,0.6);
     color: #fff;
     position: absolute;
     width: 100%;
@@ -156,6 +159,9 @@ section {
 .navbar-brand > img {
     display: block;
     width: 200px;
+}
+.navbar-inverse .navbar-right {
+    margin-right: 0;
 }
 .phone_icon {
     width: 20px;
@@ -194,11 +200,11 @@ section {
 }
 .container > .navbar-header,
 .container-fluid > .navbar-header,
-.container > .navbar-collapse,
-.container-fluid > .navbar-collapse {
+.container > .navbar-collapse {
     margin-right: 0;
     margin-left: 0;
 }
+/* Top */
 .top {
     background-size: cover;
     background-position: center;
@@ -240,7 +246,7 @@ section {
 }
 .top .extra {
     margin-top: 0px;
-    /*margin-bottom: 0;*/
+    margin-bottom: 40px;
     font-size: 25px;
 }
 .top .text,
@@ -252,6 +258,60 @@ section {
     font-size: 12px;
     font-family: 'Helvetica',sans-serif;
 }
+.garageBox {
+    background-color: rgba(0,0,0,0.6);
+    border-radius: 50px;
+    padding: 20px;
+}
+.top .carouselControl {
+    top:168px;
+    margin-top: -30px;
+}
+.top .carouselControl svg{
+    width: 40px;
+    height: 40px;
+}
+.garagePrev{
+    left:20px;
+}
+.garageNext{
+    right:20px;
+}
+
+.dark .garagePrev,
+.dark .garageNext {
+    stroke:#fff;
+    /*stroke:#838e9a;*/
+}
+.dark .garagePrev:hover,
+.dark .garageNext:hover{
+    /*stroke:#838e9a;*/
+    stroke:#ccd7e3;
+    /*stroke:#fff;*/
+}
+.car_image {
+    position: relative;
+    left: 50%;
+    margin-left: -250px;
+    width: 500px;
+}
+.car_image img {
+    width: 100%;
+}
+.car_head{
+    font-family: "MyriadProRegular",sans-serif;
+    font-size: 20px;
+}
+.car_text{
+    font-family: "MyriadProRegular",sans-serif;
+    font-size: 14px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+
+
+
 .dark .has-error .help-block {
     color: #fff;
 }
@@ -413,8 +473,8 @@ section {
 .bright .head {
     color: #58595B;
 }
-/* servces */
-.servces .head {
+/* services */
+.services .head {
     margin-top: 80px;
     margin-bottom: 60px;
 }
@@ -425,23 +485,23 @@ section {
 .service_type_icon #negabarit_ico{
     width: 266px;
 }
-.servces .service_type__head{
+.services .service_type__head{
     margin-top:20px;
     text-transform: uppercase;
     font-size: 16px;
     font-family: "HelveticaBold",sans-serif;
     color: #58595B;
 }
-.servces .service_type__discr{
+.services .service_type__discr{
     color: rgba(0,0,0,0.6);
     margin-bottom: 10px;
     font-size: 16px;
 }
-.servces .service_type__text{
+.services .service_type__text{
     font-size: 16px;
     margin-bottom: 50px;
 }
-/* servces call2action */
+/* services call2action */
 
 .call2action {
     padding-top: 60px;
@@ -510,15 +570,23 @@ section {
     padding-bottom: 50px;
 }
 .whyWe_icon svg {
-    width: 80px;
-    height: 80px;
+    width: 100px;
+    height: 100px;
     float: right;
     margin: 10px 0;
 }
+.whyWe_head {
+    /*margin: 10px 0;*/
+    padding-top: 14px;
+    font-family: "MyriadProRegular", sans-serif;
+    font-size: 18px;
+    text-transform: uppercase;
+}
 .whyWe_text {
-    margin: 10px 0;
-    padding-top: 28px;
-    font-size: 16px;
+    /*margin: 10px 0;*/
+    color: #6d6e71;
+    font-family: "MyriadProRegular", sans-serif;
+    font-size: 12px;
 }
 
 
@@ -587,7 +655,7 @@ section {
     display: block;
 
 }
-.progects .carouselControl {
+.projects .carouselControl {
 
     top:158px;
     margin-top: -30px;
@@ -735,9 +803,11 @@ section {
 
 /*              MEDIA              */
 /*==========  Less than  ==========*/
-
-
 @media only screen and (max-width : 1199px) {
+    .car_image {
+        margin-left: -200px;
+        width: 400px;
+    }
     #arrow_long_ico {
         width: 870px;
         height: 210px;
@@ -747,12 +817,16 @@ section {
 }
 
 @media only screen and (max-width : 991px) {
+    /*.car_image {*/
+        /*margin-left: -150px;*/
+        /*width: 300px;*/
+    /*}*/
     #arrow_long_ico {
         width: 580px;
         height: 140px;
 
     }
-    .servces .service_type__text{
+    .services .service_type__text{
         font-size: 14px;
     }
     .service_type_icon svg {
@@ -805,6 +879,16 @@ section {
 }
 
 @media only screen and (max-width : 767px) {
+    .top {
+        min-height: 800px;
+    }
+    .top .head {
+        margin-top: 230px;
+    }
+    .top .extra {
+        margin-bottom: 60px;
+    }
+
     .project_image {
         margin-bottom: 20px;
         height: 300px;
@@ -831,7 +915,7 @@ section {
         left: 50%;
         margin-left: -120px;
     }
-    .servces .service_type__text {
+    .services .service_type__text {
         padding-bottom: 10px;
         font-size:16px;
 
@@ -891,7 +975,7 @@ section {
         margin: 20px 0 30px;
     }
     .navbar > .container .navbar-brand  {
-        /*width: 200px;*/
+        width: 200px;
         left:50%;
         margin-left: -100px;
         float: none;
@@ -918,6 +1002,11 @@ section {
 }
 
 @media only screen and (max-width : 640px) {
+    .car_image {
+        margin-left: -150px;
+        width: 300px;
+    }
+
     .project_image {
         height: 247px;
         /* w370 */
@@ -930,7 +1019,14 @@ section {
 }
 
 @media only screen and (max-width : 480px) {
-    .progects .head {
+    .less480noPl{
+        padding-left: 0;
+    }
+    .whyWe_icon svg {
+        width: 60px;
+        height: 60px;
+    }
+    .projects .head {
         margin-top: 40px;
         margin-bottom: 100px;
     }
@@ -959,6 +1055,10 @@ section {
 }
 
 @media only screen and (max-width : 360px) {
+    .car_image {
+        margin-left: -100px;
+        width: 200px;
+    }
     .service_type_icon svg {
         height:80px;
         width: 170px;
