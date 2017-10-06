@@ -9,7 +9,7 @@ orange #F7941E tonica
 dark orange E37B00
 blue #487B97 ?? wtf
 
-blue 1A6F9D
+blue 1A6F9D   main back on blue
 green 15AF5C
 yellow  F7BC1E
 strong blue 2935AB
@@ -128,6 +128,18 @@ body {
     padding-top: 30px;
 }
 
+
+.dark {
+    /*background-color: #487B97;*/
+    /*background-color: #1A6F9D;*/
+    color: white;
+    background-color: #30353b;
+}
+.blue .dark {
+    /*background-color: #487B97;*/
+    background-color: #1A6F9D;
+}
+
 section {
     min-height: 600px;
     overflow: hidden;
@@ -140,7 +152,7 @@ section {
 }
 
 .navbar {
-    background-color: rgba(0,0,0,0.6);
+    background-color: rgba(0,0,0,0.4);
     color: #fff;
     position: absolute;
     width: 100%;
@@ -259,7 +271,7 @@ section {
     font-family: 'Helvetica',sans-serif;
 }
 .garageBox {
-    background-color: rgba(0,0,0,0.6);
+    background-color: rgba(0,0,0,0.4);
     border-radius: 50px;
     padding: 20px;
 }
@@ -318,13 +330,8 @@ section {
 
 
 
-.dark {
-    /*background-color: #487B97;*/
-    /*background-color: #1A6F9D;*/
-    color: white;
-    background-color: #30353b;
-    /*color: #838e9a;*/
-}
+/* forms */
+
 .dark .input-group .form-control {
     background-color: transparent;
     border-color: white;
@@ -420,6 +427,13 @@ section {
 .dark .remainHead ,
 .dark .remainDiscr {
     color: #838e9a;
+}
+.blue .dark .tillTo ,
+.blue .dark .comment ,
+.blue .dark .remainHead ,
+.blue .dark .remainDiscr {
+    color: #eee;
+    /*color: #72858F;*/
 }
 
 .action_permanent .spurt{
@@ -613,6 +627,18 @@ section {
     width: 110px;
     height: 90px;
 }
+.dark .arrow_ico{
+    stroke: #838e9a;
+}
+.blue .dark .arrow_ico {
+    stroke: #fff;
+}
+.blue .dark #arrow_long_ico {
+    fill: #838e9a;
+}
+.blue .dark #arrow_long_ico {
+    fill: #eee;
+}
 #arrow_long_ico {
     /*width: 580px;*/
     /*height: 140px;*/
@@ -630,9 +656,13 @@ section {
     font-size: 18px;
 }
 .dark .howWeWork_text {
-    font-size: 14px;
-    color: #838e9a;
+     font-size: 14px;
+     color: #838e9a;
+ }
+.blue .dark .howWeWork_text {
+    color: #eee;
 }
+
 /* numbers */
 .numbers {
     background-size: cover;
@@ -688,7 +718,6 @@ section {
 .dark .slickNext,
 .dark .slickReviewsPrev,
 .dark .slickReviewsNext {
-
     /*stroke:#fff;*/
     stroke:#838e9a;
 }
@@ -698,6 +727,21 @@ section {
 .dark .slickReviewsNext:hover {
     /*stroke:#838e9a;*/
     stroke:#fff;
+}
+.blue .dark .slickPrev,
+.blue .dark .slickNext,
+.blue .dark .slickReviewsPrev,
+.blue .dark .slickReviewsNext {
+
+    stroke:#fff;
+}
+.blue .dark .slickPrev:hover,
+.blue .dark .slickNext:hover,
+.blue .dark .slickReviewsPrev:hover,
+.blue .dark .slickReviewsNext:hover {
+    /*stroke:#838e9a;*/
+    /*stroke:#eee;*/
+    stroke:#ccd7e3;
 }
 .doneProjects {
     width: 800px;
@@ -775,9 +819,6 @@ section {
 .order_form {
     padding-bottom:10px;
 }
-.order_form label {
-    color: #838e9a;
-}
 .order_form .btn-danger {
     margin-top: 40px;
 }
@@ -787,13 +828,25 @@ section {
 }
 .order_form .top_comment{
     margin-bottom: 60px;
-    color: #838e9a;
 }
 .order_form .footer {
-    color: #838e9a;
     margin-top: 60px;
     font-size: 10px;
 }
+.order_form label,
+.order_form .top_comment,
+.order_form .footer {
+    color: #838e9a;
+}
+
+.blue .order_form label,
+.blue .order_form .top_comment,
+.blue .order_form .footer {
+    color: #fff;
+}
+
+
+
 
 
 

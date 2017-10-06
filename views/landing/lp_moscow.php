@@ -54,7 +54,7 @@ $preorder = new \app\models\Preorders();
 
     </div>
 </nav>
-<div class="container">
+<div class="container <?= $page['color'] ?>">
 <!--   dark top-->
     <section class="<?= $sections['top']['stylekey'] ?> <?= $sections['top']['section_type'] ?>" style=" background-image: url(/img/<?= $sections['top']['image'] ?>)">
         <h1 class="head"><?= $sections['top']['head'] ?></h1>
@@ -354,7 +354,7 @@ $preorder = new \app\models\Preorders();
                          viewBox="0 0 110 90"
                          style="enable-background:new 0 0 110 90;"
                          xml:space="preserve">
-                    <polygon fill="none" stroke="#838e9a" stroke-miterlimit="10" points="104.7,45 72.9,13.2 72.9,29.6 7.6,29.6 7.6,60.4 72.9,60.4 72.9,76.8 "/>
+                    <polygon fill="none" stroke-miterlimit="10" points="104.7,45 72.9,13.2 72.9,29.6 7.6,29.6 7.6,60.4 72.9,60.4 72.9,76.8 "/>
                     </svg>
                 </div>
             </div>
@@ -387,7 +387,7 @@ $preorder = new \app\models\Preorders();
                      viewBox="0 0 110 90"
                      style="enable-background:new 0 0 110 90;"
                      xml:space="preserve">
-                    <polygon fill="none" stroke="#838e9a" stroke-miterlimit="10" points="104.7,45 72.9,13.2 72.9,29.6 7.6,29.6 7.6,60.4 72.9,60.4 72.9,76.8 "/>
+                    <polygon fill="none" stroke-miterlimit="10" points="104.7,45 72.9,13.2 72.9,29.6 7.6,29.6 7.6,60.4 72.9,60.4 72.9,76.8 "/>
                </svg>
             </div>
             <div class="col-sm-3 text-center">
@@ -420,14 +420,12 @@ $preorder = new \app\models\Preorders();
                          viewBox="0 0 580 140"
                          style="enable-background:new 0 0 580 140;"
                          xml:space="preserve">
-                        <style type="text/css">
-                            .arrowLong_ico_st0{fill:#838e9a;}
-                        </style>
+
                         <g>
-                            <path class="arrowLong_ico_st0" d="M47,132.6l-33-33h17.1v-30c0-17.3,14-31.3,31.3-31.3h472.7V7.4h31.8v31.4
+                            <path  d="M47,132.6l-33-33h17.1v-30c0-17.3,14-31.3,31.3-31.3h472.7V7.4h31.8v31.4
 		c0,17.3-14,31.3-31.3,31.3H62.9v29.5H80L47,132.6z M16.4,100.6L47,131.2l30.6-30.6H61.9V69.1h473.7c16.7,0,30.3-13.6,30.3-30.3V8.4
 		h-29.8v30.9H62.4c-16.7,0-30.3,13.6-30.3,30.3v31H16.4z"/>
-                            <path class="arrowLong_ico_st0" d="M48.4,90.7h-3v-8h3V90.7z M48.4,72.7h-3v-2.8c0-1.9,0.3-3.8,0.9-5.6l2.8,1
+                            <path  d="M48.4,90.7h-3v-8h3V90.7z M48.4,72.7h-3v-2.8c0-1.9,0.3-3.8,0.9-5.6l2.8,1
 		c-0.5,1.5-0.8,3-0.8,4.6V72.7z M54.6,58.3l-1.7-2.5c2.4-1.7,5.3-2.6,8.2-2.9l0.2,3C58.9,56.1,56.6,56.9,54.6,58.3z M529.2,55.9h-8
 		v-3h8V55.9z M511.2,55.9h-8v-3h8V55.9z M493.2,55.9h-8v-3h8V55.9z M475.2,55.9h-8v-3h8V55.9z M457.2,55.9h-8v-3h8V55.9z
 		 M439.2,55.9h-8v-3h8V55.9z M421.2,55.9h-8v-3h8V55.9z M403.2,55.9h-8v-3h8V55.9z M385.2,55.9h-8v-3h8V55.9z M367.2,55.9h-8v-3h8
@@ -471,7 +469,7 @@ $preorder = new \app\models\Preorders();
                      viewBox="0 0 110 90"
                      style="enable-background:new 0 0 110 90;"
                      xml:space="preserve">
-                    <polygon fill="none" stroke="#838e9a" stroke-miterlimit="10" points="104.7,45 72.9,13.2 72.9,29.6 7.6,29.6 7.6,60.4 72.9,60.4 72.9,76.8 "/>
+                    <polygon fill="none" stroke-miterlimit="10" points="104.7,45 72.9,13.2 72.9,29.6 7.6,29.6 7.6,60.4 72.9,60.4 72.9,76.8 "/>
                </svg>
 
             </div>
