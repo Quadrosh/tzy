@@ -419,6 +419,7 @@ p {
     line-height: 15px;
     padding-left: 30px;
     padding-right: 30px;
+    max-width: 876px;
 }
 .b-content h1 {
     font-size: 20px;
