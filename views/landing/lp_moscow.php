@@ -130,7 +130,7 @@ $preorder = new \app\models\Preorders();
     </section>
 
 <!--  Акция  -->
-    <section class="<?= $sections['action']['stylekey'] ?> <?= $sections['action']['section_type'] ?>">
+    <section id="actionSection" class="<?= $sections['action']['stylekey'] ?> <?= $sections['action']['section_type'] ?>">
         <div class="row">
             <div class="col-sm-3">
                 <h4 class="tillTo">до <?php
@@ -534,7 +534,9 @@ $preorder = new \app\models\Preorders();
 
 
 <!--  Цифры  -->
-    <section id="numberSection" class="<?= $sections['numbers']['stylekey'] ?> <?= $sections['numbers']['section_type'] ?>"  style=" background-image: url(/img/<?= $sections['numbers']['image'] ?>)">
+    <section id="numberSection"
+             class="<?= $sections['numbers']['stylekey'] ?> <?= $sections['numbers']['section_type'] ?>"
+             style=" background-image: url(/img/<?= $sections['numbers']['image'] ?>)">
         <div class="row">
             <div class="col-sm-4 text-center">
                 <div class="numbers_num">

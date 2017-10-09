@@ -99,11 +99,6 @@ window.onload = function(){
             garageOrderBtns[i].onclick = go2order;
         }
     }
-
-
-
-
-
 };
 
 
@@ -113,10 +108,6 @@ window.onload = function(){
 $(document).ready(function() {
 
 
-    $("#quickorder-form-top").on("afterValidate", function () {
-        yaCounter30134129.reachGoal("callMe");
-        ga("send","event","feedback","call","callMe");
-    });
     $("#services-call2action").on("afterValidate", function () {
         yaCounter30134129.reachGoal("callMe");
         ga("send","event","feedback","call","callMe");
@@ -132,13 +123,44 @@ $(document).ready(function() {
 
 
 
+    //function getOffsetRect(elem) {
+    //
+    //    var box = elem.getBoundingClientRect();
+    //    var body = document.body;
+    //    var docElem = document.documentElement;
+    //    var scrollTop = window.pageYOffset || docElem.scrollTop || body.scrollTop;
+    //    var scrollLeft = window.pageXOffset || docElem.scrollLeft || body.scrollLeft;
+    //    var clientTop = docElem.clientTop || body.clientTop || 0;
+    //    var clientLeft = docElem.clientLeft || body.clientLeft || 0;
+    //    var top  = box.top +  scrollTop - clientTop;
+    //    var left = box.left + scrollLeft - clientLeft;
+    //    return Math.round(top);
+    //    //return { top: Math.round(top), left: Math.round(left) }
+    //}
 
-    // NUMBERS
-    var numbersToTop = $('#numberSection').offset().top - window.innerHeight;
+
+    //var numSection = document.getElementById('numberSection');
+    //var numbersToTop = numSection.offsetTop - window.innerHeight;
+
+    //var getTop = getOffsetRect(numSection);
+
+    var numbersToTop = parseInt($('#numberSection').offset().top - window.innerHeight);
+
+
+    // 3715 - 757 = 2957 (scrollTop)
+    // 757
+    // 5662
+    // actionToTop 2547
+    // numbersToTop 4905
+
+    // поскольку высота верхней секции изменяется построением карусельки
+    var topSectionHeight = 600;
+    var actionToTop = parseInt($('#actionSection').offset().top);
+
     var numCountGo = null;
-
     $(window).scroll(function(){
-        if($(window).scrollTop() > numbersToTop){
+        //if($(window).scrollTop() > numbersToTop){
+        if($(window).scrollTop() > numbersToTop - actionToTop + topSectionHeight){
             if (numCountGo == null) {
                 numCountGo = true;
                 $('.numbers_num').each(function () {
