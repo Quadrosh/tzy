@@ -295,25 +295,64 @@ $preorder = new \app\models\Preorders();
     <section class="<?= $sections['whyWe']['stylekey'] ?> <?= $sections['whyWe']['section_type'] ?>">
         <div class="row">
             <div class="col-sm-12 text-center">
-                <h2 class="head"><?= $sections['whyWe']['head'] ?></h2>
+                <h2 class="head less768"><?= $sections['whyWe']['head'] ?></h2>
             </div>
-            <?php foreach ($sections['whyWeListItems'] as $listItem ) : ?>
-                <div class="row">
-                    <div class="col-xs-3  col-sm-2 col-sm-offset-2 ">
-                        <div class="whyWe_icon">
-                            <?= $listItem ['image'] ?>
-                        </div>
-                    </div>
-                    <div class="col-xs-9 col-sm-6 less480noPl noPl ">
-                        <div class="whyWe_head">
-                            <?= $listItem ['head'] ?>
-                        </div>
-                        <div class="whyWe_text">
-                            <?= $listItem ['text'] ?>
-                        </div>
-                    </div>
+            <div class="row">
+                <div class="col-sm-2 more768">
+                    <svg version="1.1" id="whyWeVertical"
+                         xmlns="http://www.w3.org/2000/svg"
+                         xmlns:xlink="http://www.w3.org/1999/xlink"
+                         x="0px" y="0px"
+                         viewBox="0 0 120 580"
+                         style="enable-background:new 0 0 120 580;"
+                         xml:space="preserve">
+<style type="text/css">
+    .whyWeVertical_st0{fill:#E5E5E5;}
+</style>
+                        <g>
+                            <path class="whyWeVertical_st0" d="M26.8,504.6h66.3v8.6H34V544h59.1v8.6H26.8V504.6z"/>
+                            <path class="whyWeVertical_st0" d="M59.3,433c22.8,0,34.9,13.9,34.9,30.8c0,17.5-13.6,29.8-33.6,29.8
+		c-21.1,0-34.8-13.1-34.8-30.8C25.8,444.7,39.6,433,59.3,433z M60.4,484.5c14.2,0,26.9-7.7,26.9-21.1c0-13.6-12.5-21.2-27.5-21.2
+		c-13.2,0-27,6.9-27,21.1C32.8,477.4,45.8,484.5,60.4,484.5z"/>
+                            <path class="whyWeVertical_st0" d="M26.8,414.5h21.1c9.1,0,14.2-4.7,14.2-14.1c0-4.6-1.6-9.6-3.7-13.1H26.8v-8.7h66.3v8.7H65
+		v0.2c2.7,4.6,4.1,10.1,4.1,15.9c0,8.8-3.7,19.6-20,19.6H26.8V414.5z"/>
+                            <path class="whyWeVertical_st0" d="M62.1,329.5l0,25.8H86v-28.7h7.2v37.3H26.8V328H34v27.2h21v-25.8H62.1z"/>
+                            <path class="whyWeVertical_st0" d="M64,259.6c-9.2,0.5-20.4,1.1-28.6,1v0.3c7.8,2.3,16,5,25.2,8.4l32.2,11.7v6.5l-31.6,10.7
+		c-9.3,3.1-17.9,5.8-25.8,7.7v0.2c8.3,0.2,19.4,0.7,29.3,1.3l28.4,1.8v8.2l-66.3-4.6v-10.9l32.1-11.3c8.2-2.8,15.4-5,22.3-6.7v-0.3
+		c-6.7-1.7-14-4-22.3-7l-32.1-11.8v-10.9l66.3-4.1v8.4L64,259.6z"/>
+                            <path class="whyWeVertical_st0" d="M26.8,234.3l28.2-13.2c3.9-1.7,7.8-3.2,11.7-4.8v-0.2c-3.4-1.2-7.3-2.5-12-4.1l-27.9-10.3
+		v-9.1l34,13.9c8.9,3.6,19,7.8,25.2,12.4c5.4,4.3,8.2,9.1,8.2,15.1c0,2.2-0.2,3.7-0.6,4.8l-7-0.9c0.2-0.7,0.3-1.7,0.3-3.1
+		c-0.1-6.9-6.7-10.9-11.4-13c-1.5-0.7-2.5-0.5-4,0.3l-44.7,22V234.3z"/>
+                            <path class="whyWeVertical_st0" d="M64,108.7c-9.2,0.5-20.4,1.1-28.6,1v0.3c7.8,2.3,16,5,25.2,8.4l32.2,11.7v6.5l-31.6,10.7
+		c-9.3,3.1-17.9,5.8-25.8,7.7v0.2c8.3,0.2,19.4,0.7,29.3,1.3l28.4,1.8v8.2l-66.3-4.6v-10.9l32.1-11.3c8.2-2.8,15.4-5,22.3-6.7v-0.3
+		c-6.7-1.7-14-4-22.3-7l-32.1-11.8v-10.9l66.3-4.1v8.4L64,108.7z"/>
+                            <path class="whyWeVertical_st0" d="M26.8,76.9h24.8c-0.3-2-0.5-5.7-0.5-7.9c0-13.7,6-25.6,20.8-25.6c6.1,0,10.6,2,14.1,5.1
+		c5.7,5.4,7.8,14.7,7.8,23.6c0,5.9-0.4,10.4-0.8,13.3H26.8V76.9z M86.6,76.9C87,75.2,87,73,87,70c0-9.4-4.8-17.6-14.9-17.6
+		c-10.3,0-14.3,8.9-14.3,17.7c0,3.1,0.3,5.7,0.5,6.8H86.6z M26.8,27.5h66.3v8.7H26.8V27.5z"/>
+                        </g>
+</svg>
                 </div>
-            <?php endforeach; ?>
+                <div class="col-sm-10">
+                    <?php foreach ($sections['whyWeListItems'] as $listItem ) : ?>
+                        <div class="row">
+                            <div class="col-xs-3  col-sm-2 ">
+                                <div class="whyWe_icon">
+                                    <?= $listItem ['image'] ?>
+                                </div>
+                            </div>
+                            <div class="col-xs-9 col-sm-8 less480noPl noPl ">
+                                <div class="whyWe_head">
+                                    <?= $listItem ['head'] ?>
+                                </div>
+                                <div class="whyWe_text">
+                                    <?= $listItem ['text'] ?>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+
         </div>
     </section>
 

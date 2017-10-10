@@ -582,6 +582,7 @@ section {
 /* why we */
 .why_we {
     padding-bottom: 50px;
+    padding-top: 50px;
 }
 .whyWe_icon svg {
     width: 100px;
@@ -596,11 +597,18 @@ section {
     font-size: 18px;
     text-transform: uppercase;
 }
+.why_we .head {
+    margin-top: 30px;
+}
 .whyWe_text {
     /*margin: 10px 0;*/
     color: #6d6e71;
     font-family: "MyriadProRegular", sans-serif;
     font-size: 12px;
+}
+#whyWeVertical{
+    width: 120px;
+    height: 580px;
 }
 
 
@@ -854,6 +862,8 @@ section {
 
 
 
+
+
 /*              MEDIA              */
 /*==========  Less than  ==========*/
 @media only screen and (max-width : 1199px) {
@@ -932,6 +942,12 @@ section {
 }
 
 @media only screen and (max-width : 767px) {
+    .more768 {
+        display: none;
+    }
+    .less768 {
+        display: block;
+    }
     .top {
         min-height: 800px;
     }
@@ -1136,16 +1152,26 @@ section {
 
 /* Small Devices, Tablets */
 @media only screen and (min-width : 768px) {
+    .more768 {
+        display: block;
+    }
+    .less768 {
+        display: none;
+    }
 
 }
 
 /* Medium Devices, Desktops */
 @media only screen and (min-width : 992px) {
-
+    #whyWeVertical{
+        width: 180px;
+        height: 870px;
+    }
 }
 
 /* Large Devices, Wide Screens */
 @media only screen and (min-width : 1200px) {
+
     .slickPrev,
     .slickReviewsPrev{
         left:150px;
