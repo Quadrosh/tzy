@@ -72,6 +72,28 @@ class LandingpageController extends Controller
     }
 
     /**
+     * Displays a LandingPage statistics.
+     * @param integer $id
+     * @return mixed
+     */
+    public function actionStat($id)
+    {
+        Url::remember();
+        $sections = LandingSection::find()->where(['page_id'=>$id])->orderBy('order_num')->all();
+        $listItems = [];
+        foreach ($sections as $section ) {
+            $listIt = LandingListitem::find()->where(['section_id'=>$section['id']])->orderBy('order_num')->all();
+            foreach ($listIt as $item) {
+                $listItems[] = $item;
+            }
+        }
+        return $this->render('stat', [
+            'model' => $this->findModel($id),
+            'sections'=> $sections,
+            'listItems'=> $listItems,
+        ]);
+    }
+    /**
      * Creates a new LandingPage model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed

@@ -43,7 +43,25 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'layout',
             // 'color',
 
-            ['class' => 'yii\grid\ActionColumn'],
+//            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'class' => \yii\grid\ActionColumn::className(),
+                'buttons' => [
+                    'delete'=>function($url,$model){
+                        $newUrl = Yii::$app->getUrlManager()->createUrl(['/admin/landingpage/stat','id'=>$model['id']]);
+                        return \yii\helpers\Html::a( '<span class="glyphicon glyphicon-briefcase"></span>', $newUrl,
+//                                        ['title' => Yii::t('yii', 'Удалить'), 'data-pjax' => true,]);
+                            ['title' => Yii::t('yii', 'Статистика'), 'data-pjax' => '0','data-method'=>'post']);
+                    },
+//                    'view'=>function($url,$model){
+//                        return false;
+//                    },
+//                    'delete'=>function($url,$model){
+//                        return false;
+//                    },
+
+                ]
+            ],
         ],
     ]); ?>
     <?php Pjax::end(); ?>
