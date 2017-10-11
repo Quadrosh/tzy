@@ -38,6 +38,28 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]) ?>
 <h2>Просмотры</h2>
+    <?= \yii\grid\GridView::widget([
+        'dataProvider' => $visitsProvider,
+        'columns' => [
+            'lp_hrurl',
+            'utm_source',
+            'utm_medium',
+            'utm_campaign',
+            'views',
+            'lead',
+            'date',
+//            [
+//                'attribute'=>'comment',
+//                'value' => function($data)
+//                {
+//                    return \Yii::$app->formatter->asDatetime($data['comment'], 'dd/MM/yy');
+//                },
+//                'format'=> 'html',
+//            ],
 
+
+
+        ],
+    ]); ?>
 
 </div>
