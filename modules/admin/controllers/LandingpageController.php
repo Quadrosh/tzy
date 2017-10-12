@@ -11,6 +11,7 @@ use Yii;
 use app\models\LandingPage;
 use yii\data\ActiveDataProvider;
 use yii\data\ArrayDataProvider;
+use yii\data\Sort;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Url;
 use yii\web\Controller;
@@ -227,15 +228,17 @@ class LandingpageController extends Controller
         $leads = $this->utm($days);
 
         $result = ArrayHelper::merge($sumVisitsByDay, $leads);
+        
 
         $visitsProvider = new ArrayDataProvider([
             'allModels' => $result,
-//            'sort' => [
-//                'attributes' => ['id', 'username', 'email'],
-//            ],
-//            'pagination' => [
-//                'pageSize' => 10,
-//            ],
+            'sort'=>[
+                'attributes'=>['date','views','lead'],
+                'defaultOrder' => ['date'=>SORT_ASC],
+            ],
+            'pagination' => [
+                'pageSize' => 100,
+            ],
         ]);
 
         return $this->render('stat', [
