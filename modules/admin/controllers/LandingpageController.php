@@ -224,7 +224,7 @@ class LandingpageController extends Controller
         $oldTime = $today - ($daysAgo*86400); // 24*60*60 = 86400
         $startPeriod = $oldTime - ($oldTime % 86400);
 
-        $preorders = Preorders::find()->where(['<','date',$startPeriod])->orderBy('date')->all();
+        $preorders = Preorders::find()->where(['date > :var',[':var'=> $startPeriod]])->orderBy('date')->all();
         $feedbacks = Feedback::find()->where(['<','date',$startPeriod])->orderBy('date')->all();
         debug($preorders); die;
         $leads = [];
