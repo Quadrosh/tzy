@@ -87,42 +87,43 @@ class LandingpageController extends Controller
         $daysAgo = $days;
         $today = time();
         $oldTime = $today - ($daysAgo*86400); // 24*60*60 = 86400
+        $startPeriod = $oldTime - ($oldTime % 86400);
 
 
-        $rawVisits = Visit::find()
-            ->where(['<','created_at',$oldTime])
-            ->andWhere(['comment'=>null])
-            ->orderBy([
-                'lp_hrurl'=> SORT_ASC,
-                'utm_source'=> SORT_ASC,
-                'utm_medium'=> SORT_ASC,
-                'utm_campaign'=> SORT_ASC
-            ])
-            ->all();
-        $compVisits = Visit::find()
-            ->where(['<','comment',$oldTime])
-            ->orderBy([
-                'lp_hrurl'=> SORT_ASC,
-                'utm_source'=> SORT_ASC,
-                'utm_medium'=> SORT_ASC,
-                'utm_campaign'=> SORT_ASC
-            ])
-            ->all();
-        $allVisits = $rawVisits;
-        foreach ($compVisits as $compVisit) {
-            $compVisit['created_at'] = $compVisit['comment'];
-            array_push($allVisits,$compVisit);
-        }
-
-        $values = $allVisits;
-        ArrayHelper::multisort($values, ['created_at'], [SORT_ASC]);
-        $min = $values[0]['created_at'];
+//        $rawVisits = Visit::find()
+//            ->where(['<','created_at',$startPeriod])
+//            ->andWhere(['comment'=>null])
+//            ->orderBy([
+//                'lp_hrurl'=> SORT_ASC,
+//                'utm_source'=> SORT_ASC,
+//                'utm_medium'=> SORT_ASC,
+//                'utm_campaign'=> SORT_ASC
+//            ])
+//            ->all();
+//        $compVisits = Visit::find()
+//            ->where(['<','comment',$startPeriod])
+//            ->orderBy([
+//                'lp_hrurl'=> SORT_ASC,
+//                'utm_source'=> SORT_ASC,
+//                'utm_medium'=> SORT_ASC,
+//                'utm_campaign'=> SORT_ASC
+//            ])
+//            ->all();
+//        $allVisits = $rawVisits;
+//        foreach ($compVisits as $compVisit) {
+//            $compVisit['created_at'] = $compVisit['comment'];
+//            array_push($allVisits,$compVisit);
+//        }
+//
+//        $values = $allVisits;
+//        ArrayHelper::multisort($values, ['created_at'], [SORT_ASC]);
+//        $min = $values[0]['created_at'];
 
 
         $visitsByDay=[];
-        for($dayStart = $min - ($min % 86400);$dayStart < $oldTime; $dayStart += 86400){ // +=
+        for($dayStart = $startPeriod; $dayStart < $today + 86400; $dayStart += 86400){ // +=
             $dayEnd = $dayStart + 86400;
-            $dayVisits = Visit::find()
+            $rawVisits = Visit::find()
                 ->where(['>','created_at',$dayStart])
                 ->andWhere(['<','created_at',$dayEnd])
                 ->andWhere(['comment'=>null])
@@ -133,14 +134,30 @@ class LandingpageController extends Controller
                     'utm_campaign'=> SORT_ASC
                 ])
                 ->all();
+            $compVisits = Visit::find()
+                ->where(['>','comment',$dayStart])
+                ->andWhere(['<','comment',$dayEnd])
+                ->orderBy([
+                    'lp_hrurl'=> SORT_ASC,
+                    'utm_source'=> SORT_ASC,
+                    'utm_medium'=> SORT_ASC,
+                    'utm_campaign'=> SORT_ASC
+                ])
+                ->all();
+            $allVisits = $rawVisits;
+            foreach ($compVisits as $compVisit) {
+                $compVisit['created_at'] = $compVisit['comment'];
+                array_push($allVisits,$compVisit);
+            }
 
-            if ($dayVisits!=null) {
-                $visitsByDay[] = $dayVisits;
+
+            if ($allVisits!=null) {
+                $visitsByDay[] = $allVisits;
             }
         }
 
         debug($visitsByDay); die;
-        
+
         $vbdi = 0;
         $sumVisitsByDay = [];
         foreach ($visitsByDay as $visits) {
