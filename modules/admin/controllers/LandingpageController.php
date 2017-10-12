@@ -91,35 +91,6 @@ class LandingpageController extends Controller
         $startPeriod = $oldTime - ($oldTime % 86400);
 
 
-//        $rawVisits = Visit::find()
-//            ->where(['<','created_at',$startPeriod])
-//            ->andWhere(['comment'=>null])
-//            ->orderBy([
-//                'lp_hrurl'=> SORT_ASC,
-//                'utm_source'=> SORT_ASC,
-//                'utm_medium'=> SORT_ASC,
-//                'utm_campaign'=> SORT_ASC
-//            ])
-//            ->all();
-//        $compVisits = Visit::find()
-//            ->where(['<','comment',$startPeriod])
-//            ->orderBy([
-//                'lp_hrurl'=> SORT_ASC,
-//                'utm_source'=> SORT_ASC,
-//                'utm_medium'=> SORT_ASC,
-//                'utm_campaign'=> SORT_ASC
-//            ])
-//            ->all();
-//        $allVisits = $rawVisits;
-//        foreach ($compVisits as $compVisit) {
-//            $compVisit['created_at'] = $compVisit['comment'];
-//            array_push($allVisits,$compVisit);
-//        }
-//
-//        $values = $allVisits;
-//        ArrayHelper::multisort($values, ['created_at'], [SORT_ASC]);
-//        $min = $values[0]['created_at'];
-
 
         $visitsByDay=[];
         for($dayStart = $startPeriod; $dayStart < $today + 86400; $dayStart += 86400){ // +=
@@ -251,17 +222,18 @@ class LandingpageController extends Controller
     public function utm($daysAgo){
         $today = time();
         $oldTime = $today - ($daysAgo*86400); // 24*60*60 = 86400
-        $preorders = Preorders::find()->where(['<','date',$oldTime])->orderBy('date')->all();
-        $feedbacks = Feedback::find()->where(['<','date',$oldTime])->orderBy('date')->all();
+        $startPeriod = $oldTime - ($oldTime % 86400);
+
+
+        $preorders = Preorders::find()->where(['<','date',$startPeriod])->orderBy('date')->all();
+        $feedbacks = Feedback::find()->where(['<','date',$startPeriod])->orderBy('date')->all();
         $leads = [];
         $leadId = 0;
         foreach ($preorders as $preorder) {
             $leadId ++;
             $leads[$leadId]['type']= 'preOrder';
             $leads[$leadId]['id']= $preorder['id'];
-            $leads[$leadId]['name']= $preorder['cargo'];
-            $leads[$leadId]['phone']= $preorder['phone'];
-            $leads[$leadId]['from_page']= $preorder['from_page'];
+            $leads[$leadId]['lp_hrurl']= $preorder['from_page'];
             $leads[$leadId]['utm_source']= $preorder['utm_source'];
             $leads[$leadId]['utm_medium']= $preorder['utm_medium'];
             $leads[$leadId]['utm_campaign']= $preorder['utm_campaign'];
@@ -274,9 +246,7 @@ class LandingpageController extends Controller
             $leadId ++;
             $leads[$leadId]['type']= 'quickForm';
             $leads[$leadId]['id']= $feedback['id'];
-            $leads[$leadId]['name']= $feedback['name'];
-            $leads[$leadId]['phone']= $feedback['phone'];
-            $leads[$leadId]['from_page']= $feedback['from_page'];
+            $leads[$leadId]['lp_hrurl']= $feedback['from_page'];
             $leads[$leadId]['utm_source']= $feedback['utm_source'];
             $leads[$leadId]['utm_medium']= $feedback['utm_medium'];
             $leads[$leadId]['utm_campaign']= $feedback['utm_campaign'];
