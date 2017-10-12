@@ -114,16 +114,13 @@ class LandingpageController extends Controller
             array_push($allVisits,$compVisit);
         }
 
-
-        var_dump($allVisits);die;
-
         $values = $allVisits;
         ArrayHelper::multisort($values, ['created_at'], [SORT_ASC]);
         $min = $values[0]['created_at'];
 
 
         $visitsByDay=[];
-        for($dayStart = $min - ($min % 86400);$dayStart < $oldTime; $dayStart += 86400){
+        for($dayStart = $min - ($min % 86400);$dayStart < $oldTime; $dayStart += 86400){ // +=
             $dayEnd = $dayStart + 86400;
             $dayVisits = Visit::find()
                 ->where(['>','created_at',$dayStart])
@@ -142,6 +139,8 @@ class LandingpageController extends Controller
             }
         }
 
+        debug($visitsByDay); die;
+        
         $vbdi = 0;
         $sumVisitsByDay = [];
         foreach ($visitsByDay as $visits) {
