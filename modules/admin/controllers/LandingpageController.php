@@ -156,7 +156,7 @@ class LandingpageController extends Controller
             }
         }
 
-        debug($visitsByDay); die;
+//        debug($visitsByDay); die;
 
         $vbdi = 0;
         $sumVisitsByDay = [];
