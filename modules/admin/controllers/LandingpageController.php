@@ -87,7 +87,9 @@ class LandingpageController extends Controller
         $daysAgo = $days;
         $today = time();
         $oldTime = $today - ($daysAgo*86400); // 24*60*60 = 86400
-        $allVisits = Visit::find()
+
+
+        $rawVisits = Visit::find()
             ->where(['<','created_at',$oldTime])
             ->andWhere(['comment'=>null])
             ->orderBy([
@@ -97,14 +99,28 @@ class LandingpageController extends Controller
                 'utm_campaign'=> SORT_ASC
             ])
             ->all();
+        $compVisits = Visit::find()
+            ->where(['<','comment',$oldTime])
+            ->orderBy([
+                'lp_hrurl'=> SORT_ASC,
+                'utm_source'=> SORT_ASC,
+                'utm_medium'=> SORT_ASC,
+                'utm_campaign'=> SORT_ASC
+            ])
+            ->all();
+        $allVisits = $rawVisits;
+        foreach ($compVisits as $compVisit) {
+            $compVisit['created_at'] = $compVisit['comment'];
+            array_push($allVisits,$compVisit);
+        }
 
 
-
-
+//        var_dump($allVisits);die;
 
         $values = $allVisits;
         ArrayHelper::multisort($values, ['created_at'], [SORT_ASC]);
         $min = $values[0]['created_at'];
+        
 
         $visitsByDay=[];
         for($dayStart = $min - ($min % 86400);$dayStart < $oldTime; $dayStart += 86400){
