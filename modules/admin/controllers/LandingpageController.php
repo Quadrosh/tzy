@@ -115,12 +115,12 @@ class LandingpageController extends Controller
         }
 
 
-//        var_dump($allVisits);die;
+        var_dump($allVisits);die;
 
         $values = $allVisits;
         ArrayHelper::multisort($values, ['created_at'], [SORT_ASC]);
         $min = $values[0]['created_at'];
-        
+
 
         $visitsByDay=[];
         for($dayStart = $min - ($min % 86400);$dayStart < $oldTime; $dayStart += 86400){
