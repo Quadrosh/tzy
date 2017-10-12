@@ -137,6 +137,7 @@ class LandingpageController extends Controller
         foreach ($visitsByDay as $visits) {
             $sumVisitsByDay[$vbdi] = [];
             $oldVisit = null;
+
             foreach ($visits as $visit) {
                 if($oldVisit == null){
                     $sumVisitsByDay[$vbdi]['lp_hrurl'] = $visit['lp_hrurl'];
@@ -194,14 +195,17 @@ class LandingpageController extends Controller
                     }
                 }
             }
+
+
             $vbdi++;
         }
 
 
         $leads = $this->utm($days);
+        $summLeads = $this->summlead($leads);
 
 
-        $result = ArrayHelper::merge($sumVisitsByDay, $leads);
+        $result = ArrayHelper::merge($sumVisitsByDay, $summLeads);
 
 
         $visitsProvider = new ArrayDataProvider([
@@ -221,21 +225,85 @@ class LandingpageController extends Controller
         ]);
     }
 
+    public function summlead($leads)
+    {
+        $vbdi = 0;
+        $sumVisitsByDay = [];
+        $sumVisitsByDay[$vbdi] = [];
+        $oldVisit = null;
+        foreach ($leads as $visit) {
+            if($oldVisit == null){
+                $sumVisitsByDay[$vbdi]['lp_hrurl'] =  $visit['lp_hrurl'];
+                $sumVisitsByDay[$vbdi]['utm_source'] = $visit['utm_source'] ;
+                $sumVisitsByDay[$vbdi]['utm_medium'] = $visit['utm_medium'] ;
+                $sumVisitsByDay[$vbdi]['utm_campaign'] = $visit['utm_campaign'] ;
+                $sumVisitsByDay[$vbdi]['lead'] = $visit['lead'];
+                $sumVisitsByDay[$vbdi]['date'] = Yii::$app->formatter->asDatetime($visit['date'], 'dd/MM/yy');
+                $oldVisit = $sumVisitsByDay[$vbdi];
+            } else {
+                if($visit['lp_hrurl'] == $oldVisit['lp_hrurl']){
+                    if ($visit['utm_source']==$oldVisit['utm_source']) {
+                        if($visit['utm_medium']==$oldVisit['utm_medium']){
+                            if ($visit['utm_campaign']==$oldVisit['utm_campaign']) {
+                                $sumVisitsByDay[$vbdi]['lead']+=$visit['lead'];
+                            } else {   // $visit['utm_campaign']!=$oldVisit['utm_campaign']
+                                $vbdi++;
+                                $sumVisitsByDay[$vbdi]['lp_hrurl'] = $visit['lp_hrurl'];
+                                $sumVisitsByDay[$vbdi]['utm_source'] = $visit['utm_source'];
+                                $sumVisitsByDay[$vbdi]['utm_medium'] = $visit['utm_medium'];
+                                $sumVisitsByDay[$vbdi]['utm_campaign'] = $visit['utm_campaign'];
+                                $sumVisitsByDay[$vbdi]['date'] = Yii::$app->formatter->asDatetime($visit['date'], 'dd/MM/yy');
+                                $sumVisitsByDay[$vbdi]['lead'] = $visit['lead'] ;
+                                $oldVisit = $sumVisitsByDay[$vbdi];
+                            }
+                        } else {   // $visit['utm_medium']!=$oldVisit['utm_medium']
+                            $vbdi++;
+                            $sumVisitsByDay[$vbdi]['lp_hrurl'] = $visit['lp_hrurl'];
+                            $sumVisitsByDay[$vbdi]['utm_source'] = $visit['utm_source'];
+                            $sumVisitsByDay[$vbdi]['utm_medium'] = $visit['utm_medium'];
+                            $sumVisitsByDay[$vbdi]['utm_campaign'] = $visit['utm_campaign'];
+                            $sumVisitsByDay[$vbdi]['date'] = Yii::$app->formatter->asDatetime($visit['date'], 'dd/MM/yy');
+                            $sumVisitsByDay[$vbdi]['lead'] = $visit['lead'] ;
+                            $oldVisit = $sumVisitsByDay[$vbdi];
+                        }
+                    } else {   // $visit['utm_source']!=$oldVisit['utm_source']
+                        $vbdi++;
+                        $sumVisitsByDay[$vbdi]['lp_hrurl'] = $visit['lp_hrurl'];
+                        $sumVisitsByDay[$vbdi]['utm_source'] = $visit['utm_source'];
+                        $sumVisitsByDay[$vbdi]['utm_medium'] = $visit['utm_medium'];
+                        $sumVisitsByDay[$vbdi]['utm_campaign'] = $visit['utm_campaign'];
+                        $sumVisitsByDay[$vbdi]['date'] = Yii::$app->formatter->asDatetime($visit['date'], 'dd/MM/yy');
+                        $sumVisitsByDay[$vbdi]['lead'] = $visit['lead'] ;
+                        $oldVisit = $sumVisitsByDay[$vbdi];
+                    }
+                } else { //   $visit['lp_hrurl'] != $oldVisit['lp_hrurl']
+                    $vbdi++;
+                    $sumVisitsByDay[$vbdi]['lp_hrurl'] = $visit['lp_hrurl'];
+                    $sumVisitsByDay[$vbdi]['utm_source'] = $visit['utm_source'];
+                    $sumVisitsByDay[$vbdi]['utm_medium'] = $visit['utm_medium'];
+                    $sumVisitsByDay[$vbdi]['utm_campaign'] = $visit['utm_campaign'];
+                    $sumVisitsByDay[$vbdi]['date'] =  Yii::$app->formatter->asDatetime($visit['date'], 'dd/MM/yy');
+                    $sumVisitsByDay[$vbdi]['lead'] = $visit['lead'] ;
+                    $oldVisit =  $sumVisitsByDay[$vbdi];
+                }
+            }
+        }
+
+//        debug($sumVisitsByDay); die;
+
+        return $sumVisitsByDay;
+    }
+
     public function utm($daysAgo){
         $today = time();
         $oldTime = $today - ($daysAgo*86400); // 24*60*60 = 86400
         $startPeriod = $oldTime - ($oldTime % 86400);
 
 //        $preorders = Preorders::find()->where('date > :var',[':var'=> $startPeriod])->orderBy('date')->all();
-
 //        $preorders = Preorders::find()->where(['between','date',$startPeriod,$today])->orderBy('date')->all();
 
-        $preorders = Preorders::find()->orderBy('date')->all();
-
-
-
-        $feedbacks = Feedback::find()->where(['<','date',$startPeriod])->orderBy('date')->all();
-        debug($preorders); die;
+        $preorders = Preorders::find()->where(['>','date',$startPeriod])->orderBy('date')->all();
+        $feedbacks = Feedback::find()->where(['>','date',$startPeriod])->orderBy('date')->all();
         $leads = [];
         $leadId = 0;
         foreach ($preorders as $preorder) {
@@ -249,7 +317,7 @@ class LandingpageController extends Controller
             $leads[$leadId]['utm_term']= $preorder['utm_term'];
             $leads[$leadId]['utm_content']= $preorder['utm_content'];
             $leads[$leadId]['lead']= 1;
-            $leads[$leadId]['date'] =  Yii::$app->formatter->asDatetime($preorder['date'], 'dd/MM/yy');
+            $leads[$leadId]['date'] =  $preorder['date'];
         }
         foreach ($feedbacks as $feedback) {
             $leadId ++;
@@ -262,7 +330,7 @@ class LandingpageController extends Controller
             $leads[$leadId]['utm_term']= $feedback['utm_term'];
             $leads[$leadId]['utm_content']= $feedback['utm_content'];
             $leads[$leadId]['lead']= 1;
-            $leads[$leadId]['date']= Yii::$app->formatter->asDatetime($feedback['date'], 'dd/MM/yy');
+            $leads[$leadId]['date']= $feedback['date'];
         }
         ArrayHelper::multisort($leads,['date'],[SORT_DESC]);
 

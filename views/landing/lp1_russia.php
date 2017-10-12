@@ -13,6 +13,8 @@ $preorder = new \app\models\Preorders();
 ?>
 
 
+
+
 <nav id="w10" class="navbar-inverse  navbar" role="navigation">
     <div class="container">
         <div class="navbar-header">
@@ -82,7 +84,7 @@ $preorder = new \app\models\Preorders();
         <?= $form->field($feedback, 'utm_term')->hiddenInput(['value'=>$utm['term'], 'id' => 'quickorder-form-top-utm_term'])->label(false) ?>
         <?= $form->field($feedback, 'utm_content')->hiddenInput(['value'=>$utm['content'], 'id' => 'quickorder-form-top-utm_content'])->label(false) ?>
 
-        <?= $form->field($feedback, 'from_page')->hiddenInput(['value'=>'LP Перевозки по России','id' => 'quickorder-form-top-from_page'])->label(false) ?>
+        <?= $form->field($feedback, 'from_page')->hiddenInput(['value'=>$page ['hrurl'],'id' => 'quickorder-form-top-from_page'])->label(false) ?>
         <?= $form->field($feedback, 'phone', [
             'inputOptions' => [
                 'placeholder' => 'ТЕЛЕФОН'
@@ -238,7 +240,7 @@ $preorder = new \app\models\Preorders();
                     ->textInput(['maxlength' => true, 'id' => 'services-call2action-phone'])
                     ->label(false) ?>
             <?= $form->field($feedback, 'from_page')
-                    ->hiddenInput(['value'=>'LP Перевозки по России','id' => 'services-call2action-from_page'])
+                    ->hiddenInput(['value'=>$page ['hrurl'],'id' => 'services-call2action-from_page'])
                     ->label(false) ?>
 
             <?= $form->field($feedback, 'utm_source')->hiddenInput(['value'=>$utm['source'], 'id' => 'services-call2action-utm_source'])->label(false) ?>
@@ -468,7 +470,7 @@ $preorder = new \app\models\Preorders();
                     ->hiddenInput(['value'=>'Секция - Как мы работаем - Рассчитать стоимость','id' => 'howWeWork_call2action-name'])
                     ->label(false) ?>
                 <?= $form->field($feedback, 'from_page')
-                    ->hiddenInput(['value'=>'LP Перевозки по России','id' => 'howWeWork_call2action-from_page'])
+                    ->hiddenInput(['value'=>$page ['hrurl'],'id' => 'howWeWork_call2action-from_page'])
                     ->label(false) ?>
 
                 <?= $form->field($feedback, 'utm_source')->hiddenInput(['value'=>$utm['source'], 'id' => 'howWeWork_call2action-utm_source'])->label(false) ?>
@@ -753,7 +755,7 @@ $preorder = new \app\models\Preorders();
                         <!--        <div class="col-sm-12"> --><?//= $form->field($preorderForm, 'captcha')->widget(Captcha::className()) ?><!--</div>-->
 
                         <?= $form->field($preorderForm, 'from_page')
-                            ->hiddenInput(['value'=>'LP Перевозки по России', 'id' => 'mainOrderForm-from_page'])
+                            ->hiddenInput(['value'=>$page ['hrurl'], 'id' => 'mainOrderForm-from_page'])
                             ->label(false) ?>
                         <div class="col-sm-6 col-sm-offset-3 text-center">
                             <?= Html::submitButton('отправить заявку', ['class' => 'btn btn-danger sendorder-btn']) ?>
