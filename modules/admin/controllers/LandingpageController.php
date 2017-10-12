@@ -227,8 +227,9 @@ class LandingpageController extends Controller
 
         $leads = $this->utm($days);
 
+        debug($leads); die;
         $result = ArrayHelper::merge($sumVisitsByDay, $leads);
-        
+
 
         $visitsProvider = new ArrayDataProvider([
             'allModels' => $result,
