@@ -209,7 +209,7 @@ class LandingpageController extends Controller
 
 
         $visitsProvider = new ArrayDataProvider([
-            'allModels' => $result,
+            'allModels' => $sumVisitsByDay,
             'sort'=>[
                 'attributes'=>['date','views','lead'],
                 'defaultOrder' => ['date'=>SORT_ASC],
