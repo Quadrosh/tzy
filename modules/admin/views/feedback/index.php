@@ -37,7 +37,15 @@ $this->params['breadcrumbs'][] = $this->title;
             'utm_campaign',
             'utm_term',
             'utm_content',
-             'date',
+//             'date',
+            [
+                'attribute'=>'date',
+                'value' => function($data)
+                {
+                    return \Yii::$app->formatter->asDatetime($data['date'], 'dd/MM/yy HH:mm');
+                },
+                'format'=> 'html',
+            ],
             // 'done',
 
             ['class' => 'yii\grid\ActionColumn'],
