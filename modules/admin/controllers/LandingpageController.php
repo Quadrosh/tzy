@@ -5,6 +5,8 @@ namespace app\modules\admin\controllers;
 use app\models\Feedback;
 use app\models\LandingListitem;
 use app\models\LandingSection;
+use app\models\NFeedback;
+use app\models\NPreorders;
 use app\models\Preorders;
 use app\models\Visit;
 use Yii;
@@ -266,6 +268,7 @@ class LandingpageController extends Controller
 
         return $leads;
     }
+
 
     /**
      * Creates a new LandingPage model.
