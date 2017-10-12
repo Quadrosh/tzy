@@ -47,15 +47,15 @@ $this->params['breadcrumbs'][] = $this->title;
             'utm_campaign',
             'views',
             'lead',
-            'date',
-//            [
-//                'attribute'=>'comment',
-//                'value' => function($data)
-//                {
-//                    return \Yii::$app->formatter->asDatetime($data['comment'], 'dd/MM/yy');
-//                },
-//                'format'=> 'html',
-//            ],
+//            'date',
+            [
+                'attribute'=>'date',
+                'value' => function($data)
+                {
+                    return \Yii::$app->formatter->asDatetime($data['date'], 'dd/MM/yy');
+                },
+                'format'=> 'html',
+            ],
 
 
 

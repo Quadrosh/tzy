@@ -145,7 +145,8 @@ class LandingpageController extends Controller
                     $sumVisitsByDay[$vbdi]['utm_medium'] = $visit['utm_medium'] ;
                     $sumVisitsByDay[$vbdi]['utm_campaign'] = $visit['utm_campaign'] ;
                     $sumVisitsByDay[$vbdi]['views'] = $visit['qnt'];
-                    $sumVisitsByDay[$vbdi]['date'] = Yii::$app->formatter->asDatetime($visit['created_at'], 'dd/MM/yy');
+                    $sumVisitsByDay[$vbdi]['date'] = $visit['created_at'];
+//                    $sumVisitsByDay[$vbdi]['date'] = Yii::$app->formatter->asDatetime($visit['created_at'], 'dd/MM/yy');
                     $oldVisit = $sumVisitsByDay[$vbdi];
                 } else {
                     if($visit['lp_hrurl'] == $oldVisit['lp_hrurl']){
@@ -159,7 +160,8 @@ class LandingpageController extends Controller
                                     $sumVisitsByDay[$vbdi]['utm_source'] = $visit['utm_source'];
                                     $sumVisitsByDay[$vbdi]['utm_medium'] = $visit['utm_medium'];
                                     $sumVisitsByDay[$vbdi]['utm_campaign'] = $visit['utm_campaign'];
-                                    $sumVisitsByDay[$vbdi]['date'] = Yii::$app->formatter->asDatetime($visit['created_at'], 'dd/MM/yy');
+                                    $sumVisitsByDay[$vbdi]['date'] = $visit['created_at'];
+//                                    $sumVisitsByDay[$vbdi]['date'] = Yii::$app->formatter->asDatetime($visit['created_at'], 'dd/MM/yy');
                                     $sumVisitsByDay[$vbdi]['views'] = $visit['qnt'] ;
                                     $oldVisit = $sumVisitsByDay[$vbdi];
                                 }
@@ -169,7 +171,8 @@ class LandingpageController extends Controller
                                 $sumVisitsByDay[$vbdi]['utm_source'] = $visit['utm_source'];
                                 $sumVisitsByDay[$vbdi]['utm_medium'] = $visit['utm_medium'];
                                 $sumVisitsByDay[$vbdi]['utm_campaign'] = $visit['utm_campaign'];
-                                $sumVisitsByDay[$vbdi]['date'] = Yii::$app->formatter->asDatetime($visit['created_at'], 'dd/MM/yy');
+                                $sumVisitsByDay[$vbdi]['date'] = $visit['created_at'];
+//                                $sumVisitsByDay[$vbdi]['date'] = Yii::$app->formatter->asDatetime($visit['created_at'], 'dd/MM/yy');
                                 $sumVisitsByDay[$vbdi]['views'] = $visit['qnt'] ;
                                 $oldVisit = $sumVisitsByDay[$vbdi];
                             }
@@ -179,7 +182,8 @@ class LandingpageController extends Controller
                             $sumVisitsByDay[$vbdi]['utm_source'] = $visit['utm_source'];
                             $sumVisitsByDay[$vbdi]['utm_medium'] = $visit['utm_medium'];
                             $sumVisitsByDay[$vbdi]['utm_campaign'] = $visit['utm_campaign'];
-                            $sumVisitsByDay[$vbdi]['date'] = Yii::$app->formatter->asDatetime($visit['created_at'], 'dd/MM/yy');
+                            $sumVisitsByDay[$vbdi]['date'] = $visit['created_at'];
+//                            $sumVisitsByDay[$vbdi]['date'] = Yii::$app->formatter->asDatetime($visit['created_at'], 'dd/MM/yy');
                             $sumVisitsByDay[$vbdi]['views'] = $visit['qnt'] ;
                             $oldVisit = $sumVisitsByDay[$vbdi];
                         }
@@ -189,8 +193,9 @@ class LandingpageController extends Controller
                          $sumVisitsByDay[$vbdi]['utm_source'] = $visit['utm_source'];
                          $sumVisitsByDay[$vbdi]['utm_medium'] = $visit['utm_medium'];
                          $sumVisitsByDay[$vbdi]['utm_campaign'] = $visit['utm_campaign'];
-                         $sumVisitsByDay[$vbdi]['date'] =  Yii::$app->formatter->asDatetime($visit['created_at'], 'dd/MM/yy');
-                         $sumVisitsByDay[$vbdi]['views'] = $visit['qnt'] ;
+                         $sumVisitsByDay[$vbdi]['date'] =  $visit['created_at'];
+//                         $sumVisitsByDay[$vbdi]['date'] =  Yii::$app->formatter->asDatetime($visit['created_at'], 'dd/MM/yy');
+                         $sumVisitsByDay[$vbdi]['views'] = $visit['qnt'];
                         $oldVisit =  $sumVisitsByDay[$vbdi];
                     }
                 }
@@ -212,7 +217,7 @@ class LandingpageController extends Controller
             'allModels' => $sumVisitsByDay,
             'sort'=>[
                 'attributes'=>['date','views','lead'],
-                'defaultOrder' => ['date'=>SORT_ASC],
+                'defaultOrder' => ['date'=>SORT_DESC],
             ],
             'pagination' => [
                 'pageSize' => 100,
