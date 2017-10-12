@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
 
 /**
  * This is the model class for table "preorders".
@@ -31,6 +32,16 @@ class Preorders extends \yii\db\ActiveRecord
         return 'preorders';
     }
 
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => TimestampBehavior::className(),
+                'createdAtAttribute' => 'date',
+                'updatedAtAttribute' => false,
+            ],
+        ];
+    }
     /**
      * @inheritdoc
      */
@@ -39,8 +50,7 @@ class Preorders extends \yii\db\ActiveRecord
         return [
             [['dispatch', 'destination', 'cargo', 'phone'], 'required'],
             [['text'], 'string'],
-            [['date'], 'safe'],
-            [['done'], 'integer'],
+            [['done','date'], 'integer'],
             [['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'], 'string'],
             ['utm_source', 'filter', 'filter' => function ($value) {
                 if (strlen($value)>=509) {

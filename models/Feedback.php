@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
 
 /**
  * This is the model class for table "feedback".
@@ -31,15 +32,24 @@ class Feedback extends \yii\db\ActiveRecord
         return 'feedback';
     }
 
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => TimestampBehavior::className(),
+                'createdAtAttribute' => 'date',
+                'updatedAtAttribute' => false,
+            ],
+        ];
+    }
     /**
      * @inheritdoc
      */
     public function rules()
     {
         return [
-            [[ 'done'], 'integer'],
+            [['done','date'], 'integer'],
             [['text'], 'string'],
-            [['date'], 'safe'],
             [['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'], 'string'],
             ['utm_source', 'filter', 'filter' => function ($value) {
                 if (strlen($value)>=509) {
