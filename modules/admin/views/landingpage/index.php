@@ -50,8 +50,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     'delete'=>function($url,$model){
                         $newUrl = Yii::$app->getUrlManager()->createUrl(['/admin/landingpage/stat','id'=>$model['id'],'days'=>'7']);
                         return \yii\helpers\Html::a( '<span class="glyphicon glyphicon-briefcase"></span>', $newUrl,
-//                                        ['title' => Yii::t('yii', 'Удалить'), 'data-pjax' => true,]);
-                            ['title' => Yii::t('yii', 'Статистика'), 'data-pjax' => '0','data-method'=>'post']);
+                            ['title' => Yii::t('yii', 'Статистика'), 'data-pjax' => '0']);
                     },
 //                    'view'=>function($url,$model){
 //                        return false;
