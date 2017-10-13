@@ -41,12 +41,32 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= \yii\grid\GridView::widget([
         'dataProvider' => $visitsProvider,
         'columns' => [
-            'lp_hrurl',
+//            'lp_hrurl',
+            [
+                'attribute'=>'lp_hrurl',
+                'label'=> 'Страница',
+            ],
             'utm_source',
             'utm_medium',
             'utm_campaign',
-            'views',
-            'lead',
+//            'views',
+            [
+                'attribute'=>'views',
+                'label'=> 'Просмотры',
+            ],
+//            'lead',
+            [
+                'attribute'=>'lead',
+                'label'=> 'Заявки',
+            ],
+            [
+                'attribute'=>'k',
+                'label'=> 'k%',
+                'value' => function($data)
+                {
+                    return $data['views']!=0 ? round($data['lead'] / $data['views']*100).'%' : 0;
+                },
+            ],
 //            'date',
             [
                 'attribute'=>'date',
