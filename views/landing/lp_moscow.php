@@ -238,9 +238,9 @@ $preorder = new \app\models\Preorders();
     <section class="<?= $sections['call2action']['stylekey'] ?> <?= $sections['call2action']['section_type'] ?>">
         <div class="row">
             <?php $form = ActiveForm::begin([
+                'action' => ['/site/feedback'],
                 'id' => 'services-call2action',
                 'method' => 'post',
-                'action' => ['/site/feedback'],
 //                'layout' => 'horizontal',
                 'fieldConfig' => [
                     'template' => "{beginWrapper}\n{input}\n{error}\n{endWrapper}",
@@ -526,9 +526,9 @@ $preorder = new \app\models\Preorders();
             </div>
             <div class="col-sm-12 text-center">
                 <?php $form = ActiveForm::begin([
+                    'action' => ['/site/feedback'],
                     'id' => 'howWeWork_call2action',
                     'method' => 'post',
-                    'action' => ['/site/feedback'],
                     'layout' => 'horizontal',
                     'fieldConfig' => [
                         'template' => "{beginWrapper}\n{input}\n{error}\n{endWrapper}",

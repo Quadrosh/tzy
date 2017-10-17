@@ -89,7 +89,7 @@ class LandingController extends Controller
         } else {
             $this->layout = $this->landingPage->layout;
         }
-        if ($this->landingPage['seo_logo']=='title') {
+        if (trim(strtolower($this->landingPage['seo_logo'])) =='title') {
             $this->landingPage['seo_logo'] = $this->landingPage['title'];
         }
         $this->view->params['meta']=$this->landingPage;

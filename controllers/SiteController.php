@@ -114,6 +114,18 @@ class SiteController extends Controller
         $feedbackForm = new Feedback();
         $preorderForm = new Preorders();
 
+
+        //UTM
+//        $session = Yii::$app->session;
+//        if (Yii::$app->request->get('utm_source')!= null) {
+//            $session['utmSource'] = Yii::$app->request->get('utm_source');
+//            $session['utmMedium'] = Yii::$app->request->get('utm_medium');
+//            $session['utmCampaign'] = Yii::$app->request->get('utm_campaign');
+//            $session['utmTerm'] = Yii::$app->request->get('utm_term');
+//            $session['utmContent'] = Yii::$app->request->get('utm_content');
+//        }
+
+
         $page = Pages::find()->where(['hrurl'=>$pageName])->one();
         if ($page == false) {
 //            $this->layout = 'error';
