@@ -39,7 +39,7 @@ if (Yii::$app->request->get('noempty')) {
     <?= Html::beginForm(['/admin/landingpage/stat'], 'get', ['enctype' => 'multipart/form-data']);   ?>
     <?= Html::input('text', 'days', Yii::$app->request->get('days'), ['class' => 'input30']) ?> дней
     <?= Html::checkbox('noempty', Yii::$app->request->get('noempty'), ['label' => 'без пустых']) ?>
-    <?= Html::submitButton('показать', ['class' => 'btn btn-default btn-xs']) ?>
+    <?= Html::submitButton('Показать', ['class' => 'btn btn-primary btn-xs']) ?>
     <?= Html::endForm() ?>
 
 
