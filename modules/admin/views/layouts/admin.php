@@ -61,6 +61,7 @@ AppAsset::register($this);
                     ['label' => 'Preorders', 'url' => ['/admin/preorders/index']],
                     ['label' => 'Feedback', 'url' => ['/admin/feedback/index']],
                     ['label' => 'UTM', 'url' => ['/admin/preorders/utm']],
+                    ['label' => 'Stat', 'url' => ['/admin/landingpage/stat?days=7']],
                 ],
             ],
 //            ['label' => 'Preorders', 'url' => ['/admin/preorders']],

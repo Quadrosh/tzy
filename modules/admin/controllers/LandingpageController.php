@@ -82,7 +82,7 @@ class LandingpageController extends Controller
      * @param integer $id
      * @return mixed
      */
-    public function actionStat($id,$days)
+    public function actionStat($days)
     {
         Url::remember();
         $daysAgo = $days;
@@ -239,10 +239,22 @@ class LandingpageController extends Controller
             ],
         ]);
 
-        return $this->render('stat', [
-            'model' => $this->findModel($id),
-            'visitsProvider' => $visitsProvider,
-        ]);
+        $LpModelId = Yii::$app->request->get('id');
+
+
+        if ($LpModelId) {
+            $LpModel = LandingPage::find()->where(['id'=>$LpModelId])->one();
+            return $this->render('stat_view', [
+                'model' => $LpModel,
+                'visitsProvider' => $visitsProvider,
+            ]);
+        } else {
+            return $this->render('stat', [
+                'visitsProvider' => $visitsProvider,
+                'sumVisitsByDay' => $sumVisitsByDay,
+            ]);
+        }
+
     }
 
 
