@@ -88,7 +88,7 @@ class LandingpageController extends Controller
         $daysAgo = $days;
         $today = time();
         $oldTime = $today - ($daysAgo*86400); // 24*60*60 = 86400
-        $startPeriod = $oldTime - ($oldTime % 86400)+(0*60*60);
+        $startPeriod = $oldTime - ($oldTime % 86400)-(3*60*60);
 
 
         $visitsByDay=[];
