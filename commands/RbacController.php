@@ -18,8 +18,8 @@ class RbacController extends Controller {
 
     public function actionIndex() {
 
-        $oldAssigns = RolesAssignment::find()->all();
-//        $oldAssigns = null;
+//        $oldAssigns = RolesAssignment::find()->all();
+        $oldAssigns = null;
 
         $auth = \Yii::$app->authManager;
         $auth->removeAll();
@@ -30,16 +30,6 @@ class RbacController extends Controller {
         $stat = $auth->createRole( 'Stat' );
         $creator = $auth->createRole( 'Creator' );
 
-
-
-//        создание разрешений
-//        $moduleUserAdmin = $auth->createPermission('ModuleUserAdmin');
-//        $moduleUserAdmin->description = 'Управление модулем "пользователи"';
-//
-//        $moduleProjectAdmin = $auth->createPermission('ModuleProjectAdmin');
-//        $moduleProjectAdmin->description = 'Управление модулем "проекты"';
-
-//        после создания добавить  $auth->add( $moduleUserAdmin );
 
         $auth->add( $admin );
         $auth->add( $stat );
@@ -80,9 +70,10 @@ class RbacController extends Controller {
 
 
 
-//        $auth->assign($admin,1);
-//        $auth->assign($stat,3);
-//        $auth->assign($creator,4);
+        $auth->assign($admin,1);
+        $auth->assign($admin,3);
+        $auth->assign($stat,5);
+        $auth->assign($creator,4);
 
         if (is_array($oldAssigns)) {
             foreach ($oldAssigns as $oldAssign) {
