@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\LandingPage */
 
-$this->title = 'LandingPage - cтатистика';
+$this->title = 'LandingPage - Stat by day';
 $this->params['breadcrumbs'][] = ['label' => 'Landing Pages', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 

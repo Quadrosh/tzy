@@ -67,7 +67,7 @@ AppAsset::register($this);
                     ['label' => 'Перезвони мне', 'url' => ['/admin/feedback/index']],
                     ['label' => 'Все заявки с UTM', 'url' => ['/admin/preorders/utm']],
                     ['label' => 'Заявки - качество', 'url' => ['/admin/preorders/lead-quality']],
-                    ['label' => 'Stat by day', 'url' => ['/admin/landingpage/stat?days=7']],
+                    ['label' => 'Landing - Stat by day', 'url' => ['/admin/landingpage/stat?days=7']],
                     ['label' => 'Landing - визиты', 'url' => ['/admin/visit']],
                 ],
             ],
