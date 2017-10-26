@@ -47,7 +47,13 @@ class DefaultController extends AdminController
     public function actionIndex()
     {
         Url::remember();
-        $this->layout = 'admin';
+        if (Yii::$app->user->can('adminPermission', [])) {
+            $this->layout = 'admin';
+        }
+        elseif (Yii::$app->user->can('statPermission', [])) {
+            $this->layout = 'stat';
+        }
+
         return $this->render('index');
     }
     /**

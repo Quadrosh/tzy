@@ -7,6 +7,7 @@ use Yii;
 use app\models\Preorders;
 use yii\data\ActiveDataProvider;
 use yii\helpers\ArrayHelper;
+use yii\helpers\Url;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -22,6 +23,24 @@ class PreordersController extends Controller
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => \yii\filters\AccessControl::className(),
+                'except' => ['error'],
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['adminPermission'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['lead-quality','set-quality'],
+                        'roles' => ['statPermission'],
+                    ],
+                    [
+                        'allow' => false,
+                    ],
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -37,6 +56,7 @@ class PreordersController extends Controller
      */
     public function actionIndex()
     {
+        Url::remember();
         $dataProvider = new ActiveDataProvider([
             'query' => Preorders::find(),
             'pagination'=> [
@@ -56,6 +76,7 @@ class PreordersController extends Controller
 
     public function actionUtm()
     {
+        Url::remember();
         $preorders = Preorders::find()->orderBy('date')->all();
         $feedbacks = Feedback::find()->orderBy('date')->all();
         $leads = [];
@@ -74,6 +95,8 @@ class PreordersController extends Controller
             $leads[$leadId]['utm_term']= $preorder['utm_term'];
             $leads[$leadId]['utm_content']= $preorder['utm_content'];
             $leads[$leadId]['date']= $preorder['date'];
+            $leads[$leadId]['quality']= $preorder['quality'];
+            $leads[$leadId]['comment']= $preorder['comment'];
         }
         foreach ($feedbacks as $feedback) {
             $leadId ++;
@@ -88,6 +111,8 @@ class PreordersController extends Controller
             $leads[$leadId]['utm_term']= $feedback['utm_term'];
             $leads[$leadId]['utm_content']= $feedback['utm_content'];
             $leads[$leadId]['date']= $feedback['date'];
+            $leads[$leadId]['quality']= $feedback['quality'];
+            $leads[$leadId]['comment']= $feedback['comment'];
         }
         ArrayHelper::multisort($leads,['date'],[SORT_DESC]);
         return $this->render('utm', [
@@ -95,6 +120,57 @@ class PreordersController extends Controller
         ]);
     }
 
+    public function actionLeadQuality()
+    {
+        Url::remember();
+        if (Yii::$app->user->can('adminPermission', [])) {
+            $this->layout = 'admin';
+        }
+        elseif (Yii::$app->user->can('statPermission', [])) {
+            $this->layout = 'stat';
+        }
+        $preorders = Preorders::find()->orderBy('date')->all();
+        $feedbacks = Feedback::find()->orderBy('date')->all();
+        $leads = [];
+        $leadId = 0;
+        foreach ($preorders as $preorder) {
+            $leadId ++;
+
+            $leads[$leadId]['type']= 'preOrder';
+            $leads[$leadId]['id']= $preorder['id'];
+            $leads[$leadId]['name']= $preorder['cargo'];
+            $leads[$leadId]['phone']= $preorder['phone'];
+            $leads[$leadId]['from_page']= $preorder['from_page'];
+            $leads[$leadId]['utm_source']= $preorder['utm_source'];
+            $leads[$leadId]['utm_medium']= $preorder['utm_medium'];
+            $leads[$leadId]['utm_campaign']= $preorder['utm_campaign'];
+            $leads[$leadId]['utm_term']= $preorder['utm_term'];
+            $leads[$leadId]['utm_content']= $preorder['utm_content'];
+            $leads[$leadId]['date']= $preorder['date'];
+            $leads[$leadId]['quality']= $preorder['quality'];
+            $leads[$leadId]['comment']= $preorder['comment'];
+        }
+        foreach ($feedbacks as $feedback) {
+            $leadId ++;
+            $leads[$leadId]['type']= 'quickForm';
+            $leads[$leadId]['id']= $feedback['id'];
+            $leads[$leadId]['name']= $feedback['name'];
+            $leads[$leadId]['phone']= $feedback['phone'];
+            $leads[$leadId]['from_page']= $feedback['from_page'];
+            $leads[$leadId]['utm_source']= $feedback['utm_source'];
+            $leads[$leadId]['utm_medium']= $feedback['utm_medium'];
+            $leads[$leadId]['utm_campaign']= $feedback['utm_campaign'];
+            $leads[$leadId]['utm_term']= $feedback['utm_term'];
+            $leads[$leadId]['utm_content']= $feedback['utm_content'];
+            $leads[$leadId]['date']= $feedback['date'];
+            $leads[$leadId]['quality']= $feedback['quality'];
+            $leads[$leadId]['comment']= $feedback['comment'];
+        }
+        ArrayHelper::multisort($leads,['date'],[SORT_DESC]);
+        return $this->render('lead-quality', [
+            'leads' => $leads,
+        ]);
+    }
     /**
      * Displays a single Preorders model.
      * @param integer $id
@@ -102,6 +178,7 @@ class PreordersController extends Controller
      */
     public function actionView($id)
     {
+        Url::remember();
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -117,7 +194,7 @@ class PreordersController extends Controller
         $model = new Preorders();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(Url::previous());
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -127,7 +204,6 @@ class PreordersController extends Controller
 
     /**
      * Updates an existing Preorders model.
-     * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
      */
@@ -136,7 +212,7 @@ class PreordersController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(Url::previous());
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -154,7 +230,7 @@ class PreordersController extends Controller
     {
         $this->findModel($id)->delete();
 
-        return $this->redirect(['index']);
+        return $this->redirect(Url::previous());
     }
 
     /**
@@ -170,6 +246,30 @@ class PreordersController extends Controller
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
+        }
+    }
+
+    /**
+     * Updates an existing Preorders model.
+     * @param integer $id
+     * @return mixed
+     */
+    public function actionSetQuality($id)
+    {
+        $model = $this->findModel($id);
+        if (Yii::$app->user->can('adminPermission', [])) {
+            $this->layout = 'admin';
+        }
+        elseif (Yii::$app->user->can('statPermission', [])) {
+            $this->layout = 'stat';
+        }
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(Url::previous());
+        } else {
+            return $this->render('set-quality', [
+                'model' => $model,
+            ]);
         }
     }
 }

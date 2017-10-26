@@ -6,7 +6,7 @@ use yii\grid\GridView;
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'UTM';
+$this->title = 'Заявки - качество';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="preorders-index">
@@ -22,11 +22,6 @@ $this->params['breadcrumbs'][] = $this->title;
                 <th>Имя/Груз</th>
                 <th>Телефон</th>
                 <th>From Page</th>
-                <th>UTM Source</th>
-                <th>UTM Medium</th>
-                <th>UTM Campaign</th>
-                <th>UTM Term</th>
-                <th>UTM Content</th>
                 <th>Дата</th>
                 <th>Качество</th>
                 <th>коментарий</th>
@@ -40,16 +35,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 <td><?= $lead['name'] ?></td>
                 <td><?= $lead['phone'] ?></td>
                 <td><?= $lead['from_page'] ?></td>
-                <td><?= $lead['utm_source'] ?></td>
-                <td><?= $lead['utm_medium'] ?></td>
-                <td><?= $lead['utm_campaign'] ?></td>
-                <td><?= $lead['utm_term'] ?></td>
-                <td><?= $lead['utm_content'] ?></td>
                 <td><?=
                     \Yii::$app->formatter->asDatetime($lead['date'], 'HH:mm dd/MM/yy');
                     ?></td>
                 <td><?= $lead['quality'] ?></td>
                 <td><?= $lead['comment'] ?></td>
+                <td><?= Html::a('<span class="glyphicon glyphicon-pencil"></span>', $lead['type']=='quickForm'?'/admin/feedback/set-quality?id='.$lead['id']:'/admin/preorders/set-quality?id='.$lead['id']) ?></td>
 
             </tr>
         <?php endforeach; ?>

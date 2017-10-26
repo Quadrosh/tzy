@@ -28,8 +28,6 @@ class AdminController extends Controller
                     [
                         'allow' => false,
                     ],
-
-
                 ],
             ],
             'verbs' => [

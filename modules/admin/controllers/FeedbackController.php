@@ -21,6 +21,25 @@ class FeedbackController extends AdminController
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => \yii\filters\AccessControl::className(),
+                'except' => ['error'],
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['adminPermission'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['set-quality'],
+                        'roles' => ['statPermission'],
+                    ],
+                    [
+                        'allow' => false,
+                    ],
+
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -76,15 +95,6 @@ class FeedbackController extends AdminController
     {
         $model = new Feedback();
 
-//
-//        if ($model->load(Yii::$app->request->post())) {
-//        var_dump($model); die;
-//        }
-
-
-
-
-
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
@@ -96,7 +106,6 @@ class FeedbackController extends AdminController
 
     /**
      * Updates an existing Feedback model.
-     * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
      */
@@ -105,7 +114,7 @@ class FeedbackController extends AdminController
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(Url::previous());
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -123,7 +132,7 @@ class FeedbackController extends AdminController
     {
         $this->findModel($id)->delete();
 
-        return $this->redirect(['index']);
+        return $this->redirect(Url::previous());
     }
 
     /**
@@ -139,6 +148,29 @@ class FeedbackController extends AdminController
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
+        }
+    }
+
+    /**
+     * Updates an existing Feedback model.
+     * @param integer $id
+     * @return mixed
+     */
+    public function actionSetQuality($id)
+    {
+        $model = $this->findModel($id);
+        if (Yii::$app->user->can('adminPermission', [])) {
+            $this->layout = 'admin';
+        }
+        elseif (Yii::$app->user->can('statPermission', [])) {
+            $this->layout = 'stat';
+        }
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(Url::previous());
+        } else {
+            return $this->render('set-quality', [
+                'model' => $model,
+            ]);
         }
     }
 }

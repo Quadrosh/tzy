@@ -122,3 +122,9 @@ a.desc:after {
 .input30 {
     width: 35px;
 }
+.preorders-form h6,
+.preorders-form label,
+.feedback-form h6,
+.feedback-form label{
+    color: lightgrey;
+}
