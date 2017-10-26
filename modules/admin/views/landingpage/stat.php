@@ -11,6 +11,7 @@ $this->params['breadcrumbs'][] = ['label' => 'Landing Pages', 'url' => ['index']
 $this->params['breadcrumbs'][] = $this->title;
 
 if (Yii::$app->request->get('noempty')) {
+    $newProvider = [];
     foreach ($sumVisitsByDay as $record) {
         if ($record['utm_source']!=null) {
             $newProvider[]= $record;
@@ -35,7 +36,7 @@ if (Yii::$app->request->get('noempty')) {
 
 
 
-<h2>Просмотры за <?= Yii::$app->request->get('days') ?> дней <?= Yii::$app->request->get('noempty')?'с UTM':'' ?></h2>
+<h4>Просмотры за <?= Yii::$app->request->get('days') ?> дней <?= Yii::$app->request->get('noempty')?'с UTM':'' ?></h4>
     <?= Html::beginForm(['/admin/landingpage/stat'], 'get', ['enctype' => 'multipart/form-data']);   ?>
     <?= Html::input('text', 'days', Yii::$app->request->get('days'), ['class' => 'input30']) ?> дней
     <?= Html::checkbox('noempty', Yii::$app->request->get('noempty'), ['label' => 'без пустых']) ?>
