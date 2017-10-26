@@ -25,6 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <th>Дата</th>
                 <th>Качество</th>
                 <th>коментарий</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
