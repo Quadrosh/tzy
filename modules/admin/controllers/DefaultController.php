@@ -72,7 +72,16 @@ class DefaultController extends AdminController
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
 
-            return $this->redirect('/admin/feedback');
+            if (Yii::$app->user->can('adminPermission', [])) {
+                return $this->redirect('/admin/landingpage/stat?days=7&noempty=1');
+            }
+            elseif (Yii::$app->user->can('statPermission', [])) {
+                return $this->redirect('/admin/preorders/lead-quality');
+            }
+            else {
+                return $this->redirect('/admin');
+            }
+
         }
         return $this->render('login', [
             'model' => $model,
