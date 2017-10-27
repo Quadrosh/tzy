@@ -2,6 +2,7 @@
 
 namespace app\modules\admin\controllers;
 
+use app\models\RolesAssignment;
 use Yii;
 use app\models\User;
 use yii\data\ActiveDataProvider;
@@ -68,8 +69,11 @@ class UserManageController extends Controller
     public function actionView($id)
     {
         Url::remember();
+        $roleAssign = RolesAssignment::find()->where(['user_id'=>$id])->one()
+            ? RolesAssignment::find()->where(['user_id'=>$id])->one() : new RolesAssignment;
         return $this->render('view', [
             'model' => $this->findModel($id),
+            'roleAssign' => $roleAssign,
         ]);
     }
 
@@ -140,6 +144,10 @@ class UserManageController extends Controller
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
+        $assigned = RolesAssignment::find()->where(['user_id'=>$id])->one();
+        if ($assigned) {
+            $assigned->delete();
+        }
 
         return $this->redirect(['index']);
     }
@@ -157,6 +165,49 @@ class UserManageController extends Controller
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
+        }
+    }
+
+    /**
+     * Updates an existing User model.
+     * If update is successful, the browser will be redirected to the 'view' page.
+     * @param integer $id
+     * @return mixed
+     */
+    public function actionAssign($id)
+    {
+        $assigned = RolesAssignment::find()->where(['user_id'=>$id])->one();
+        $request = Yii::$app->request->post('RolesAssignment');
+
+        if ($assigned ) {
+            $assigned['item_name'] = $request['item_name'];
+            $assign = $assigned;
+        } else {
+            $assign = new RolesAssignment();
+            $assign['item_name'] = $request['item_name'];
+            $assign['user_id'] = $id;
+        }
+
+        if ($assign->save()){
+//            Yii::$app->session->setFlash('success', "получилось");
+            return $this->redirect(Url::previous());
+        } else {
+            Yii::$app->session->setFlash('error', "неполучается");
+            return $this->redirect(Url::previous());
+        }
+
+
+    }
+    public function actionSetPass($id)
+    {
+        $post = Yii::$app->request->post('User');
+        $password = $post['password_hash'];
+        $model = $this->findModel($id);
+        $model->password_hash = Yii::$app->security->generatePasswordHash($password);
+
+        if ($model->save()) {
+            Yii::$app->session->setFlash('success', 'пароль пользователя '.$model->username.' изменен');
+            return $this->redirect(Url::previous());
         }
     }
 }

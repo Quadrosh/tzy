@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
 
 /**
  * This is the model class for table "tbl_auth_assignment".
@@ -23,6 +24,16 @@ class RolesAssignment extends \yii\db\ActiveRecord
         return 'auth_assignment';
     }
 
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => TimestampBehavior::className(),
+//                'createdAtAttribute' => 'date',
+                'updatedAtAttribute' => false,
+            ],
+        ];
+    }
     /**
      * @return \yii\db\ActiveQuery
      */

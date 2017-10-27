@@ -2,13 +2,15 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use \app\models\RolesAssignment;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\User */
 
-$this->title = $model->id;
+$this->title = $model->username;
 $this->params['breadcrumbs'][] = ['label' => 'Users', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
+
 ?>
 <div class="user-view">
 
@@ -35,8 +37,31 @@ $this->params['breadcrumbs'][] = $this->title;
             'password_reset_token',
             'email:email',
             'status',
-            'created_at',
-            'updated_at',
+//            'role',
+            [
+                'attribute'=>'role',
+                'value' => function($data)
+                {
+                    $theData = \app\models\RolesAssignment::find()->where(['user_id'=>$data['id']])->one();
+                    return $theData['item_name'];
+                },
+            ],
+//            'created_at',
+            [
+                'attribute'=>'created_at',
+                'value' => function($data)
+                {
+                    return \Yii::$app->formatter->asDatetime($data['created_at'], 'dd/MM/yy HH:mm');
+                },
+            ],
+//            'updated_at',
+            [
+                'attribute'=>'updated_at',
+                'value' => function($data)
+                {
+                    return \Yii::$app->formatter->asDatetime($data['updated_at'], 'dd/MM/yy HH:mm');
+                },
+            ],
         ],
     ]) ?>
 
@@ -47,7 +72,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <h4>Роль</h4>
         <?php $form = yii\bootstrap\ActiveForm::begin([
             'method' => 'post',
-            'action' => ['/article/update?id='.$model['id']],
+            'action' => ['/admin/user-manage/assign?id='.$model['id']],
             'layout' => 'horizontal',
             'fieldConfig' => [
                 'template' => "{beginWrapper}\n{input}\n{error}\n{endWrapper}",
@@ -59,11 +84,41 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             'options' => ['enctype' => 'multipart/form-data'],
         ]); ?>
-        <?= $form->field($model, 'status',[
+        <?= $form->field($roleAssign, 'item_name',[
             'inputTemplate' => '<div class="input-group"><span class="lRound">{input}</span><span class="input-group-btn">'.
                 '<button type="submit" class="btn rRound btn-primary">Назначить <i class="fa fa-share" aria-hidden="true"></i></button></span></div>',
         ])->dropDownList(\yii\helpers\ArrayHelper::map(\app\models\Roles::find()->where(['type'=>1])->orderBy('name')->all(), 'name','name')) ?>
+        <?= $form->field($roleAssign, 'user_id')->hiddenInput(['value'=>$model['id']])->label(false) ?>
         <?php yii\bootstrap\ActiveForm::end() ?>
     </div>
 </div>
 <!--   / назначение роли -->
+
+<!--    назначение пароля -->
+<div class="row mt20 bt pt20">
+    <div class="col-xs-6 col-xs-offset-3 ">
+        <h4>Пароль</h4>
+
+        <?php $form = yii\bootstrap\ActiveForm::begin([
+            'method' => 'post',
+            'action' => ['/admin/user-manage/set-pass?id='.$model['id']],
+            'id' => 'setpass',
+            'layout' => 'horizontal',
+            'fieldConfig' => [
+                'template' => "{beginWrapper}\n{input}\n{error}\n{endWrapper}",
+                'horizontalCssClasses' => [
+                    'wrapper' => 'col-sm-12 col-sm-offset-0',
+                    'error' => '',
+                    'hint' => 'статус',
+                ],
+            ],
+            'options' => ['enctype' => 'multipart/form-data'],
+        ]); ?>
+        <?= $form->field($model, 'password_hash',[
+            'inputTemplate' => '<div class="input-group"><span class="lRound">{input}</span><span class="input-group-btn">'.
+                '<button type="submit" class="btn rRound btn-primary">Изменить <i class="fa fa-share" aria-hidden="true"></i></button></span></div>',
+        ])->textInput(['value'=>''])->label(false) ?>
+        <?php yii\bootstrap\ActiveForm::end() ?>
+    </div>
+</div>
+<!--   / назначение пароля -->

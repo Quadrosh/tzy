@@ -24,6 +24,15 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id',
             'username',
+//            'role',
+            [
+                'attribute'=>'role',
+                'value' => function($data)
+                {
+                    $theData = \app\models\RolesAssignment::find()->where(['user_id'=>$data['id']])->one();
+                    return $theData['item_name'];
+                },
+            ],
 //            'auth_key',
 //            'password_hash',
 //            'password_reset_token',

@@ -27,6 +27,8 @@ class User extends ActiveRecord implements IdentityInterface
     const STATUS_ACTIVE = 10;
     public $password;
 
+    public $role;
+
 
     /**
      * @inheritdoc
@@ -66,6 +68,8 @@ class User extends ActiveRecord implements IdentityInterface
             [['username'], 'unique'],
             [['email'], 'unique'],
             [['password_reset_token'], 'unique'],
+            [[ 'role'], 'safe'],
+
 //            [[ 'created_at', 'updated_at'], 'safe'],
 //            [[ 'created_at', 'updated_at'], 'integer'],
         ];
@@ -220,5 +224,12 @@ class User extends ActiveRecord implements IdentityInterface
         $this->password_reset_token = null;
     }
 
+    /**
+     *
+     */
+    public function getRoleAssign()
+    {
+        return $this->hasOne(RolesAssignment::className(),['user_id'=>'id']);
+    }
 
 }
