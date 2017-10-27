@@ -69,6 +69,7 @@ $config = [
                 '<pagename:[0-9a-z\-\_]+>.html' => 'site/page',
 
                 ['pattern'=>'admin', 'route'=>'admin/'],
+                'admin/user-manage' => 'admin/user-manage/index',
 //                ['pattern'=>'<action>', 'route'=>'site/index'],
                 ['pattern'=>'<action>', 'route'=>'site/page'],
             ],
