@@ -72,7 +72,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <h4>Роль</h4>
         <?php $form = yii\bootstrap\ActiveForm::begin([
             'method' => 'post',
-            'action' => ['/admin/user-manage/assign?id='.$model['id']],
+            'action' => ['/admin/usermanage/assign?id='.$model['id']],
             'layout' => 'horizontal',
             'fieldConfig' => [
                 'template' => "{beginWrapper}\n{input}\n{error}\n{endWrapper}",
@@ -101,7 +101,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
         <?php $form = yii\bootstrap\ActiveForm::begin([
             'method' => 'post',
-            'action' => ['/admin/user-manage/set-pass?id='.$model['id']],
+            'action' => ['/admin/usermanage/set-pass?id='.$model['id']],
             'id' => 'setpass',
             'layout' => 'horizontal',
             'fieldConfig' => [
