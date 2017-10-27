@@ -15,7 +15,7 @@ use yii\filters\VerbFilter;
 /**
  * UsermanageController implements the CRUD actions for User model.
  */
-class UserManageController extends Controller
+class UsermanageController extends Controller
 {
     /**
      * @inheritdoc

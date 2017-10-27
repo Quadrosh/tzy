@@ -39,7 +39,7 @@ AppAsset::register($this);
         'items' => [
 //            ['label' => 'Gii', 'url' => ['/gii']],
             Yii::$app->user->can('creatorPermission', []) ? (
-            ['label' => 'Users', 'url' => ['/admin/user-manage']]
+            ['label' => 'Users', 'url' => ['/admin/usermanage']]
             ) : (
             ['label' => false]
             ),
