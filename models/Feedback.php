@@ -50,7 +50,7 @@ class Feedback extends \yii\db\ActiveRecord
         return [
             [['done','date'], 'integer'],
             [['text'], 'string'],
-            [['quality'], 'string', 'max' => 255],
+            [['quality','manager'], 'string', 'max' => 255],
             [['comment'], 'string', 'max' => 510],
             [['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'], 'string'],
             ['utm_source', 'filter', 'filter' => function ($value) {

@@ -30,11 +30,15 @@ use yii\widgets\ActiveForm;
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-6">
-            <p><?= $form->field($model, 'quality')->dropDownList([
-                    '?'=>'непонятно',
-                    'good'=>'Хорошо',
-                    'bad'=>'Плохо'
+        <div class="col-sm-3">
+            <p><?= $form->field($model, 'quality')->dropDownList(\yii\helpers\ArrayHelper::map(\app\models\OrderStatus::find()->orderBy('name')->all(), 'id','name'),[
+                    'prompt'=>'',
+                ])->label('Статус') ?>
+            </p>
+        </div>
+        <div class="col-sm-3">
+            <p><?= $form->field($model, 'manager')->dropDownList(\yii\helpers\ArrayHelper::map(\app\models\Manager::find()->orderBy('name')->all(), 'id','name'),[
+                    'prompt'=>'',
                 ]) ?>
             </p>
         </div>

@@ -61,6 +61,16 @@ AppAsset::register($this);
                 ],
             ],
             [
+                'label' => 'lib',
+                'items' => [
+                    ['label' => 'Менеджеры', 'url' => ['/admin/manager']],
+                    ['label' => 'Статус заказа', 'url' => ['/admin/orderstatus']],
+                    ['label' => 'Pages', 'url' => ['/admin/pages']],
+                    ['label' => 'Images', 'url' => ['/admin/imagefiles']],
+
+                ],
+            ],
+            [
                 'label' => 'Заявки',
                 'items' => [
                     ['label' => 'Предзаказы', 'url' => ['/admin/preorders/index']],
@@ -73,8 +83,6 @@ AppAsset::register($this);
             ],
 //            ['label' => 'Preorders', 'url' => ['/admin/preorders']],
 //            ['label' => 'Feedback', 'url' => ['/admin/feedback']],
-            ['label' => 'Pages', 'url' => ['/admin/pages']],
-            ['label' => 'Images', 'url' => ['/admin/imagefiles']],
 //            ['label' => 'Articles', 'url' => ['/site/contact']],
             Yii::$app->user->isGuest ? (
             ['label' => 'Login', 'url' => ['/admin/default/login']]

@@ -2,18 +2,19 @@
 
 use yii\helpers\Html;
 
-/* @var $this yii\web\View */
-/* @var $model app\models\Feedback */
 
-$this->title = 'Quick Form set quality: ID - ' . $model->id;
+/* @var $this yii\web\View */
+/* @var $model app\models\Preorders */
+
+$this->title = 'Звонок';
 $this->params['breadcrumbs'][] = ['label' => 'Заявки', 'url' => ['/admin/preorders/lead-quality']];
-$this->params['breadcrumbs'][] = 'Update quickForm '. $model->id;
+$this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="feedback-update">
+<div class="preorders-create">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <?= $this->render('_sq_form', [
+    <?= $this->render('_call_update_form', [
         'model' => $model,
     ]) ?>
 
