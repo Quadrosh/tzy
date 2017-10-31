@@ -121,8 +121,18 @@ class PreordersController extends Controller
             $leads[$leadId]['comment']= $feedback['comment'];
         }
         ArrayHelper::multisort($leads,['date'],[SORT_DESC]);
+
+        $dataProvider = new ArrayDataProvider([
+            'allModels'=>$leads,
+            'pagination' => [
+                'pageSize' => 100,
+            ],
+//            'sort' => [
+//                'attributes' => ['manager', 'date',],
+//            ],
+        ]);
         return $this->render('utm', [
-            'leads' => $leads,
+            'dataProvider' => $dataProvider,
         ]);
     }
 
@@ -226,7 +236,6 @@ class PreordersController extends Controller
         return $this->render('lead-quality', [
             'dataProvider' => $leadsDataProvider,
             'current' => $current,
-
         ]);
     }
     /**
