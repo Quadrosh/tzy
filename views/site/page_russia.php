@@ -36,6 +36,16 @@ use app\widgets\Alert;
         <!--        <div class="col-sm-12"> --><?//= $form->field($preorderForm, 'captcha')->widget(Captcha::className()) ?><!--</div>-->
 
         <?= $form->field($preorderForm, 'from_page')->hiddenInput(['value'=>$page->hrurl])->label(false) ?>
+        <?= $form->field($preorderForm, 'utm_source')
+            ->hiddenInput([ 'id' => 'preorder_form-utm_source'])->label(false) ?>
+        <?= $form->field($preorderForm, 'utm_medium')
+            ->hiddenInput([ 'id' => 'preorder_form-utm_medium'])->label(false) ?>
+        <?= $form->field($preorderForm, 'utm_campaign')
+            ->hiddenInput([ 'id' => 'preorder_form-utm_campaign'])->label(false) ?>
+        <?= $form->field($preorderForm, 'utm_term')
+            ->hiddenInput([ 'id' => 'preorder_form-utm_term'])->label(false) ?>
+        <?= $form->field($preorderForm, 'utm_content')
+            ->hiddenInput([ 'id' => 'preorder_form-utm_content'])->label(false) ?>
         <div class="col-sm-6 col-sm-offset-3 text-center">
             <?= Html::submitButton('отправить заявку', ['class' => 'btn btn-primary sendorder-btn mt30 mb50']) ?>
         </div>

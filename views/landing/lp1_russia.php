@@ -76,15 +76,23 @@ $preorder = new \app\models\Preorders();
         ]); ?>
 
         <?= Html::errorSummary($feedback, ['class' => 'errors']) ?>
-        <?= $form->field($feedback, 'name')->hiddenInput(['value'=>'Noname from top form', 'id' => 'quickorder-form-top-name'])->label(false) ?>
+        <?= $form->field($feedback, 'name')
+            ->hiddenInput(['value'=>'Noname from top form', 'id' => 'quickorder-form-top-name'])->label(false) ?>
 
-        <?= $form->field($feedback, 'utm_source')->hiddenInput(['value'=>$utm['source'], 'id' => 'quickorder-form-top-utm_source'])->label(false) ?>
-        <?= $form->field($feedback, 'utm_medium')->hiddenInput(['value'=>$utm['medium'], 'id' => 'quickorder-form-top-utm_medium'])->label(false) ?>
-        <?= $form->field($feedback, 'utm_campaign')->hiddenInput(['value'=>$utm['campaign'], 'id' => 'quickorder-form-top-utm_campaign'])->label(false) ?>
-        <?= $form->field($feedback, 'utm_term')->hiddenInput(['value'=>$utm['term'], 'id' => 'quickorder-form-top-utm_term'])->label(false) ?>
-        <?= $form->field($feedback, 'utm_content')->hiddenInput(['value'=>$utm['content'], 'id' => 'quickorder-form-top-utm_content'])->label(false) ?>
+        <?= $form->field($feedback, 'utm_source')
+            ->hiddenInput(['value'=>$utm['source'], 'id' => 'quickorder-form-top-utm_source'])->label(false) ?>
+        <?= $form->field($feedback, 'utm_medium')
+            ->hiddenInput(['value'=>$utm['medium'], 'id' => 'quickorder-form-top-utm_medium'])->label(false) ?>
+        <?= $form->field($feedback, 'utm_campaign')
+            ->hiddenInput(['value'=>$utm['campaign'], 'id' => 'quickorder-form-top-utm_campaign'])->label(false) ?>
+        <?= $form->field($feedback, 'utm_term')
+            ->hiddenInput(['value'=>$utm['term'], 'id' => 'quickorder-form-top-utm_term'])->label(false) ?>
+        <?= $form->field($feedback, 'utm_content')
+            ->hiddenInput(['value'=>$utm['content'], 'id' => 'quickorder-form-top-utm_content'])->label(false) ?>
 
-        <?= $form->field($feedback, 'from_page')->hiddenInput(['value'=>$page ['hrurl'],'id' => 'quickorder-form-top-from_page'])->label(false) ?>
+        <?= $form->field($feedback, 'from_page')
+            ->hiddenInput(['value'=>$page ['hrurl'],'id' => 'quickorder-form-top-from_page'])->label(false) ?>
+
         <?= $form->field($feedback, 'phone', [
             'inputOptions' => [
                 'placeholder' => 'ТЕЛЕФОН'

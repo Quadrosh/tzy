@@ -15,7 +15,7 @@ class VisitController extends Controller
      */
     public function actionCompress()
     {
-        $daysAgo = 7;
+        $daysAgo = 30;
         $today = time();
         $oldTime = $today - ($daysAgo*86400); // 24*60*60 = 86400
         $allVisits = Visit::find()
