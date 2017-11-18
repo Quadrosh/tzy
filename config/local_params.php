@@ -1,5 +1,6 @@
 <?php
 
 return [
-    'adminEmail' => 'admin@example.com',
+    'adminEmail' => 'quadrosh@gmail.com',
+    'cookieValidationKey' => 'Oqt7HoFcW8hC7Pe7KDhyOQiR1U-JQb88',
 ];
