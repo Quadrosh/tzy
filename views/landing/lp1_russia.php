@@ -103,7 +103,8 @@ $preorder = new \app\models\Preorders();
         <?php ActiveForm::end(); ?>
     </section>
 
-    <section class="<?= $sections['action']['stylekey'] ?> <?= $sections['action']['section_type'] ?>">
+<!-- акция -->
+    <section id="actionSection" class="<?= $sections['action']['stylekey'] ?> <?= $sections['action']['section_type'] ?>">
         <div class="row">
             <div class="col-sm-3">
                 <h4 class="tillTo">до <?php
@@ -139,7 +140,8 @@ $preorder = new \app\models\Preorders();
         </div>
     </section>
 
-    <section class="<?= $sections['services']['stylekey'] ?> <?= $sections['services']['section_type'] ?>">
+<!-- services -->
+    <section id="servicesSection" class="<?= $sections['services']['stylekey'] ?> <?= $sections['services']['section_type'] ?>">
         <div class="row">
             <div class="col-sm-12 text-center">
                 <h2 class="head"><?= $sections['services']['head'] ?></h2>
@@ -208,7 +210,8 @@ $preorder = new \app\models\Preorders();
 
     </section>
 
-    <section class="<?= $sections['call2action']['stylekey'] ?> <?= $sections['call2action']['section_type'] ?>">
+<!-- servicesCall2action -->
+    <section id="servicesCall2action" class="<?= $sections['call2action']['stylekey'] ?> <?= $sections['call2action']['section_type'] ?>">
         <div class="row">
             <?php $form = ActiveForm::begin([
                 'id' => 'services-call2action',
@@ -262,7 +265,9 @@ $preorder = new \app\models\Preorders();
 
          </div>
     </section>
-    <section class="<?= $sections['whyWe']['stylekey'] ?> <?= $sections['whyWe']['section_type'] ?>">
+
+<!--  whyWe  -->
+    <section id="whyWeSection" class="<?= $sections['whyWe']['stylekey'] ?> <?= $sections['whyWe']['section_type'] ?>">
         <div class="row">
             <div class="col-sm-12 text-center">
                 <h2 class="head"><?= $sections['whyWe']['head'] ?></h2>
@@ -285,7 +290,7 @@ $preorder = new \app\models\Preorders();
     </section>
 
 <!-- how we work -->
-    <section class="<?= $sections['howWeWork']['stylekey'] ?> <?= $sections['howWeWork']['section_type'] ?>">
+    <section id="howWeWorkSection" class="<?= $sections['howWeWork']['stylekey'] ?> <?= $sections['howWeWork']['section_type'] ?>">
         <div class="row">
             <div class="col-sm-12 text-center">
                 <h2 class="head"><?= $sections['howWeWork']['head'] ?></h2>
@@ -501,6 +506,8 @@ $preorder = new \app\models\Preorders();
         </div>
 
     </section>
+
+<!-- numbers -->
     <section id="numberSection" class="<?= $sections['numbers']['stylekey'] ?> <?= $sections['numbers']['section_type'] ?>"  style=" background-image: url(/img/<?= $sections['numbers']['image'] ?>)">
         <div class="row">
             <div class="col-sm-4 text-center">
@@ -530,8 +537,8 @@ $preorder = new \app\models\Preorders();
         </div>
     </section>
 
-<!--  проекты  -->
-    <section class="<?= $sections['projects']['stylekey'] ?> <?= $sections['projects']['section_type'] ?>">
+<!--  наши проекты  -->
+    <section id="ourProjectsSection" class="<?= $sections['projects']['stylekey'] ?> <?= $sections['projects']['section_type'] ?>">
         <div class="row">
             <div class="col-sm-12 text-center">
                 <h2 class="head"><?= $sections['projects']['head'] ?></h2>
@@ -601,7 +608,7 @@ $preorder = new \app\models\Preorders();
 
 <!--    Reviews   -->
 
-    <section class="<?= $sections['reviews']['stylekey'] ?> <?= $sections['reviews']['section_type'] ?>">
+    <section id="reviewsSection" class="<?= $sections['reviews']['stylekey'] ?> <?= $sections['reviews']['section_type'] ?>">
         <div class="row">
             <div class="col-sm-12 text-center">
                 <h2 class="head"><?= $sections['reviews']['head'] ?></h2>
@@ -664,7 +671,9 @@ $preorder = new \app\models\Preorders();
         </div>
 
     </section>
-    <section class="<?= $sections['clients']['stylekey'] ?> <?= $sections['clients']['section_type'] ?>">
+
+<!--    clients   -->
+    <section id="clientsSection" class="<?= $sections['clients']['stylekey'] ?> <?= $sections['clients']['section_type'] ?>">
         <div class="row">
             <div class="col-sm-12 text-center">
                 <h2 class="head"><?= $sections['clients']['head'] ?></h2>
@@ -701,6 +710,8 @@ $preorder = new \app\models\Preorders();
         </div>
 
     </section>
+
+<!--    main Order   -->
     <section id="mainOrderSection" class="<?= $sections['order']['stylekey'] ?> <?= $sections['order']['section_type'] ?>">
         <div class="row">
             <div class="col-sm-12 text-center">
