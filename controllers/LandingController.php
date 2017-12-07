@@ -2,6 +2,8 @@
 
 namespace app\controllers;
 
+use app\models\ChatItem;
+use app\models\ChatMessage;
 use app\models\LandingListitem;
 use app\models\LandingPage;
 use app\models\LandingSection;
@@ -176,12 +178,32 @@ class LandingController extends Controller
 
 
 
+        //  chat
+        if (!isset(Yii::$app->request->cookies['userCookiesId'])) {
+            $userId = Yii::$app->request->csrfToken;
+            Yii::$app->response->cookies->add(new \yii\web\Cookie([
+                'name' => 'userCookiesId',
+                'value' => $userId,
+            ]));
+        } else {
+            $userId = Yii::$app->request->cookies['userCookiesId'];
+        }
+        $chat = ChatItem::find()->where(['user_id'=>$userId])->one();
+        if ($chat == null) {
+            $chat = new ChatItem;
+            $chat['user_id'] = $userId;
+        }
+        $this->view->params['chat'] = $chat;
+        // !chat
+
+
+
+
         return $this->render($this->landingPage->view,[
             'page' => $this->landingPage,
             'sections' => $sections,
             'preorderForm' => $preorderForm,
             'utm' => $utm,
-
         ]);
     }
 

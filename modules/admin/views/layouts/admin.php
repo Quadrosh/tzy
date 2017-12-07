@@ -67,6 +67,8 @@ AppAsset::register($this);
                     ['label' => 'Статус заказа', 'url' => ['/admin/orderstatus']],
                     ['label' => 'Pages', 'url' => ['/admin/pages']],
                     ['label' => 'Images', 'url' => ['/admin/imagefiles']],
+                    ['label' => 'Chat Items', 'url' => ['/admin/chatitem']],
+                    ['label' => 'Chat Messages', 'url' => ['/admin/chatmessage']],
 
                 ],
             ],
