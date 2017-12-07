@@ -9,6 +9,10 @@ use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\ContentNegotiator;
+use yii\web\Response;
+
+
 
 /**
  * ChatitemController implements the CRUD actions for ChatItem model.
@@ -21,12 +25,16 @@ class ChatController extends Controller
     public function behaviors()
     {
         return [
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['POST'],
+            'contentNegotiator' => [
+                'class'   => ContentNegotiator::className(),
+                'formats' => [
+                    'application/json' => Response::FORMAT_JSON,
                 ],
             ],
+            //            'rateLimiter'       => [
+//                'class' => RateLimiter::className(),
+//            ],
+
         ];
     }
 
@@ -124,19 +132,19 @@ class ChatController extends Controller
 
         if ($message['text'] == '/start') {
             $this->sendMessage([
-                'chat_id' => $message['chat']['id'],  // $message['from']['id']
+                'chat_id' => $message['from']['id'],  // $message['from']['id']
                 'text' => 'Привет, я бот Перевозки Фурой, ниже список опций',
                 'reply_markup' => json_encode([
                     'inline_keyboard'=>[
                         [
                             ['text'=>"Кнопка",'callback_data'=> 'motivatorList/you/1'],
                         ],
-
                     ]
                 ]),
             ]);
 
         }
+
         return 'final return';
     }
 
@@ -158,7 +166,7 @@ class ChatController extends Controller
 
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-        curl_setopt($ch, CURLOPT_USERAGENT, "TeleBot");
+        curl_setopt($ch, CURLOPT_USERAGENT, "Telebot");
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         if (count($option)) {
             curl_setopt($ch, CURLOPT_POST, true);
