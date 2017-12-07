@@ -137,6 +137,7 @@ class ChatController extends Controller
             ]);
 
         }
+        return 'final return';
     }
 
     public function sendMessage(array $option){
