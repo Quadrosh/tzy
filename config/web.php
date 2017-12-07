@@ -59,6 +59,8 @@ $config = [
 //            'baseUrl' => 'site/index',
             'rules' => [
 //                'admin/manager' => 'admin/manager/index',
+
+                $params['botAddress'] => '/chat/bot',
                 'chat/post' => '/chat/post',
                 't/<testpage:[0-9a-z\-\_]+>' => 'test/test',
                 'dev/<testpage:[0-9a-z\-\_]+>' => 'test/dev',

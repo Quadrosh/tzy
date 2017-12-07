@@ -106,4 +106,108 @@ class ChatController extends Controller
     }
 
 
+    public function beforeAction($action)
+    {
+        if (in_array($action->id, ['bot'])) {
+            $this->enableCsrfValidation = false;
+        }
+        return parent::beforeAction($action);
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function actionBot()
+    {
+        $message = Yii::$app->request->post('message'); // array
+        $callbackQuery = Yii::$app->request->post('callback_query'); // array
+
+        if ($message['text'] == '/start') {
+            $this->sendMessage([
+                'chat_id' => $message['chat']['id'],  // $message['from']['id']
+                'text' => 'Привет, я бот Перевозки Фурой, ниже список опций',
+                'reply_markup' => json_encode([
+                    'inline_keyboard'=>[
+                        [
+                            ['text'=>"Кнопка",'callback_data'=> 'motivatorList/you/1'],
+                        ],
+
+                    ]
+                ]),
+            ]);
+
+        }
+    }
+
+    public function sendMessage(array $option){
+        $chat_id = $option['chat_id'];
+        $text = urlencode($option['text']);
+        unset($option['chat_id']);
+        unset($option['text']);
+        $jsonResponse = $this->curlCall("https://api.telegram.org/bot" .
+            Yii::$app->params['botToken'].
+            "/sendMessage?chat_id=".$chat_id .
+            '&text='.$text, $option);
+        return json_decode($jsonResponse);
+    }
+
+    private function curlCall($url, $option=array(), $headers=array())
+    {
+        $attachments = ['photo', 'sticker', 'audio', 'document', 'video'];
+
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_USERAGENT, "TeleBot");
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        if (count($option)) {
+            curl_setopt($ch, CURLOPT_POST, true);
+            foreach($attachments as $attachment){
+                if(isset($option[$attachment])){
+                    $option[$attachment] = $this->curlFile($option[$attachment]);
+                    break;
+                }
+            }
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $option);
+        }
+        $r = curl_exec($ch);
+        if($r == false){
+            $text = 'error '.curl_error($ch);
+            $myfile = fopen("error_telegram.log", "w") or die("Unable to open file!");
+            fwrite($myfile, $text);
+            fclose($myfile);
+        }
+        curl_close($ch);
+        return $r;
+    }
+
+    private function curlFile($path)
+    {
+        if (is_array($path))
+            return $path['file_id'];
+        $realPath = realpath($path);
+        if (class_exists('CURLFile'))
+            return new \CURLFile($realPath);
+        return '@' . $realPath;
+    }
+
+    /**
+     *   @var array
+     *   $this->answerCallbackQuery([
+     *       'callback_query_id' => '3343545121', //require
+     *       'text' => 'text', //Optional
+     *       'show_alert' => 'my alert',  //Optional
+     *       'url' => 'http://sample.com', //Optional
+     *       'cache_time' => 123231,  //Optional
+     *   ]);
+     *   The answer will be displayed to the user as a notification at the top of the chat screen or as an alert.
+     *  On success, True is returned.
+     */
+    public function answerCallbackQuery(array $option = [])
+    {
+        $jsonResponse = $this->curlCall("https://api.telegram.org/bot" .
+            Yii::$app->params['botToken'] .
+            "/answerCallbackQuery", $option);
+        return json_decode($jsonResponse);
+    }
+
 }

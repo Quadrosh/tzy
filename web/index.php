@@ -1,6 +1,8 @@
 <?php
 
 $GLOBALS['YII_APP_MODE']='PROD'; // PROD <-> DEV
+// Режим DEV только для разработки на локальной машине и отладки!!!
+// В режиме DEV заявки отправляютя на тестовый email, указанный напрямую в моделях Feedback и Preorders
 
 
 if ($GLOBALS['YII_APP_MODE']=='DEV') {
