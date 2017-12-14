@@ -106,6 +106,8 @@ $this->params['breadcrumbs'][] = $this->title;
             <th>Text</th>
             <th>Extra</th>
             <th>Image</th>
+            <th>Image Alt</th>
+
 
             <th class="action-column">&nbsp;</th>
         </tr>
@@ -121,6 +123,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <td><?= nl2br($listItem['text']) ?></td>
                 <td><?= $listItem['extra'] ?></td>
                 <td><?= $listItem['image'] ?></td>
+                <td><?= $listItem['image_alt'] ?></td>
 
                 <td>
                     <a href="/admin/landinglistitem/view?id=<?= $listItem['id'] ?>" title="View" aria-label="View" data-pjax="0"><span class="glyphicon glyphicon-eye-open"></span></a>
