@@ -131,3 +131,6 @@ a.desc:after {
 .summary{
     color: lightgrey;
 }
+.landing-section-view .img {
+    width: 100%;
+}

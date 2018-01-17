@@ -129,51 +129,99 @@ class LandingController extends Controller
         //секции
         $allSections = LandingSection::find()->where(['page_id'=>$this->landingPage->id])->orderBy('order_num')->all();
         $sections = [];
-        $sections['top'] = $allSections[0];
-        $sections['action'] = $allSections[1];
-        $sections['services'] = $allSections[2];
-        $sections['call2action'] = $allSections[3];
-        $sections['whyWe'] = $allSections[4];
-        $sections['howWeWork'] = $allSections[5];
-        $sections['numbers'] = $allSections[6];
-        $sections['projects'] = $allSections[7];
-        $sections['reviews'] = $allSections[8];
-        $sections['clients'] = $allSections[9];
-        $sections['order'] = $allSections[10];
+        if ($this->landingPage->id < 6) {
+            $sections['top'] = $allSections[0];
+            $sections['action'] = $allSections[1];
+            $sections['services'] = $allSections[2];
+            $sections['call2action'] = $allSections[3];
+            $sections['whyWe'] = $allSections[4];
+            $sections['howWeWork'] = $allSections[5];
+            $sections['numbers'] = $allSections[6];
+            $sections['projects'] = $allSections[7];
+            $sections['reviews'] = $allSections[8];
+            $sections['clients'] = $allSections[9];
+            $sections['order'] = $allSections[10];
 
-        // list items
-        $sections['topListItems']=LandingListitem::find()
-            ->where(['section_id'=>$sections['top']['id']])
-            ->orderBy('order_num')
-            ->all();
-        $sections['servicesListItems']=LandingListitem::find()
-            ->where(['section_id'=>$sections['services']['id']])
-            ->orderBy('order_num')
-            ->all();
-        $sections['whyWeListItems']=LandingListitem::find()
-            ->where(['section_id'=>$sections['whyWe']['id']])
-            ->orderBy('order_num')
-            ->all();
-        $sections['howWeWorkListItems']=LandingListitem::find()
-            ->where(['section_id'=>$sections['howWeWork']['id']])
-            ->orderBy('order_num')
-            ->all();
-        $sections['numbersListItems']=LandingListitem::find()
-            ->where(['section_id'=>$sections['numbers']['id']])
-            ->orderBy('order_num')
-            ->all();
-        $sections['projectsListItems']=LandingListitem::find()
-            ->where(['section_id'=>$sections['projects']['id']])
-            ->orderBy('order_num')
-            ->all();
-        $sections['reviewsListItems']=LandingListitem::find()
-            ->where(['section_id'=>$sections['reviews']['id']])
-            ->orderBy('order_num')
-            ->all();
-        $sections['clientsListItems']=LandingListitem::find()
-            ->where(['section_id'=>$sections['clients']['id']])
-            ->orderBy('order_num')
-            ->all();
+            // list items
+            $sections['topListItems']=LandingListitem::find()
+                ->where(['section_id'=>$sections['top']['id']])
+                ->orderBy('order_num')
+                ->all();
+            $sections['servicesListItems']=LandingListitem::find()
+                ->where(['section_id'=>$sections['services']['id']])
+                ->orderBy('order_num')
+                ->all();
+            $sections['whyWeListItems']=LandingListitem::find()
+                ->where(['section_id'=>$sections['whyWe']['id']])
+                ->orderBy('order_num')
+                ->all();
+            $sections['howWeWorkListItems']=LandingListitem::find()
+                ->where(['section_id'=>$sections['howWeWork']['id']])
+                ->orderBy('order_num')
+                ->all();
+            $sections['numbersListItems']=LandingListitem::find()
+                ->where(['section_id'=>$sections['numbers']['id']])
+                ->orderBy('order_num')
+                ->all();
+            $sections['projectsListItems']=LandingListitem::find()
+                ->where(['section_id'=>$sections['projects']['id']])
+                ->orderBy('order_num')
+                ->all();
+            $sections['reviewsListItems']=LandingListitem::find()
+                ->where(['section_id'=>$sections['reviews']['id']])
+                ->orderBy('order_num')
+                ->all();
+            $sections['clientsListItems']=LandingListitem::find()
+                ->where(['section_id'=>$sections['clients']['id']])
+                ->orderBy('order_num')
+                ->all();
+        } else {
+            foreach ($allSections as $allSectionItem) {
+                $allSection = $allSectionItem->toArray();
+                if ($allSection['section_type']=='top') {
+                    $sections['top'] = $allSection;
+                }
+                elseif ($allSection['section_type']=='garage'){
+                    $sections['garage'] = $allSection;
+                }
+                elseif ($allSection['section_type']=='action_permanent'){
+                    $sections['action'] = $allSection;
+                }
+                elseif ($allSection['section_type']=='services'){
+                    $sections['services'] = $allSection;
+                }
+                elseif ($allSection['section_type']=='call2action'){
+                    $sections['call2action'] = $allSection;
+                }
+                elseif ($allSection['section_type']=='why_we'){
+                    $sections['whyWe'] = $allSection;
+                }
+                elseif ($allSection['section_type']=='how_we_work'){
+                    $sections['howWeWork'] = $allSection;
+                }
+                elseif ($allSection['section_type']=='numbers'){
+                    $sections['numbers'] = $allSection;
+                }
+                elseif ($allSection['section_type']=='projects'){
+                    $sections['projects'] = $allSection;
+                }
+                elseif ($allSection['section_type']=='reviews'){
+                    $sections['reviews'] = $allSection;
+                }
+                elseif ($allSection['section_type']=='clients'){
+                    $sections['clients'] = $allSection;
+                }
+                elseif ($allSection['section_type']=='order_form'){
+                    $sections['order'] = $allSection;
+                }
+
+            }
+        }
+
+
+
+
+
         $preorderForm = new Preorders();
 
 
@@ -208,126 +256,6 @@ class LandingController extends Controller
     }
 
 
-//
-//    public function actionVizdel()
-//    {
-//        $daysAgo = 0;
-//        $today = time();
-//        $oldTime = $today - ($daysAgo*86400); // 24*60*60 = 86400
-//        $allVisits = Visit::find()
-//            ->where(['<','created_at',$oldTime])
-//            ->andWhere(['comment'=>null])
-//            ->orderBy([
-//                'lp_hrurl'=> SORT_ASC,
-//                'utm_source'=> SORT_ASC,
-//                'utm_medium'=> SORT_ASC,
-//                'utm_campaign'=> SORT_ASC
-//            ])
-//            ->all();
-//        $values = $allVisits;
-//        ArrayHelper::multisort($values, ['created_at'], [SORT_DESC]);
-//        $max = $values[0]['created_at'];
-//        ArrayHelper::multisort($values, ['created_at'], [SORT_ASC]);
-//        $min = $values[0]['created_at'];
-//
-//        $visitsByDay=[];
-//
-//        for($dayStart = $min - ($min % 86400);$dayStart < $oldTime; $dayStart += 86400){
-//            $dayEnd = $dayStart + 86400;
-//            $dayVisits = Visit::find()
-//                ->where(['>','created_at',$dayStart])
-//                ->andWhere(['<','created_at',$dayEnd])
-//                ->andWhere(['comment'=>null])
-//                ->orderBy([
-//                    'lp_hrurl'=> SORT_ASC,
-//                    'utm_source'=> SORT_ASC,
-//                    'utm_medium'=> SORT_ASC,
-//                    'utm_campaign'=> SORT_ASC
-//                ])
-//                ->all();
-//
-//            if ($dayVisits!=null) {
-//                $visitsByDay[] = $dayVisits;
-//            }
-//        }
-//
-//        foreach ($visitsByDay as $visits) {
-//            $result = new Visit();
-//            $oldVisit = null;
-//            foreach ($visits as $visit) {
-//                if($oldVisit == null){
-//                    $result['lp_hrurl'] = $visit['lp_hrurl'];
-//                    $result['utm_source'] = $visit['utm_source'] ;
-//                    $result['utm_medium'] = $visit['utm_medium'] ;
-//                    $result['utm_campaign'] = $visit['utm_campaign'] ;
-//                    $result['qnt'] = $visit['qnt'];
-//                    $result['comment'] = ''.$visit['created_at'];
-//                    $oldVisit = $result;
-//                } else {
-//                    if($visit['lp_hrurl'] == $oldVisit['lp_hrurl']){
-//                        if ($visit['utm_source']==$oldVisit['utm_source']) {
-//                            if($visit['utm_medium']==$oldVisit['utm_medium']){
-//                                if ($visit['utm_campaign']==$oldVisit['utm_campaign']) {
-//                                    $result['qnt']+=$visit['qnt'];
-//                                } else {   // $visit['utm_campaign']!=$oldVisit['utm_campaign']
-//                                    $result->save();
-//                                    $result = new Visit();
-//                                    $result['lp_hrurl'] = $visit['lp_hrurl'];
-//                                    $result['utm_source'] = $visit['utm_source'];
-//                                    $result['utm_medium'] = $visit['utm_medium'];
-//                                    $result['utm_campaign'] = $visit['utm_campaign'];
-//                                    $result['comment'] = ''.$visit['created_at'];
-//                                    $result['qnt'] = $visit['qnt'] ;
-//                                    $oldVisit = $result;
-//                                }
-//                            } else {   // $visit['utm_medium']!=$oldVisit['utm_medium']
-//                                $result->save();
-//                                $result = new Visit();
-//                                $result['lp_hrurl'] = $visit['lp_hrurl'];
-//                                $result['utm_source'] = $visit['utm_source'];
-//                                $result['utm_medium'] = $visit['utm_medium'];
-//                                $result['utm_campaign'] = $visit['utm_campaign'];
-//                                $result['comment'] = ''.$visit['created_at'];
-//                                $result['qnt'] = $visit['qnt'] ;
-//                                $oldVisit = $result;
-//                            }
-//                        } else {   // $visit['utm_source']!=$oldVisit['utm_source']
-//                            $result->save();
-//                            $result = new Visit();
-//                            $result['lp_hrurl'] = $visit['lp_hrurl'];
-//                            $result['utm_source'] = $visit['utm_source'];
-//                            $result['utm_medium'] = $visit['utm_medium'];
-//                            $result['utm_campaign'] = $visit['utm_campaign'];
-//                            $result['comment'] = ''.$visit['created_at'];
-//                            $result['qnt'] = $visit['qnt'] ;
-//                            $oldVisit = $result;
-//                        }
-//                    } else { //   $visit['lp_hrurl'] != $oldVisit['lp_hrurl']
-//                        $result->save();
-//                        $result = new Visit();
-//                        $result['lp_hrurl'] = $visit['lp_hrurl'];
-//                        $result['utm_source'] = $visit['utm_source'];
-//                        $result['utm_medium'] = $visit['utm_medium'];
-//                        $result['utm_campaign'] = $visit['utm_campaign'];
-//                        $result['comment'] = ''.$visit['created_at'];
-//                        $result['qnt'] = $visit['qnt'] ;
-//                        $oldVisit = $result;
-//                    }
-//                }
-//                $visit->delete();
-//            }
-//            $result->save();
-//        }
-//
-////        foreach ($visitsByDay as $dayVisits) {
-////            foreach ($dayVisits as $model) {
-////                var_dump($model); die;
-////                $model->delete();
-////            }
-////
-////        }
-//    }
-//
 
 
 

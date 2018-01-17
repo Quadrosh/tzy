@@ -48,6 +48,8 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]) ?>
 
+    <?= Html::img('/img/'. $model->image, ['class'=>'img']) ?>
+
 </div>
 <section>
     <div class="container">

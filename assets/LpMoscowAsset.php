@@ -17,12 +17,12 @@ class LpMoscowAsset extends AssetBundle
     public $css = [
         'libs/slick/slick.css',
         'libs/magnific/magnificpopup.css',
-        'css/lp_moscow.css',
+        'css/lp_b2b.css',
     ];
     public $js = [
         'libs/slick/slick.min.js',
         'libs/magnific/magnificpopup.min.js',
-        'js/lp_moscow.js',
+        'js/lp_b2b.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',

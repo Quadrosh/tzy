@@ -22,6 +22,9 @@ use Yii;
  */
 class LandingSection extends \yii\db\ActiveRecord
 {
+    public $sectionListItems;
+//    public $list_items=[];
+
     /**
      * @inheritdoc
      */
@@ -40,6 +43,7 @@ class LandingSection extends \yii\db\ActiveRecord
             [['page_id', 'order_num'], 'integer'],
             [['lead', 'text', 'extra'], 'string'],
             [['head', 'stylekey', 'image', 'image_alt', 'call2action_name', 'section_type'], 'string', 'max' => 255],
+//            [['list_items'], 'safe'],
         ];
     }
 
@@ -63,4 +67,41 @@ class LandingSection extends \yii\db\ActiveRecord
             'section_type' => 'Section Type',
         ];
     }
+    public function getListItems()
+    {
+        return $this->hasMany(LandingListitem::className(),['section_id'=>'id'])->orderBy('order_num');
+    }
+
+    /**
+     * Безопасные поля
+     *
+     * @return array
+     */
+    public function fields()
+    {
+        return [
+            'id',
+            'page_id',
+            'order_num',
+            'head',
+            'lead',
+            'text',
+            'extra',
+            'stylekey',
+            'image',
+            'image_alt',
+            'call2action_name',
+            'section_type',
+            'sectionListItems',
+//            'list_items' => function ($q) {
+//                return 'yes';
+//            },
+
+            'list_items' => function ($q) {
+                return $q->listItems;
+//                return count($q->listItems);
+            }
+        ];
+    }
+
 }
