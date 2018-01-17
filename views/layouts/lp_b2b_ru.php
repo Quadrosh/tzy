@@ -10,7 +10,7 @@ use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 use yii\bootstrap\ActiveForm;
 
-app\assets\LpMoscowAsset::register($this);
+app\assets\LpB2bAsset::register($this);
 
 
 ?>

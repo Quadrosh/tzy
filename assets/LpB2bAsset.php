@@ -10,7 +10,7 @@ namespace app\assets;
 use yii\web\AssetBundle;
 
 
-class LpMoscowAsset extends AssetBundle
+class LpB2bAsset extends AssetBundle
 {
     public $basePath = '@webroot';
     public $baseUrl = '@web';
