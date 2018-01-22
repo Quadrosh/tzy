@@ -181,7 +181,7 @@ $(document).ready(function() {
     $('.garageSlick').slick({
         infinite: true,
         slidesToShow: 3,
-        slidesToScroll: 1,
+        slidesToScroll: 3,
         easing:'easeInOutSine',
         prevArrow:'.garagePrev',
         nextArrow:'.garageNext',
@@ -189,12 +189,14 @@ $(document).ready(function() {
             {
                 breakpoint: 769,
                 settings: {
+                    slidesToScroll: 1,
                     slidesToShow: 1
                 }
             },
             {
                 breakpoint: 480,
                 settings: {
+                    slidesToScroll: 1,
                     slidesToShow: 1
                 }
             }
