@@ -93,9 +93,6 @@ class LandingSection extends \yii\db\ActiveRecord
             'call2action_name',
             'section_type',
             'sectionListItems',
-//            'list_items' => function ($q) {
-//                return 'yes';
-//            },
 
             'list_items' => function ($q) {
                 return $q->listItems;

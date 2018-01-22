@@ -824,24 +824,25 @@ $preorder = new \app\models\Preorders();
                     </div>
                     <div class="row">
                         <div class="col-sm-6">
+                            <?= $form->field($preorderForm, 'weight')
+                                ->textInput(['maxlength' => true, 'id' => 'mainOrderForm-weight'])
+                                ->label('Вес')  ?>
+                        </div>
+                        <div class="col-sm-6">
+                            <?= $form->field($preorderForm, 'cargo')
+                                ->textInput(['required' => true, 'id' => 'mainOrderForm-cargo'])
+                                ->label('Характер груза')  ?>
+                        </div>
+                        
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
                             <?= $form->field($preorderForm, 'phone')
                                 ->textInput(['required' => true, 'id' => 'mainOrderForm-phone']) ?>
                         </div>
                         <div class="col-sm-6">
                             <?= $form->field($preorderForm, 'email')
                                 ->textInput(['maxlength' => true, 'id' => 'mainOrderForm-email']) ?>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <?= $form->field($preorderForm, 'cargo')
-                                ->textInput(['required' => true, 'id' => 'mainOrderForm-cargo'])
-                                ->label('Характер груза')  ?>
-                        </div>
-                        <div class="col-sm-6">
-                            <?= $form->field($preorderForm, 'weight')
-                                ->textInput(['maxlength' => true, 'id' => 'mainOrderForm-weight'])
-                                ->label('Вес')  ?>
                         </div>
                         <div class="col-sm-12">
                             <?= $form->field($preorderForm, 'text')
