@@ -123,27 +123,6 @@ $(document).ready(function() {
 
 
 
-    //function getOffsetRect(elem) {
-    //
-    //    var box = elem.getBoundingClientRect();
-    //    var body = document.body;
-    //    var docElem = document.documentElement;
-    //    var scrollTop = window.pageYOffset || docElem.scrollTop || body.scrollTop;
-    //    var scrollLeft = window.pageXOffset || docElem.scrollLeft || body.scrollLeft;
-    //    var clientTop = docElem.clientTop || body.clientTop || 0;
-    //    var clientLeft = docElem.clientLeft || body.clientLeft || 0;
-    //    var top  = box.top +  scrollTop - clientTop;
-    //    var left = box.left + scrollLeft - clientLeft;
-    //    return Math.round(top);
-    //    //return { top: Math.round(top), left: Math.round(left) }
-    //}
-
-
-    //var numSection = document.getElementById('numberSection');
-    //var numbersToTop = numSection.offsetTop - window.innerHeight;
-
-    //var getTop = getOffsetRect(numSection);
-
     var numbersToTop = parseInt($('#numberSection').offset().top - window.innerHeight);
 
 
@@ -241,6 +220,29 @@ $(document).ready(function() {
         })
     ;
 
+    $('.topMagLink').magnificPopup({
+        type: 'image',
+        image: {
+            markup: '<div class="mfp-figure">'+
+            '<div class="mfp-close"></div>'+
+            '<div class="mfp-img"></div>'+
+            '<div class="mfp-bottom-bar">'+
+            '<div class="mfp-title"></div>'+
+            '<div class="mfp-counter"></div>'+
+            '</div>'+
+            '</div>', // Popup HTML markup. `.mfp-img` div will be replaced with img tag, `.mfp-close` by close button
+
+            cursor: null,
+            verticalFit: false,
+
+            tError: '<a href="%url%">Изображение</a> не может быть загружено.' // Error message
+        },
+        gallery: {
+            enabled: false,
+        },
+        fixedContentPos: true,
+        overflowY:true,
+    });
     $('.caruMagLink').magnificPopup({
         type: 'image',
         image: {
@@ -263,8 +265,7 @@ $(document).ready(function() {
         },
         fixedContentPos: true,
         overflowY:true,
-    })
-    ;
+    });
 
     //$("#actionOrderButton").on('click',function(){
     //   var orderSection = document.getElementById('mainOrderSection');

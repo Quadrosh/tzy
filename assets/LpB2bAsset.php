@@ -17,6 +17,7 @@ class LpB2bAsset extends AssetBundle
     public $css = [
         'libs/slick/slick.css',
         'libs/magnific/magnificpopup.css',
+        'libs/font-awesome/css/font-awesome.min.css',
         'css/lp_b2b.css',
     ];
     public $js = [

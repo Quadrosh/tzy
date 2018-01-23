@@ -59,9 +59,32 @@ $preorder = new \app\models\Preorders();
     <section class="<?= $sections['top']['stylekey'] ?> <?= $sections['top']['section_type'] ?>" style=" background-image: url(/img/<?= $sections['top']['image'] ?>)">
         <h1 class="head"><?= $sections['top']['head'] ?></h1>
         <h2 class="extra"><?= $sections['top']['extra'] ?></h2>
-        <div class="col-sm-6 col-sm-offset-3 ">
+        <div class="col-sm-4 col-sm-offset-4 ">
             <?= \app\widgets\Alert::widget() ?>
+            <div class="blackBox">
+               <div class="row">
+                   <div class="col-sm-6 text-center">
+                       <h5>Договор</h5>
+                       <a class="topMagLink"
+                           href="/img/b_profsklad.jpg"
+                       ><i class="fa fa-file-word-o topIcon" aria-hidden="true"></i></a>
+                       <?= Html::a('скачать','/', ['class'=>'goLink downloadLink']) ?>
+                   </div>
+                   <div class="col-sm-6 text-center">
+                       <h5>Наши реквизиты</h5>
+                       <a class="topMagLink"
+                          href="/img/b_profsklad.jpg"
+                       ><i class="fa fa-file-image-o topIcon" aria-hidden="true"></i></a>
+                       <?= Html::a('скачать','/', ['class'=>'goLink downloadLink']) ?>
+                   </div>
+                   <div class="col-xs-12 text-right">
+                       <?= Html::a('я не юридическое лицо','/', ['class'=>'goLink i_m_not mt10']) ?>
+                   </div>
+               </div>
+
+            </div>
         </div>
+
 
     </section>
 
@@ -833,7 +856,7 @@ $preorder = new \app\models\Preorders();
                                 ->textInput(['required' => true, 'id' => 'mainOrderForm-cargo'])
                                 ->label('Характер груза')  ?>
                         </div>
-                        
+
                     </div>
                     <div class="row">
                         <div class="col-sm-6">
