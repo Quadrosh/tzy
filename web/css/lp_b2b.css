@@ -283,6 +283,14 @@ section {
     font-size: 40px;
     color: #fff;
 }
+.c_def{
+    cursor: default;
+}
+.top .topIcon:hover,
+.top .goLink:hover {
+    /*color: #838e9a;*/
+    color: #f7941e;
+}
 .top .goLink{
     color: #fff;
     display: block;
@@ -1256,6 +1264,9 @@ section {
 }
 
 @media only screen and (max-width : 360px) {
+    .top .head {
+        font-size: 36px;
+    }
     .car_image {
         margin-left: -100px;
         width: 200px;
