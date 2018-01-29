@@ -67,10 +67,7 @@ class LandingSection extends \yii\db\ActiveRecord
             'section_type' => 'Section Type',
         ];
     }
-    public function getListItems()
-    {
-        return $this->hasMany(LandingListitem::className(),['section_id'=>'id'])->orderBy('order_num');
-    }
+
 
     /**
      * Безопасные поля
@@ -99,6 +96,12 @@ class LandingSection extends \yii\db\ActiveRecord
 //                return count($q->listItems);
             }
         ];
+    }
+
+
+    public function getListItems()
+    {
+        return $this->hasMany(LandingListitem::className(),['section_id'=>'id'])->orderBy('order_num');
     }
 
 }

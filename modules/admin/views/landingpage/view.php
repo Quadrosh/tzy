@@ -30,6 +30,13 @@ $this->params['breadcrumbs'][] = $this->title;
                 'method' => 'post',
             ],
         ]) ?>
+        <?= Html::a('Alt2Svg', ['/admin/landingpage/alt-to-svg', 'id' => $model->id], [
+            'class' => 'btn btn-primary',
+//            'data' => [
+//                'confirm' => 'Создаем новый и копируем все это туда?',
+//                'method' => 'post',
+//            ],
+        ]) ?>
     </p>
 
     <?= DetailView::widget([

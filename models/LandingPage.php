@@ -59,4 +59,9 @@ class LandingPage extends \yii\db\ActiveRecord
             'color' => 'Color',
         ];
     }
+
+    public function getSections()
+    {
+        return $this->hasMany(LandingSection::className(), ['page_id'=>'id']);
+    }
 }

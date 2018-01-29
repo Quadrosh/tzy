@@ -271,6 +271,21 @@ class LandingpageController extends Controller
     }
 
 
+    public  function actionAltToSvg($id){
+        $landingPage = LandingPage::find()->where(['id'=>$id])->one();
+        $sections = $landingPage->sections;
+        foreach ($sections as $section) {
+            $listItems = $section->listItems;
+            foreach ($listItems as $listItem) {
+//                $text = str_replace('#'.$var['item_var_id'],$var['value'], $text);
+                $listItem['image'] = str_replace('$alt$',$listItem['image_alt'], $listItem['image']);
+                $listItem['image'] = str_replace('$id$',$listItem['id'], $listItem['image']);
+                $listItem->save();
+            }
+        }
+//        var_dump($landingPage); die;
+        return $this->redirect(Url::previous());
+    }
     /**
      * Creates a new LandingPage model.
      * If creation is successful, the browser will be redirected to the 'view' page.

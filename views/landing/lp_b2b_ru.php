@@ -261,13 +261,373 @@ $preorder = new \app\models\Preorders();
 <!--Услуги-->
     <section class="<?= $sections['services']['stylekey'] ?> <?= $sections['services']['section_type'] ?>">
         <div class="row">
-            <div class="col-sm-12 text-center">
+            <div class="col-sm-4 col-sm-offset-4 text-center">
                 <h2 class="head"><?= $sections['services']['head'] ?></h2>
+            </div>
+            <div class="col-sm-4  text-center">
+                <div class="addIconBox">
+                    <div class="col-xs-3">
+<!--                        --><?//= Html::img('/img/b2b_s_dogruz.png',
+//                            ['alt'=>'','class'=>'addIcon']) ?>
+                        <svg version="1.1" id="dogruzIco" class="addIcon"
+                             xmlns="http://www.w3.org/2000/svg"
+                             xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                             viewBox="0 0 90 90"
+                             style="enable-background:new 0 0 90 90;"
+                             xml:space="preserve">
+<style type="text/css">
+    .dogruzIco_st0{fill:#58595B;}
+    .dogruzIco_st1{fill:none;stroke:#58595B;stroke-miterlimit:10;}
+    .dogruzIco_st2{fill:none;stroke:#58595B;stroke-width:0.7;stroke-linejoin:round;stroke-miterlimit:10;}
+    .dogruzIco_st3{fill:#FFFFFF;stroke:#58595B;stroke-width:0.7;stroke-linejoin:round;stroke-miterlimit:10;}
+</style>
+
+                            <g>
+                                <path class="dogruzIco_st0" d="M34.3,68.5H30v1.4h-1v-2.3h0.6c0,0,0.1,0,0.1-0.1c0.1-0.1,0.2-0.1,0.3-0.3
+		c0.1-0.1,0.1-0.2,0.2-0.4c0-0.1,0.1-0.3,0.1-0.5c0-0.2,0-0.3,0.1-0.5s0-0.3,0-0.4c0-0.1,0-0.3,0-0.5c0-0.2,0-0.4,0-0.6
+		c0-0.2,0-0.5,0-0.7c0-0.3,0-0.6,0-1h3.9v4.8h0.9v2.3h-1V68.5z M30.9,67.7h2.4v-4h-2c0,0.4,0,0.7,0,0.9c0,0.3,0,0.5,0,0.8
+		c0,0.2,0,0.5,0,0.7s-0.1,0.4-0.1,0.7c0,0.2-0.1,0.4-0.1,0.6C31,67.4,31,67.6,30.9,67.7z"/>
+                                <path class="dogruzIco_st0" d="M38.4,62.7c0.4,0,0.8,0.1,1.1,0.2s0.6,0.4,0.9,0.6c0.2,0.3,0.4,0.6,0.5,1
+		c0.1,0.4,0.2,0.7,0.2,1.2c0,0.4-0.1,0.8-0.2,1.2c-0.1,0.4-0.3,0.7-0.5,1c-0.2,0.3-0.5,0.5-0.9,0.6s-0.7,0.2-1.1,0.2
+		s-0.8-0.1-1.1-0.2c-0.3-0.2-0.6-0.4-0.9-0.6c-0.2-0.3-0.4-0.6-0.5-1c-0.1-0.4-0.2-0.7-0.2-1.2c0-0.4,0.1-0.8,0.2-1.2
+		c0.1-0.4,0.3-0.7,0.5-1c0.2-0.3,0.5-0.5,0.9-0.6C37.6,62.8,38,62.7,38.4,62.7z M38.4,63.5c-0.3,0-0.6,0.1-0.8,0.2
+		c-0.2,0.1-0.4,0.3-0.5,0.5c-0.1,0.2-0.2,0.4-0.3,0.7s-0.1,0.5-0.1,0.8c0,0.3,0,0.5,0.1,0.8c0.1,0.3,0.2,0.5,0.3,0.7
+		c0.1,0.2,0.3,0.4,0.5,0.5c0.2,0.1,0.5,0.2,0.8,0.2c0.3,0,0.6-0.1,0.8-0.2s0.4-0.3,0.5-0.5c0.1-0.2,0.2-0.4,0.3-0.7
+		c0.1-0.3,0.1-0.5,0.1-0.8c0-0.3,0-0.5-0.1-0.8c-0.1-0.3-0.2-0.5-0.3-0.7c-0.1-0.2-0.3-0.4-0.5-0.5C39,63.6,38.7,63.5,38.4,63.5z"
+                                />
+                                <path class="dogruzIco_st0" d="M42,62.8H46v0.9H43v4.8h-1V62.8z"/>
+                                <path class="dogruzIco_st0" d="M46.8,62.8h2.5c0.4,0,0.7,0.1,1,0.2c0.3,0.1,0.5,0.3,0.6,0.4c0.1,0.2,0.2,0.4,0.3,0.6
+		c0,0.2,0.1,0.4,0.1,0.6s0,0.4-0.1,0.6c-0.1,0.2-0.1,0.4-0.3,0.6c-0.1,0.2-0.3,0.3-0.6,0.4c-0.3,0.1-0.6,0.2-1,0.2h-1.5v2.2h-1
+		V62.8z M47.8,65.5h1.5c0.1,0,0.2,0,0.3,0c0.1,0,0.2-0.1,0.3-0.2c0.1-0.1,0.2-0.2,0.2-0.3s0.1-0.3,0.1-0.5c0-0.2,0-0.3-0.1-0.5
+		c-0.1-0.1-0.1-0.2-0.2-0.3c-0.1-0.1-0.2-0.1-0.3-0.1c-0.1,0-0.2,0-0.4,0h-1.5V65.5z"/>
+                                <path class="dogruzIco_st0" d="M52.4,67.7c0.2,0,0.4-0.1,0.6-0.2c0.2-0.1,0.3-0.3,0.4-0.5l-1.9-4.2h1.2L54,66h0l1.3-3.2
+		h1.1L54.5,67c-0.2,0.5-0.5,0.9-0.9,1.2c-0.3,0.2-0.7,0.4-1.2,0.4c-0.1,0-0.2,0-0.3,0c-0.1,0-0.1,0-0.2,0v-0.9c0.1,0,0.1,0,0.2,0
+		C52.3,67.7,52.3,67.7,52.4,67.7z"/>
+                                <path class="dogruzIco_st0" d="M58.4,65.2c0.4,0,0.7,0,0.9-0.2c0.2-0.1,0.3-0.4,0.3-0.7c0-0.3-0.1-0.4-0.2-0.6
+		c-0.2-0.1-0.4-0.2-0.6-0.2c-0.2,0-0.3,0-0.4,0.1s-0.2,0.1-0.3,0.2c-0.1,0.1-0.1,0.2-0.2,0.4c0,0.1,0,0.3,0,0.4h-1
+		c0-0.3,0.1-0.5,0.1-0.8c0.1-0.2,0.2-0.4,0.4-0.6c0.2-0.2,0.4-0.3,0.6-0.4c0.2-0.1,0.5-0.1,0.8-0.1c0.2,0,0.5,0,0.7,0.1
+		c0.2,0.1,0.4,0.2,0.6,0.3s0.3,0.3,0.4,0.5c0.1,0.2,0.1,0.4,0.1,0.7c0,0.3-0.1,0.5-0.2,0.8c-0.1,0.2-0.3,0.4-0.6,0.5v0
+		c0.3,0.1,0.6,0.2,0.8,0.5c0.2,0.3,0.3,0.6,0.3,1c0,0.3-0.1,0.5-0.2,0.7c-0.1,0.2-0.2,0.4-0.4,0.6c-0.2,0.2-0.4,0.3-0.7,0.3
+		c-0.3,0.1-0.5,0.1-0.8,0.1c-0.4,0-0.7,0-0.9-0.1c-0.3-0.1-0.5-0.2-0.6-0.4c-0.2-0.2-0.3-0.4-0.4-0.6c-0.1-0.2-0.1-0.5-0.1-0.8h1
+		c0,0.4,0.1,0.7,0.2,0.9c0.2,0.2,0.4,0.3,0.8,0.3c0.3,0,0.6-0.1,0.8-0.2c0.2-0.2,0.3-0.4,0.3-0.7c0-0.2,0-0.4-0.1-0.5
+		s-0.2-0.2-0.3-0.3c-0.1-0.1-0.3-0.1-0.5-0.1c-0.2,0-0.4,0-0.6,0V65.2z"/>
+                            </g>
+                            <circle class="dogruzIco_st1" cx="45" cy="45" r="40"/>
+                            <g>
+                                <g>
+                                    <path class="dogruzIco_st2" d="M21.2,22.2h29.7c0.6,0,1.2,0.5,1.2,1.2v17.2c0,0.6-0.5,1.2-1.2,1.2H21.2
+			c-0.6,0-1.2-0.5-1.2-1.2V23.4C20,22.8,20.5,22.2,21.2,22.2z"/>
+                                    <line class="dogruzIco_st2" x1="23.4" y1="41.7" x2="23.4" y2="43.8"/>
+                                    <line class="dogruzIco_st2" x1="50.8" y1="41.7" x2="50.8" y2="43"/>
+                                    <polyline class="dogruzIco_st2" points="27.4,43.8 21.2,43.8 21.2,45.1 25.9,45.8 			"/>
+                                    <line class="dogruzIco_st2" x1="32.9" y1="43.8" x2="38.2" y2="43.8"/>
+                                    <line class="dogruzIco_st2" x1="42.4" y1="43" x2="58.8" y2="43"/>
+                                    <line class="dogruzIco_st2" x1="34.5" y1="47.3" x2="36.6" y2="47.3"/>
+                                    <line class="dogruzIco_st2" x1="45.3" y1="47.3" x2="55.8" y2="47.3"/>
+                                    <path class="dogruzIco_st2" d="M53.6,43V28.6c0-0.6,0.5-1.2,1.2-1.2h10.1c0.4,0,0.8,0.3,1,0.7l4,8.3v6.5h-1.9v0.8h0.2"/>
+                                    <polyline class="dogruzIco_st2" points="66.7,29.7 59.7,29.7 59.7,35.7 69.7,35.7 			"/>
+                                    <line class="dogruzIco_st2" x1="64.7" y1="29.7" x2="64.7" y2="35.7"/>
+                                    <path class="dogruzIco_st2" d="M68.3,43.6h0.6c0.6,0,1.2,0.5,1.2,1.2l0,0c0,0.6-0.5,1.2-1.2,1.2h-4.6"/>
+                                    <g>
+                                        <circle class="dogruzIco_st2" cx="30.1" cy="47.1" r="1.9"/>
+                                        <circle class="dogruzIco_st2" cx="30.1" cy="47.1" r="4.3"/>
+                                    </g>
+                                    <g>
+                                        <circle class="dogruzIco_st2" cx="41" cy="47.1" r="1.9"/>
+                                        <circle class="dogruzIco_st2" cx="41" cy="47.1" r="4.3"/>
+                                    </g>
+                                    <g>
+                                        <circle class="dogruzIco_st2" cx="60.1" cy="47.1" r="1.9"/>
+                                        <circle class="dogruzIco_st2" cx="60.1" cy="47.1" r="4.3"/>
+                                    </g>
+                                    <path class="dogruzIco_st2" d="M68.3,43.6"/>
+                                </g>
+                                <path class="dogruzIco_st3" d="M35.6,50.8"/>
+                                <rect x="21.2" y="23.4" class="dogruzIco_st0" width="14.8" height="17.2"/>
+                            </g>
+
+</svg>
+
+                    </div>
+                    <div class="col-xs-3">
+                        <svg version="1.1" id="generalIco" class="addIcon"
+                             xmlns="http://www.w3.org/2000/svg"
+                             xmlns:xlink="http://www.w3.org/1999/xlink"
+                             x="0px" y="0px"
+                             viewBox="0 0 90 90"
+                             style="enable-background:new 0 0 90 90;"
+                             xml:space="preserve">
+<style type="text/css">
+    .generalIco_st0{fill:#58595B;}
+    .generalIco_st1{fill:none;stroke:#58595B;stroke-miterlimit:10;}
+    .generalIco_st2{fill:none;stroke:#58595B;stroke-width:0.7;stroke-linejoin:round;stroke-miterlimit:10;}
+    .generalIco_st3stroke:#58595B;stroke-width:0.7;stroke-linejoin:round;stroke-miterlimit:10;}
+</style>
+                            <g>
+                                <g>
+                                    <path class="generalIco_st0" d="M23,57.8c0.4,0,0.8,0.1,1.1,0.2c0.3,0.2,0.6,0.4,0.9,0.6c0.2,0.3,0.4,0.6,0.5,1
+			c0.1,0.4,0.2,0.7,0.2,1.2c0,0.4-0.1,0.8-0.2,1.2c-0.1,0.4-0.3,0.7-0.5,1c-0.2,0.3-0.5,0.5-0.9,0.6s-0.7,0.2-1.1,0.2
+			s-0.8-0.1-1.1-0.2c-0.3-0.2-0.6-0.4-0.9-0.6c-0.2-0.3-0.4-0.6-0.5-1c-0.1-0.4-0.2-0.8-0.2-1.2c0-0.4,0.1-0.8,0.2-1.2
+			c0.1-0.4,0.3-0.7,0.5-1c0.2-0.3,0.5-0.5,0.9-0.6C22.2,57.9,22.6,57.8,23,57.8z M23,58.6c-0.3,0-0.6,0.1-0.8,0.2
+			c-0.2,0.1-0.4,0.3-0.5,0.5s-0.2,0.4-0.3,0.7c-0.1,0.3-0.1,0.5-0.1,0.8c0,0.3,0,0.5,0.1,0.8s0.2,0.5,0.3,0.7s0.3,0.4,0.5,0.5
+			c0.2,0.1,0.5,0.2,0.8,0.2c0.3,0,0.6-0.1,0.8-0.2c0.2-0.1,0.4-0.3,0.5-0.5s0.2-0.4,0.3-0.7c0.1-0.3,0.1-0.5,0.1-0.8
+			c0-0.3,0-0.5-0.1-0.8c-0.1-0.3-0.2-0.5-0.3-0.7s-0.3-0.4-0.5-0.5S23.3,58.6,23,58.6z"/>
+                                    <path class="generalIco_st0" d="M26.1,58h4.6v0.9H29v4.8h-1v-4.8h-1.8V58z"/>
+                                    <path class="generalIco_st0" d="M36.2,63.7h-4.3v1.4h-1v-2.3h0.6c0,0,0.1,0,0.1-0.1c0.1-0.1,0.2-0.1,0.3-0.3
+			c0.1-0.1,0.1-0.2,0.2-0.4c0-0.1,0.1-0.3,0.1-0.5c0-0.2,0-0.3,0.1-0.5s0-0.3,0-0.4s0-0.3,0-0.5s0-0.4,0-0.6c0-0.2,0-0.5,0-0.7
+			c0-0.3,0-0.6,0-1h3.9v4.8h0.9v2.3h-1V63.7z M32.8,62.8h2.4v-4h-2c0,0.4,0,0.7,0,0.9c0,0.3,0,0.5,0,0.8c0,0.2,0,0.5,0,0.7
+			c0,0.2-0.1,0.4-0.1,0.7c0,0.2-0.1,0.4-0.1,0.6C32.9,62.6,32.9,62.7,32.8,62.8z"/>
+                                    <path class="generalIco_st0" d="M37.9,58H42v0.9h-3.1v1.5h2.9v0.8h-2.9v1.7h3.2v0.9h-4.2V58z"/>
+                                    <path class="generalIco_st0" d="M42.7,62.8c0.1,0,0.3,0,0.4-0.1s0.2-0.1,0.3-0.3s0.1-0.2,0.2-0.4s0.1-0.3,0.1-0.5
+			c0-0.2,0-0.3,0.1-0.5c0-0.1,0-0.3,0-0.4c0-0.1,0-0.3,0-0.5s0-0.4,0-0.6c0-0.2,0-0.5,0-0.7c0-0.3,0-0.6,0-1h3.9v5.7h-1v-4.8h-2
+			c0,0.4,0,0.7,0,0.9c0,0.3,0,0.5,0,0.8c0,0.2,0,0.5,0,0.7c0,0.2-0.1,0.4-0.1,0.7c0,0.2-0.1,0.4-0.1,0.6S44.2,62.9,44,63
+			c-0.1,0.2-0.3,0.3-0.5,0.5c-0.2,0.1-0.5,0.2-0.8,0.2c-0.1,0-0.2,0-0.3,0c-0.1,0-0.1,0-0.2,0v-0.9c0.1,0,0.1,0,0.2,0
+			C42.5,62.8,42.6,62.8,42.7,62.8z"/>
+                                    <path class="generalIco_st0" d="M48.8,58h1v2.2h1.5c0.4,0,0.7,0.1,1,0.2s0.5,0.3,0.6,0.4c0.1,0.2,0.2,0.4,0.3,0.6
+			s0.1,0.4,0.1,0.6s0,0.4-0.1,0.6s-0.1,0.4-0.3,0.6c-0.1,0.2-0.3,0.3-0.6,0.4s-0.6,0.2-1,0.2h-2.5V58z M49.8,62.9h1.5
+			c0.1,0,0.3,0,0.4,0c0.1,0,0.2-0.1,0.3-0.1s0.2-0.2,0.2-0.3c0.1-0.1,0.1-0.3,0.1-0.5c0-0.2,0-0.3-0.1-0.5c-0.1-0.1-0.1-0.2-0.2-0.3
+			c-0.1-0.1-0.2-0.1-0.3-0.2c-0.1,0-0.2,0-0.3,0h-1.5V62.9z"/>
+                                    <path class="generalIco_st0" d="M54.1,58h1v2.3h2.6V58h1v5.7h-1v-2.6h-2.6v2.6h-1V58z"/>
+                                    <path class="generalIco_st0" d="M61.5,58h1.1l2.2,5.7h-1.1l-0.5-1.5h-2.3l-0.5,1.5h-1L61.5,58z M61.1,61.4h1.7L62,58.9h0
+			L61.1,61.4z"/>
+                                    <path class="generalIco_st0" d="M69.4,63.7h-1v-2.2h-1.1l-1.5,2.2h-1.2l1.6-2.3c-0.3-0.1-0.5-0.2-0.6-0.3
+			c-0.2-0.1-0.3-0.3-0.4-0.4c-0.1-0.2-0.2-0.3-0.2-0.5c0-0.2-0.1-0.3-0.1-0.5c0-0.2,0-0.4,0.1-0.6s0.1-0.4,0.3-0.6s0.3-0.3,0.6-0.4
+			c0.3-0.1,0.6-0.2,1-0.2h2.5V63.7z M68.4,58.8h-1.5c-0.1,0-0.3,0-0.4,0c-0.1,0-0.2,0.1-0.3,0.1c-0.1,0.1-0.2,0.2-0.2,0.3
+			c-0.1,0.1-0.1,0.3-0.1,0.5c0,0.2,0,0.3,0.1,0.5s0.1,0.2,0.2,0.3s0.2,0.1,0.3,0.2s0.2,0,0.3,0h1.5V58.8z"/>
+                                    <path class="generalIco_st0" d="M26.7,67.6h1.4l1.6,4.5h0l1.5-4.5h1.4v5.7h-1v-4.4h0l-1.6,4.4h-0.8l-1.6-4.4h0v4.4h-1V67.6z
+			"/>
+                                    <path class="generalIco_st0" d="M35.4,67.6h1.1l2.2,5.7h-1.1L37,71.8h-2.3l-0.5,1.5h-1L35.4,67.6z M35,71h1.7l-0.9-2.5h0
+			L35,71z"/>
+                                    <path class="generalIco_st0" d="M43.3,72.4h2.1v-4.8h1v5.7h-7.2v-5.7h1v4.8h2.1v-4.8h1V72.4z"/>
+                                    <path class="generalIco_st0" d="M47.6,67.6h1v4.3l2.4-4.3h1.2v5.7h-1V69l-2.5,4.3h-1.1V67.6z"/>
+                                    <path class="generalIco_st0" d="M53.3,67.6h1v2.3h2.6v-2.3h1v5.7h-1v-2.6h-2.6v2.6h-1V67.6z"/>
+                                    <path class="generalIco_st0" d="M60.7,67.6h1.1l2.2,5.7h-1.1l-0.5-1.5H60l-0.5,1.5h-1L60.7,67.6z M60.3,71h1.7l-0.9-2.5h0
+			L60.3,71z"/>
+                                </g>
+                                <circle class="generalIco_st1" cx="45" cy="45" r="40"/>
+                                <g>
+                                    <g>
+                                        <path class="generalIco_st2" d="M22,22.2h29.7c0.6,0,1.2,0.5,1.2,1.2v17.2c0,0.6-0.5,1.2-1.2,1.2H22
+				c-0.6,0-1.2-0.5-1.2-1.2V23.4C20.8,22.8,21.3,22.2,22,22.2z"/>
+                                        <line class="generalIco_st2" x1="24.2" y1="41.7" x2="24.2" y2="43.8"/>
+                                        <line class="generalIco_st2" x1="51.6" y1="41.7" x2="51.6" y2="43"/>
+                                        <polyline class="generalIco_st2" points="28.2,43.8 22,43.8 22,45.1 26.7,45.8 			"/>
+                                        <line class="generalIco_st2" x1="33.7" y1="43.8" x2="39" y2="43.8"/>
+                                        <line class="generalIco_st2" x1="43.2" y1="43" x2="59.6" y2="43"/>
+                                        <line class="generalIco_st2" x1="35.3" y1="47.3" x2="37.4" y2="47.3"/>
+                                        <line class="generalIco_st2" x1="46.1" y1="47.3" x2="56.6" y2="47.3"/>
+                                        <path class="generalIco_st2" d="M54.4,43V28.6c0-0.6,0.5-1.2,1.2-1.2h10.1c0.4,0,0.8,0.3,1,0.7l4,8.3v6.5h-1.9v0.8h0.2"/>
+                                        <polyline class="generalIco_st2" points="67.6,29.7 60.5,29.7 60.5,35.7 70.5,35.7 			"/>
+                                        <line class="generalIco_st2" x1="65.5" y1="29.7" x2="65.5" y2="35.7"/>
+                                        <path class="generalIco_st2" d="M69.1,43.6h0.6c0.6,0,1.2,0.5,1.2,1.2v0c0,0.6-0.5,1.2-1.2,1.2h-4.6"/>
+                                        <g>
+                                            <circle class="generalIco_st2" cx="30.9" cy="47.1" r="1.9"/>
+                                            <circle class="generalIco_st2" cx="30.9" cy="47.1" r="4.3"/>
+                                        </g>
+                                        <g>
+                                            <circle class="generalIco_st2" cx="41.8" cy="47.1" r="1.9"/>
+                                            <circle class="generalIco_st2" cx="41.8" cy="47.1" r="4.3"/>
+                                        </g>
+                                        <g>
+                                            <circle class="generalIco_st2" cx="60.9" cy="47.1" r="1.9"/>
+                                            <circle class="generalIco_st2" cx="60.9" cy="47.1" r="4.3"/>
+                                        </g>
+                                        <path class="generalIco_st2" d="M69.1,43.6"/>
+                                    </g>
+                                    <path class="generalIco_st3" d="M36.4,50.8"/>
+                                    <rect x="22" y="23.4" class="generalIco_st0" width="29.6" height="17.2"/>
+                                </g>
+                            </g>
+</svg>
+
+                    </div>
+                    <div class="col-xs-3">
+                        <svg version="1.1" id="negabaritIco" class="addIcon"
+                             xmlns="http://www.w3.org/2000/svg"
+                             xmlns:xlink="http://www.w3.org/1999/xlink"
+                             x="0px" y="0px"
+                             viewBox="0 0 90 90"
+                             style="enable-background:new 0 0 90 90;"
+                             xml:space="preserve">
+<style type="text/css">
+    .negabaritIco_st0{fill:#58595B;}
+    .negabaritIco_st1{fill:none;stroke:#58595B;stroke-miterlimit:10;}
+    .negabaritIco_st2{fill:none;stroke:#58595B;stroke-width:0.7;stroke-linejoin:round;stroke-miterlimit:10;}
+    .negabaritIco_st3{fill:#FFFFFF;stroke:#58595B;stroke-width:0.7;stroke-linejoin:round;stroke-miterlimit:10;}
+</style>
+                            <g>
+                                <g>
+                                    <path class="negabaritIco_st0" d="M22.5,62.8h1V65h2.6v-2.3h1v5.7h-1v-2.6h-2.6v2.6h-1V62.8z"/>
+                                    <path class="negabaritIco_st0" d="M28.3,62.8h4.1v0.9h-3.1v1.5h2.9v0.8h-2.9v1.7h3.2v0.9h-4.2V62.8z"/>
+                                    <path class="negabaritIco_st0" d="M33.3,62.8h3.9v0.9h-2.9v4.8h-1V62.8z"/>
+                                    <path class="negabaritIco_st0" d="M39.6,62.8h1.1l2.2,5.7h-1.1L41.2,67h-2.3l-0.5,1.5h-1L39.6,62.8z M39.2,66.2H41l-0.9-2.5h0
+			L39.2,66.2z"/>
+                                    <path class="negabaritIco_st0" d="M43.4,62.8h3.9v0.9h-2.9V65h1.5c0.4,0,0.7,0.1,1,0.2s0.5,0.3,0.6,0.4
+			c0.1,0.2,0.2,0.4,0.3,0.6s0.1,0.4,0.1,0.6s0,0.4-0.1,0.6s-0.1,0.4-0.3,0.6c-0.1,0.2-0.3,0.3-0.6,0.4s-0.6,0.2-1,0.2h-2.5V62.8z
+			 M44.4,67.7h1.5c0.1,0,0.3,0,0.4,0c0.1,0,0.2-0.1,0.3-0.1s0.2-0.2,0.2-0.3c0.1-0.1,0.1-0.3,0.1-0.5c0-0.2,0-0.3-0.1-0.5
+			c-0.1-0.1-0.1-0.2-0.2-0.3c-0.1-0.1-0.2-0.1-0.3-0.2c-0.1,0-0.2,0-0.3,0h-1.5V67.7z"/>
+                                    <path class="negabaritIco_st0" d="M50.2,62.8h1.1l2.2,5.7h-1.1L51.9,67h-2.3l-0.5,1.5h-1L50.2,62.8z M49.9,66.2h1.7l-0.9-2.5
+			h0L49.9,66.2z"/>
+                                    <path class="negabaritIco_st0" d="M54,62.8h2.5c0.4,0,0.7,0.1,1,0.2c0.3,0.1,0.5,0.3,0.6,0.4s0.2,0.4,0.3,0.6
+			c0.1,0.2,0.1,0.4,0.1,0.6c0,0.2,0,0.4-0.1,0.6c-0.1,0.2-0.1,0.4-0.3,0.6s-0.3,0.3-0.6,0.4c-0.3,0.1-0.6,0.2-1,0.2H55v2.2h-1V62.8z
+			 M55,65.5h1.5c0.1,0,0.2,0,0.3,0s0.2-0.1,0.3-0.2s0.2-0.2,0.2-0.3c0.1-0.1,0.1-0.3,0.1-0.5c0-0.2,0-0.3-0.1-0.5
+			c-0.1-0.1-0.1-0.2-0.2-0.3c-0.1-0.1-0.2-0.1-0.3-0.1c-0.1,0-0.2,0-0.4,0H55V65.5z"/>
+                                    <path class="negabaritIco_st0" d="M59.4,62.8h1V67l2.4-4.3H64v5.7h-1v-4.3l-2.5,4.3h-1.1V62.8z"/>
+                                    <path class="negabaritIco_st0" d="M64.6,62.8h4.6v0.9h-1.8v4.8h-1v-4.8h-1.8V62.8z"/>
+                                </g>
+                                <circle class="negabaritIco_st1" cx="45" cy="45" r="40"/>
+                                <g>
+                                    <g>
+                                        <rect x="18.8" y="31.5" class="negabaritIco_st0" width="18.8" height="1"/>
+                                        <g>
+                                            <path class="negabaritIco_st0" d="M16.4,32c1.1,0.4,2.5,1.1,3.4,1.9L19.1,32l0.7-1.9C19,30.9,17.5,31.6,16.4,32z"/>
+                                        </g>
+                                    </g>
+                                    <g>
+                                        <rect x="37.2" y="19.5" class="negabaritIco_st0" width="1" height="13"/>
+                                        <g>
+                                            <path class="negabaritIco_st0" d="M37.7,17.1c-0.4,1.1-1.1,2.5-1.9,3.4l1.9-0.7l1.9,0.7C38.8,19.6,38.1,18.2,37.7,17.1z"/>
+                                        </g>
+                                    </g>
+                                    <g>
+                                        <path class="negabaritIco_st2" d="M22.8,22.3h29.7c0.6,0,1.2,0.5,1.2,1.2v17.2c0,0.6-0.5,1.2-1.2,1.2H22.8
+				c-0.6,0-1.2-0.5-1.2-1.2V23.4C21.7,22.8,22.2,22.3,22.8,22.3z"/>
+                                        <line class="negabaritIco_st2" x1="25" y1="41.7" x2="25" y2="43.8"/>
+                                        <line class="negabaritIco_st2" x1="52.4" y1="41.7" x2="52.4" y2="43"/>
+                                        <polyline class="negabaritIco_st2" points="29.1,43.8 22.8,43.8 22.8,45.1 27.5,45.8 			"/>
+                                        <line class="negabaritIco_st2" x1="34.6" y1="43.8" x2="39.9" y2="43.8"/>
+                                        <line class="negabaritIco_st2" x1="44" y1="43" x2="60.4" y2="43"/>
+                                        <line class="negabaritIco_st2" x1="36.1" y1="47.3" x2="38.2" y2="47.3"/>
+                                        <line class="negabaritIco_st2" x1="46.9" y1="47.3" x2="57.4" y2="47.3"/>
+                                        <path class="negabaritIco_st2" d="M55.3,43V28.6c0-0.6,0.5-1.2,1.2-1.2h10.1c0.4,0,0.8,0.3,1,0.7l4,8.3v6.5h-1.9v0.8h0.2"/>
+                                        <polyline class="negabaritIco_st2" points="68.4,29.7 61.3,29.7 61.3,35.7 71.3,35.7 			"/>
+                                        <line class="negabaritIco_st2" x1="66.3" y1="29.8" x2="66.3" y2="35.7"/>
+                                        <path class="negabaritIco_st2" d="M69.9,43.6h0.6c0.6,0,1.2,0.5,1.2,1.2l0,0c0,0.6-0.5,1.2-1.2,1.2h-4.6"/>
+                                        <g>
+                                            <circle class="negabaritIco_st2" cx="31.8" cy="47.1" r="1.9"/>
+                                            <circle class="negabaritIco_st2" cx="31.8" cy="47.1" r="4.3"/>
+                                        </g>
+                                        <g>
+                                            <circle class="negabaritIco_st2" cx="42.7" cy="47.1" r="1.9"/>
+                                            <circle class="negabaritIco_st2" cx="42.7" cy="47.1" r="4.3"/>
+                                        </g>
+                                        <g>
+                                            <circle class="negabaritIco_st2" cx="61.8" cy="47.1" r="1.9"/>
+                                            <circle class="negabaritIco_st2" cx="61.8" cy="47.1" r="4.3"/>
+                                        </g>
+                                        <path class="negabaritIco_st2" d="M70,43.6"/>
+                                    </g>
+                                    <path class="negabaritIco_st3" d="M37.2,50.8"/>
+                                </g>
+                            </g>
+</svg>
+
+                    </div>
+                    <div class="col-xs-3">
+                        <svg version="1.1" id="strahovanieIco" class="addIcon"
+                             xmlns="http://www.w3.org/2000/svg"
+                             xmlns:xlink="http://www.w3.org/1999/xlink"
+                             x="0px" y="0px"
+                             viewBox="0 0 90 90"
+                             style="enable-background:new 0 0 90 90;"
+                             xml:space="preserve">
+<style type="text/css">
+    .strahovanieIco_st0{fill:#58595B;}
+    .strahovanieIco_st1{fill:none;stroke:#58595B;stroke-miterlimit:10;}
+    .strahovanieIco_st2{fill:none;stroke:#58595B;stroke-width:0.7;stroke-linejoin:round;stroke-miterlimit:10;}
+    .strahovanieIco_st3{fill:#FFFFFF;stroke:#58595B;stroke-width:0.7;stroke-linejoin:round;stroke-miterlimit:10;}
+</style>
+
+                            <g>
+                                <path class="strahovanieIco_st0" d="M19.2,64.5c0-0.2-0.1-0.3-0.2-0.5c-0.1-0.1-0.2-0.3-0.3-0.4s-0.3-0.2-0.4-0.2
+		c-0.2-0.1-0.3-0.1-0.5-0.1c-0.3,0-0.6,0.1-0.8,0.2c-0.2,0.1-0.4,0.3-0.5,0.5c-0.1,0.2-0.2,0.4-0.3,0.7C16,65,16,65.3,16,65.6
+		c0,0.3,0,0.5,0.1,0.8s0.2,0.5,0.3,0.7s0.3,0.4,0.5,0.5c0.2,0.1,0.5,0.2,0.8,0.2c0.2,0,0.4,0,0.6-0.1c0.2-0.1,0.3-0.2,0.4-0.3
+		c0.1-0.1,0.2-0.3,0.3-0.5s0.1-0.4,0.1-0.6h1c0,0.3-0.1,0.7-0.2,0.9c-0.1,0.3-0.3,0.5-0.5,0.7s-0.5,0.4-0.8,0.5
+		c-0.3,0.1-0.6,0.2-1,0.2c-0.4,0-0.8-0.1-1.1-0.2c-0.3-0.2-0.6-0.4-0.9-0.6c-0.2-0.3-0.4-0.6-0.5-1C15.1,66.4,15,66,15,65.6
+		c0-0.4,0.1-0.8,0.2-1.2c0.1-0.4,0.3-0.7,0.5-1c0.2-0.3,0.5-0.5,0.9-0.6c0.3-0.2,0.7-0.2,1.1-0.2c0.3,0,0.6,0,0.9,0.1
+		c0.3,0.1,0.5,0.2,0.7,0.4s0.4,0.4,0.5,0.6c0.1,0.2,0.2,0.5,0.2,0.8H19.2z"/>
+                                <path class="strahovanieIco_st0" d="M20.5,62.7h4.6v0.9h-1.8v4.8h-1v-4.8h-1.8V62.7z"/>
+                                <path class="strahovanieIco_st0" d="M25.8,62.7h2.5c0.4,0,0.7,0.1,1,0.2c0.3,0.1,0.5,0.3,0.6,0.4s0.2,0.4,0.3,0.6
+		c0.1,0.2,0.1,0.4,0.1,0.6c0,0.2,0,0.4-0.1,0.6c-0.1,0.2-0.1,0.4-0.3,0.6s-0.3,0.3-0.6,0.4c-0.3,0.1-0.6,0.2-1,0.2h-1.5v2.2h-1
+		V62.7z M26.8,65.4h1.5c0.1,0,0.2,0,0.3,0s0.2-0.1,0.3-0.2s0.2-0.2,0.2-0.3c0.1-0.1,0.1-0.3,0.1-0.5c0-0.2,0-0.3-0.1-0.5
+		c-0.1-0.1-0.1-0.2-0.2-0.3c-0.1-0.1-0.2-0.1-0.3-0.1c-0.1,0-0.2,0-0.4,0h-1.5V65.4z"/>
+                                <path class="strahovanieIco_st0" d="M32.7,62.7h1.1l2.2,5.7h-1.1l-0.5-1.5h-2.3l-0.5,1.5h-1L32.7,62.7z M32.3,66.1h1.7l-0.9-2.5
+		h0L32.3,66.1z"/>
+                                <path class="strahovanieIco_st0" d="M36,62.7h1.2l1.3,2l1.4-2H41l-1.9,2.8l2,3h-1.2l-1.4-2.2L37,68.4h-1.1l2-3L36,62.7z"/>
+                                <path class="strahovanieIco_st0" d="M44.1,62.6c0.4,0,0.8,0.1,1.1,0.2c0.3,0.2,0.6,0.4,0.9,0.6c0.2,0.3,0.4,0.6,0.5,1
+		c0.1,0.4,0.2,0.7,0.2,1.2c0,0.4-0.1,0.8-0.2,1.2c-0.1,0.4-0.3,0.7-0.5,1c-0.2,0.3-0.5,0.5-0.9,0.6s-0.7,0.2-1.1,0.2
+		s-0.8-0.1-1.1-0.2s-0.6-0.4-0.9-0.6c-0.2-0.3-0.4-0.6-0.5-1c-0.1-0.4-0.2-0.8-0.2-1.2c0-0.4,0.1-0.8,0.2-1.2
+		c0.1-0.4,0.3-0.7,0.5-1c0.2-0.3,0.5-0.5,0.9-0.6C43.3,62.6,43.7,62.6,44.1,62.6z M44.1,63.4c-0.3,0-0.6,0.1-0.8,0.2
+		c-0.2,0.1-0.4,0.3-0.5,0.5c-0.1,0.2-0.2,0.4-0.3,0.7c-0.1,0.3-0.1,0.5-0.1,0.8c0,0.3,0,0.5,0.1,0.8c0.1,0.3,0.2,0.5,0.3,0.7
+		s0.3,0.4,0.5,0.5c0.2,0.1,0.5,0.2,0.8,0.2c0.3,0,0.6-0.1,0.8-0.2c0.2-0.1,0.4-0.3,0.5-0.5s0.2-0.4,0.3-0.7s0.1-0.5,0.1-0.8
+		c0-0.3,0-0.5-0.1-0.8c-0.1-0.3-0.2-0.5-0.3-0.7c-0.1-0.2-0.3-0.4-0.5-0.5C44.7,63.4,44.4,63.4,44.1,63.4z"/>
+                                <path class="strahovanieIco_st0" d="M47.8,62.7h2.8c0.5,0,0.9,0.1,1.2,0.4c0.3,0.2,0.5,0.6,0.5,1.1c0,0.3-0.1,0.5-0.2,0.7
+		c-0.1,0.2-0.3,0.4-0.6,0.5v0c0.4,0.1,0.6,0.2,0.8,0.5c0.2,0.3,0.3,0.6,0.3,1c0,0.2,0,0.4-0.1,0.6c-0.1,0.2-0.2,0.4-0.4,0.5
+		c-0.2,0.1-0.4,0.3-0.7,0.3c-0.3,0.1-0.6,0.1-1,0.1h-2.6V62.7z M48.8,65.1h1.6c0.2,0,0.4-0.1,0.6-0.2c0.2-0.1,0.2-0.3,0.2-0.6
+		c0-0.3-0.1-0.5-0.2-0.6c-0.1-0.1-0.4-0.2-0.6-0.2h-1.6V65.1z M48.8,67.6h1.8c0.3,0,0.5-0.1,0.7-0.2s0.3-0.4,0.3-0.7
+		c0-0.3-0.1-0.5-0.3-0.7c-0.2-0.2-0.4-0.2-0.7-0.2h-1.8V67.6z"/>
+                                <path id="XMLID_1802_" class="strahovanieIco_st0" d="M54.9,62.7H56l2.2,5.7h-1.1l-0.5-1.5h-2.3l-0.5,1.5h-1L54.9,62.7z M54.6,66.1h1.7l-0.9-2.5
+		h0L54.6,66.1z"/>
+                                <path class="strahovanieIco_st0" d="M58.7,62.7h1V65h2.6v-2.3h1v5.7h-1v-2.6h-2.6v2.6h-1V62.7z"/>
+                                <path class="strahovanieIco_st0" d="M64.5,62.7h1V67l2.4-4.3h1.2v5.7h-1v-4.3l-2.5,4.3h-1.1V62.7z"/>
+                                <path class="strahovanieIco_st0" d="M70.3,62.7h4.1v0.9h-3.1v1.5h2.9v0.8h-2.9v1.7h3.2v0.9h-4.2V62.7z"/>
+                            </g>
+                            <circle class="strahovanieIco_st1" cx="45" cy="45" r="40"/>
+                            <g>
+                                <g>
+                                    <path class="strahovanieIco_st0" d="M36.3,40.7c-0.1,0-0.2,0-0.2,0c-6.7-2.3-6.9-8.6-7-13.7l0-0.8l0.8,0c0,0,0.7,0,1.3-0.4
+			c0.6-0.4,0.9-1,1-1.8l0.1-0.5l0.5-0.1c2.2-0.4,4.7-0.4,7.3,0l0.5,0.1l0.1,0.5c0.1,0.8,0.4,1.4,1,1.8c0.6,0.4,1.3,0.4,1.3,0.4
+			l0.8,0l0,0.8c-0.1,5.1-0.3,11.4-7,13.7C36.4,40.7,36.4,40.7,36.3,40.7C36.3,40.7,36.3,40.7,36.3,40.7z M30.5,27.6
+			c0.2,5.5,0.9,9.8,5.8,11.6c5-1.8,5.6-6,5.8-11.6c-0.3-0.1-0.6-0.2-1-0.3c0,0-0.1,0-0.1,0l0,0l-0.1-0.1c0,0,0,0,0,0c0,0,0,0,0,0
+			L40.6,27l0,0c-0.5-0.4-1.1-1-1.4-2.2c-2-0.3-4-0.3-5.8,0c-0.3,1.2-1,1.9-1.6,2.3C31.3,27.4,30.8,27.6,30.5,27.6z"/>
+                                    <path class="strahovanieIco_st0" d="M36.3,25v13.8c0,0-4.5-1.4-5.1-6.8h10.1c0,0,0.4-2,0.3-4c0,0-2.5-0.8-2.8-2.7
+			C38.9,25.2,37.5,24.9,36.3,25z"/>
+                                </g>
+                                <g>
+                                    <path class="strahovanieIco_st2" d="M21.4,22.2h29.7c0.6,0,1.2,0.5,1.2,1.2v17.2c0,0.6-0.5,1.2-1.2,1.2H21.4
+			c-0.6,0-1.2-0.5-1.2-1.2V23.4C20.3,22.7,20.8,22.2,21.4,22.2z"/>
+                                    <line class="strahovanieIco_st2" x1="23.7" y1="41.7" x2="23.7" y2="43.8"/>
+                                    <line class="strahovanieIco_st2" x1="51.1" y1="41.7" x2="51.1" y2="42.9"/>
+                                    <polyline class="strahovanieIco_st2" points="27.7,43.8 21.5,43.8 21.5,45 26.2,45.8 			"/>
+                                    <line class="strahovanieIco_st2" x1="33.2" y1="43.8" x2="38.5" y2="43.8"/>
+                                    <line class="strahovanieIco_st2" x1="42.6" y1="42.9" x2="59" y2="42.9"/>
+                                    <line class="strahovanieIco_st2" x1="34.7" y1="47.2" x2="36.9" y2="47.2"/>
+                                    <line class="strahovanieIco_st2" x1="45.6" y1="47.2" x2="56.1" y2="47.2"/>
+                                    <path class="strahovanieIco_st2" d="M53.9,42.9V28.5c0-0.6,0.5-1.2,1.2-1.2h10.1c0.4,0,0.8,0.3,1,0.7l4,8.3v6.5h-1.9v0.8h0.2"
+                                    />
+                                    <polyline class="strahovanieIco_st2" points="67,29.6 59.9,29.6 59.9,35.6 69.9,35.6 			"/>
+                                    <line class="strahovanieIco_st2" x1="64.9" y1="29.7" x2="64.9" y2="35.6"/>
+                                    <path class="strahovanieIco_st2" d="M68.5,43.6h0.6c0.6,0,1.2,0.5,1.2,1.2v0c0,0.6-0.5,1.2-1.2,1.2h-4.6"/>
+                                    <g>
+                                        <circle class="strahovanieIco_st2" cx="30.4" cy="47.1" r="1.9"/>
+                                        <circle class="strahovanieIco_st2" cx="30.4" cy="47.1" r="4.3"/>
+                                    </g>
+                                    <g>
+                                        <circle class="strahovanieIco_st2" cx="41.3" cy="47.1" r="1.9"/>
+                                        <circle class="strahovanieIco_st2" cx="41.3" cy="47.1" r="4.3"/>
+                                    </g>
+                                    <g>
+                                        <circle class="strahovanieIco_st2" cx="60.4" cy="47.1" r="1.9"/>
+                                        <circle class="strahovanieIco_st2" cx="60.4" cy="47.1" r="4.3"/>
+                                    </g>
+                                    <path class="strahovanieIco_st2" d="M68.6,43.6"/>
+                                </g>
+                                <path class="strahovanieIco_st3" d="M35.8,50.8"/>
+                            </g>
+
+</svg>
+
+                    </div>
+                </div>
+
+
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-3 text-center">
+            <div class="col-sm-4 text-center">
                 <div class="service_type_icon">
+<!--                    --><?//= Html::img('/img/'.$sections['services']['list_items'][0]['image'],
+//                        ['alt'=>$sections['services']['list_items'][0]['image_alt']]) ?>
                     <?= $sections['services']['list_items'][0]['image'] ?>
                 </div>
                 <div class="service_type__head">
@@ -281,7 +641,7 @@ $preorder = new \app\models\Preorders();
                 </div>
 
             </div>
-            <div class="col-sm-3 text-center">
+            <div class="col-sm-4 text-center">
                 <div class="service_type_icon">
                     <?= $sections['services']['list_items'][1]['image'] ?>
                 </div>
@@ -295,7 +655,7 @@ $preorder = new \app\models\Preorders();
                     <?= $sections['services']['list_items'][1]['text'] ?>
                 </div>
             </div>
-            <div class="col-sm-3 text-center">
+            <div class="col-sm-4 text-center">
                 <div class="service_type_icon">
                     <?= $sections['services']['list_items'][2]['image'] ?>
                 </div>
@@ -309,20 +669,7 @@ $preorder = new \app\models\Preorders();
                     <?= $sections['services']['list_items'][2]['text'] ?>
                 </div>
             </div>
-            <div class="col-sm-3 text-center">
-                <div class="service_type_icon">
-                    <?= $sections['services']['list_items'][3]['image'] ?>
-                </div>
-                <div class="service_type__head">
-                    <?= $sections['services']['list_items'][3]['head'] ?>
-                </div>
-                <div class="service_type__discr">
-                    <?= $sections['services']['list_items'][3]['discr'] ?>
-                </div>
-                <div class="service_type__text">
-                    <?= nl2br($sections['services']['list_items'][3]['text']) ?>
-                </div>
-            </div>
+
         </div>
     </section>
 

@@ -467,6 +467,9 @@ section {
     background-color: #F7941E;
     color: #1A6F9D;
 }
+.black .btn-danger:hover {
+    color: #30353b;
+}
 
 
 /* акция */
@@ -600,11 +603,18 @@ section {
     margin-bottom: 60px;
 }
 .service_type_icon svg {
-    height:80px;
-    width: 170px;
+    height:120px;
+    width: 120px;
 }
-.service_type_icon #negabarit_ico{
-    width: 266px;
+.service_type_icon img {
+    width: 200px;
+}
+.services .addIconBox{
+    margin-top: 50px;
+}
+.services .addIcon {
+    width: 80px;
+    height: 80px;
 }
 .services .service_type__head{
     margin-top:20px;
@@ -1021,12 +1031,10 @@ section {
         font-size: 14px;
     }
     .service_type_icon svg {
-        height: 60px;
-        width: 128px;
+        height: 120px;
+        width: 120px;
     }
-    .service_type_icon #negabarit_ico{
-        width: 200px;
-    }
+
 
     .action_permanent .remainHead {
         font-size:13px;
@@ -1135,12 +1143,10 @@ section {
     }
 
     .service_type_icon svg {
-        height:100px;
-        width: 212px;
+        height:120px;
+        width: 120px;
     }
-    .service_type_icon #negabarit_ico{
-        width: 332px;
-    }
+
     .action_permanent .lead{
         font-size:18px;
         margin: 50px auto 0px;
@@ -1272,12 +1278,10 @@ section {
         width: 200px;
     }
     .service_type_icon svg {
-        height:80px;
-        width: 170px;
+        height:100px;
+        width: 100px;
     }
-    .service_type_icon #negabarit_ico{
-        width: 266px;
-    }
+
 }
 
 
@@ -1300,6 +1304,10 @@ section {
     }
     .less768 {
         display: none;
+    }
+
+    .services .addIconBox{
+        margin-left:-50px;
     }
 
 }
@@ -1357,12 +1365,10 @@ section {
         /*border-color: rgba(0,0,0,0.3);*/
     }
     .service_type_icon svg {
-        height:100px;
-        width: 212px;
+        height:150px;
+        width: 150px;
     }
-    .service_type_icon #negabarit_ico{
-        width: 332px;
-    }
+
 }
 
 /* Large Devices, Wide Screens */
