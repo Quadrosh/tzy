@@ -278,13 +278,53 @@ class LandingpageController extends Controller
             $listItems = $section->listItems;
             foreach ($listItems as $listItem) {
 //                $text = str_replace('#'.$var['item_var_id'],$var['value'], $text);
-                $listItem['image'] = str_replace('$alt$',$listItem['image_alt'], $listItem['image']);
-                $listItem['image'] = str_replace('$id$',$listItem['id'], $listItem['image']);
-                $listItem->save();
+//
+                $wString =  $listItem['image'];
+
+//                $lbStart = strpos($wString,'aria-labelledby="svg_li_')+24;
+//                $lbEnd = strpos($wString,'_title"');
+//                $lbCount = $lbEnd - $lbStart;
+//                $lbValue = substr($wString,$lbStart,$lbCount);
+//                $lbReplace = str_replace('aria-labelledby="svg_li_'.$lbValue,'aria-labelledby="svg_li_'.$listItem['id'],$wString);
+                if (strpos($wString,'aria-labelledby="svg_li_')) {
+                    $lbId= $this->replace(
+                        $wString,
+                        'aria-labelledby="svg_li_',
+                        '_title"',
+                        $listItem['id']
+                    );
+                    $titleId = $this->replace(
+                        $lbId,
+                        '<title id="svg_li_',
+                        '_title">',
+                        $listItem['id']
+                    );
+                    $alt2title = $this->replace(
+                        $titleId,
+                        '<title id="svg_li_'.$listItem['id'].'_title">',
+                        '</title>',
+                        $listItem['image_alt']
+                    );
+                    $listItem['image']=$alt2title;
+                    $listItem->save();
+                }
+                
+//
+//                $listItem['image'] = str_replace('$alt$',$listItem['image_alt'], $listItem['image']);
+//                $listItem['image'] = str_replace('$id$',$listItem['id'], $listItem['image']);
+//                $listItem->save();
             }
         }
-//        var_dump($landingPage); die;
         return $this->redirect(Url::previous());
+    }
+    private function replace($string,$startKey,$endKey,$replace){
+
+        $start = strpos($string,$startKey)+strlen($startKey);
+        $end = strpos($string,$endKey);
+        $count = $end - $start;
+        $value = substr($string,$start,$count);
+
+        return str_replace($startKey.$value,$startKey.$replace,$string);
     }
     /**
      * Creates a new LandingPage model.
