@@ -308,7 +308,7 @@ class LandingpageController extends Controller
                     $listItem['image']=$alt2title;
                     $listItem->save();
                 }
-                
+
 //
 //                $listItem['image'] = str_replace('$alt$',$listItem['image_alt'], $listItem['image']);
 //                $listItem['image'] = str_replace('$id$',$listItem['id'], $listItem['image']);
