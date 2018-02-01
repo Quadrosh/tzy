@@ -630,7 +630,7 @@ $preorder = new \app\models\Preorders();
              xmlns:xlink="http://www.w3.org/1999/xlink"
              x="0px" y="0px"
              viewBox="0 0 20 160"
-             style="enable-background:new 0 0 20 160;"
+             style="enable-background:new 0 0 20 160;position: absolute;left: 10px;width: 20px;height: 160px;top:15px;"
              xml:space="preserve">
 <style type="text/css">
     .numbersName_st0{fill:#FFFFFF;}
