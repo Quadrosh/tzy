@@ -596,7 +596,7 @@ $preorder = new \app\models\Preorders();
 <!--  Цифры  -->
     <section id="numberSection"
              class="<?= $sections['numbers']['stylekey'] ?> <?= $sections['numbers']['section_type'] ?>"
-             style=" background-image: url(/img/<?= $sections['numbers']['image'] ?>)">
+             style="position: relative;background-image: url(/img/<?= $sections['numbers']['image'] ?>)">
 
         <div class="row">
             <div class="col-sm-4 text-center">
