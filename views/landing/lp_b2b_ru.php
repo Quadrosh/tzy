@@ -286,8 +286,6 @@ $preorder = new \app\models\Preorders();
         <div class="row">
             <div class="col-sm-4 text-center">
                 <div class="service_type_icon">
-<!--                    --><?//= Html::img('/img/'.$sections['services']['list_items'][0]['image'],
-//                        ['alt'=>$sections['services']['list_items'][0]['image_alt']]) ?>
                     <?= $sections['services']['list_items'][0]['image'] ?>
                 </div>
                 <div class="service_type__head">
@@ -297,7 +295,7 @@ $preorder = new \app\models\Preorders();
                     <?= $sections['services']['list_items'][0]['discr'] ?>
                 </div>
                 <div class="service_type__text">
-                    <?= $sections['services']['list_items'][0]['text'] ?>
+                    <?= nl2br($sections['services']['list_items'][0]['text']) ?>
                 </div>
 
             </div>
@@ -312,7 +310,7 @@ $preorder = new \app\models\Preorders();
                     <?= $sections['services']['list_items'][1]['discr'] ?>
                 </div>
                 <div class="service_type__text">
-                    <?= $sections['services']['list_items'][1]['text'] ?>
+                    <?= nl2br($sections['services']['list_items'][1]['text']) ?>
                 </div>
             </div>
             <div class="col-sm-4 text-center">
@@ -326,7 +324,7 @@ $preorder = new \app\models\Preorders();
                     <?= $sections['services']['list_items'][2]['discr'] ?>
                 </div>
                 <div class="service_type__text">
-                    <?= $sections['services']['list_items'][2]['text'] ?>
+                    <?= nl2br($sections['services']['list_items'][2]['text']) ?>
                 </div>
             </div>
 
