@@ -186,10 +186,6 @@ $preorder = new \app\models\Preorders();
                                     $now = new \DateTime();
                                     $add = -(($now->getTimestamp() /3600/24 ) % ($sections['action']['extra'])+1)+$sections['action']['extra'];
                                     $modstr = '+'.$add.' day';
-
-//                                    var_dump($add); die;
-
-
                                     $actionEnd = $now->modify($modstr);
                                     $date=$actionEnd->format('d.m.Y');
                                     echo $date;
