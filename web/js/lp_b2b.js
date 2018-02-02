@@ -5,7 +5,9 @@ function actionTimer () {
 
     var year = time.getFullYear();
     var month = time.getMonth();
-    var day = time.getDate()+ parseInt(dateAttr);
+
+    var add = -(parseInt(time.getTime()/1000/3600/24) % dateAttr+1)+parseInt(dateAttr);
+    var day = time.getDate() + parseInt(add);
 
     var tillTo=new Date(year,month,day,18);
     var totalRemains=(tillTo.getTime()-time.getTime());
