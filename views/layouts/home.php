@@ -141,7 +141,7 @@ $feedback = Yii::$app->view->params['feedback'];
                     <div class="b-top__banner__text_corner"></div>
                 </div>
                 <div class="col-xs-7 text-right b-top__banner_picture">
-                    <p><a href="#"><img alt="" src="/img/b-banner__picture.png" /></a></p>
+<!--                    <p><a href="#"><img alt="" src="/img/top_face_trucks.jpg" /></a></p>-->
                 </div>
                 <div class="b-top__banner__shadow"></div>
             </div><!-- /.b-top__banner -->

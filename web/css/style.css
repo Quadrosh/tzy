@@ -484,7 +484,7 @@ header .b-top__banner {
 header .b-top__banner .b-top__banner__text {
     height: 100%;
     z-index: 1000;
-    width: 46.55555556%;
+    width: 46%;
     background: #0090d7 url(/img/b-banner__background.png) 100% 0 repeat-y scroll;
 }
 header .b-top__banner .b-top__banner__text .b-top__banner__text_message {
@@ -501,13 +501,16 @@ header .b-top__banner .b-top__banner__text .b-top__banner__text_corner {
     z-index: -1;
 }
 header .b-top__banner .b-top__banner_picture {
-    position: absolute;
+    position: relative;
     right: 0;
     top: 0;
     padding: 0;
     height: 100%;
-    width: 100%;
+    width: 54%;
     overflow: hidden;
+    background-image: url(/img/top_face_trucks.jpg);
+    background-size: cover;
+    background-position: center;
 }
 header .b-top__banner .b-top__banner__shadow {
     background-image: -webkit-linear-gradient(top,transparent 0,rgba(0,0,0,.2) 100%);
