@@ -119,12 +119,12 @@ $this->params['breadcrumbs'][] = $this->title;
                     'update'=>function($url,$model){
 
                         if ($model['type']=='quickForm') {
-                            $newUrl = Yii::$app->getUrlManager()->createUrl(['/admin/feedback/set-quality','id'=>$model['id']]);
+                            $newUrl = Yii::$app->getUrlManager()->createUrl(['/feedback/set-quality','id'=>$model['id']]);
                         } else {
                             if ($model['from_page']=='call') {
-                                $newUrl = Yii::$app->getUrlManager()->createUrl(['/admin/preorders/update-call','id'=>$model['id']]);
+                                $newUrl = Yii::$app->getUrlManager()->createUrl(['/preorders/update-call','id'=>$model['id']]);
                             } else {
-                                $newUrl = Yii::$app->getUrlManager()->createUrl(['/admin/preorders/set-quality','id'=>$model['id']]);
+                                $newUrl = Yii::$app->getUrlManager()->createUrl(['/preorders/set-quality','id'=>$model['id']]);
                             }
                         }
 

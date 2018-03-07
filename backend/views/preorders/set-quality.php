@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $model app\models\Preorders */
 
 $this->title = 'Preorder set quality: ID - ' . $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Заявки', 'url' => ['/admin/preorders/lead-quality']];
+$this->params['breadcrumbs'][] = ['label' => 'Заявки', 'url' => ['/preorders/lead-quality']];
 $this->params['breadcrumbs'][] = 'Update preorder '. $model->id;
 ?>
 <div class="preorders-update">

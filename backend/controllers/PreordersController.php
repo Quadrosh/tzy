@@ -365,7 +365,7 @@ class PreordersController extends Controller
     {
         $model = $this->findModel($id);
         if (Yii::$app->user->can('adminPermission', [])) {
-            $this->layout = 'admin';
+            $this->layout = 'main';
         }
         elseif (Yii::$app->user->can('statPermission', [])) {
             $this->layout = 'stat';

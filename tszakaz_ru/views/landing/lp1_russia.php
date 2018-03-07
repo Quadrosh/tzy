@@ -608,7 +608,9 @@ $preorder = new common\models\Preorders();
 
 <!--    Reviews   -->
 
-    <section id="reviewsSection" class="<?= $sections['reviews']['stylekey'] ?> <?= $sections['reviews']['section_type'] ?>">
+    <section
+        id="reviewsSection"
+        class="<?= $sections['reviews']['stylekey'] ?> <?= $sections['reviews']['section_type'] ?>">
         <div class="row">
             <div class="col-sm-12 text-center">
                 <h2 class="head"><?= $sections['reviews']['head'] ?></h2>
@@ -673,7 +675,9 @@ $preorder = new common\models\Preorders();
     </section>
 
 <!--    clients   -->
-    <section id="clientsSection" class="<?= $sections['clients']['stylekey'] ?> <?= $sections['clients']['section_type'] ?>">
+    <section
+        id="clientsSection"
+        class="<?= $sections['clients']['stylekey'] ?> <?= $sections['clients']['section_type'] ?>">
         <div class="row">
             <div class="col-sm-12 text-center">
                 <h2 class="head"><?= $sections['clients']['head'] ?></h2>

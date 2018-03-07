@@ -37,42 +37,11 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
-//            ['label' => 'Gii', 'url' => ['/gii']],
-//            [
-//                'label' => 'Landing',
-//                'items' => [
-//                    ['label' => 'Landing Page', 'url' => ['/admin/landingpage']],
-//                    ['label' => 'Landing Section', 'url' => ['/admin/landingsection']],
-//                    ['label' => 'Landing List Item', 'url' => ['/admin/landinglistitem']],
-//                    ['label' => 'visits', 'url' => ['/admin/visit']],
-//                ],
-//            ],
-//            [
-//                'label' => 'АБ Тесты',
-//                'items' => [
-//                    ['label' => 'test', 'url' => ['/admin/test/index']],
-//                    ['label' => 'test page', 'url' => ['/admin/testpage/index']],
-//                    ['label' => 'test target', 'url' => ['/admin/testtarget/index']],
-//                ],
-//            ],
-//            [
-//                'label' => 'Заявки',
-//                'items' => [
-//                    ['label' => 'Предзаказы', 'url' => ['/admin/preorders/index']],
-//                    ['label' => 'Перезвони мне', 'url' => ['/admin/feedback/index']],
-//                    ['label' => 'Все заявки с UTM', 'url' => ['/admin/preorders/utm']],
-//                    ['label' => 'Заявки - качество', 'url' => ['/admin/preorders/lead-quality']],
-//                    ['label' => 'Stat by day', 'url' => ['/admin/landingpage/stat?days=7']],
-//                    ['label' => 'Landing - визиты', 'url' => ['/admin/visit']],
-//                ],
-//            ],
-            ['label' => 'Заявки - качество', 'url' => ['/admin/preorders/lead-quality']],
-////            ['label' => 'Feedback', 'url' => ['/admin/feedback']],
-//            ['label' => 'Pages', 'url' => ['/admin/pages']],
-//            ['label' => 'Images', 'url' => ['/admin/imagefiles']],
-//            ['label' => 'Articles', 'url' => ['/site/contact']],
+
+            ['label' => 'Заявки - качество', 'url' => ['/preorders/lead-quality']],
+
             Yii::$app->user->isGuest ? (
-            ['label' => 'Login', 'url' => ['/admin/default/login']]
+            ['label' => 'Login', 'url' => ['/site/login']]
             ) : (
                 '<li>'
                 . Html::beginForm(['/site/logout'], 'post')
