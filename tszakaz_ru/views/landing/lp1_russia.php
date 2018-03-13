@@ -104,7 +104,9 @@ $preorder = new common\models\Preorders();
     </section>
 
 <!-- акция -->
-    <section id="actionSection" class="<?= $sections['action']['stylekey'] ?> <?= $sections['action']['section_type'] ?>">
+    <section
+        id="actionSection"
+        class="<?= $sections['action']['stylekey'] ?> <?= $sections['action']['section_type'] ?>">
         <div class="row">
             <div class="col-sm-3">
                 <h4 class="tillTo">до <?php
@@ -141,7 +143,9 @@ $preorder = new common\models\Preorders();
     </section>
 
 <!-- services -->
-    <section id="servicesSection" class="<?= $sections['services']['stylekey'] ?> <?= $sections['services']['section_type'] ?>">
+    <section
+        id="servicesSection"
+        class="<?= $sections['services']['stylekey'] ?> <?= $sections['services']['section_type'] ?>">
         <div class="row">
             <div class="col-sm-12 text-center">
                 <h2 class="head"><?= $sections['services']['head'] ?></h2>
@@ -211,7 +215,9 @@ $preorder = new common\models\Preorders();
     </section>
 
 <!-- servicesCall2action -->
-    <section id="servicesCall2action" class="<?= $sections['call2action']['stylekey'] ?> <?= $sections['call2action']['section_type'] ?>">
+    <section
+        id="servicesCall2action"
+        class="<?= $sections['call2action']['stylekey'] ?> <?= $sections['call2action']['section_type'] ?>">
         <div class="row">
             <?php $form = ActiveForm::begin([
                 'id' => 'services-call2action',
@@ -267,7 +273,9 @@ $preorder = new common\models\Preorders();
     </section>
 
 <!--  whyWe  -->
-    <section id="whyWeSection" class="<?= $sections['whyWe']['stylekey'] ?> <?= $sections['whyWe']['section_type'] ?>">
+    <section
+        id="whyWeSection"
+        class="<?= $sections['whyWe']['stylekey'] ?> <?= $sections['whyWe']['section_type'] ?>">
         <div class="row">
             <div class="col-sm-12 text-center">
                 <h2 class="head"><?= $sections['whyWe']['head'] ?></h2>
@@ -290,7 +298,9 @@ $preorder = new common\models\Preorders();
     </section>
 
 <!-- how we work -->
-    <section id="howWeWorkSection" class="<?= $sections['howWeWork']['stylekey'] ?> <?= $sections['howWeWork']['section_type'] ?>">
+    <section
+        id="howWeWorkSection"
+        class="<?= $sections['howWeWork']['stylekey'] ?> <?= $sections['howWeWork']['section_type'] ?>">
         <div class="row">
             <div class="col-sm-12 text-center">
                 <h2 class="head"><?= $sections['howWeWork']['head'] ?></h2>
@@ -508,7 +518,9 @@ $preorder = new common\models\Preorders();
     </section>
 
 <!-- numbers -->
-    <section id="numberSection" class="<?= $sections['numbers']['stylekey'] ?> <?= $sections['numbers']['section_type'] ?>"  style=" background-image: url(/img/<?= $sections['numbers']['image'] ?>)">
+    <section
+        id="numberSection"
+        class="<?= $sections['numbers']['stylekey'] ?> <?= $sections['numbers']['section_type'] ?>"  style=" background-image: url(/img/<?= $sections['numbers']['image'] ?>)">
         <div class="row">
             <div class="col-sm-4 text-center">
                 <div class="numbers_num">
@@ -538,7 +550,9 @@ $preorder = new common\models\Preorders();
     </section>
 
 <!--  наши проекты  -->
-    <section id="ourProjectsSection" class="<?= $sections['projects']['stylekey'] ?> <?= $sections['projects']['section_type'] ?>">
+    <section
+        id="ourProjectsSection"
+        class="<?= $sections['projects']['stylekey'] ?> <?= $sections['projects']['section_type'] ?>">
         <div class="row">
             <div class="col-sm-12 text-center">
                 <h2 class="head"><?= $sections['projects']['head'] ?></h2>

@@ -42,7 +42,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute'=>'role',
                 'value' => function($data)
                 {
-                    $theData = \app\models\RolesAssignment::find()->where(['user_id'=>$data['id']])->one();
+                    $theData = \common\models\RolesAssignment::find()->where(['user_id'=>$data['id']])->one();
                     return $theData['item_name'];
                 },
             ],
@@ -87,7 +87,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= $form->field($roleAssign, 'item_name',[
             'inputTemplate' => '<div class="input-group"><span class="lRound">{input}</span><span class="input-group-btn">'.
                 '<button type="submit" class="btn rRound btn-primary">Назначить <i class="fa fa-share" aria-hidden="true"></i></button></span></div>',
-        ])->dropDownList(\yii\helpers\ArrayHelper::map(\app\models\Roles::find()->where(['type'=>1])->orderBy('name')->all(), 'name','name')) ?>
+        ])->dropDownList(\yii\helpers\ArrayHelper::map(\common\models\Roles::find()->where(['type'=>1])->orderBy('name')->all(), 'name','name')) ?>
         <?= $form->field($roleAssign, 'user_id')->hiddenInput(['value'=>$model['id']])->label(false) ?>
         <?php yii\bootstrap\ActiveForm::end() ?>
     </div>

@@ -42,7 +42,7 @@ AppAsset::register($this);
 //            ['label' => 'Pages', 'url' => ['/admin/pages']],
 //            ['label' => 'Articles', 'url' => ['/site/contact']],
             Yii::$app->user->isGuest ? (
-            ['label' => 'Login', 'url' => ['/admin/default/login']]
+            ['label' => 'Login', 'url' => ['/site/login']]
             ) : (
                 '<li>'
                 . Html::beginForm(['/site/logout'], 'post')
