@@ -51,13 +51,13 @@ use yii\widgets\ActiveForm;
     </div>
     <div class="row">
         <div class="col-sm-3">
-            <p><?= $form->field($model, 'quality')->dropDownList(\yii\helpers\ArrayHelper::map(\app\models\OrderStatus::find()->orderBy('name')->all(), 'id','name'),[
+            <p><?= $form->field($model, 'quality')->dropDownList(\yii\helpers\ArrayHelper::map(\common\models\OrderStatus::find()->orderBy('name')->all(), 'id','name'),[
                     'prompt'=>'',
                 ])->label('Статус') ?>
             </p>
         </div>
         <div class="col-sm-3">
-            <p><?= $form->field($model, 'manager')->dropDownList(\yii\helpers\ArrayHelper::map(\app\models\Manager::find()->orderBy('name')->all(), 'id','name'),[
+            <p><?= $form->field($model, 'manager')->dropDownList(\yii\helpers\ArrayHelper::map(\common\models\Manager::find()->orderBy('name')->all(), 'id','name'),[
                     'prompt'=>'',
                 ]) ?>
             </p>
