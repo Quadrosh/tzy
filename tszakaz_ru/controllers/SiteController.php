@@ -240,6 +240,19 @@ class SiteController extends Controller
     {
         $feedback = new Feedback();
         if ($feedback->load(Yii::$app->request->post())) {
+            $spamOrders = Preorders::find()
+                ->where(['ip'=>Yii::$app->request->userIP])
+                ->andWhere(['>','date',time()-86400])
+                ->all();
+            $spamFeedbacks = Feedback::find()
+                ->where(['ip'=>Yii::$app->request->userIP])
+                ->andWhere(['>','date',time()-86400])
+                ->all();
+
+            if (count($spamOrders) + count($spamFeedbacks) > 5) {
+                Yii::$app->session->setFlash('error', 'Вы достигли лимита отправляемых заявок. <br> Свяжитесь с нами по телефону');
+                return $this->redirect(Url::previous());
+            }
             $feedback['site'] = Yii::$app->params['site'];
             $feedback['ip'] = Yii::$app->request->userIP;
             if ( $feedback->save()) {
@@ -268,6 +281,18 @@ class SiteController extends Controller
     {
         $preorder = new Preorders();
         if ($preorder->load(Yii::$app->request->post())) {
+            $spamOrders = Preorders::find()
+                ->where(['ip'=>Yii::$app->request->userIP])
+                ->andWhere(['>','date',time()-86400])
+                ->all();
+            $spamFeedbacks = Feedback::find()
+                ->where(['ip'=>Yii::$app->request->userIP])
+                ->andWhere(['>','date',time()-86400])
+                ->all();
+            if ( count($spamOrders) + count($spamFeedbacks) > 5) {
+                Yii::$app->session->setFlash('error', 'Вы достигли лимита отправляемых заявок. <br> Свяжитесь с нами по телефону');
+                return $this->redirect(Url::previous());
+            }
             $preorder['site'] = Yii::$app->params['site'];
             $preorder['ip'] = Yii::$app->request->userIP;
             if ($preorder->save()) {
