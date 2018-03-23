@@ -36,6 +36,9 @@ class LandingController extends Controller
                     'class' => 'yii\web\ErrorAction',
                     'view' => '@app/views/site/custom_error.php',
                 ],
+                'rateLimiter' => [
+                    'class' => \yii\filters\RateLimiter::className(),
+                ],
 
         ];
     }

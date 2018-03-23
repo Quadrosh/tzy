@@ -46,6 +46,9 @@ class SiteController extends Controller
                     'logout' => ['post'],
                 ],
             ],
+            'rateLimiter' => [
+                'class' => \yii\filters\RateLimiter::className(),
+            ],
         ];
     }
 
