@@ -256,7 +256,7 @@ class SiteController extends Controller
             $feedback['site'] = Yii::$app->params['site'];
             $feedback['ip'] = Yii::$app->request->userIP;
             if ( $feedback->save()) {
-                if ($feedback->sendEmail( 'TSZAKAZ.RU: Запрос обратного звонка')) {
+                if ($feedback->sendEmail( Yii::$app->params['site'].': Запрос обратного звонка')) {
                     Yii::$app->session->setFlash('success', 'Ваша заявка отправлена. <br> Мы свяжемся с Вами в ближайшее время.');
                     return $this->redirect(Url::previous());
                 } else {
@@ -296,7 +296,7 @@ class SiteController extends Controller
             $preorder['site'] = Yii::$app->params['site'];
             $preorder['ip'] = Yii::$app->request->userIP;
             if ($preorder->save()) {
-                if ($preorder->sendEmail( 'TSZAKAZ.RU: Заявка на грузоперевозку')) {
+                if ($preorder->sendEmail( Yii::$app->params['site'].': Заявка на грузоперевозку')) {
                     Yii::$app->session->setFlash('success', 'Ваша заявка отправлена. <br> Мы свяжемся с Вами в ближайшее время.');
                     return $this->redirect(Url::previous());
                 } else {

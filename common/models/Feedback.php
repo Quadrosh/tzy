@@ -137,10 +137,10 @@ class Feedback extends \yii\db\ActiveRecord
             $this->emailForSend = Yii::$app->params['prodOrderEmail'];
         }
 
-        if ($subject == 'TSZAKAZ.RU: Запрос обратного звонка') {
+        if ($subject == Yii::$app->params['site'].': Запрос обратного звонка') {
             return Yii::$app->mailer->compose()
                 ->setTo($this->emailForSend)
-                ->setFrom('noreply@'.Yii::$app->params['site'])
+                ->setFrom('sender@'.Yii::$app->params['site'])
                 ->setSubject($subject)
                 ->setHtmlBody(
                     "Данные запроса <br>".
@@ -149,10 +149,10 @@ class Feedback extends \yii\db\ActiveRecord
                     " <br/> Со страницы: ".$this->from_page
                 )
                 ->send();
-        } elseif ($subject == 'TSZAKAZ.RU: Заявка на грузоперевозку') {
+        } elseif ($subject == Yii::$app->params['site'].': Заявка на грузоперевозку') {
             return Yii::$app->mailer->compose()
                 ->setTo($this->emailForSend)
-                ->setFrom('noreply@tszakaz.ru')
+                ->setFrom('sender@'.Yii::$app->params['site'])
                 ->setSubject($subject)
                 ->setHtmlBody(
                     "Данные запроса <br>".
@@ -170,7 +170,7 @@ class Feedback extends \yii\db\ActiveRecord
         } else {
             return Yii::$app->mailer->compose()
                 ->setTo($this->emailForSend)
-                ->setFrom('noreply@'.Yii::$app->params['site'])
+                ->setFrom('sender@'.Yii::$app->params['site'])
                 ->setSubject($subject)
                 ->setHtmlBody(
                     "Данные запроса <br>".

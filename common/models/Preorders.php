@@ -145,7 +145,7 @@ class Preorders extends \yii\db\ActiveRecord
         }
         return Yii::$app->mailer->compose()
             ->setTo($this->emailForSend)
-            ->setFrom('noreply@'.Yii::$app->params['site'])
+            ->setFrom('sender@'.Yii::$app->params['site'])
             ->setSubject($subject)
             ->setHtmlBody(
                 "Данные запроса <br>".
