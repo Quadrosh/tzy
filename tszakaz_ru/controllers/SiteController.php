@@ -2,6 +2,7 @@
 
 namespace tszakaz_ru\controllers;
 
+use common\models\RateLimit;
 use common\models\MenuTop;
 use common\models\Pages;
 use common\models\Preorders;
@@ -48,6 +49,7 @@ class SiteController extends Controller
             ],
             'rateLimiter' => [
                 'class' => \yii\filters\RateLimiter::className(),
+                'user'=> new RateLimit()
             ],
         ];
     }
@@ -239,6 +241,7 @@ class SiteController extends Controller
         $feedback = new Feedback();
         if ($feedback->load(Yii::$app->request->post())) {
             $feedback['site'] = Yii::$app->params['site'];
+            $feedback['ip'] = Yii::$app->request->userIP;
             if ( $feedback->save()) {
                 if ($feedback->sendEmail( 'TSZAKAZ.RU: Запрос обратного звонка')) {
                     Yii::$app->session->setFlash('success', 'Ваша заявка отправлена. <br> Мы свяжемся с Вами в ближайшее время.');
@@ -266,6 +269,7 @@ class SiteController extends Controller
         $preorder = new Preorders();
         if ($preorder->load(Yii::$app->request->post())) {
             $preorder['site'] = Yii::$app->params['site'];
+            $preorder['ip'] = Yii::$app->request->userIP;
             if ($preorder->save()) {
                 if ($preorder->sendEmail( 'TSZAKAZ.RU: Заявка на грузоперевозку')) {
                     Yii::$app->session->setFlash('success', 'Ваша заявка отправлена. <br> Мы свяжемся с Вами в ближайшее время.');

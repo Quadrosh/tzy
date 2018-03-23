@@ -51,7 +51,7 @@ class Preorders extends \yii\db\ActiveRecord
             [['dispatch', 'destination', 'cargo', 'phone'], 'required'],
             [['text'], 'string'],
             [['done','date'], 'integer'],
-            [['quality','site','manager'], 'string', 'max' => 255],
+            [['quality','site','manager','ip'], 'string', 'max' => 255],
             [['comment'], 'string', 'max' => 510],
             [['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'], 'string'],
             ['utm_source', 'filter', 'filter' => function ($value) {
