@@ -2,6 +2,7 @@
 
 namespace backend\controllers;
 
+use common\models\SpamRemoveForm;
 use Yii;
 use common\models\Feedback;
 use yii\data\ActiveDataProvider;
@@ -172,5 +173,15 @@ class FeedbackController extends AdminController
                 'model' => $model,
             ]);
         }
+    }
+
+    public function actionRemoveSpam(){
+        $model = new SpamRemoveForm();
+        if ($model->load(Yii::$app->request->post())) {
+            $model->remove();
+        } else {
+            Yii::$app->session->setFlash('error', 'В контроллер не подгрузилась форма');
+        }
+        return $this->redirect(Url::previous());
     }
 }

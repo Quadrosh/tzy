@@ -58,7 +58,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <h4>Image Upload</h4>
                 <?php $form = ActiveForm::begin([
                     'method' => 'post',
-                    'action' => ['/admin/landingsection/upload'],
+                    'action' => ['/landingsection/upload'],
                     'options' => ['enctype' => 'multipart/form-data'],
                 ]); ?>
                 <?= $form->field($uploadmodel, 'toModelProperty')->dropDownList([

@@ -3,6 +3,7 @@
 namespace backend\controllers;
 
 use common\models\Feedback;
+use common\models\SpamRemoveForm;
 use Yii;
 use common\models\Preorders;
 use yii\data\ActiveDataProvider;
@@ -378,5 +379,17 @@ class PreordersController extends Controller
                 'model' => $model,
             ]);
         }
+    }
+
+    public function actionRemoveSpam(){
+        $model = new SpamRemoveForm();
+        if ($model->load(Yii::$app->request->post())) {
+            if (!$model->remove()) {
+                Yii::$app->session->setFlash('error', 'Не получилось удалить');
+            }
+        } else {
+            Yii::$app->session->setFlash('error', 'В контроллер не подгрузилась форма');
+        }
+        return $this->redirect(Url::previous());
     }
 }

@@ -9,7 +9,7 @@ use yii\web\UploadedFile;
 use Yii;
 use common\models\Imagefiles;
 
-class UploadForm extends Model
+class UploadForm  extends Model
 {
     /**
      * @var UploadedFile
