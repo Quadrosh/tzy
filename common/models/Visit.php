@@ -49,7 +49,7 @@ class Visit extends \yii\db\ActiveRecord
         return [
             [['created_at','qnt'], 'integer'],
             [['ip'], 'string', 'max' => 100],
-            [['city', 'url', 'comment', 'lp_hrurl'], 'string', 'max' => 255],
+            [['city', 'url', 'comment', 'lp_hrurl', 'site'], 'string', 'max' => 255],
             [['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'], 'string', 'max' => 510],
         ];
     }
@@ -62,6 +62,7 @@ class Visit extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'ip' => 'Ip',
+            'site' => 'Site',
             'city' => 'City',
             'url' => 'Url',
             'qnt' => 'Qnt',
