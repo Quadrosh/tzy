@@ -13,7 +13,8 @@ use yii\widgets\ActiveForm;
         <?php $form = ActiveForm::begin(); ?>
 
         <div class="col-sm-4">
-            <?= $form->field($model, 'site')->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, 'site')->dropDownList(
+                \yii\helpers\ArrayHelper::map(\common\models\Sites::find()->all(), 'name','name')) ?>
         </div>
         <div class="col-sm-4">
             <?= $form->field($model, 'hrurl')->textInput(['maxlength' => true]) ?>

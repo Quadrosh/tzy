@@ -13,13 +13,13 @@ use yii\widgets\ActiveForm;
     <?php $form = ActiveForm::begin(); ?>
     <div class="row">
         <div class="col-sm-6">
-            <?= $form->field($model, 'page_id')->dropDownList(\yii\helpers\ArrayHelper::map(\app\models\LandingPage::find()->all(), 'id','name'),[ 'options'=>[Yii::$app->request->get('page_id')=>["Selected"=>true]]]) ?>
+            <?= $form->field($model, 'page_id')->dropDownList(\yii\helpers\ArrayHelper::map(\common\models\LandingPage::find()->all(), 'id','name'),[ 'options'=>[Yii::$app->request->get('page_id')=>["Selected"=>true]]]) ?>
         </div>
         <div class="col-sm-6">
             <?= $form->field($model, 'order_num')->textInput() ?>
         </div>
         <div class="col-sm-12">
-            <?= $form->field($model, 'head')->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, 'head')->textarea(['rows' => 1 ,'maxlength' => true]) ?>
 
             <?= $form->field($model, 'lead')->textarea(['rows' => 1]) ?>
 
@@ -51,6 +51,7 @@ use yii\widgets\ActiveForm;
                 'services'=>'services',
                 'why_we'=>'why_we',
                 'how_we_work'=>'how_we_work',
+                'what_we_do'=>'what_we_do',
                 'numbers'=>'numbers',
                 'projects'=>'projects',
                 'reviews'=>'reviews',

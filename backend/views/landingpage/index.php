@@ -26,14 +26,18 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'site',
             'name',
-//            'hrurl:url',
             [
                 'attribute'=>'hrurl',
                 'value' => function($data)
                 {
-                   return Yii::$app->request->getHostName() == 'cp.tszakaz.local'
-                    ? '<a  href="http://tszakaz.local/lp/'.$data['hrurl'].'">'.$data['hrurl'].'</a>'
-                    : '<a  href="http://tszakaz.ru/lp/'.$data['hrurl'].'">'.$data['hrurl'].'</a>';
+                    if (Yii::$app->request->getHostName() == 'cp.tszakaz.local') {
+                        $lpSite = $data['site'];
+                        $site = str_replace('.ru','.local',$lpSite);
+                        $site = str_replace('.su','.local',$site);
+                        return '<a  href="http://'.$site.'/lp/'.$data['hrurl'].'">'.$data['hrurl'].'</a>';
+                    } else {
+                        return '<a  href="http://'.$data['site'].'/lp/'.$data['hrurl'].'">'.$data['hrurl'].'</a>';
+                    }
                 },
                 'format'=> 'html',
             ],

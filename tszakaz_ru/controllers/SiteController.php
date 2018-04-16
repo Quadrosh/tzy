@@ -137,7 +137,10 @@ class SiteController extends Controller
 
 //        Yii::$app->session->setFlash('success', "Your message to display");
 
-        $page = Pages::find()->where(['hrurl'=>$pageName])->one();
+        $page = Pages::find()->where([
+            'site'=>Yii::$app->params['site'],
+            'hrurl'=>$pageName
+        ])->one();
         if ($page == false) {
 //            $this->layout = 'error';
             throw new \yii\web\NotFoundHttpException('Страница не существует');

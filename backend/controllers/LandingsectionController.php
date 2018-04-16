@@ -121,9 +121,27 @@ class LandingsectionController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
-
-        return $this->redirect(['index']);
+        $section = $this->findModel($id);
+        $items = $section->listItems;
+        $itemIterFind = count($items);
+        $itemIterDeleted = 0;
+        if ($items) {
+            foreach ($items as $item) {
+                $item->delete();
+                $itemIterDeleted++;
+            }
+            Yii::$app->session->setFlash('success', 'Найдено '.$itemIterFind.' дочерних объектов'.PHP_EOL.
+        'Удалено '.$itemIterDeleted.' дочерних объектов' );
+        } else {
+            Yii::$app->session->setFlash('success', 'Дочерних объектов не найдено');
+        }
+        if ($section->delete()) {
+            Yii::$app->session->setFlash('success', 'Секция успешно удалена.'.PHP_EOL.
+                'Удалено '.$itemIterDeleted.' дочерних объектов');
+        } else {
+            Yii::$app->session->setFlash('error', 'Секция не удалена');
+        }
+        return $this->redirect(Url::previous());
     }
 
     /**

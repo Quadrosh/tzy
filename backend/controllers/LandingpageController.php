@@ -411,7 +411,7 @@ class LandingpageController extends Controller
 
 //        var_dump($newLP); die;
 
-        return $this->redirect(['/admin/landingpage/view','id'=>$newLP['id']]);
+        return $this->redirect(['/landingpage/view','id'=>$newLP['id']]);
     }
 
     /**

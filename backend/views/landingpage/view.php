@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'method' => 'post',
             ],
         ]) ?>
-        <?= Html::a('Alt2Svg', ['/admin/landingpage/alt-to-svg', 'id' => $model->id], [
+        <?= Html::a('Alt2Svg', ['/landingpage/alt-to-svg', 'id' => $model->id], [
             'class' => 'btn btn-primary',
 //            'data' => [
 //                'confirm' => 'Создаем новый и копируем все это туда?',
@@ -49,9 +49,14 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute'=>'hrurl',
                 'value' => function($data)
                 {
-                    return Yii::$app->request->getHostName() == 'cp.tszakaz.local'
-                        ? '<a  href="http://tszakaz.local/lp/'.$data['hrurl'].'">'.$data['hrurl'].'</a>'
-                        : '<a  href="http://tszakaz.ru/lp/'.$data['hrurl'].'">'.$data['hrurl'].'</a>';
+                    if (Yii::$app->request->getHostName() == 'cp.tszakaz.local') {
+                        $lpSite = $data['site'];
+                        $site = str_replace('.ru','.local',$lpSite);
+                        $site = str_replace('.su','.local',$site);
+                        return '<a  href="http://'.$site.'/lp/'.$data['hrurl'].'">'.$data['hrurl'].'</a>';
+                    } else {
+                        return '<a  href="http://'.$data['site'].'/lp/'.$data['hrurl'].'">'.$data['hrurl'].'</a>';
+                    }
                 },
                 'format'=> 'html',
             ],
@@ -77,7 +82,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 <th>Lead</th>
                 <th>Stylekey</th>
 
-                <th class="action-column">&nbsp;</th>
+                <th </th>
+                <th> </th>
             </tr>
         </thead>
         <tbody>
@@ -92,11 +98,27 @@ $this->params['breadcrumbs'][] = $this->title;
                 <td><?= $section['stylekey'] ?></td>
 
                 <td>
-                    <a href="/admin/landingsection/view?id=<?= $section['id'] ?>" title="View" aria-label="View" data-pjax="0"><span class="glyphicon glyphicon-eye-open"></span></a>
-                    <a href="/admin/landingsection/update?id=<?= $section['id'] ?>" title="Update" aria-label="Update" data-pjax="0"><span class="glyphicon glyphicon-pencil"></span></a>
-                    <a href="/admin/landinglistitem/create?section_id=<?= $section['id'] ?>" title="Create List Item" aria-label="Create Item" data-pjax="0"  data-method="post"><span class="glyphicon glyphicon-open-file"></span></a>
-
-
+                    <a href="/landingsection/view?id=<?= $section['id'] ?>"
+                       title="View"
+                       aria-label="View"
+                       data-pjax="0"><span class="glyphicon glyphicon-eye-open"></span></a>
+                    <a href="/landingsection/update?id=<?= $section['id'] ?>"
+                       title="Update"
+                       aria-label="Update"
+                       data-pjax="0"><span class="glyphicon glyphicon-pencil"></span></a>
+                    <a href="/landinglistitem/create?section_id=<?= $section['id'] ?>"
+                       title="Create List Item"
+                       aria-label="Create Item"
+                       data-pjax="0"
+                       data-method="post"><span class="glyphicon glyphicon-open-file"></span></a>
+                </td>
+                <td>
+                    <a href="/landingsection/delete?id=<?= $section['id'] ?>"
+                       title="Delete Section"
+                       aria-label="Create Item"
+                       data-confirm="Точно удалить? Вместе с секцией удалятся все дочерние объекты. Загруженные картинки не удалятся"
+                       data-pjax="0"
+                       data-method="post"><span class="glyphicon glyphicon-trash"></span></a>
                 </td>
             </tr>
         <?php endforeach; ?>
@@ -104,7 +126,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
         </tbody>
     </table>
-    <?= Html::a('Создать секцию', ['/admin/landingsection/create', 'page_id' => $model->id], ['class' => 'btn btn-success']) ?>
+    <?= Html::a('Создать секцию', ['/landingsection/create', 'page_id' => $model->id], ['class' => 'btn btn-success']) ?>
     <h2>List Items</h2>
     <table class="table table-striped table-bordered">
         <thead>
@@ -138,8 +160,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 <td><?= $listItem['image_alt'] ?></td>
 
                 <td>
-                    <a href="/admin/landinglistitem/view?id=<?= $listItem['id'] ?>" title="View" aria-label="View" data-pjax="0"><span class="glyphicon glyphicon-eye-open"></span></a>
-                    <a href="/admin/landinglistitem/update?id=<?= $listItem['id'] ?>" title="Update" aria-label="Update" data-pjax="0"><span class="glyphicon glyphicon-pencil"></span></a>
+                    <a href="/landinglistitem/view?id=<?= $listItem['id'] ?>" title="View" aria-label="View" data-pjax="0"><span class="glyphicon glyphicon-eye-open"></span></a>
+                    <a href="/landinglistitem/update?id=<?= $listItem['id'] ?>" title="Update" aria-label="Update" data-pjax="0"><span class="glyphicon glyphicon-pencil"></span></a>
 
 
 
@@ -150,4 +172,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
         </tbody>
     </table>
+    <h4>Alt 2 SVG</h4>
+    <p>Добавить в svg: <br>
+        в head - aria-labelledby="svg_li_$id$_title"  <br>
+        в тело первым элементом - (title id="svg_li_$id$_title">$alt$(/title>
+        </p>
 </div>

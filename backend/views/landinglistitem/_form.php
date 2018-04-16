@@ -14,9 +14,11 @@ use yii\widgets\ActiveForm;
 
 <!--    --><?//= $form->field($model, 'section_id')->textInput() ?>
 
+
+
     <div class="row">
         <div class="col-sm-6">
-            <?= $form->field($model, 'section_id')->dropDownList(\yii\helpers\ArrayHelper::map(\app\models\LandingSection::find()->all(), 'id','id'),[ 'options'=>[Yii::$app->request->get('section_id')=>["Selected"=>true]]]) ?>
+            <?= $form->field($model, 'section_id')->dropDownList(\yii\helpers\ArrayHelper::map(\common\models\LandingSection::find()->all(), 'id','id'),[ 'options'=>[Yii::$app->request->get('section_id')=>["Selected"=>true]]]) ?>
         </div>
         <div class="col-sm-6">
             <?= $form->field($model, 'order_num')->textInput() ?>
