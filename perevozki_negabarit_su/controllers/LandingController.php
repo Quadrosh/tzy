@@ -53,6 +53,9 @@ class LandingController extends Controller
         Url::remember();
 
         $PageName = Yii::$app->request->get('landingpage');
+        if (!$PageName) {
+            $PageName = 'perevozki-negabarit';
+        }
         $utm = [];
         $session = Yii::$app->session;
 //        $session->destroy();

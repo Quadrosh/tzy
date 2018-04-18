@@ -44,6 +44,7 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                '' => 'landing/page',
                 'lp/<landingpage:[0-9a-z\-\_]+>' => 'landing/page',
                 '<pagename:[0-9a-z\-\_]+>' => 'site/page',
 
