@@ -399,8 +399,7 @@ $preorder = new common\models\Preorders();
 
 
 <!-- Почему мы -->
-    <section
-        id="whyWeSection"
+    <section id="whyWeSection"
         class="<?= $sections['whyWe']['stylekey'] ?> <?= $sections['whyWe']['section_type'] ?>">
         <div class="row">
             <div class="col-sm-12 text-center">
@@ -467,8 +466,7 @@ $preorder = new common\models\Preorders();
 
 
 <!-- how we work -->
-    <section
-        id="howWeWorkSection"
+    <section id="howWeWorkSection"
         class="<?= $sections['howWeWork']['stylekey'] ?> <?= $sections['howWeWork']['section_type'] ?>">
         <div class="row">
             <div class="col-sm-12 text-center">
@@ -822,6 +820,7 @@ $preorder = new common\models\Preorders();
         </div>
 
     </section>
+
     <section class="<?= $sections['clients']['stylekey'] ?> <?= $sections['clients']['section_type'] ?>">
         <div class="row">
             <div class="col-sm-12 text-center">
@@ -859,6 +858,7 @@ $preorder = new common\models\Preorders();
         </div>
 
     </section>
+
     <section id="mainOrderSection" class="<?= $sections['order']['stylekey'] ?> <?= $sections['order']['section_type'] ?>">
         <div class="row">
             <div class="col-sm-12 text-center">
