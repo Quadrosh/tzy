@@ -42,6 +42,12 @@ function actionTimer () {
         document.getElementById("RemainsSeconds").innerHTML=  secInLastMinute;
         setTimeout('actionTimer()',1000)
     }
+    else {
+        document.getElementById("RemainsDays").innerHTML=  0;
+        document.getElementById("RemainsHours").innerHTML=  0;
+        document.getElementById("RemainsMinutes").innerHTML=  0;
+        document.getElementById("RemainsSeconds").innerHTML=  0;
+    }
 
 }
 actionTimer();

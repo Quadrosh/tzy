@@ -1,7 +1,7 @@
 function actionTimer () {
     var time=new Date();
     var dateAttrObj = document.getElementById('dateObj');
-    var dateAttr = dateAttrObj.getAttribute('data-days');
+    var dateAttr = dateAttrObj.getAttribute('data-days');  //9
 
     var year = time.getFullYear();
     var month = time.getMonth();
@@ -41,6 +41,12 @@ function actionTimer () {
         document.getElementById("RemainsMinutes").innerHTML=  minInLastHour;
         document.getElementById("RemainsSeconds").innerHTML=  secInLastMinute;
         setTimeout('actionTimer()',1000)
+    }
+    else {
+        document.getElementById("RemainsDays").innerHTML=  0;
+        document.getElementById("RemainsHours").innerHTML=  0;
+        document.getElementById("RemainsMinutes").innerHTML=  0;
+        document.getElementById("RemainsSeconds").innerHTML=  0;
     }
 
 }
