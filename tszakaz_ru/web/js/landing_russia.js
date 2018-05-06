@@ -41,9 +41,6 @@ function actionTimer () {
         setTimeout('actionTimer()',1000)
     }
 
-    else {
-        document.getElementById("clock").innerHTML="Поздравляем с Новой Эрой!";
-    }
 }
 actionTimer();
 
