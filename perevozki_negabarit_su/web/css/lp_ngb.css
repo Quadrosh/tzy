@@ -1350,7 +1350,32 @@ section {
         font-size: 10px;
     }
 
+    .whatWeDo_icon svg {
+        /*width: 85px;*/
+        /*height: 60px; */
+        width: 64px;
+        height: 45px;
 
+
+    }
+    .whatWeDo_head {
+        font-size: 12px;
+        text-transform: uppercase;
+        margin-top: 0px;
+    }
+
+    .whyWe_head {
+        padding-top: 5px;
+        font-size: 16px;
+        text-transform: uppercase;
+    }
+    .whyWe_icon {
+        position: relative;
+        left: -10px;
+    }
+    .smooth_angle {
+        bottom: -1px;
+    }
 }
 
 @media only screen and (max-width : 360px) {
