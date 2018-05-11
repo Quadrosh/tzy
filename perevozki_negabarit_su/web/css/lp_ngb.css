@@ -565,9 +565,9 @@ section {
 }
 
 .services .service_type__text{
-    font-size: 12px;
+    font-size: 14px;
     margin-bottom: 50px;
-    font-family: 'HelveticaThin', sans-serif;
+    font-family: 'Helvetica', sans-serif;
     text-align: left;
 }
 /* services call2action */
@@ -663,9 +663,8 @@ section {
 .whyWe_text {
     /*margin: 10px 0;*/
     color: #6d6e71;
-    /*font-family: "MyriadProRegular", sans-serif;*/
-    font-family: 'HelveticaThin', sans-serif;
-    font-size: 13px;
+    font-family: 'Helvetica', sans-serif;
+    font-size: 14px;
     line-height:1.2;
 }
 #whyWeVertical{
@@ -808,8 +807,8 @@ section {
 
 
 .whatWeDo_text {
-    font-family: 'HelveticaThin', sans-serif;
-    font-size:16px;
+    font-family: 'Helvetica', sans-serif;
+    font-size:14px;
     margin-top: 20px;
     margin-bottom: 20px;
 }
