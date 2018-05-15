@@ -173,6 +173,12 @@ section {
     color: white;
     background-color: #3f4158;
 }
+.bright{
+    background-color: #fff;
+}
+.grey {
+    background-color: #eee;
+}
 .blue .dark {
     /*background-color: #487B97;*/
     background-color: #1A6F9D;
@@ -866,27 +872,29 @@ section {
 
 .bright .slickPrev,
 .bright .slickNext {
-    /*stroke:#0F63A4;*/
-    stroke:#30353b;
+    /*stroke:#30353b;*/
+    fill:#30353b;
 }
 .bright .slickPrev:hover,
 .bright .slickNext:hover {
-    stroke:#838e9a;
+    /*stroke:#838e9a;*/
+    fill:#838e9a;
 }
 
 .dark .slickPrev,
 .dark .slickNext,
 .dark .slickReviewsPrev,
 .dark .slickReviewsNext {
-    /*stroke:#fff;*/
-    stroke:#838e9a;
+    /*stroke:#838e9a;*/
+    fill:#838e9a;
 }
 .dark .slickPrev:hover,
 .dark .slickNext:hover,
 .dark .slickReviewsPrev:hover,
 .dark .slickReviewsNext:hover {
     /*stroke:#838e9a;*/
-    stroke:#fff;
+    /*stroke:#fff;*/
+    fill:#fff;
 }
 .blue .dark .slickPrev,
 .blue .dark .slickNext,
@@ -923,6 +931,10 @@ section {
 
 
 /* Reviews */
+#reviewsSection{
+    background-size: cover;
+    background-position: center;
+}
 .reviewsCarWrapper{
     position: relative;
 }

@@ -606,8 +606,7 @@ $preorder = new common\models\Preorders();
 
 
 <!-- what we do -->
-    <section
-        id="whatWeDoSection"
+    <section id="whatWeDoSection"
         class="<?= $sections['whatWeDo']['stylekey'] ?> <?= $sections['whatWeDo']['section_type'] ?>">
         <?php foreach ($sections['whatWeDo']['list_items'] as $whatWeDoLisItem) : ?>
             <div class="row">
@@ -852,7 +851,6 @@ $preorder = new common\models\Preorders();
         <?php endforeach; ?>
     </section>
 
-
 <!--  Цифры  -->
     <section id="numberSection"
              class="<?= $sections['numbers']['stylekey'] ?> <?= $sections['numbers']['section_type'] ?>"
@@ -936,8 +934,7 @@ $preorder = new common\models\Preorders();
     </section>
 
 <!--  проекты  -->
-    <section
-        id="ourProjectsSection"
+    <section id="ourProjectsSection"
         class="<?= $sections['projects']['stylekey'] ?> <?= $sections['projects']['section_type'] ?>">
         <div class="row">
             <div class="col-sm-12 text-center">
@@ -965,41 +962,42 @@ $preorder = new common\models\Preorders();
                     <?php endforeach; ?>
 
                 </div>
-                <a class="carouselControl slickPrev"><svg version="1.1"
+                <a class="carouselControl slickPrev"><svg version="1.1" class="carousel_control_prev"
                                                           xmlns="http://www.w3.org/2000/svg"
-                                                          xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                          x="0px" y="0px"
-                                                          viewBox="0 0 100 100"
-                                                          style="enable-background:new 0 0 100 100;"
+                                                          xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                          viewBox="0 0 80 80"
+                                                          style="enable-background:new 0 0 80 80;"
                                                           xml:space="preserve">
-    <style type="text/css">
-        .button_x5F_left_st0{fill:none;stroke-width:3;stroke-miterlimit:10;}
-        .button_x5F_left_st1{fill:none;stroke-width:3;stroke-linecap:round;stroke-miterlimit:10;}
-    </style>
+<style type="text/css">
+    /*.carousel_control_prev_st0{fill:#878787;}*/
+</style>
                         <g >
-                            <circle  class="button_x5F_left_st0" cx="49.7" cy="50" r="46.4"/>
-                            <line  class="button_x5F_left_st1" x1="38.9" y1="50" x2="61.5" y2="27.5"/>
-                            <line  class="button_x5F_left_st1" x1="38.9" y1="50.5" x2="61.5" y2="73"/>
+                            <polygon class="carousel_control_prev_st0" points="31.3,44.2 22.7,44.2 18.7,40.2 22.7,36.2 31.3,36.2 27.4,40.2 	"/>
+                            <polygon class="carousel_control_prev_st0" points="38.6,60.1 30.7,52.1 39.3,52.1 47.3,60.1 	"/>
+                            <polygon class="carousel_control_prev_st0" points="54.6,76 46.6,68.1 55.2,68.1 63.2,76 	"/>
+                            <polygon class="carousel_control_prev_st0" points="30.7,28.2 38.6,20.3 47.3,20.3 39.3,28.2 	"/>
+                            <polygon class="carousel_control_prev_st0" points="46.6,12.3 54.6,4.3 63.2,4.3 55.2,12.3 	"/>
                         </g>
-    </svg></a>
+</svg></a>
 
-                <a class="carouselControl slickNext" ><svg version="1.1"
+                <a class="carouselControl slickNext" ><svg version="1.1" class="carousel_cont_next"
                                                            xmlns="http://www.w3.org/2000/svg"
                                                            xmlns:xlink="http://www.w3.org/1999/xlink"
                                                            x="0px" y="0px"
-                                                           viewBox="0 0 100 100"
-                                                           style="enable-background:new 0 0 100 100;"
+                                                           viewBox="0 0 80 80"
+                                                           style="enable-background:new 0 0 80 80;"
                                                            xml:space="preserve">
-    <style type="text/css">
-        .button_x5F_right_st0{fill:none;stroke-width:3;stroke-miterlimit:10;}
-        .button_x5F_right_st1{fill:none;stroke-width:3;stroke-linecap:round;stroke-miterlimit:10;}
-    </style>
+<style type="text/css">
+    /*.carousel_cont_next_st0{fill:#878787;}*/
+</style>
                         <g >
-                            <circle  class="button_x5F_right_st0" cx="49.7" cy="50" r="46.4"/>
-                            <line  class="button_x5F_right_st1" x1="61.5" y1="50.5" x2="38.9" y2="73"/>
-                            <line  class="button_x5F_right_st1" x1="61.5" y1="50" x2="38.9" y2="27.5"/>
+                            <polygon class="carousel_cont_next_st0" points="50.6,44.2 59.2,44.2 63.2,40.2 59.2,36.2 50.6,36.2 54.6,40.2 	"/>
+                            <polygon class="carousel_cont_next_st0" points="43.3,60.1 51.2,52.1 42.6,52.1 34.7,60.1 	"/>
+                            <polygon class="carousel_cont_next_st0" points="27.4,76 35.3,68.1 26.7,68.1 18.7,76 	"/>
+                            <polygon class="carousel_cont_next_st0" points="51.2,28.2 43.3,20.3 34.7,20.3 42.6,28.2 	"/>
+                            <polygon class="carousel_cont_next_st0" points="35.3,12.3 27.4,4.3 18.7,4.3 26.7,12.3 	"/>
                         </g>
-    </svg></a>
+</svg></a>
 
             </div>
         </div>
@@ -1007,10 +1005,10 @@ $preorder = new common\models\Preorders();
     </section>
 
 <!--    Reviews   -->
-
-    <section
-        id="reviewsSection"
-        class="<?= $sections['reviews']['stylekey'] ?> <?= $sections['reviews']['section_type'] ?>">
+    <section id="reviewsSection"
+             class="<?= $sections['reviews']['stylekey'] ?> <?= $sections['reviews']['section_type'] ?>"
+             style=" background-image: url(/img/<?= $sections['reviews']['image'] ?>)"
+    >
         <div class="row">
             <div class="col-sm-12 text-center">
                 <h2 class="head"><?= $sections['reviews']['head'] ?></h2>
@@ -1029,39 +1027,40 @@ $preorder = new common\models\Preorders();
                     <?php endforeach; ?>
 
                 </div>
-                <a class="carouselControl slickReviewsPrev"><svg version="1.1"
+                <a class="carouselControl slickReviewsPrev"><svg version="1.1" class="carousel_control_prev"
                                                                  xmlns="http://www.w3.org/2000/svg"
-                                                                 xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                                 x="0px" y="0px"
-                                                                 viewBox="0 0 100 100"
-                                                                 style="enable-background:new 0 0 100 100;"
+                                                                 xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                                 viewBox="0 0 80 80"
+                                                                 style="enable-background:new 0 0 80 80;"
                                                                  xml:space="preserve">
 <style type="text/css">
-    .button_x5F_left_st0{fill:none;stroke-width:3;stroke-miterlimit:10;}
-    .button_x5F_left_st1{fill:none;stroke-width:3;stroke-linecap:round;stroke-miterlimit:10;}
+    /*.carousel_control_prev_st0{fill:#878787;}*/
 </style>
                         <g >
-                            <circle  class="button_x5F_left_st0" cx="49.7" cy="50" r="46.4"/>
-                            <line  class="button_x5F_left_st1" x1="38.9" y1="50" x2="61.5" y2="27.5"/>
-                            <line  class="button_x5F_left_st1" x1="38.9" y1="50.5" x2="61.5" y2="73"/>
+                            <polygon class="carousel_control_prev_st0" points="31.3,44.2 22.7,44.2 18.7,40.2 22.7,36.2 31.3,36.2 27.4,40.2 	"/>
+                            <polygon class="carousel_control_prev_st0" points="38.6,60.1 30.7,52.1 39.3,52.1 47.3,60.1 	"/>
+                            <polygon class="carousel_control_prev_st0" points="54.6,76 46.6,68.1 55.2,68.1 63.2,76 	"/>
+                            <polygon class="carousel_control_prev_st0" points="30.7,28.2 38.6,20.3 47.3,20.3 39.3,28.2 	"/>
+                            <polygon class="carousel_control_prev_st0" points="46.6,12.3 54.6,4.3 63.2,4.3 55.2,12.3 	"/>
                         </g>
 </svg></a>
 
-                <a class="carouselControl slickReviewsNext" ><svg version="1.1"
+                <a class="carouselControl slickReviewsNext" ><svg version="1.1" class="carousel_cont_next"
                                                                   xmlns="http://www.w3.org/2000/svg"
                                                                   xmlns:xlink="http://www.w3.org/1999/xlink"
                                                                   x="0px" y="0px"
-                                                                  viewBox="0 0 100 100"
-                                                                  style="enable-background:new 0 0 100 100;"
+                                                                  viewBox="0 0 80 80"
+                                                                  style="enable-background:new 0 0 80 80;"
                                                                   xml:space="preserve">
 <style type="text/css">
-    .button_x5F_right_st0{fill:none;stroke-width:3;stroke-miterlimit:10;}
-    .button_x5F_right_st1{fill:none;stroke-width:3;stroke-linecap:round;stroke-miterlimit:10;}
+    /*.carousel_cont_next_st0{fill:#878787;}*/
 </style>
                         <g >
-                            <circle  class="button_x5F_right_st0" cx="49.7" cy="50" r="46.4"/>
-                            <line  class="button_x5F_right_st1" x1="61.5" y1="50.5" x2="38.9" y2="73"/>
-                            <line  class="button_x5F_right_st1" x1="61.5" y1="50" x2="38.9" y2="27.5"/>
+                            <polygon class="carousel_cont_next_st0" points="50.6,44.2 59.2,44.2 63.2,40.2 59.2,36.2 50.6,36.2 54.6,40.2 	"/>
+                            <polygon class="carousel_cont_next_st0" points="43.3,60.1 51.2,52.1 42.6,52.1 34.7,60.1 	"/>
+                            <polygon class="carousel_cont_next_st0" points="27.4,76 35.3,68.1 26.7,68.1 18.7,76 	"/>
+                            <polygon class="carousel_cont_next_st0" points="51.2,28.2 43.3,20.3 34.7,20.3 42.6,28.2 	"/>
+                            <polygon class="carousel_cont_next_st0" points="35.3,12.3 27.4,4.3 18.7,4.3 26.7,12.3 	"/>
                         </g>
 </svg></a>
 
@@ -1073,7 +1072,8 @@ $preorder = new common\models\Preorders();
         </div>
 
     </section>
-    <section class="<?= $sections['clients']['stylekey'] ?> <?= $sections['clients']['section_type'] ?>">
+    <section id="ourClientsSection"
+             class="<?= $sections['clients']['stylekey'] ?> <?= $sections['clients']['section_type'] ?>">
         <div class="row">
             <div class="col-sm-12 text-center">
                 <h2 class="head"><?= $sections['clients']['head'] ?></h2>
@@ -1110,7 +1110,8 @@ $preorder = new common\models\Preorders();
         </div>
 
     </section>
-    <section id="mainOrderSection" class="<?= $sections['order']['stylekey'] ?> <?= $sections['order']['section_type'] ?>">
+    <section id="mainOrderSection"
+             class="<?= $sections['order']['stylekey'] ?> <?= $sections['order']['section_type'] ?>">
         <div class="row">
             <div class="col-sm-12 text-center">
                 <h2 class="head"><?= $sections['order']['head'] ?></h2>
