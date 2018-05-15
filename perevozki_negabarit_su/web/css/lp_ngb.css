@@ -873,12 +873,13 @@ section {
 .bright .slickPrev,
 .bright .slickNext {
     /*stroke:#30353b;*/
-    fill:#30353b;
+    fill:#838e9a;
 }
 .bright .slickPrev:hover,
 .bright .slickNext:hover {
     /*stroke:#838e9a;*/
-    fill:#838e9a;
+    fill:#30353b;
+
 }
 
 .dark .slickPrev,
