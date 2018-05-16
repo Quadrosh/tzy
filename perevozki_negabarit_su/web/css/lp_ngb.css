@@ -177,7 +177,10 @@ section {
     background-color: #fff;
 }
 .grey {
-    background-color: #eee;
+    background-color: #FFF6AB;
+}
+.grey .head {
+    color: #58595B;
 }
 .blue .dark {
     /*background-color: #487B97;*/
@@ -880,6 +883,19 @@ section {
     /*stroke:#838e9a;*/
     fill:#30353b;
 
+}
+
+.grey .slickPrev,
+.grey .slickNext,
+.grey .slickReviewsPrev,
+.grey .slickReviewsNext {
+    fill:#838e9a;
+}
+.grey .slickPrev:hover,
+.grey .slickNext:hover,
+.grey .slickReviewsPrev:hover,
+.grey .slickReviewsNext:hover {
+    fill:#30353b;
 }
 
 .dark .slickPrev,
