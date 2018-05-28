@@ -58,7 +58,6 @@ $preorder = new common\models\Preorders();
     <section id="topSection"
         class="<?= $sections['top']['stylekey'] ?> <?= $sections['top']['section_type'] ?>"
         style=" background-image: url(/img/<?= $sections['top']['image'] ?>)">
-        <?= common\widgets\Alert::widget() ?>
         <div class="row">
             <div class="col-sm-6 text-left">
                 <div class="col-sm-12">

@@ -94,16 +94,7 @@ window.onload = function(){
         document.getElementById('mainOrderForm-text').value='Заказ машины - '+attr;
     }
 
-    var garageOrderBtns = document.getElementsByClassName('garageOrderButton');
-    if(garageOrderBtns[0].addEventListener){
-        for (var i = 0; i < garageOrderBtns.length; i++) {
-            garageOrderBtns[i].addEventListener('click',go2order,false);
-        }
-    } else {
-        for (var i = 0; i < garageOrderBtns.length; i++) {
-            garageOrderBtns[i].onclick = go2order;
-        }
-    }
+
 };
 
 
@@ -113,17 +104,21 @@ window.onload = function(){
 $(document).ready(function() {
 
 
+    $("#quickorder-form-top").on("afterValidate", function () {
+        yaCounter49038983.reachGoal("call_me");
+        //ga("send","event","feedback","call","call_me");
+    });
     $("#services-call2action").on("afterValidate", function () {
-        yaCounter30134129.reachGoal("callMe");
-        ga("send","event","feedback","call","callMe");
+        yaCounter49038983.reachGoal("call_me");
+        //ga("send","event","feedback","call","call_me");
     });
     $("#howWeWork_call2action").on("afterValidate", function () {
-        yaCounter30134129.reachGoal("callMe");
-        ga("send","event","feedback","call","callMe");
+        yaCounter49038983.reachGoal("call_me");
+        //ga("send","event","feedback","call","call_me");
     });
     $("#mainOrderForm").on("afterValidate", function () {
-        yaCounter30134129.reachGoal("preorderSend");
-        ga("send","event","feedback","order","sendOrder");
+        yaCounter49038983.reachGoal("preorder");
+        //ga("send","event","feedback","order","preorder");
     });
 
 

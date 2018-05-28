@@ -33,6 +33,12 @@ perevozki_negabarit_su\assets\LpNgbAsset::register($this);
 
 <div class="container">
 
+    <div class="alertWidget">
+        <?= common\widgets\Alert::widget() ?>
+    </div>
+
+
+
     <?= $content ?>
 
 </div>

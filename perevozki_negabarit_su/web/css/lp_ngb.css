@@ -104,6 +104,15 @@ body {
 section {
     position: relative;
 }
+.alertWidget {
+
+    position: absolute;
+    top: 200px;
+    width: 300px;
+    left: 50%;
+    margin-left: -150px;
+    z-index: 100;
+}
 .smooth_angle {
     position: absolute;
     left:0;
