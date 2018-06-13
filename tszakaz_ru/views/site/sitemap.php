@@ -11,7 +11,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1 class="text-center"><?= $page->pagehead ?></h1>
 
 <div class="sitemap col-sm-offset-3 col-sm-9">
-    <?= app\widgets\MenuWidget::widget(['formfactor'=>'ul','currentItem'=> Yii::$app->view->params['currentItem'] ]); ?>
+    <?= common\widgets\MenuWidget::widget([
+        'site'=>Yii::$app->params['site'],
+        'formfactor'=>'ul',
+        'currentItem'=> Yii::$app->view->params['currentItem']
+    ]); ?>
 </div>
 
 
