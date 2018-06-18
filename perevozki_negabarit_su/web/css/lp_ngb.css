@@ -186,7 +186,8 @@ section {
     background-color: #fff;
 }
 .grey {
-    background-color: #FFF6AB;
+    /*background-color: #FFF6AB;*/
+    background-color: #FFF9C4;
 }
 .grey .head {
     color: #58595B;
