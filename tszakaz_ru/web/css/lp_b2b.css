@@ -1083,7 +1083,12 @@ section {
     }
 
 }
-
+@media only screen and (max-width : 860px) {
+    .phone_num {
+        margin-top: 5px;
+        font-size: 18px;
+    }
+}
 @media only screen and (max-width : 767px) {
 
     .more768 {
@@ -1092,7 +1097,10 @@ section {
     .less768 {
         display: block;
     }
-
+    .phone_num {
+        margin-top: -1px;
+        font-size: 24px;
+    }
     .action_permanent .left {
         padding-left: 0;
     }
