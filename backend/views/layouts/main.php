@@ -58,6 +58,16 @@ AppAsset::register($this);
                 ],
             ],
             [
+                'label' => 'Статьи',
+                'items' => [
+                    ['label' => 'Article', 'url' => ['/article']],
+                    ['label' => 'Article Section', 'url' => ['/article-section']],
+                    ['label' => 'Article Section Block', 'url' => ['/article-section-block']],
+                    ['label' => 'Article Section Block Item', 'url' => ['/article-section-block-item']],
+
+                ],
+            ],
+            [
                 'label' => 'lib',
                 'items' => [
                     ['label' => 'Менеджеры', 'url' => ['/manager']],

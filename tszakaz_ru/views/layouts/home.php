@@ -121,7 +121,7 @@ $feedback = Yii::$app->view->params['feedback'];
 
                         <?= common\widgets\MenuWidget::widget([
                             'site'=>Yii::$app->params['site'],
-                            'formfactor'=>'html',
+                            'formfactor'=>'tszakaz',
                             'currentItem'=> Yii::$app->view->params['currentItem']
                         ]); ?>
                     </div>

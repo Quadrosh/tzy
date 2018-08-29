@@ -675,9 +675,16 @@ header .b-top__banner .b-top__banner__shadow {
     .b-top__logo a img {
         width: 100%;
     }
+    header .b-top__header .b-top__info .b-top__info__menu>ul {
+        font-size: 13px;
+    }
 
 }
-
+@media only screen and (max-width : 820px) {
+    header .b-top__header .b-top__info .b-top__info__menu>ul {
+        font-size: 12px;
+    }
+}
 
 @media only screen and (max-width : 767px) {
     header .b-top__header {
@@ -749,10 +756,16 @@ header .b-top__banner .b-top__banner__shadow {
         padding-top: 20px;
         color: #fff;
     }
+    header .b-top__header .b-top__info .b-top__info__menu>ul {
+        font-size: 11px;
+    }
 
 }
 
 @media only screen and (max-width : 360px) {
+    header .b-top__header .b-top__info .b-top__info__menu>ul {
+        font-size: 10px;
+    }
     .b-top__header .b-top__info {
 
         padding: 0px;

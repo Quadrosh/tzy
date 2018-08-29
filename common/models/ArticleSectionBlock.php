@@ -1,0 +1,95 @@
+<?php
+
+namespace common\models;
+
+use Yii;
+
+/**
+ * This is the model class for table "article_section_block".
+ *
+ * @property integer $id
+ * @property integer $article_section_id
+ * @property string $header
+ * @property string $header_class
+ * @property string $description
+ * @property string $raw_text
+ * @property string $image
+ * @property string $image_alt
+ * @property string $background_image
+ * @property string $thumbnail_image
+ * @property string $call2action_description
+ * @property string $call2action_name
+ * @property string $call2action_link
+ * @property string $call2action_class
+ * @property string $call2action_comment
+ * @property string $view
+ * @property string $color_key
+ * @property string $structure
+ * @property integer $accent
+ * @property string $custom_class
+ * @property integer $created_at
+ * @property integer $updated_at
+ */
+class ArticleSectionBlock extends \yii\db\ActiveRecord
+{
+    /**
+     * @inheritdoc
+     */
+    public static function tableName()
+    {
+        return 'article_section_block';
+    }
+
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => \yii\behaviors\TimestampBehavior::class,
+            ],
+        ];
+    }
+    /**
+     * @inheritdoc
+     */
+    public function rules()
+    {
+        return [
+            [['article_section_id'], 'required'],
+            [['article_section_id', 'accent', 'created_at', 'updated_at'], 'integer'],
+            [['description', 'raw_text', 'image', 'background_image', 'thumbnail_image'], 'string'],
+            [['header', 'header_class', 'call2action_description'], 'string', 'max' => 510],
+            [['image_alt', 'call2action_name', 'call2action_link', 'call2action_class', 'call2action_comment', 'view', 'color_key', 'structure', 'custom_class'], 'string', 'max' => 255],
+        ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return [
+            'id' => 'ID',
+            'article_section_id' => 'Article Section ID',
+            'header' => 'Header',
+            'header_class' => 'Header Class',
+            'description' => 'Description',
+            'raw_text' => 'Raw Text',
+            'image' => 'Image',
+            'image_alt' => 'Image Alt',
+            'background_image' => 'Background Image',
+            'thumbnail_image' => 'Thumbnail Image',
+            'call2action_description' => 'Call2action Description',
+            'call2action_name' => 'Call2action Name',
+            'call2action_link' => 'Call2action Link',
+            'call2action_class' => 'Call2action Class',
+            'call2action_comment' => 'Call2action Comment',
+            'view' => 'View',
+            'color_key' => 'Color Key',
+            'structure' => 'Structure',
+            'accent' => 'Accent',
+            'custom_class' => 'Custom Class',
+            'created_at' => 'Created At',
+            'updated_at' => 'Updated At',
+        ];
+    }
+}

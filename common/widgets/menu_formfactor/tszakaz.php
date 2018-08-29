@@ -20,7 +20,7 @@
         echo '</li>';
     }
 
-    if ($item['id'] == 1 OR $item['id'] == 2){
+    if ($menulevel == 0 and $item['num_order']!=4){
         echo '<li class="delimiter"></li>';
     } ?>
 

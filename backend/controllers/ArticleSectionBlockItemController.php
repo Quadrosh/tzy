@@ -3,16 +3,16 @@
 namespace backend\controllers;
 
 use Yii;
-use common\models\MenuTop;
-use yii\data\ActiveDataProvider;
+use common\models\ArticleSectionBlockItem;
+use common\models\ArticleSectionBlockItemSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * MenuTopController implements the CRUD actions for MenuTop model.
+ * ArticleSectionBlockItemController implements the CRUD actions for ArticleSectionBlockItem model.
  */
-class MenuTopController extends Controller
+class ArticleSectionBlockItemController extends Controller
 {
     /**
      * @inheritdoc
@@ -30,29 +30,24 @@ class MenuTopController extends Controller
     }
 
     /**
-     * Lists all MenuTop models.
+     * Lists all ArticleSectionBlockItem models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $dataProvider = new ActiveDataProvider([
-            'query' => MenuTop::find()->orderBy([
-                'site'=>SORT_ASC,
-                'parent_id'=>SORT_ASC,
-                'num_order'=>SORT_ASC
-            ]),
-        ]);
+        $searchModel = new ArticleSectionBlockItemSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
+            'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
     }
 
     /**
-     * Displays a single MenuTop model.
+     * Displays a single ArticleSectionBlockItem model.
      * @param integer $id
      * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionView($id)
     {
@@ -62,29 +57,28 @@ class MenuTopController extends Controller
     }
 
     /**
-     * Creates a new MenuTop model.
+     * Creates a new ArticleSectionBlockItem model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new MenuTop();
+        $model = new ArticleSectionBlockItem();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
+        } else {
+            return $this->render('create', [
+                'model' => $model,
+            ]);
         }
-
-        return $this->render('create', [
-            'model' => $model,
-        ]);
     }
 
     /**
-     * Updates an existing MenuTop model.
+     * Updates an existing ArticleSectionBlockItem model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionUpdate($id)
     {
@@ -92,19 +86,18 @@ class MenuTopController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
+        } else {
+            return $this->render('update', [
+                'model' => $model,
+            ]);
         }
-
-        return $this->render('update', [
-            'model' => $model,
-        ]);
     }
 
     /**
-     * Deletes an existing MenuTop model.
+     * Deletes an existing ArticleSectionBlockItem model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionDelete($id)
     {
@@ -114,18 +107,18 @@ class MenuTopController extends Controller
     }
 
     /**
-     * Finds the MenuTop model based on its primary key value.
+     * Finds the ArticleSectionBlockItem model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return MenuTop the loaded model
+     * @return ArticleSectionBlockItem the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = MenuTop::findOne($id)) !== null) {
+        if (($model = ArticleSectionBlockItem::findOne($id)) !== null) {
             return $model;
+        } else {
+            throw new NotFoundHttpException('The requested page does not exist.');
         }
-
-        throw new NotFoundHttpException('The requested page does not exist.');
     }
 }

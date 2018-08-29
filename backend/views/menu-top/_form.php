@@ -12,7 +12,13 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'parent_id')->textInput() ?>
+    <?= $form->field($model, 'site')->dropDownList(Yii::$app->params['siteList'],['prompt'=>'Выберите сайт'])?>
+
+    <?= $form->field($model, 'parent_id')
+        ->dropDownList(\yii\helpers\ArrayHelper::map(\common\models\MenuTop::find()
+            ->all(),'id',function($model) {return $model['site'].' - '.$model['name'];}
+        ),['prompt'=>'Выберите родителя'])
+    ?>
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 

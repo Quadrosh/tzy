@@ -31,7 +31,7 @@ class MenuTop extends \yii\db\ActiveRecord
         return [
             [['parent_id', 'num_order'], 'integer'],
             [['name'], 'required'],
-            [['name', 'link'], 'string', 'max' => 255],
+            [['name', 'link', 'site'], 'string', 'max' => 255],
         ];
     }
 
@@ -43,6 +43,7 @@ class MenuTop extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'parent_id' => 'Parent ID',
+            'site' => 'Site',
             'name' => 'Name',
             'link' => 'Link',
             'num_order' => 'Num Order',

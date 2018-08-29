@@ -27,7 +27,11 @@ class MenuWidget extends Widget
     }
     public function run()
     {
-            $this->data = MenuTop::find()->where(['site'=>$this->site])->indexBy('id')->asArray()->all();
+            $this->data = MenuTop::find()->where(['site'=>$this->site])->orderBy([
+                'site'=>SORT_ASC,
+                'parent_id'=>SORT_ASC,
+                'num_order'=>SORT_ASC
+            ])->indexBy('id')->asArray()->all();
             $this->tree = $this->getTree();
             $this->menuFinal = $this->getMenuHtml($this->tree);
             return '<ul class="list-inline list-unstyled">'.$this->menuFinal.'</ul>';
