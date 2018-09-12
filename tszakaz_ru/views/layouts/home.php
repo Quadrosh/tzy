@@ -102,6 +102,12 @@ $feedback = new \common\models\Feedback();
                 <div class="col-sm-5 text-center b-top__logo">
                     <a href="/" title="<?= Yii::$app->view->params['meta']['seo_logo'] ?>"><img src="/img/logo.png" alt="<?= Yii::$app->view->params['meta']['seo_logo'] ?>"/></a>
                     <div class="hidden-xs b-top__logo__corner"></div>
+                    <button id="hamburger" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#w0-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
                 </div>
                 <div class="col-sm-7 b-top__info">
                     <div class="b-top__info__above">
@@ -120,7 +126,7 @@ $feedback = new \common\models\Feedback();
                     </div>
 
                 </div>
-                <div class="b-top__info__menu">
+                <div id="w0-collapse" class="collapse navbar-collapse b-top__info__menu col-sm-12">
 
                     <?= common\widgets\MenuWidget::widget([
                         'site'=>Yii::$app->params['site'],
