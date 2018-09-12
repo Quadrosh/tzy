@@ -2,7 +2,18 @@ html,
 body {
     height: 100%;
 }
-
+.mt10{
+    margin-top: 10px;
+}
+.mt20{
+    margin-top: 20px;
+}
+.mt50{
+    margin-top: 50px;
+}
+.mb10 {
+    margin-bottom: 10px;
+}
 .wrap {
     min-height: 100%;
     height: auto;
@@ -137,4 +148,10 @@ a.desc:after {
 .navbar-inverse {
     background-color: #2b3d4a;
     border-color: #080808;
+}
+.article-view img{
+    max-width: 100%;
+}
+.article-view .gridThumb {
+    max-width:50px;
 }

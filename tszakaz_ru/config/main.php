@@ -59,6 +59,8 @@ return [
 
                 $params['botAddress'] => '/chat/bot',
                 'chat/post' => '/chat/post',
+                'perevozki-dlya-juridicheskih-lits.html' => '/article/page-jurlits',
+                'news.html' => '/article/page-news',
                 't/<testpage:[0-9a-z\-\_]+>' => 'test/test',
                 'dev/<testpage:[0-9a-z\-\_]+>' => 'test/dev',
                 'lp/<landingpage:[0-9a-z\-\_]+>' => 'landing/page',

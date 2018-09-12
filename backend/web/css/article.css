@@ -1,0 +1,136 @@
+html,
+body {
+    height: 100%;
+}
+
+.mt10{
+    margin-top: 10px;
+}
+.mt20{
+    margin-top: 20px;
+}
+.mt30{
+    margin-top: 30px;
+}
+.mt50{
+    margin-top: 50px;
+}
+.mb10 {
+    margin-bottom: 10px;
+}
+.w100{
+    max-width: 100%;
+}
+h1{
+    font-size: 42px;
+    color: #5f6973;
+}
+h3{
+    font-size: 18px;
+}
+
+
+
+/* projects */
+.carouselControl {
+    position: absolute;
+    cursor: pointer;
+    display: block;
+
+}
+.carouselWrapper {
+    position: relative;
+}
+.asb-slick_banner_1 .carouselControl {
+    top:148px;
+    margin-top: -40px;
+}
+@media only screen and (max-width : 991px) {
+    .asb-slick_banner_1 .carouselControl {
+        top:118px;
+    }
+}
+
+.carouselControl svg{
+    width: 80px;
+    height: 80px;
+}
+.slickPrev,
+.asb-slick_banner_1_slickPrev{
+    left:10px;
+}
+.slickNext,
+.asb-slick_banner_1_slickNext{
+    right:10px;
+}
+
+.bright .carouselControl svg{
+    /*stroke:#0F63A4;*/
+    /*stroke:#30353b;*/
+    /*stroke: #ffffff;*/
+    fill: #ffffff;
+}
+.bright .carouselControl svg:hover{
+    /*stroke:#838e9a;*/
+    fill:#838e9a;
+}
+
+.dark .carouselControl svg {
+    /*stroke:#fff;*/
+    stroke:#838e9a;
+}
+.dark .carouselControl svg:hover {
+    /*stroke:#838e9a;*/
+    stroke:#fff;
+}
+.carousel_item .abtn{
+    position: absolute;
+    left:30px;
+    top:100px;
+    z-index:1000;
+}
+.carousel_item .rbtn{
+    position: relative;
+    left: -20vw;
+    top: -100px;
+}
+.slick-dots {
+    position: absolute;
+    bottom: 50px;
+    display: block;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    text-align: center;
+
+}
+.slick-dots li  {
+
+    display: inline-block;
+    margin: 5px;
+
+}
+.slick-dots li button {
+    font-size: 0;
+    line-height: 0;
+    display: block;
+    width: 20px;
+    height: 20px;
+    padding: 5px;
+    cursor: pointer;
+    color: transparent;
+    border: 1px solid white;
+    outline: none;
+    background: transparent;
+    border-radius: 50px;
+}
+/*.slick-dots li button:hover {*/
+    /*border: 1px solid #838e9a;*/
+/*}*/
+
+.slick-dots li.slick-active button {
+    opacity: .75;
+    background: white;
+    color: black;
+}

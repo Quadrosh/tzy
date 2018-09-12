@@ -2,12 +2,15 @@
 
 namespace backend\controllers;
 
+use common\models\UploadForm;
 use Yii;
 use common\models\Article;
 use common\models\ArticleSearch;
+use yii\helpers\Url;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * ArticleController implements the CRUD actions for Article model.
@@ -35,6 +38,7 @@ class ArticleController extends Controller
      */
     public function actionIndex()
     {
+        Url::remember();
         $searchModel = new ArticleSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -51,6 +55,7 @@ class ArticleController extends Controller
      */
     public function actionView($id)
     {
+        Url::remember();
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -65,13 +70,19 @@ class ArticleController extends Controller
     {
         $model = new Article();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            return $this->render('create', [
-                'model' => $model,
-            ]);
+
+        if ($model->load(Yii::$app->request->post()) ) {
+            $model->cat_ids = json_encode($model->categories);
+            if ($model->save()) {
+                return $this->redirect(Url::previous());
+            }
         }
+
+        return $this->render('create', [
+            'model' => $model,
+        ]);
+
+
     }
 
     /**
@@ -83,14 +94,27 @@ class ArticleController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $model->categories = json_decode($model->cat_ids);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            return $this->render('update', [
-                'model' => $model,
-            ]);
+
+        if ($model->load(Yii::$app->request->post()) ) {
+            $model->cat_ids = json_encode($model->categories);
+            if ($model->save()) {
+                return $this->redirect(Url::previous());
+            }
         }
+
+        return $this->render('update', [
+            'model' => $model,
+        ]);
+
+//        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+//            return $this->redirect(['view', 'id' => $model->id]);
+//        } else {
+//            return $this->render('update', [
+//                'model' => $model,
+//            ]);
+//        }
     }
 
     /**
@@ -103,7 +127,7 @@ class ArticleController extends Controller
     {
         $this->findModel($id)->delete();
 
-        return $this->redirect(['index']);
+        return $this->redirect(Url::previous());
     }
 
     /**
@@ -119,6 +143,50 @@ class ArticleController extends Controller
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
+        }
+    }
+
+    public function actionHrurl($text, $length, $toLowerCase, $articleId=null)
+    {
+        $hrurl = $this->actionTranslit($text, $length, $toLowerCase);
+        $oldHrurl = Article::find()->where(['hrurl'=>$hrurl])->one();
+
+        if ($oldHrurl) {
+            if ($oldHrurl->id!=$articleId) {
+                $hrurl = $hrurl.'-'.strtolower(Yii::$app->security->generateRandomString(3));
+            }
+        }
+
+        return $hrurl;
+    }
+
+    public function actionTranslit($text, $length, $toLowerCase)
+    {
+        $res = Article::cyrillicToLatin($text, $length, $toLowerCase);
+        return $res;
+    }
+
+    /**
+     * Upload images for  model with autofill corresponding model property
+     */
+    public function actionUpload()
+    {
+        $uploadmodel = new UploadForm();
+        if (Yii::$app->request->isPost) {
+            $uploadmodel->imageFile = UploadedFile::getInstance($uploadmodel, 'imageFile');
+            $data=Yii::$app->request->post('UploadForm');
+            $toModelProperty = $data['toModelProperty'];
+            $model = Article::find()->where(['id'=>$data['toModelId']])->one();
+            $fileName = 'article'.$model->id.$toModelProperty;
+            if ($uploadmodel->upload($fileName,true)) {
+
+                $model->$toModelProperty = $fileName . '.' . $uploadmodel->imageFile->extension;
+                $model->save();
+                Yii::$app->session->setFlash('success', 'Файл загружен успешно');
+            } else {
+                Yii::$app->session->setFlash('error', 'не получается');
+            }
+            return $this->redirect(Url::previous());
         }
     }
 }

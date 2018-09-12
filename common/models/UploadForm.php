@@ -25,11 +25,16 @@ class UploadForm  extends Model
         ];
     }
 
-    public function upload()
+    public function upload($fileName=null, $replace=null)
     {
         $imageListItem = new Imagefiles();
-        $fileName = $this->imageFile->baseName .'.' . $this->imageFile->extension;
-        if ($this->validate() && $imageListItem->addNew($fileName)) {
+        if ($fileName) {
+            $fileName = $fileName .'.' . $this->imageFile->extension;
+        } else {
+            $fileName = $this->imageFile->baseName .'.' . $this->imageFile->extension;
+        }
+
+        if ($this->validate() && $imageListItem->addNew($fileName,$replace)) {
             if ($this->imageFile->saveAs('img/' . $fileName)) {
                 return true;
             } else {

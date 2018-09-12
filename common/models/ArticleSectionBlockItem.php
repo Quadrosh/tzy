@@ -9,7 +9,7 @@ use Yii;
  *
  * @property integer $id
  * @property integer $article_section_block_id
- * @property integer $order_num
+ * @property integer $sort
  * @property string $header
  * @property string $header_class
  * @property string $description
@@ -30,6 +30,7 @@ use Yii;
  * @property string $type
  * @property integer $created_at
  * @property integer $updated_at
+ * @property integer $code_name
  */
 class ArticleSectionBlockItem extends \yii\db\ActiveRecord
 {
@@ -56,10 +57,10 @@ class ArticleSectionBlockItem extends \yii\db\ActiveRecord
     {
         return [
             [['article_section_block_id'], 'required'],
-            [['article_section_block_id', 'order_num', 'accent', 'created_at', 'updated_at'], 'integer'],
+            [['article_section_block_id', 'sort', 'accent', 'created_at', 'updated_at'], 'integer'],
             [['description', 'text', 'comment', 'image'], 'string'],
             [['header', 'header_class', 'link_description'], 'string', 'max' => 510],
-            [['image_alt', 'link_name', 'link_url', 'link_class', 'link_comment', 'view', 'color_key', 'structure', 'custom_class', 'type'], 'string', 'max' => 255],
+            [['image_alt', 'link_name', 'link_url', 'link_class', 'link_comment', 'view', 'color_key', 'structure', 'custom_class', 'type', 'code_name'], 'string', 'max' => 255],
         ];
     }
 
@@ -71,7 +72,7 @@ class ArticleSectionBlockItem extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'article_section_block_id' => 'Article Section Block ID',
-            'order_num' => 'Order Num',
+            'sort' => 'Sort',
             'header' => 'Header',
             'header_class' => 'Header Class',
             'description' => 'Description',
@@ -93,5 +94,31 @@ class ArticleSectionBlockItem extends \yii\db\ActiveRecord
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
         ];
+    }
+    public function getBlock()
+    {
+        return $this->hasOne(ArticleSectionBlock::class,['id'=>'article_section_block_id']);
+    }
+
+    public function beforeDelete()
+    {
+        if (!parent::beforeDelete()) {
+            return false;
+        }
+
+        if ($this->image) {
+            $this->deleteImage('image');
+        }
+        return true;
+    }
+
+    public function deleteImage($propertyName)
+    {
+        $imageFile = Imagefiles::find()->where(['name'=>$this->$propertyName])->one();
+        if ($imageFile) {
+            $imageFile->deleteWithFile();
+        }
+        $this->$propertyName = null;
+        $this->save();
     }
 }

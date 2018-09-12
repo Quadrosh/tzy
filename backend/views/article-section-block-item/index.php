@@ -26,7 +26,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id',
             'article_section_block_id',
-            'order_num',
+            'sort',
             'header',
             'header_class',
             // 'description:ntext',

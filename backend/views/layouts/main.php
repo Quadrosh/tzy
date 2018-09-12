@@ -78,6 +78,7 @@ AppAsset::register($this);
                     ['label' => 'Chat Messages', 'url' => ['/chatmessage']],
                     ['label' => 'Menu Top', 'url' => ['/menu-top']],
                     ['label' => 'Menu Side', 'url' => ['/menu-side']],
+                    ['label' => 'Menu Nested Sets', 'url' => ['/menu']],
                     ['label' => 'Sites', 'url' => ['/sites']],
 
                 ],

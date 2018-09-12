@@ -12,7 +12,8 @@ use yii\bootstrap\ActiveForm;
 
 //AppAsset::register($this);
 tszakaz_ru\assets\MainAsset::register($this);
-$feedback = Yii::$app->view->params['feedback'];
+//$feedback = Yii::$app->view->params['feedback'];
+$feedback = new \common\models\Feedback();
 
 ?>
 <?php $this->beginPage() ?>
@@ -96,28 +97,35 @@ $feedback = Yii::$app->view->params['feedback'];
     <header>
         <div class="container">
             <div class="row b-top__header">
-                <div class="col-sm-5 text-center b-top__logo">
-                    <a href="/" title="<?= Yii::$app->view->params['meta']['seo_logo'] ?>"><img src="/img/logo.png" alt="<?= Yii::$app->view->params['meta']['seo_logo'] ?>"/></a>
-                    <div class="hidden-xs b-top__logo__corner"></div>
-                </div>
-                <div class="col-sm-7 b-top__info">
-                    <div class="b-top__info__above">
-                        <div class="col-md-6 col-md-push-6">
-                            <p>
-                                <span class="tel" title="+7 (495) 150-05-83">+7 (495) 150-05-83</span>
-                            </p>
-                        </div>
-                        <div class="col-md-6 col-md-pull-6">
-                            <a class="btn btn-primary b-top-btn" href="#" data-toggle="modal" data-target="#feedbackForm" title="Заказать обратный звонок">
-                                <i class="b-icon b-icon__phone"></i>
-                                <span>Заказать обратный звонок</span>
-                            </a>
-                        </div>
+                <div class="row">
+                    <div class="col-sm-4 text-center b-top__logo">
+                        <a href="/" title="<?= Yii::$app->view->params['meta']['seo_logo'] ?>"><img src="/img/logo.png" alt="<?= Yii::$app->view->params['meta']['seo_logo'] ?>"/></a>
+                        <div class="hidden-xs b-top__logo__corner"></div>
+                        <button id="hamburger" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#w0-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <div class="col-sm-8 b-top__info">
+                        <div class="b-top__info__above">
+                            <div class="col-md-6 col-md-push-6">
+                                <p>
+                                    <span class="tel" title="+7 (495) 150-05-83">+7 (495) 150-05-83</span>
+                                </p>
+                            </div>
+                            <div class="col-md-6 col-md-pull-6">
+                                <a class="btn btn-primary b-top-btn" href="#" data-toggle="modal" data-target="#feedbackForm" title="Заказать обратный звонок">
+                                    <i class="b-icon b-icon__phone"></i>
+                                    <span>Заказать обратный звонок</span>
+                                </a>
+                            </div>
 
-
+                        </div>
 
                     </div>
-                    <div class="b-top__info__menu">
+                    <div id="w0-collapse" class="collapse navbar-collapse b-top__info__menu col-sm-12">
 
                         <?= common\widgets\MenuWidget::widget([
                             'site'=>Yii::$app->params['site'],
@@ -126,6 +134,7 @@ $feedback = Yii::$app->view->params['feedback'];
                         ]); ?>
                     </div>
                 </div>
+
                 <div class="b-top__header__shadow"></div>
             </div><!-- /.b-top__header -->
         </div>
@@ -133,20 +142,7 @@ $feedback = Yii::$app->view->params['feedback'];
 
     <div class="container b-main ">
         <div class=" row match-my-cols overhide">
-            <div class="col-sm-3 hidden-xs b-sidebar ">
-                <div class=" b-sidebar__no_banner  ">
-                    <ul id="accordion" class="list-unstyled" >
-                    <?= common\widgets\SidemenuWidget::widget([
-                        'site'=>Yii::$app->params['site'],
-                        'formfactor'=>'accordion',
-                        'currentItem'=> Yii::$app->view->params['currentItem']
-                    ]); ?>
-                    </ul>
-
-                </div><!-- b-sidebar__no_banner -->
-
-            </div><!-- /.b-sidebar -->
-            <div class="col-sm-9 col-xs-12  b-content pt20">
+            <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-xs-12  b-content pt20">
 
 
                 <?= $content ?>

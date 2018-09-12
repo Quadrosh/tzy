@@ -19,7 +19,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'article_section_block_id') ?>
 
-    <?= $form->field($model, 'order_num') ?>
+    <?= $form->field($model, 'sort') ?>
 
     <?= $form->field($model, 'header') ?>
 

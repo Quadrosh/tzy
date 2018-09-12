@@ -12,8 +12,9 @@ use yii\bootstrap\ActiveForm;
 
 //AppAsset::register($this);
 tszakaz_ru\assets\MainAsset::register($this);
+$feedback = new \common\models\Feedback();
 
-$feedback = Yii::$app->view->params['feedback'];
+//$feedback = Yii::$app->view->params['feedback'];
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -117,14 +118,15 @@ $feedback = Yii::$app->view->params['feedback'];
                         </div>
 
                     </div>
-                    <div class="b-top__info__menu">
 
-                        <?= common\widgets\MenuWidget::widget([
-                            'site'=>Yii::$app->params['site'],
-                            'formfactor'=>'tszakaz',
-                            'currentItem'=> Yii::$app->view->params['currentItem']
-                        ]); ?>
-                    </div>
+                </div>
+                <div class="b-top__info__menu">
+
+                    <?= common\widgets\MenuWidget::widget([
+                        'site'=>Yii::$app->params['site'],
+                        'formfactor'=>'tszakaz',
+                        'currentItem'=> Yii::$app->view->params['currentItem']
+                    ]); ?>
                 </div>
                 <div class="b-top__header__shadow"></div>
             </div>

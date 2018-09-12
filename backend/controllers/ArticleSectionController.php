@@ -2,12 +2,16 @@
 
 namespace backend\controllers;
 
+use common\models\Imagefiles;
+use common\models\UploadForm;
 use Yii;
 use common\models\ArticleSection;
 use common\models\ArticleSectionSearch;
+use yii\helpers\Url;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * ArticleSectionController implements the CRUD actions for ArticleSection model.
@@ -35,6 +39,7 @@ class ArticleSectionController extends Controller
      */
     public function actionIndex()
     {
+        Url::remember();
         $searchModel = new ArticleSectionSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -51,6 +56,7 @@ class ArticleSectionController extends Controller
      */
     public function actionView($id)
     {
+        Url::remember();
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -61,12 +67,12 @@ class ArticleSectionController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
+    public function actionCreate($article_id=null)
     {
         $model = new ArticleSection();
-
+        $model->article_id=$article_id;
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(Url::previous());
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -85,7 +91,7 @@ class ArticleSectionController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(Url::previous());
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -103,7 +109,7 @@ class ArticleSectionController extends Controller
     {
         $this->findModel($id)->delete();
 
-        return $this->redirect(['index']);
+        return $this->redirect(Url::previous());
     }
 
     /**
@@ -120,5 +126,35 @@ class ArticleSectionController extends Controller
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
+    }
+
+    /**
+     * Upload images for  model with autofill corresponding model property
+     */
+    public function actionUpload()
+    {
+        $uploadmodel = new UploadForm();
+        if (Yii::$app->request->isPost) {
+            $uploadmodel->imageFile = UploadedFile::getInstance($uploadmodel, 'imageFile');
+            $data=Yii::$app->request->post('UploadForm');
+            $toModelProperty = $data['toModelProperty'];
+            $model = ArticleSection::find()->where(['id'=>$data['toModelId']])->one();
+            $fileName = 'articlesection'.$model->id.$toModelProperty;
+            if ($uploadmodel->upload($fileName,true)) {
+
+                $model->$toModelProperty = $fileName . '.' . $uploadmodel->imageFile->extension;
+                $model->save();
+                Yii::$app->session->setFlash('success', 'Файл загружен успешно');
+            } else {
+                Yii::$app->session->setFlash('error', 'не получается');
+            }
+            return $this->redirect(Url::previous());
+        }
+    }
+
+    public function actionDeleteImage($id,$propertyName)
+    {
+        $this->findModel($id)->deleteImage($propertyName);
+        return $this->redirect(Url::previous());
     }
 }

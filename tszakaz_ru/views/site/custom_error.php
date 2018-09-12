@@ -6,7 +6,7 @@
 /* @var $exception Exception */
 
 use yii\helpers\Html;
-$this->context->layout = 'error';
+//$this->context->layout = 'error';
 
 $this->title = $name;
 ?>

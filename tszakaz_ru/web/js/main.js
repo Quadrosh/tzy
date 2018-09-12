@@ -13,6 +13,9 @@ $(document).ready(function() {
     });
 
 
+    $("#hamburger").click(function() {
+        $(this).toggleClass('is-active');
+    });
 
     // UTM
     function getUtm(param) {

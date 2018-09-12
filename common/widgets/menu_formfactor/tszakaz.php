@@ -3,9 +3,9 @@
     if (isset($item['childs'])){
         $menulevel++;
         $ifactive = null;
-        if ($menulevel == 1 AND $this->currentItem >1 AND $this->currentItem !=3) {
-            $ifactive = ' active';
-        }
+//        if ($menulevel == 1 AND $this->currentItem >1 AND $this->currentItem !=3) {
+//            $ifactive = ' active';
+//        }
         if ($menulevel == 1) {
             echo 'class="dropdown-toggle' .$ifactive.'" data-toggle="dropdown"';
         }
@@ -20,7 +20,7 @@
         echo '</li>';
     }
 
-    if ($menulevel == 0 and $item['num_order']!=4){
+    if ($menulevel == 0 and $item['id']!=3){
         echo '<li class="delimiter"></li>';
     } ?>
 

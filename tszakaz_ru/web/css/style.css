@@ -100,13 +100,17 @@ header .b-top__header {
     height: 150px;
     position: relative;
 }
- .b-top__logo {
+.b-top__logo {
     position: relative;
     vertical-align: middle;
     height: 100%;
-    line-height: 150px;
+    line-height: 110px;
     background: url(/img/b-header__background.png) 0 0 repeat-x scroll;
 }
+.b-top__logo img {
+    max-width: 70%;
+}
+
  .logo_v2 {
 
      width: 80%;
@@ -114,16 +118,19 @@ header .b-top__header {
 }
 .b-top__header .b-top__logo .b-top__logo__corner {
     position: absolute;
-    width: 57px;
-    height: 149px;
+    /*width: 57px;*/
+    width: 42px;
+    /*height: 149px;*/
+    height: 109px;
     top: 1px;
-    right: -57px;
+    /*right: -57px;*/
+    right: -42px;
     z-index: 1000;
     background: transparent url(/img/b-header__corner.png) 0 0 no-repeat scroll;
 }
 .b-top__header .b-top__info {
     position: relative;
-    height: 100%;
+    height: 110px;
     background: transparent url(/img/b-header__right__background.png) 0 0 repeat-x scroll;
     padding-left: 57px;
 }
@@ -150,7 +157,7 @@ header .b-top__header {
     -moz-box-shadow: 0 5.67px 20px 5px rgba(72,154,213,.31);
     box-shadow: 0 5.67px 20px 5px rgba(72,154,213,.31);
     position: relative;
-    top:-2px;
+    top:-7px;
 }
 
 .btn-primary {
@@ -192,51 +199,53 @@ header .b-top__header {
     color: #575756;
     line-height: 1;
     position: relative;
-    top: 6px;
+    top: 0;
 }
-header .b-top__header .b-top__info .b-top__info__menu {
+
+header .b-top__header .b-top__info__menu {
     position: absolute;
     background: transparent url(/img/b-header__menu__background.png) 0 0 repeat-x scroll;
     width: 100%;
     bottom: 0;
     left: 0;
 }
-header .b-top__header .b-top__info .b-top__info__menu>ul {
-    font-size: 15px;
-    padding: 0 5px 0 62px;
+header .b-top__header  .b-top__info__menu>ul{
+    font-size: 14px;
+    padding: 0 5px 0 5px;
     width: 100%;
     display: table;
     table-layout: fixed;
     margin-left: 0!important;
     margin-bottom: 0!important;
 }
-header .b-top__header .b-top__info .b-top__info__menu>ul>li {
+header .b-top__header  .b-top__info__menu>ul>li {
     height: 40px;
     display: table-cell;
     text-align: center;
     vertical-align: middle;
 }
-header .b-top__header .b-top__info .b-top__info__menu>ul>li.delimiter {
+header .b-top__header  .b-top__info__menu>ul>li.delimiter {
     background: transparent url(/img/b-header__menu__divider.png) 0 2px no-repeat scroll;
     width: 14px;
 }
-header .b-top__header .b-top__info .b-top__info__menu>ul>li>a:hover, header .b-top__header .b-top__info .b-top__info__menu>ul>li>a:visited, header .b-top__header .b-top__info .b-top__info__menu>ul>li>a:focus {
+header .b-top__header  .b-top__info__menu>ul>li>a:hover,
+header .b-top__header  .b-top__info__menu>ul>li>a:visited,
+header .b-top__header  .b-top__info__menu>ul>li>a:focus {
     text-decoration: none;
 }
-header .b-top__header .b-top__info .b-top__info__menu>ul>li>a:visited {
+header .b-top__header  .b-top__info__menu>ul>li>a:visited {
     color: #706f6f;
 }
-header .b-top__header .b-top__info .b-top__info__menu>ul>li>a {
+header .b-top__header  .b-top__info__menu>ul>li>a {
     display: inline-block;
     width: 100%;
-    text-transform: uppercase;
     font-family: NeoSansProRegular,sans-serif;
     line-height: 1;
     color: #706f6f;
 }
 
 /*dropdown-menu*/
-header .b-top__header .b-top__info .b-top__info__menu>ul>li .dropdown-menu {
+header .b-top__header  .b-top__info__menu>ul>li .dropdown-menu {
     border: 0;
     z-index: 1002;
     font-size: 13px;
@@ -249,8 +258,8 @@ header .b-top__header .b-top__info .b-top__info__menu>ul>li .dropdown-menu {
     background-repeat: repeat-x;
 
 }
-header .b-top__header .b-top__info .b-top__info__menu > ul > li.active > a,
-header .b-top__header .b-top__info .b-top__info__menu > ul > li > a.active {
+header .b-top__header  .b-top__info__menu > ul > li.active > a,
+header .b-top__header  .b-top__info__menu > ul > li > a.active {
     color: #f39200;
 
 }
@@ -631,6 +640,21 @@ header .b-top__banner .b-top__banner__shadow {
     background-color: rgba(243,187,0,0.15);
     border-color: rgba(243,187,0,0.3);
 }
+.navbar-toggle {
+    z-index:1000;
+    margin-top: 30px;
+}
+.navbar-toggle .icon-bar {
+    display: block;
+    width: 32px;
+    height: 2px;
+    border-radius: 0;
+    margin: 5px;
+    background-color: white;
+}
+#hamburger.is-active  {
+    border: 1px solid white;
+}
 
 /*f39200*/
 
@@ -650,7 +674,7 @@ header .b-top__banner .b-top__banner__shadow {
     .b-top__info__above p .tel {
         font-size: 18px;
         line-height: 1.7;
-        top: 6px;
+        top: 0;
         margin-left: 36px;
     }
     .w810static {
@@ -681,12 +705,36 @@ header .b-top__banner .b-top__banner__shadow {
 
 }
 @media only screen and (max-width : 820px) {
-    header .b-top__header .b-top__info .b-top__info__menu>ul {
+    header .b-top__header  .b-top__info__menu>ul {
         font-size: 12px;
     }
+
 }
 
 @media only screen and (max-width : 767px) {
+
+    header .b-top__header .b-top__info__menu > ul {
+        font-size: 14px;
+    }
+    header .b-top__header .b-top__info__menu{
+        background-color: #ffffff;
+        top: 0;
+        padding-top: 10px;
+        background-image: none;
+        position: relative;
+    }
+    
+    header .b-top__header .b-top__info__menu .delimiter{
+        display: none;
+    }
+    header .b-top__header .b-top__info__menu > ul > li {
+        height: 30px;
+        /*display: table-cell;*/
+        display: block;
+        text-align: center;
+        vertical-align: middle;
+
+    }
     header .b-top__header {
         height: auto;
         position: relative;
@@ -698,7 +746,7 @@ header .b-top__banner .b-top__banner__shadow {
         width: 300px;
     }
     .b-top__header .b-top__info {
-        height: 106px;
+        height: 62px;
 
         padding-left: 17px;
     }

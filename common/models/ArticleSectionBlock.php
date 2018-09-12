@@ -29,6 +29,8 @@ use Yii;
  * @property string $custom_class
  * @property integer $created_at
  * @property integer $updated_at
+ * @property integer $sort
+ * @property integer $code_name
  */
 class ArticleSectionBlock extends \yii\db\ActiveRecord
 {
@@ -55,10 +57,10 @@ class ArticleSectionBlock extends \yii\db\ActiveRecord
     {
         return [
             [['article_section_id'], 'required'],
-            [['article_section_id', 'accent', 'created_at', 'updated_at'], 'integer'],
+            [['article_section_id', 'accent', 'sort', 'created_at', 'updated_at'], 'integer'],
             [['description', 'raw_text', 'image', 'background_image', 'thumbnail_image'], 'string'],
             [['header', 'header_class', 'call2action_description'], 'string', 'max' => 510],
-            [['image_alt', 'call2action_name', 'call2action_link', 'call2action_class', 'call2action_comment', 'view', 'color_key', 'structure', 'custom_class'], 'string', 'max' => 255],
+            [['image_alt', 'call2action_name', 'call2action_link', 'call2action_class', 'call2action_comment', 'view', 'color_key', 'structure', 'custom_class', 'code_name'], 'string', 'max' => 255],
         ];
     }
 
@@ -90,6 +92,50 @@ class ArticleSectionBlock extends \yii\db\ActiveRecord
             'custom_class' => 'Custom Class',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
+            'sort' => 'Sort',
         ];
+    }
+    public function getSection()
+    {
+        return $this->hasOne(ArticleSection::class,['id'=>'article_section_id']);
+    }
+
+    public function getItems()
+    {
+        return $this->hasMany(ArticleSectionBlockItem::class,['article_section_block_id'=>'id'])
+            ->orderBy(['sort' => SORT_ASC]);
+    }
+
+    public function beforeDelete()
+    {
+        if (!parent::beforeDelete()) {
+            return false;
+        }
+
+        if ($this->image) {
+            $this->deleteImage('image');
+        }
+        if ($this->background_image) {
+            $this->deleteImage('background_image');
+        }
+        if ($this->thumbnail_image) {
+            $this->deleteImage('thumbnail_image');
+        }
+        if ($this->items){
+            foreach ($this->items as $item) {
+                $item->delete();
+            }
+        }
+        return true;
+    }
+
+    public function deleteImage($propertyName)
+    {
+        $imageFile = Imagefiles::find()->where(['name'=>$this->$propertyName])->one();
+        if ($imageFile) {
+            $imageFile->deleteWithFile();
+        }
+        $this->$propertyName = null;
+        $this->save();
     }
 }

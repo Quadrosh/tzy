@@ -22,11 +22,40 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+//            ['class' => 'yii\grid\SerialColumn'],
 
             'id',
             'list_name',
-            'cat_ids:ntext',
+//            'cat_ids:ntext',
+            [
+                'attribute'=>'cat_ids',
+                'value' => function($model)
+                {
+                    $rawIds = $model['cat_ids'];
+                    $out='';
+                    $ids = json_decode($rawIds);
+                    $i=0;
+                    if ($ids) {
+                        foreach ($ids as $id) {
+                            $cat=\common\models\Menu::find()->where(['id'=>$id])->one();
+                            if ($cat->tree==0) {
+                                $cat->tree=1;
+                            }
+                            $menu=\common\models\Menu::find()->where(['id'=>$cat->tree])->one();
+                            $out .=$menu->name.'->'.$cat->name;
+                            if (count($ids)-1>$i) {
+                                $out .=', ';
+                            }
+                            $i++;
+                        }
+
+                    }
+                    return $out;
+
+                },
+                'format'=> 'html',
+                'label'=> 'Категории в каталоге',
+            ],
             'hrurl:url',
             'title',
             // 'description:ntext',

@@ -30,6 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'id',
             'article_section_id',
+            'sort',
             'header',
             'header_class',
             'description:ntext',
@@ -46,10 +47,32 @@ $this->params['breadcrumbs'][] = $this->title;
             'view',
             'color_key',
             'structure',
-            'accent',
+//            'accent',
+            [
+                'attribute'=>'accent',
+                'value' => function($data)
+                {
+                    return \Yii::$app->formatter->asBoolean($data['accent']);
+                },
+                'format'=> 'html',
+            ],
             'custom_class',
-            'created_at',
-            'updated_at',
+            [
+                'attribute'=>'created_at',
+                'value' => function($data)
+                {
+                    return \Yii::$app->formatter->asDatetime($data['created_at'], 'dd/MM/yy HH:mm');
+                },
+                'format'=> 'html',
+            ],
+            [
+                'attribute'=>'updated_at',
+                'value' => function($data)
+                {
+                    return \Yii::$app->formatter->asDatetime($data['updated_at'], 'dd/MM/yy HH:mm');
+                },
+                'format'=> 'html',
+            ],
         ],
     ]) ?>
 

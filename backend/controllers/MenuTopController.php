@@ -5,6 +5,7 @@ namespace backend\controllers;
 use Yii;
 use common\models\MenuTop;
 use yii\data\ActiveDataProvider;
+use yii\helpers\Url;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -35,6 +36,7 @@ class MenuTopController extends Controller
      */
     public function actionIndex()
     {
+        Url::remember();
         $dataProvider = new ActiveDataProvider([
             'query' => MenuTop::find()->orderBy([
                 'site'=>SORT_ASC,
@@ -56,6 +58,7 @@ class MenuTopController extends Controller
      */
     public function actionView($id)
     {
+        Url::remember();
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -71,7 +74,7 @@ class MenuTopController extends Controller
         $model = new MenuTop();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(Url::previous());
         }
 
         return $this->render('create', [
@@ -91,7 +94,7 @@ class MenuTopController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(Url::previous());
         }
 
         return $this->render('update', [
@@ -110,7 +113,7 @@ class MenuTopController extends Controller
     {
         $this->findModel($id)->delete();
 
-        return $this->redirect(['index']);
+        return $this->redirect(Url::previous());
     }
 
     /**

@@ -18,7 +18,7 @@ class ArticleSectionBlockItemSearch extends ArticleSectionBlockItem
     public function rules()
     {
         return [
-            [['id', 'article_section_block_id', 'order_num', 'accent', 'created_at', 'updated_at'], 'integer'],
+            [['id', 'article_section_block_id', 'sort', 'accent', 'created_at', 'updated_at'], 'integer'],
             [['header', 'header_class', 'description', 'text', 'comment', 'image', 'image_alt', 'link_description', 'link_name', 'link_url', 'link_class', 'link_comment', 'view', 'color_key', 'structure', 'custom_class', 'type'], 'safe'],
         ];
     }
@@ -61,7 +61,7 @@ class ArticleSectionBlockItemSearch extends ArticleSectionBlockItem
         $query->andFilterWhere([
             'id' => $this->id,
             'article_section_block_id' => $this->article_section_block_id,
-            'order_num' => $this->order_num,
+            'sort' => $this->sort,
             'accent' => $this->accent,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
