@@ -91,7 +91,7 @@ class SiteController extends Controller
         $preorderForm = new Preorders();
 //        $preorderForm = new PreordersCaptcha();
 
-        $pageName = 'about';
+        $pageName = 'home';
         $this->view->params['currentItem'] = 1;
         $this->view->params['pageName']=$pageName;
 

@@ -108,6 +108,7 @@ use yii\widgets\ActiveForm;
         <div class="col-sm-4">
             <?= $form->field($model, 'view')->dropDownList([
                 '_a-default' => 'default',
+                '_a-page_preorder_form' => 'page_preorder_form',
                 '_a-1' => '1',
             ],['prompt' => 'Выбери вьюху']) ?>
         </div>
