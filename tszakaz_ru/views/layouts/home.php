@@ -38,7 +38,7 @@ $feedback = new \common\models\Feedback();
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close"  data-dismiss="modal"><span aria-hidden="true" class="b-icon b-icon__close"></span><span class="sr-only"></span></button>
-                <h4 class="modal-title">Заказать обратный звонок</h4>
+                <p class="modal-title">Заказать обратный звонок</p>
             </div>
             <?php $form = ActiveForm::begin([
                 'id' => 'feedback-form',
@@ -140,16 +140,15 @@ $feedback = new \common\models\Feedback();
             <div class="row b-top__banner">
                 <div class="col-xs-5 b-top__banner__text">
                     <div class="b-top__banner__text_message">
-                        <!--<h1><a href="#">ТрансЗаказ</a></h1>-->
-                        <p>&nbsp;</p>
 
-                        <p><h3><strong>Профессионализм&nbsp;</strong></h3>
 
-                        <h3><strong>Открытость&nbsp;</strong></h3>
+                        <p class="lead">Профессионализм</p>
 
-                        <h3><strong>Готовность к действиям</strong>
+                        <p class="lead">Открытость</p>
 
-                            <p>&nbsp;</p>
+                        <p class="lead">Готовность к действиям</p>
+
+
                     </div>
                     <div class="b-top__banner__text_corner"></div>
                 </div>

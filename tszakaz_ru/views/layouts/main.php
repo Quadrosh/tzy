@@ -38,7 +38,7 @@ $feedback = new \common\models\Feedback();
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close"  data-dismiss="modal"><span aria-hidden="true" class="b-icon b-icon__close"></span><span class="sr-only"></span></button>
-                <h4 class="modal-title">Заказать обратный звонок</h4>
+                <p class="modal-title">Заказать обратный звонок</p>
             </div>
             <?php $form = ActiveForm::begin([
                 'id' => 'feedback-form',

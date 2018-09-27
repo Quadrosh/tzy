@@ -662,10 +662,26 @@ header .b-top__banner .b-top__banner__shadow {
 /*yellow #F3BB00     rgba(243,187,0,2)        */
 /*blue1  #0090d7*/
 /*blue2  #0e3e74*/
+.b-top__banner .lead {
+    font-size: 24px;
+    font-weight:bold;
+}
+
+.modal-title{
+    font-size: 18px;
+    font-weight:bold;
+}
 
 
 
-
+/*              MEDIA              */
+/*              MEDIA              */
+/*              MEDIA              */
+/*              MEDIA              */
+/*              MEDIA              */
+/*              MEDIA              */
+/*              MEDIA              */
+/*              MEDIA              */
 /*              MEDIA              */
 /*==========  Less than  ==========*/
 
