@@ -27,6 +27,13 @@ $feedback = new \common\models\Feedback();
     <meta name="description" content="<?= Yii::$app->view->params['meta']['description'] ?>">
     <meta name="keywords" content="<?= Yii::$app->view->params['meta']['keywords'] ?>">
 
+    <meta property="og:locale" content="ru_RU" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Транспортная компания ТрансЗаказ" />
+    <meta property="og:title" content="<?= Yii::$app->view->params['meta']['title'] ?>" />
+    <meta property="og:description" content="<?= Yii::$app->view->params['meta']['description'] ?>" />
+    <meta property="og:image" content="/img/logo.png" />
+
     <?php $this->head() ?>
     <?php include_once("analyticstracking.php") ?>
 </head>
