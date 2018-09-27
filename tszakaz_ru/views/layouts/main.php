@@ -9,6 +9,7 @@ use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use tszakaz_ru\assets\AppAsset;
 use yii\bootstrap\ActiveForm;
+use yii\helpers\Url;
 
 //AppAsset::register($this);
 tszakaz_ru\assets\MainAsset::register($this);
@@ -32,7 +33,8 @@ $feedback = new \common\models\Feedback();
     <meta property="og:site_name" content="Транспортная компания ТрансЗаказ" />
     <meta property="og:title" content="<?= Yii::$app->view->params['meta']['title'] ?>" />
     <meta property="og:description" content="<?= Yii::$app->view->params['meta']['description'] ?>" />
-    <meta property="og:image" content="/img/logo.png" />
+    <meta property="og:url" content="<?= Url::current(['lg'=>null], true) ?>" />
+    <meta property="og:image" content="<?= Url::base(true) ?>/img/logo.png" />
 
     <?php $this->head() ?>
     <?php include_once("analyticstracking.php") ?>
