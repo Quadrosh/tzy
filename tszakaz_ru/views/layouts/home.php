@@ -110,8 +110,8 @@ $feedback = new \common\models\Feedback();
     <header>
         <div class="container">
             <div class="row b-top__header">
-                <div class="col-sm-5 text-center b-top__logo">
-                    <a href="/" title="<?= Yii::$app->view->params['meta']['seo_logo'] ?>"><img src="/img/logo.png" alt="<?= Yii::$app->view->params['meta']['seo_logo'] ?>"/></a>
+                <div class="col-sm-4 text-center b-top__logo">
+                    <img src="/img/logo.png" alt="<?= Yii::$app->view->params['meta']['seo_logo'] ?>"/>
                     <div class="hidden-xs b-top__logo__corner"></div>
                     <button id="hamburger" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#w0-collapse">
                         <span class="sr-only">Toggle navigation</span>
@@ -120,7 +120,7 @@ $feedback = new \common\models\Feedback();
                         <span class="icon-bar"></span>
                     </button>
                 </div>
-                <div class="col-sm-7 b-top__info">
+                <div class="col-sm-8 b-top__info">
                     <div class="b-top__info__above">
                         <div class="col-md-6 col-md-push-6">
                             <p>
@@ -142,7 +142,7 @@ $feedback = new \common\models\Feedback();
                     <?= common\widgets\MenuWidget::widget([
                         'site'=>Yii::$app->params['site'],
                         'formfactor'=>'tszakaz',
-                        'currentItem'=> Yii::$app->view->params['currentItem']
+                        'currentItem'=> 0
                     ]); ?>
                 </div>
                 <div class="b-top__header__shadow"></div>

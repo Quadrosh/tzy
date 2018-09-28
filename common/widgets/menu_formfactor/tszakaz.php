@@ -1,5 +1,5 @@
 <li class="dropdown <?php if ($item['id'] == $this->currentItem ) {echo 'active';}
-?>"><a href="/<?= $item['link'] ?>" <?php
+?>"><a <?= $item['id'] != $this->currentItem?'href="/'.$item['link'].'"':'' ?>  <?php
     if (isset($item['childs'])){
         $menulevel++;
         $ifactive = null;
