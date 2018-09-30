@@ -250,7 +250,7 @@ header .b-top__header  .b-top__info__menu>ul>li .dropdown-menu {
     z-index: 1002;
     font-size: 13px;
     min-width: 100px;
-    margin-top: 11px;
+    margin-top: 0;
     padding: 10px 0;
     background-image: -webkit-linear-gradient(top,#fff 0,#c6c6c6 100%);
     background-image: -o-linear-gradient(top,#fff 0,#c6c6c6 100%);
@@ -680,6 +680,13 @@ header .b-top__banner .b-top__banner__shadow {
     /*color: #706f6f;*/
     color: #A5A4A4;
 }
+@media (min-width: 768px) {
+    .b-top__info__menu ul.list-inline li.dropdown:hover > ul.dropdown-menu {
+        display: block;
+    }
+}
+
+
 /*              MEDIA              */
 /*              MEDIA              */
 /*              MEDIA              */
