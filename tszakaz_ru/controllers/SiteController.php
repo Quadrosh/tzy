@@ -2,6 +2,7 @@
 
 namespace tszakaz_ru\controllers;
 
+use common\models\Menu;
 use common\models\RateLimit;
 use common\models\MenuTop;
 use common\models\Pages;
@@ -9,6 +10,7 @@ use common\models\Preorders;
 use common\models\PreordersCaptcha;
 use common\models\TestPage;
 use common\models\TestTarget;
+use common\models\Visit;
 use Yii;
 use yii\filters\AccessControl;
 use yii\helpers\Url;
@@ -120,31 +122,23 @@ class SiteController extends Controller
     public function actionPage()
     {
         Url::remember();
-        $pageName = Yii::$app->request->get('pagename');
-        $feedbackForm = new Feedback();
-        $preorderForm = new Preorders();
+        $hrurl = Yii::$app->request->get('pagename');
 
-
-        //UTM
-//        $session = Yii::$app->session;
-//        if (Yii::$app->request->get('utm_source')!= null) {
-//            $session['utmSource'] = Yii::$app->request->get('utm_source');
-//            $session['utmMedium'] = Yii::$app->request->get('utm_medium');
-//            $session['utmCampaign'] = Yii::$app->request->get('utm_campaign');
-//            $session['utmTerm'] = Yii::$app->request->get('utm_term');
-//            $session['utmContent'] = Yii::$app->request->get('utm_content');
-//        }
-
-//        Yii::$app->session->setFlash('success', "Your message to display");
+        if ($hrurl == 'gruzoperevozki') {
+            return $this->gruzoperevozkiPage();
+        }
+        $utm = $this->getUtm();
 
         $page = Pages::find()->where([
             'site'=>Yii::$app->params['site'],
-            'hrurl'=>$pageName
+            'hrurl'=>$hrurl
         ])->one();
         if ($page == false) {
-//            $this->layout = 'error';
             throw new \yii\web\NotFoundHttpException('Страница не существует');
         };
+        if ($page->status == 'article') {
+            return Yii::$app->runAction('article/page', ['hrurl' => $hrurl]);
+        }
 
         if (!empty($page->layout)) {
             $this->layout = $page->layout;
@@ -154,37 +148,56 @@ class SiteController extends Controller
 
         $topMenuItem = MenuTop::find()->where([
             'site'=>Yii::$app->params['site'],
-            'link'=>$pageName.'.html'
+            'link'=>$hrurl.'.html'
         ])->one();
-        $this->view->params['pageName']=$pageName;
+        $this->view->params['pageName']=$hrurl;
         $this->view->params['currentItem'] = $topMenuItem['id'];
         if (trim(strtolower($page->seo_logo)) =='title') {
             $page->seo_logo = $page->title;
         }
         $this->view->params['meta']=$page;
-        if ($pageName == 'sitemap') {
+        if ($hrurl == 'sitemap') {
             return $this->render('sitemap',[
                 'page' => $page,
-                'feedbackForm' => $feedbackForm,
-                'preorderForm' => $preorderForm,
             ]);
         }
         if (!empty($page->view)) {
             return $this->render($page->view,[
                 'page' => $page,
-                'feedbackForm' => $feedbackForm,
-                'preorderForm' => $preorderForm,
+                'utm' => $utm,
             ]);
         }
         return $this->render('page',[
             'page' => $page,
-            'feedbackForm' => $feedbackForm,
-            'preorderForm' => $preorderForm,
+            'utm' => $utm,
         ]);
 
 
     }
 
+    private function gruzoperevozkiPage(){
+
+        $hrurl = 'gruzoperevozki';
+        $page = Pages::find()->where([
+            'site'=>Yii::$app->params['site'],
+            'hrurl'=>$hrurl
+        ])->one();
+        $utm = $this->getUtm();
+        $this->view->params['meta']=$page;
+        $this->view->params['pageName']=$hrurl;
+
+        $category = Menu::find()->where(['url'=>'gruzoperevozki.html'])->one();
+        $childs = $category->children(1)->all();
+//        var_dump($childs);
+
+
+        return $this->render('page_gruzoperevozki_index',[
+            'page' => $page,
+            'utm' => $utm,
+            'pages'=>$childs
+        ]);
+
+    }
 
         /**
      * Login action.
@@ -348,4 +361,58 @@ class SiteController extends Controller
     }
 
 
+    public function getUtm()
+    {
+        $utm = [];
+        $session = Yii::$app->session;
+
+        if (Yii::$app->request->get('utm_source')) {
+            // UTM из GET
+            $utm['source'] = Yii::$app->request->get('utm_source');
+            $utm['medium'] = Yii::$app->request->get('utm_medium');
+            $utm['campaign'] = Yii::$app->request->get('utm_campaign');
+            $utm['term'] = Yii::$app->request->get('utm_term');
+            $utm['content'] = Yii::$app->request->get('utm_content');
+
+            // сохранение в сессию
+            if (Yii::$app->request->get('utm_source')!= null) {
+                $session['utm_source'] = $utm['source'];
+                $session['utm_medium'] = $utm['medium'];
+                $session['utm_campaign'] = $utm['campaign'];
+                $session['utm_term'] = $utm['term'];
+                $session['utm_content'] = $utm['content'];
+            }
+        } else {
+            if ($session['utm_source']) {
+                $utm['source'] = $session['utm_source'];
+                $utm['medium'] = $session['utm_medium'];
+                $utm['campaign'] = $session['utm_campaign'];
+                $utm['term'] = $session['utm_term'];
+                $utm['content'] = $session['utm_content'];
+            } else { // если там что то есть
+                $utm['source'] = Yii::$app->request->get('utm_source');
+                $utm['medium'] = Yii::$app->request->get('utm_medium');
+                $utm['campaign'] = Yii::$app->request->get('utm_campaign');
+                $utm['term'] = Yii::$app->request->get('utm_term');
+                $utm['content'] = Yii::$app->request->get('utm_content');
+            }
+        }
+
+        //сохр визита в статистику
+        $visit = new Visit();
+        $visit['ip'] = Yii::$app->request->userIP;
+        $visit['site'] = Yii::$app->params['site'];
+        $visit['lp_hrurl'] = '';
+        $visit['url'] = 'http://'.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
+        $visit['utm_source']=$utm['source'];
+        $visit['utm_medium']=$utm['medium'];
+        $visit['utm_campaign']=$utm['campaign'];
+        $visit['utm_term']=$utm['term'];
+        $visit['utm_content']=$utm['content'];
+        $visit['qnt']=1;
+        $visit->save();
+
+        return $utm;
+
+    }
 }

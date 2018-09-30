@@ -4,6 +4,9 @@
 
 use yii\helpers\Html;
 
+$feedbackForm = new \common\models\Feedback();
+$preorderForm = new \common\models\Preorders();
+
 $this->title = 'Page View';
 $this->params['breadcrumbs'][] = $this->title;
 ?>

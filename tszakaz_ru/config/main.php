@@ -52,24 +52,21 @@ return [
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
-//            'enableStrictParsing' => true,
-//            'suffix' => '.html',
-//            'baseUrl' => 'site/index',
             'rules' => [
 
                 $params['botAddress'] => '/chat/bot',
                 'chat/post' => '/chat/post',
-                'perevozki-dlya-juridicheskih-lits.html' => '/article/page-jurlits',
-                'news.html' => '/article/page-news',
+//                'perevozki-dlya-juridicheskih-lits.html' => '/article/page-jurlits',
+                'news.html' => '/article/index',
+                'baza-znaniy.html' => '/article/index',
+
+
                 't/<testpage:[0-9a-z\-\_]+>' => 'test/test',
                 'dev/<testpage:[0-9a-z\-\_]+>' => 'test/dev',
                 'lp/<landingpage:[0-9a-z\-\_]+>' => 'landing/page',
 
                 'ts/<testpage:[0-9a-z\-\_]+>' => 'test/test',
                 '<pagename:[0-9a-z\-\_]+>.html' => 'site/page',
-
-//                ['pattern'=>'admin', 'route'=>'admin/'],
-//                ['pattern'=>'<action>', 'route'=>'site/index'],
                 ['pattern'=>'<action>', 'route'=>'site/page'],
             ],
 

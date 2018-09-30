@@ -7,6 +7,8 @@
 
 use yii\helpers\Html;
 //$this->context->layout = 'error';
+$feedbackForm = new \common\models\Feedback();
+$preorderForm = new \common\models\Preorders();
 
 $this->title = $name;
 ?>

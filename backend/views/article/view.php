@@ -49,15 +49,17 @@ $this->params['breadcrumbs'][] = $this->title;
                     if ($ids) {
                         foreach ($ids as $id) {
                             $cat=\common\models\Menu::find()->where(['id'=>$id])->one();
-                            if ($cat->tree==0) {
-                                $cat->tree=1;
+                            if (isset($cat)) {
+                                if ($cat->tree==0) {
+                                    $cat->tree=1;
+                                }
+                                $menu=\common\models\Menu::find()->where(['id'=>$cat->tree])->one();
+                                $out .=$menu->name.'->'.$cat->name;
+                                if (count($ids)-1>$i) {
+                                    $out .=', ';
+                                }
+                                $i++;
                             }
-                            $menu=\common\models\Menu::find()->where(['id'=>$cat->tree])->one();
-                            $out .=$menu->name.'->'.$cat->name;
-                            if (count($ids)-1>$i) {
-                                $out .=', ';
-                            }
-                            $i++;
                         }
 
                     }

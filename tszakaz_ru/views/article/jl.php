@@ -18,7 +18,7 @@ $preorder = new common\models\Preorders();
 <nav id="w10" class="navbar-inverse  navbar" role="navigation">
     <div class="container">
         <div class="navbar-header">
-            <a class="navbar-brand" href="/" title="<?= $page ['seo_logo'] ?>"><img src="/img/tz_logo_w.png" alt="<?= $page['seo_logo'] ?>"></a>
+            <a class="navbar-brand" href="/" <img src="/img/tz_logo_w.png" alt="<?= $page['title'] ?>"></a>
         </div>
         <div  class="navbar-collapse">
             <ul id="w11" class="navbar-nav navbar-right nav">

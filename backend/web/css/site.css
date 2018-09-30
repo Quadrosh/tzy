@@ -155,3 +155,7 @@ a.desc:after {
 .article-view .gridThumb {
     max-width:50px;
 }
+h1 {
+    font-size: 28px;
+    color: #5f6973;
+}

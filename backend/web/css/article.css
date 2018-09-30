@@ -21,11 +21,11 @@ body {
 .w100{
     max-width: 100%;
 }
-h1{
+.article_front_1 h1{
     font-size: 42px;
     color: #5f6973;
 }
-h3{
+.article_front_1 h3{
     font-size: 18px;
 }
 

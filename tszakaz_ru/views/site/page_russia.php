@@ -6,6 +6,12 @@ use \yii\widgets\ActiveForm;
 use yii\captcha\Captcha;
 use common\widgets\Alert;
 
+$feedbackForm = new \common\models\Feedback();
+$preorderForm = new \common\models\Preorders();
+
+$breadcrumbs = new \common\models\Breadcrumbs();
+$this->params['breadcrumbs'] = $breadcrumbs->construct($page->cat_ids);
+
 ?>
 <?= Alert::widget() ?>
     <h1 class="text-center"><?= $page->pagehead ?></h1>

@@ -6,6 +6,8 @@
 /* @var $exception Exception */
 
 use yii\helpers\Html;
+$feedbackForm = new \common\models\Feedback();
+$preorderForm = new \common\models\Preorders();
 
 $this->title = $name;
 ?>
