@@ -7,16 +7,22 @@ use yii\base\Model;
 class Sitemap extends Model
 {
     public $site;
+    public $homeLastMod;
 
     public function getUrl(){
         $urls = [];
         $pages = Pages::find()->where(['status'=>'published'])->all();
         foreach ($pages as $page){
-            $urls[]=[
-                'url'=>Yii::$app->urlManager->createUrl([$page->hrurl.'.html']),
-                'changefreq'=>'daily',
-                'lastmod'=> \Yii::$app->formatter->asDatetime($page->updated_at, 'yyyy-MM-dd')
-            ];
+            if ($page->hrurl=='home') {
+                $this->homeLastMod =  \Yii::$app->formatter->asDatetime($page->updated_at, 'yyyy-MM-dd');
+            } else{
+                $urls[]=[
+                    'url'=>Yii::$app->urlManager->createUrl([$page->hrurl.'.html']),
+                    'changefreq'=>'daily',
+                    'lastmod'=> \Yii::$app->formatter->asDatetime($page->updated_at, 'yyyy-MM-dd')
+                ];
+            }
+
         }
         $articlePages = Pages::find()->where(['status'=>'article'])->all();
         foreach ($articlePages as $articlePage){
@@ -41,6 +47,7 @@ class Sitemap extends Model
                 <loc><?= $host ?></loc>
                 <changefreq>daily</changefreq>
                 <priority>1</priority>
+                <lastmod><?= $this->homeLastMod ?></lastmod>
             </url>
             <?php foreach($urls as $url): ?>
                 <url>
