@@ -51,7 +51,7 @@ $trees = \common\models\Menu::find()
             'rgt',
             'depth',
             'name',
-            //'url:url',
+            'url:url',
             //'description',
 
             ['class' => 'yii\grid\ActionColumn'],
