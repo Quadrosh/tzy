@@ -8,6 +8,7 @@ use common\models\MenuTop;
 use common\models\Pages;
 use common\models\Preorders;
 use common\models\PreordersCaptcha;
+use common\models\Sitemap;
 use common\models\TestPage;
 use common\models\TestTarget;
 use common\models\Visit;
@@ -197,6 +198,27 @@ class SiteController extends Controller
             'pages'=>$childs
         ]);
 
+    }
+
+    public function actionSitemap()
+    {
+        $this->layout = 'clear';
+
+
+//        var_dump('adsf'); die;
+
+        $sitemap = new Sitemap();
+
+        if (true or !$xml_sitemap = Yii::$app->cache->get('sitemap')) {
+
+            $urls = $sitemap->getUrl();
+
+            $xml_sitemap = $sitemap->getXml($urls);
+
+            Yii::$app->cache->set('sitemap', $xml_sitemap, 3600*12);
+        }
+
+        $sitemap->showXml($xml_sitemap);
     }
 
         /**

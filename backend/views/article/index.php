@@ -78,7 +78,7 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'imagelink',
             // 'imagelink_alt',
             // 'author',
-            // 'status',
+             'status',
             // 'view',
             // 'layout',
             // 'created_at',

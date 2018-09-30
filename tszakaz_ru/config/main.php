@@ -60,6 +60,8 @@ return [
                 'news.html' => '/article/index',
                 'baza-znaniy.html' => '/article/index',
 
+                'sitemap.xml' => 'site/sitemap',
+
 
                 't/<testpage:[0-9a-z\-\_]+>' => 'test/test',
                 'dev/<testpage:[0-9a-z\-\_]+>' => 'test/dev',
