@@ -11,7 +11,7 @@ class Sitemap extends Model
 
     public function getUrl(){
         $urls = [];
-        $pages = Pages::find()->where(['status'=>'published'])->all();
+        $pages = Pages::find()->where(['site'=>Yii::$app->params['site'],'status'=>'published'])->all();
         foreach ($pages as $page){
             if ($page->hrurl=='home') {
                 $this->homeLastMod =  \Yii::$app->formatter->asDatetime($page->updated_at, 'yyyy-MM-dd');
@@ -24,9 +24,16 @@ class Sitemap extends Model
             }
 
         }
-        $articlePages = Pages::find()->where(['status'=>'article'])->all();
+        $articlePages = Pages::find()->where([
+            'site'=>Yii::$app->params['site'],
+            'status'=>'article'
+        ])->all();
         foreach ($articlePages as $articlePage){
-            $article = Article::find()->where(['hrurl'=>$articlePage->hrurl,'status'=>'page'])->one();
+            $article = Article::find()->where([
+                'site'=>Yii::$app->params['site'],
+                'hrurl'=>$articlePage->hrurl,
+                'status'=>'page'
+            ])->one();
             if ($article) {
                 $urls[]=[
                     'url'=>Yii::$app->urlManager->createUrl([$article->hrurl.'.html']),
@@ -36,6 +43,18 @@ class Sitemap extends Model
             }
 
         }
+        $landingPages = LandingPage::find()->where([
+            'site'=>Yii::$app->params['site'],
+            'status'=>'published'
+        ])->all();
+        foreach ($landingPages as $landingPage){
+            $urls[]=[
+                'url'=>Yii::$app->urlManager->createUrl(['/lp/'.$landingPage->hrurl]),
+                'changefreq'=>'daily',
+                'lastmod'=> \Yii::$app->formatter->asDatetime($landingPage->updated_at, 'yyyy-MM-dd')
+            ];
+        }
+
         return $urls;
     }
     public function getXml($urls){

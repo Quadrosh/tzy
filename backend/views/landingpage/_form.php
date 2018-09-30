@@ -12,6 +12,14 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
     <div class="row">
+        <div class="col-sm-4">
+            <?= $form->field($model, 'status')->dropDownList([
+                'published' => 'published',
+                'draft' => 'draft',
+            ],['prompt' => 'Выбери статус']) ?>
+        </div>
+    </div>
+    <div class="row">
 
         <div class="col-sm-6">
             <?= $form->field($model, 'site')->dropDownList(

@@ -42,6 +42,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
+            'status',
             'id',
             'site',
             'name',
@@ -68,6 +69,22 @@ $this->params['breadcrumbs'][] = $this->title;
             'view',
             'layout',
             'color',
+            [
+                'attribute'=>'created_at',
+                'value' => function($data)
+                {
+                    return \Yii::$app->formatter->asDatetime($data['created_at'], 'dd/MM/yy HH:mm');
+                },
+                'format'=> 'html',
+            ],
+            [
+                'attribute'=>'updated_at',
+                'value' => function($data)
+                {
+                    return \Yii::$app->formatter->asDatetime($data['updated_at'], 'dd/MM/yy HH:mm');
+                },
+                'format'=> 'html',
+            ],
         ],
     ]) ?>
 <h2>Секции</h2>
