@@ -8,6 +8,9 @@ return [
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
+        'amo' => [
+            'class' => 'common\components\Amo',
+        ],
     ],
 
 ];
