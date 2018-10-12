@@ -68,7 +68,8 @@ class Amo extends Component
         }
         catch(Exception $E)
         {
-            Yii::$app->session->setFlash('error', 'Во время отправки задачи произошла ошибка. Попробуйте еще раз или позвоните нам по телефону.');
+            Yii::$app->session->setFlash('error', 'Во время отправки задачи произошла ошибка. Попробуйте еще раз или позвоните нам по телефону.'.PHP_EOL.
+                'Ошибка: '.$E->getMessage().PHP_EOL.'Код ошибки: '.$E->getCode());
 //            die('Ошибка: '.$E->getMessage().PHP_EOL.'Код ошибки: '.$E->getCode());
         }
 
