@@ -37,7 +37,7 @@ class Amo extends Component
         curl_setopt($curl,CURLOPT_URL,$url);
         curl_setopt($curl,CURLOPT_CUSTOMREQUEST,'POST');
         curl_setopt($curl,CURLOPT_POSTFIELDS,json_encode($tasks));
-        curl_setopt($curl,CURLOPT_HTTPHEADER,array('Content-Type: application/json','charset=utf-8'));
+        curl_setopt($curl,CURLOPT_HTTPHEADER,array('Content-Type: application/json'));
         curl_setopt($curl,CURLOPT_HEADER,false); // don't return headers
         curl_setopt($curl,CURLOPT_SSL_VERIFYPEER,0);
         curl_setopt($curl,CURLOPT_SSL_VERIFYHOST,0);
