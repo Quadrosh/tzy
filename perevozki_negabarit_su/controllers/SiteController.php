@@ -244,7 +244,7 @@ class SiteController extends Controller
                 ->andWhere(['>','date',time()-86400])
                 ->all();
 
-            if (count($spamOrders) + count($spamFeedbacks) > 5) {
+            if (count($spamOrders) + count($spamFeedbacks) > Yii::$app->params['spamCount']) {
                 Yii::$app->session->setFlash('error', 'Вы достигли лимита отправляемых заявок. <br> Свяжитесь с нами по телефону');
                 return $this->redirect(Url::previous());
             }
@@ -284,7 +284,7 @@ class SiteController extends Controller
                 ->where(['ip'=>Yii::$app->request->userIP])
                 ->andWhere(['>','date',time()-86400])
                 ->all();
-            if ( count($spamOrders) + count($spamFeedbacks) > 5) {
+            if ( count($spamOrders) + count($spamFeedbacks) > Yii::$app->params['spamCount']) {
                 Yii::$app->session->setFlash('error', 'Вы достигли лимита отправляемых заявок. <br> Свяжитесь с нами по телефону');
                 return $this->redirect(Url::previous());
             }
