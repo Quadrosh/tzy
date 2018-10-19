@@ -16,7 +16,7 @@ use yii\helpers\Html;
             <p class="header <?= $model->header_class ?>"><?= $model->header ?></p>
         <?php endif; ?>
         <?php if ($model->image) : ?>
-            <?= Html::img('/img/'.$model->image,['class'=>'w100 mb10'])  ?>
+            <?= Html::img('/img/'.$model->image,['class'=>'w100 mb10','alt'=>$model->image_alt])  ?>
         <?php endif; ?>
     </div>
 
