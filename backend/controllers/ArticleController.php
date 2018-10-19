@@ -41,6 +41,8 @@ class ArticleController extends Controller
         Url::remember();
         $searchModel = new ArticleSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider->pagination = ['pageSize' => 100];
+        $dataProvider->sort = ['defaultOrder'=> ['id' => SORT_DESC]];
 
         return $this->render('index', [
             'searchModel' => $searchModel,

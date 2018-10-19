@@ -11,7 +11,7 @@ use yii\helpers\Html;
 
 
 ?>
-<div class="asb-bs_horiz_2">
+<div class="asb-ul-li">
 
     <?php if ($model->header) : ?>
         <h4 class="<?= $model->header_class ?>"><?= $model->header ?></h4>
@@ -22,28 +22,28 @@ use yii\helpers\Html;
     <?php endif; ?>
 
     <?php if ($model->items) : ?>
-        <div class="row">
+        <ol>
             <?php foreach ($model->items as $item) : ?>
-                <div class="col-sm-6">
+                <li >
 
                     <?php if ($item->view) : ?>
-                        <?= $this->render($item->view, [
+                        <?= $this->render('/article/part_views/block_item/'.$item->view, [
                             'model' => $item,
                         ]) ?>
                     <?php endif; ?>
 
                     <?php if (!$item->view) : ?>
                         <?php if ($item->header) : ?>
-                            <h6 class="<?= $item->header_class ?>"><?= $item->header ?></h6>
+                            <h6 <?= $item->header_class?'class="'.$item->header_class.'"':null ?>><?= $item->header ?></h6>
                         <?php endif; ?>
                         <?php if ($item->description) : ?>
-                            <p class="text-center"><?= $item->description ?></p>
+                            <p <?= $item->description_class?'class="'.$item->description_class.'"':null ?>><?= $item->description ?></p>
                         <?php endif; ?>
                         <?php if ($item->image) : ?>
                             <?= Html::img('/img/'.$item->image,['class'=>'w100'])  ?>
                         <?php endif; ?>
                         <?php if ($item->link_name) : ?>
-                            <a href="<?= $item->link_url ?>" class="<?= $item->link_class ?>"><?= $item->link_name ?></a>
+                            <a href="<?= $item->link_url ?>" <?= $item->link_class?'class="'.$item->link_class.'"':null ?>><?= $item->link_name ?></a>
                         <?php endif; ?>
                         <?php if ($item->link_description) : ?>
                             <p class="text-center"><?= $item->link_description ?></p>
@@ -55,9 +55,9 @@ use yii\helpers\Html;
 
                     <?php endif; ?>
 
-                </div>
+                </li>
             <?php endforeach; ?>
-        </div>
+        </ol>
 
     <?php endif; ?>
 

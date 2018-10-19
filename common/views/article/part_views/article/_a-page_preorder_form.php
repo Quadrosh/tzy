@@ -26,41 +26,68 @@ $preorderForm = new \common\models\Preorders();
 
     <?php if ($article->sections) : ?>
         <?php foreach ($article->sections as $section) : ?>
-            <section class="<?= $section->color_key ?> <?= $section->custom_class ?>">
-                <?php if ($section->header) : ?>
-                    <h2 class="<?= $section->header_class ?>"><?= $section->header ?></h2>
-                <?php endif; ?>
-                <?php if ($section->description) : ?>
-                    <h3 class="text-center"><?= $section->description ?></h3>
-                <?php endif; ?>
-                <?php if ($section->blocks) : ?>
-                    <?php foreach ($section->blocks as $block) : ?>
-                        <?php if ($block->view) : ?>
-                            <?= $this->render($block->view, [
-                                'model' => $block,
-                            ]) ?>
-                        <?php endif; ?>
-                        <?php if (!$block->view) : ?>
-                            <?php if ($block->header) : ?>
-                                <h4 class="<?= $block->header_class ?>"><?= $block->header ?></h4>
+            <?php if ($section->view) : ?>
+                <?= $this->render('/article/part_views/section/'.$section->view, [
+                    'model' => $section,
+                ]) ?>
+            <?php endif; ?>
+            <?php if (!$section->view) : ?>
+                <section <?php
+                if ($section->color_key || $section->custom_class) {
+
+                    echo 'class="';
+                    echo $section->color_key;
+                    echo ' ';
+                    echo $section->custom_class;
+                    echo '"';
+
+                }
+                ?>>
+                    <?php if ($section->header) : ?>
+                        <h2 <?= $section->header_class?'class="'.$section->header_class.'"':null ?>><?= nl2br($section->header) ?></h2>
+                    <?php endif; ?>
+                    <?php if ($section->description) : ?>
+                        <p <?= $section->description_class?'class="'.$section->description_class.'"':null ?>><?= nl2br($section->description) ?></p>
+                    <?php endif; ?>
+                    <?php if ($section->raw_text) : ?>
+                        <p><?= nl2br($section->raw_text)  ?></p>
+                    <?php endif; ?>
+                    <?php if ($section->blocks) : ?>
+                        <?php foreach ($section->blocks as $block) : ?>
+                            <?php if ($block->view) : ?>
+                                <?= $this->render('/article/part_views/block/'.$block->view, [
+                                    'model' => $block,
+                                ]) ?>
                             <?php endif; ?>
-                            <?php if ($block->description) : ?>
-                                <p class="text-center"><?= $block->description ?></p>
+                            <?php if (!$block->view) : ?>
+                                <?php if ($block->header) : ?>
+                                    <h4 <?= $block->header_class?'class="'.$block->header_class.'"':null ?>><?= nl2br($block->header) ?></h4>
+                                <?php endif; ?>
+                                <?php if ($block->description) : ?>
+                                    <p <?= $block->description_class?'class="'.$block->description_class.'"':null ?>><?= nl2br($block->description) ?></p>
+                                <?php endif; ?>
+                                <?php if ($block->raw_text) : ?>
+                                    <p <?= $block->raw_text_class?'class="'.$block->raw_text_class.'"':null ?>><?= nl2br($block->raw_text) ?></p>
+                                <?php endif; ?>
+                                <?php if ($block->items) : ?>
+                                    <?php foreach ($block->items as $item) : ?>
+                                        <?php if ($item->header) : ?>
+                                            <p <?= $item->header_class?'class="'.$item->header_class.'"':null ?>><?= nl2br($item->header) ?></p>
+                                        <?php endif; ?>
+                                        <?php if ($item->description) : ?>
+                                            <p <?= $item->description_class?'class="'.$item->description_class.'"':null ?>><?= nl2br($item->description) ?></p>
+                                        <?php endif; ?>
+                                        <?php if ($item->raw_text) : ?>
+                                            <p <?= $item->raw_text_class?'class="'.$item->raw_text_class.'"':null ?>><?= nl2br($item->raw_text) ?></p>
+                                        <?php endif; ?>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
                             <?php endif; ?>
-                            <?php if ($block->items) : ?>
-                                <?php foreach ($block->items as $item) : ?>
-                                    <?php if ($item->header) : ?>
-                                        <p class="<?= $item->header_class ?>"><?= $item->header ?></p>
-                                    <?php endif; ?>
-                                    <?php if ($item->description) : ?>
-                                        <p class="text-center"><?= $item->description ?></p>
-                                    <?php endif; ?>
-                                <?php endforeach; ?>
-                            <?php endif; ?>
-                        <?php endif; ?>
-                    <?php endforeach; ?>
-                <?php endif; ?>
-            </section>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                </section>
+            <?php endif; ?>
+           
         <?php endforeach; ?>
     <?php endif; ?>
 

@@ -7,12 +7,12 @@ use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
-use tszakaz_ru\assets\AppAsset;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Url;
 
 
 //AppAsset::register($this);
+//tszakaz_ru\assets\ArticleAsset::register($this);
 tszakaz_ru\assets\MainAsset::register($this);
 $feedback = new \common\models\Feedback();
 
@@ -111,7 +111,7 @@ $feedback = new \common\models\Feedback();
         <div class="container">
             <div class="row b-top__header">
                 <div class="col-sm-4 text-center b-top__logo">
-                    <img src="/img/logo.png" alt="<?= Yii::$app->view->params['meta']['seo_logo'] ?>"/>
+                    <img src="/img/logo.png" alt="Автомобильные грузоперевозки от транспортной компании ТрансЗаказ"/>
                     <div class="hidden-xs b-top__logo__corner"></div>
                     <button id="hamburger" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#w0-collapse">
                         <span class="sr-only">Toggle navigation</span>

@@ -12,7 +12,7 @@ use yii\helpers\Html;
 <div class="asb-img_link_description text-center">
 
     <?php if ($model->header) : ?>
-        <p class="<?= $item->header_class ?>"><?= $model->header ?></p>
+        <p class="<?= $model->header_class ?>"><?= $model->header ?></p>
     <?php endif; ?>
     <?php if ($model->description) : ?>
         <p class="text-center"><?= $model->description ?></p>

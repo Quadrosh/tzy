@@ -33,26 +33,53 @@ use yii\widgets\ActiveForm;
             <?= $form->field($model, 'header')->textInput(['maxlength' => true]) ?>
         </div>
         <div class="col-sm-4">
-            <?= $form->field($model, 'header_class')->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, 'header_class')
+                ->dropDownList([
+                    'text-center' => 'text-center',
+                    'text-left' => 'text-left',
+                    'text-right' => 'text-right',
+                    'text_small' => 'text_small',
+                ],['prompt' => 'Выбери']) ?>
         </div>
-        <div class="col-sm-12">
+        <div class="col-sm-8">
             <?= $form->field($model, 'description')->textarea(['rows' => 1]) ?>
         </div>
-        <div class="col-sm-12">
+        <div class="col-sm-4">
+            <?= $form->field($model, 'description_class')
+                ->dropDownList([
+                    'text-center' => 'text-center',
+                    'text-left' => 'text-left',
+                    'text-right' => 'text-right',
+                    'text_small' => 'text_small',
+                ],['prompt' => 'Выбери']) ?>
+        </div>
+        <div class="col-sm-8">
             <?= $form->field($model, 'raw_text')->textarea(['rows' => 1]) ?>
         </div>
+        <div class="col-sm-4">
+            <?= $form->field($model, 'raw_text_class')
+                ->dropDownList([
+                    'text-center' => 'text-center',
+                    'text-left' => 'text-left',
+                    'text-right' => 'text-right',
+                    'text_small' => 'text_small',
+                ],['prompt' => 'Выбери']) ?>
+        </div>
 
 
-        <div class="col-sm-3">
+        <div class="col-sm-2">
             <?= $form->field($model, 'image')->textarea(['rows' => 1]) ?>
         </div>
-        <div class="col-sm-3">
+        <div class="col-sm-2">
+            <?= $form->field($model, 'image_class')->textInput(['maxlength' => true]) ?>
+        </div>
+        <div class="col-sm-4">
             <?= $form->field($model, 'image_alt')->textInput(['maxlength' => true]) ?>
         </div>
-        <div class="col-sm-3">
+        <div class="col-sm-2">
             <?= $form->field($model, 'background_image')->textarea(['rows' => 1]) ?>
         </div>
-        <div class="col-sm-3">
+        <div class="col-sm-2">
             <?= $form->field($model, 'thumbnail_image')->textarea(['rows' => 1]) ?>
         </div>
 
@@ -78,6 +105,8 @@ use yii\widgets\ActiveForm;
                 '_asb-bs_horiz_4' => 'bs_horiz_4',
                 '_asb-bs_horiz_2' => 'bs_horiz_2',
                 '_asb-slick_banner_1' => 'slick_banner_1',
+                '_asb-ul-li' => 'ul-li',
+                '_asb-ol-li' => 'ol-li',
             ],['prompt' => 'Выбери']) ?>
         </div>
         <div class="col-sm-3">

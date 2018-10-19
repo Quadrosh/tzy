@@ -161,7 +161,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <?php if ($model->sections) : ?>
     <ol class="breadcrumb">
-        <li>Управление - секции</li>
+        <li>Управление - секции <?php if ($model->view) {echo ' | article view => '.$model->view;} ?> </li>
     </ol>
     <?php $sectionNum=1; foreach ($model->sections as $section) : ?>
         <div class="row">
@@ -453,12 +453,12 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <section class="mt50">
         <ol class="breadcrumb">
-            <li>Article View</li>
+            <li>Article Preview <?php if ($model->view) {echo ' | view => '.$model->view;} ?></li>
         </ol>
     </section>
 
 <?php if ($model->view) : ?>
-    <?= $this->render($model->view, [
+    <?= $this->render('/article/part_views/article/'.$model->view, [
         'article' => $model,
     ]) ?>
 <?php endif; ?>
@@ -480,41 +480,50 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?php if ($article->sections) : ?>
         <?php foreach ($article->sections as $section) : ?>
-            <section class="<?= $section->color_key ?> <?= $section->custom_class ?>">
-                <?php if ($section->header) : ?>
-                    <h2 class="<?= $section->header_class ?>"><?= $section->header ?></h2>
-                <?php endif; ?>
-                <?php if ($section->description) : ?>
-                    <h3 class="text-center"><?= $section->description ?></h3>
-                <?php endif; ?>
-                <?php if ($section->blocks) : ?>
-                    <?php foreach ($section->blocks as $block) : ?>
-                        <?php if ($block->view) : ?>
-                            <?= $this->render($block->view, [
-                                'model' => $block,
-                            ]) ?>
-                        <?php endif; ?>
-                        <?php if (!$block->view) : ?>
-                            <?php if ($block->header) : ?>
-                                <h4 class="<?= $block->header_class ?>"><?= $block->header ?></h4>
+            <?php if ($section->view) : ?>
+                <?= $this->render('/article/part_views/block/'.$section->view, [
+                    'model' => $block,
+                ]) ?>
+            <?php endif; ?>
+
+            <?php if (!$section->view) : ?>
+                <section class="<?= $section->color_key ?> <?= $section->custom_class ?>">
+                    <?php if ($section->header) : ?>
+                        <h2 class="<?= $section->header_class ?>"><?= $section->header ?></h2>
+                    <?php endif; ?>
+                    <?php if ($section->description) : ?>
+                        <h3 class="text-center"><?= $section->description ?></h3>
+                    <?php endif; ?>
+                    <?php if ($section->blocks) : ?>
+                        <?php foreach ($section->blocks as $block) : ?>
+                            <?php if ($block->view) : ?>
+                                <?= $this->render('/article/part_views/block/'.$block->view, [
+                                    'model' => $block,
+                                ]) ?>
                             <?php endif; ?>
-                            <?php if ($block->description) : ?>
-                                <p class="text-center"><?= $block->description ?></p>
+                            <?php if (!$block->view) : ?>
+                                <?php if ($block->header) : ?>
+                                    <h4 class="<?= $block->header_class ?>"><?= $block->header ?></h4>
+                                <?php endif; ?>
+                                <?php if ($block->description) : ?>
+                                    <p class="text-center"><?= $block->description ?></p>
+                                <?php endif; ?>
+                                <?php if ($block->items) : ?>
+                                    <?php foreach ($block->items as $item) : ?>
+                                        <?php if ($item->header) : ?>
+                                            <p class="<?= $item->header_class ?>"><?= $item->header ?></p>
+                                        <?php endif; ?>
+                                        <?php if ($item->description) : ?>
+                                            <p class="text-center"><?= $item->description ?></p>
+                                        <?php endif; ?>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
                             <?php endif; ?>
-                            <?php if ($block->items) : ?>
-                                <?php foreach ($block->items as $item) : ?>
-                                    <?php if ($item->header) : ?>
-                                        <p class="<?= $item->header_class ?>"><?= $item->header ?></p>
-                                    <?php endif; ?>
-                                    <?php if ($item->description) : ?>
-                                        <p class="text-center"><?= $item->description ?></p>
-                                    <?php endif; ?>
-                                <?php endforeach; ?>
-                            <?php endif; ?>
-                        <?php endif; ?>
-                    <?php endforeach; ?>
-                <?php endif; ?>
-            </section>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                </section>
+            <?php endif; ?>
+
         <?php endforeach; ?>
     <?php endif; ?>
 <?php endif; ?>

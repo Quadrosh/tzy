@@ -19,7 +19,7 @@ $this->params['breadcrumbs'] = $breadcrumbs->construct($model->cat_ids);
 <div class="article_view">
 
     <?php if ($model->view) : ?>
-        <?= $this->render($model->view, [
+        <?= $this->render('part_views/article/'.$model->view, [
             'article' => $model,
         ]) ?>
     <?php endif; ?>
@@ -47,6 +47,9 @@ $this->params['breadcrumbs'] = $breadcrumbs->construct($model->cat_ids);
                     <?php endif; ?>
                     <?php if ($section->description) : ?>
                         <h3 class="text-center"><?= $section->description ?></h3>
+                    <?php endif; ?>
+                    <?php if ($section->raw_text) : ?>
+                        <p><?= nl2br($section->raw_text)  ?></p>
                     <?php endif; ?>
                     <?php if ($section->blocks) : ?>
                         <?php foreach ($section->blocks as $block) : ?>

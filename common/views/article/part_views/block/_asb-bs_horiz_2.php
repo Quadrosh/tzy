@@ -27,7 +27,7 @@ use yii\helpers\Html;
                 <div class="col-sm-6">
 
                     <?php if ($item->view) : ?>
-                        <?= $this->render($item->view, [
+                        <?= $this->render('/article/part_views/block_item/'.$item->view, [
                             'model' => $item,
                         ]) ?>
                     <?php endif; ?>

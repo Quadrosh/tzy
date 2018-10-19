@@ -61,7 +61,7 @@ class ArticleController extends Controller
         }
         $this->view->params['meta']=$this->article;
 
-        return $this->render($this->article->view,[
+        return $this->render('part_views/article/'.$this->article->view,[
             'article' => $this->article,
             'sections' => $sections,
             'utm' => $utm,
@@ -89,21 +89,22 @@ class ArticleController extends Controller
         $this->view->params['meta']=$this->article;
         $this->view->params['currentItem']=14;
 
-        return $this->render($this->article->view,[
+        return $this->render('part_views/article/'.$this->article->view,[
             'article' => $this->article,
             'sections' => $sections,
             'utm' => $utm,
         ]);
     }
 
-    public function actionPage()
+    public function actionPage($hrurl=null)
     {
 
         Url::remember();
         $utm = $this->getUtm();
 
-        $hrurl = Yii::$app->request->get('pagename');
-
+        if ($hrurl == null) {
+            $hrurl = Yii::$app->request->get('pagename');
+        }
 
         $this->article = Article::find()
             ->where(['site'=>Yii::$app->params['site']])
@@ -121,7 +122,6 @@ class ArticleController extends Controller
         $this->view->params['meta']=$this->article;
         $this->view->params['currentItem']=14;
 
-//        echo'asdfasdf'; die;
         return $this->render('article_view',[
             'article' => $this->article,
             'model' => $this->article,

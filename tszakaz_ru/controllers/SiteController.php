@@ -107,6 +107,9 @@ class SiteController extends Controller
         }
         $this->view->params['meta']=$page;
 
+        if ($page->status == 'article') {
+            return Yii::$app->runAction('article/page', ['hrurl' => $pageName]);
+        }
 
         return $this->render('page',[
             'page' => $page,

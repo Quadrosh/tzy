@@ -122,7 +122,7 @@ class Article extends \yii\db\ActiveRecord
         if ($endPosition !== false) {
             return substr($cleanText, 0, $endPosition);
         } else {
-            return 'А что тут резать то? Коротко все слишком.';
+            return $cleanText;
         }
     }
 

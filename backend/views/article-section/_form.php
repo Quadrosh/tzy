@@ -31,26 +31,50 @@ use yii\widgets\ActiveForm;
             <?= $form->field($model, 'header')->textInput(['maxlength' => true]) ?>
         </div>
         <div class="col-sm-4">
-            <?= $form->field($model, 'header_class')->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, 'header_class')
+                ->dropDownList([
+                'text-center' => 'text-center',
+                'text-left' => 'text-left',
+                'text-right' => 'text-right',
+            ],['prompt' => 'Выбери']) ?>
         </div>
-        <div class="col-sm-12">
+        <div class="col-sm-8">
             <?= $form->field($model, 'description')->textarea(['rows' => 1]) ?>
-
         </div>
-        <div class="col-sm-12">
+        <div class="col-sm-4">
+            <?= $form->field($model, 'description_class')
+                ->dropDownList([
+                    'text-center' => 'text-center',
+                    'text-left' => 'text-left',
+                    'text-right' => 'text-right',
+                ],['prompt' => 'Выбери']) ?>
+        </div>
+
+        <div class="col-sm-8">
             <?= $form->field($model, 'raw_text')->textarea(['rows' => 1]) ?>
         </div>
+        <div class="col-sm-4">
+            <?= $form->field($model, 'description_class')
+                ->dropDownList([
+                    'text-center' => 'text-center',
+                    'text-left' => 'text-left',
+                    'text-right' => 'text-right',
+                ],['prompt' => 'Выбери']) ?>
+        </div>
 
-        <div class="col-sm-3">
+        <div class="col-sm-2">
             <?= $form->field($model, 'section_image')->textarea(['rows' => 1]) ?>
         </div>
-        <div class="col-sm-3">
+        <div class="col-sm-2">
+            <?= $form->field($model, 'image_class')->textInput(['maxlength' => true]) ?>
+        </div>
+        <div class="col-sm-4">
             <?= $form->field($model, 'section_image_alt')->textInput(['maxlength' => true]) ?>
         </div>
-        <div class="col-sm-3">
+        <div class="col-sm-2">
             <?= $form->field($model, 'background_image')->textarea(['rows' => 1]) ?>
         </div>
-        <div class="col-sm-3">
+        <div class="col-sm-2">
             <?= $form->field($model, 'thumbnail_image')->textarea(['rows' => 1]) ?>
         </div>
 
@@ -73,7 +97,9 @@ use yii\widgets\ActiveForm;
 
 
         <div class="col-sm-3">
-            <?= $form->field($model, 'view')->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, 'view')->dropDownList([
+                '_as-head-descr-blocks-text' => 'head-descr-blocks-text',
+            ],['prompt' => 'Выбери вьюху']) ?>
         </div>
         <div class="col-sm-3">
             <?= $form->field($model, 'color_key')

@@ -31,6 +31,10 @@ use Yii;
  * @property integer $created_at
  * @property integer $updated_at
  * @property integer $code_name
+ * @property integer $description_class
+ * @property integer $text_class
+ * @property integer $comment_class
+ * @property integer $image_class
  */
 class ArticleSectionBlockItem extends \yii\db\ActiveRecord
 {
@@ -60,7 +64,7 @@ class ArticleSectionBlockItem extends \yii\db\ActiveRecord
             [['article_section_block_id', 'sort', 'accent', 'created_at', 'updated_at'], 'integer'],
             [['description', 'text', 'comment', 'image'], 'string'],
             [['header', 'header_class', 'link_description'], 'string', 'max' => 510],
-            [['image_alt', 'link_name', 'link_url', 'link_class', 'link_comment', 'view', 'color_key', 'structure', 'custom_class', 'type', 'code_name'], 'string', 'max' => 255],
+            [['image_alt', 'link_name', 'link_url', 'link_class', 'link_comment', 'view', 'color_key', 'structure', 'custom_class', 'type', 'code_name','description_class','text_class','comment_class','image_class'], 'string', 'max' => 255],
         ];
     }
 

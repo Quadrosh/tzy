@@ -23,11 +23,17 @@ use yii\helpers\Html;
 
     <?php if ($model->items) : ?>
         <div class="row">
-            <?php foreach ($model->items as $item) : ?>
-                <div class="col-sm-3">
+            <?php $i=0; $count = count($model->items); foreach ( $model->items as $item)  : ?>
+                <?php $i++; if ($i!=1 && $i%4==1) : ?>
+        </div>
+        <div class="row">
+                <?php endif; ?>
+                <div class="col-sm-3 <?php
+                if ($i!=1 && $i%4==1 && $i+1 == $count){echo'col-sm-offset-3';}
+                ?>">
 
                     <?php if ($item->view) : ?>
-                        <?= $this->render($item->view, [
+                        <?= $this->render('/article/part_views/block_item/'.$item->view, [
                             'model' => $item,
                         ]) ?>
                     <?php endif; ?>
@@ -37,10 +43,13 @@ use yii\helpers\Html;
                             <p class="<?= $item->header_class ?>"><?= $item->header ?></p>
                         <?php endif; ?>
                         <?php if ($item->description) : ?>
-                            <p class="text-center"><?= $item->description ?></p>
+                            <p class="<?= $item->description_class ?>"><?= $item->description ?></p>
+                        <?php endif; ?>
+                        <?php if ($item->text) : ?>
+                            <p class="<?= $item->text_class ?>"><?= $item->text ?></p>
                         <?php endif; ?>
                         <?php if ($item->image) : ?>
-                            <?= Html::img('/img/'.$item->image,['class'=>'w100'])  ?>
+                            <?= Html::img('/img/'.$item->image,['class'=>'w100 '.$item->image_class])  ?>
                         <?php endif; ?>
                         <?php if ($item->link_name) : ?>
                             <a href="<?= $item->link_url ?>" class="<?= $item->link_class ?>"><?= $item->link_name ?></a>

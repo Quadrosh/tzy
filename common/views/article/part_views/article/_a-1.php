@@ -22,10 +22,6 @@ use yii\widgets\DetailView;
     <p><?= $article->exerpt_big ?></p>
     <?php endif; ?>
 
-    <?php if ($article->raw_text) : ?>
-        <p><?= nl2br($article->raw_text)  ?></p>
-    <?php endif; ?>
-
     <?php if ($article->sections) : ?>
         <?php foreach ($article->sections as $section) : ?>
             <section class="<?= $section->color_key ?> <?= $section->custom_class ?>">
@@ -38,7 +34,7 @@ use yii\widgets\DetailView;
                 <?php if ($section->blocks) : ?>
                     <?php foreach ($section->blocks as $block) : ?>
                         <?php if ($block->view) : ?>
-                            <?= $this->render($block->view, [
+                            <?= $this->render('/article/part_views/block/'.$block->view, [
                                 'model' => $block,
                             ]) ?>
                         <?php endif; ?>
