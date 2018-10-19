@@ -12,8 +12,8 @@ use yii\helpers\Url;
 
 
 //AppAsset::register($this);
-//tszakaz_ru\assets\ArticleAsset::register($this);
-tszakaz_ru\assets\MainAsset::register($this);
+tszakaz_ru\assets\ArticleAsset::register($this);
+//tszakaz_ru\assets\MainAsset::register($this);
 $feedback = new \common\models\Feedback();
 
 //$feedback = Yii::$app->view->params['feedback'];
