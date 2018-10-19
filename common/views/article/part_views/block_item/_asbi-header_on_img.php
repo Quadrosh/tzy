@@ -9,14 +9,14 @@ use yii\helpers\Html;
 
 
 ?>
-<div class="asb-header_on_img">
+<div class="asb-header_on_img mb30 mbxs50">
 
     <div class="image_box">
         <?php if ($model->header) : ?>
             <p class="header <?= $model->header_class ?>"><?= $model->header ?></p>
         <?php endif; ?>
         <?php if ($model->image) : ?>
-            <?= Html::img('/img/'.$model->image,['class'=>'w100'])  ?>
+            <?= Html::img('/img/'.$model->image,['class'=>'w100 mb10'])  ?>
         <?php endif; ?>
     </div>
 
