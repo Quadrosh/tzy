@@ -4,7 +4,7 @@
 namespace common\widgets;
 use common\models\Menu;
 use yii\base\Widget;
-
+use yii\helpers\ArrayHelper;
 
 
 class MenuNestedSetsWidget extends Widget
@@ -12,31 +12,56 @@ class MenuNestedSetsWidget extends Widget
     public $treeId;
     public $formfactor;
     public $data;
+    public $tail = false;
     public $tree;
     public $menuFinal;
     public $currentItem;
     public $model;
+    public $rootName = null;
 
     public function init()
     {
         parent::init();
         if ($this->formfactor === null) {
-            $this->formfactor = 'html';
+            $this->formfactor = 'ul';
         }
         $this->formfactor .= '.php';
     }
     public function run()
     {
-//            $this->data = Menu::find()->where(['site'=>$this->site])->indexBy('id')->asArray()->all();
-            $this->data = Menu::find()->where(['tree'=>$this->treeId])->indexBy('lft')->orderBy('lft')->asArray()->all();
-//            $this->tree = $this->getParentStyleTree();
-            $this->tree = $this->getNestedSetTree($this->data);
+        if ($this->tail == false) {
+            $this->data = Menu::find()
+                ->where(['tree'=>$this->treeId])
+                ->indexBy('lft')
+                ->orderBy('lft')
+                ->asArray()
+                ->all();
+        } else {
+            $category = \common\models\Menu::find()->where(['id'=>$this->currentItem])->one();
 
+            $this->data = $category->branch()
+                ->indexBy('lft')
+                ->orderBy('lft')
+                ->asArray()
+                ->all();
+
+
+//            $this->data = ArrayHelper::merge($catAsArray,$childs);
+//                        echo '<pre>';print_r( $this->data,false);echo '</pre>'; die;
+            $this->tree = $this->getNestedSetTree($this->data,$category['lft']);
+//            echo '<pre>';print_r( $this->tree,false);echo '</pre>'; die;
             $this->menuFinal = $this->getMenuHtml($this->tree);
             return '<ul class=" list-unstyled">'.$this->menuFinal.'</ul>';
 
-//            return '<ul class="list-inline list-unstyled">'.$this->menuFinal.'</ul>';
-//        return $this->data;
+        }
+
+        $this->tree = $this->getNestedSetTree($this->data);
+
+
+        $this->menuFinal = $this->getMenuHtml($this->tree);
+
+        return '<ul class=" list-unstyled">'.$this->menuFinal.'</ul>';
+
     }
 
     protected function getParentStyleTree()
@@ -62,7 +87,11 @@ class MenuNestedSetsWidget extends Widget
                 $tree[$key]= [];
                 $tree[$key]['id']=$value['id'];
                 $tree[$key]['url']=$value['url'];
-                $tree[$key]['name']=$value['name'];
+                if ($this->rootName && $left==0) {
+                    $tree[$key]['name']=$this->rootName;
+                } else {
+                    $tree[$key]['name']=$value['name'];
+                }
                 $tree[$key]['icon']=$value['icon'];
                 $tree[$key]['depth']=$value['depth'];
                 if($value['rgt']-$value['lft']>1){
@@ -74,6 +103,8 @@ class MenuNestedSetsWidget extends Widget
         }
         return $tree;
     }
+
+
 
 
 

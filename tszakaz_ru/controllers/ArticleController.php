@@ -114,11 +114,21 @@ class ArticleController extends Controller
 //        var_dump($this->article->view); die;
 
         $sections = $this->article->sections;
+//        if ($this->article->status == 'page') {
+//            $this->layout = 'main';
+//        } else {
+//            if ($this->article->layout == null) {
+//                $this->layout = 'article';
+//            } else {
+//                $this->layout = $this->article->layout;
+//            }
+//        }
         if ($this->article->layout == null) {
             $this->layout = 'article';
         } else {
             $this->layout = $this->article->layout;
         }
+
         $this->view->params['meta']=$this->article;
         $this->view->params['currentItem']=14;
 

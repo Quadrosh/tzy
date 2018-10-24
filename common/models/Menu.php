@@ -97,4 +97,57 @@ class Menu extends \yii\db\ActiveRecord
             'description' => 'Description',
         ];
     }
+
+    /**
+     * Gets the children of the node.
+     * @param integer|null $depth the depth
+     * @return \yii\db\ActiveQuery
+     */
+    public function branch($depth = null)
+    {
+        $condition = [
+            'and',
+            ['>', 'lft', $this->lft],
+            ['<', 'rgt', $this->rgt],
+        ];
+
+        if ($depth !== null) {
+            $condition[] = ['<=', 'depth', $this->depth + $depth];
+        }
+
+        $this->applyTreeAttributeCondition($condition);
+        $this->applySelf($condition);
+
+        return $this->find()->andWhere($condition)->addOrderBy(['lft' => SORT_ASC]);
+    }
+
+    /**
+     * @param array $condition
+     */
+    protected function applyTreeAttributeCondition(&$condition)
+    {
+        if ($this->treeAttribute !== false) {
+            $condition = [
+                'and',
+                $condition,
+                ['tree' => $this->tree]
+            ];
+        }
+
+    }
+    /**
+     * @param array $condition
+     */
+    protected function applySelf(&$condition)
+    {
+        if ($this->treeAttribute !== false) {
+            $condition = [
+                'or',
+                $condition,
+                ['id' => $this->id]
+            ];
+        }
+
+    }
 }
+//                 [$this->treeAttribute => $this->owner->getAttribute($this->treeAttribute)]

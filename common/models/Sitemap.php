@@ -34,7 +34,7 @@ class Sitemap extends Model
                 'hrurl'=>$articlePage->hrurl,
                 'status'=>'page'
             ])->one();
-            if ($article) {
+            if ($article && $article->hrurl!='home') {
                 $urls[]=[
                     'url'=>Yii::$app->urlManager->createUrl([$article->hrurl.'.html']),
                     'changefreq'=>'daily',

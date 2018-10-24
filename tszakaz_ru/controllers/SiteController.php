@@ -161,8 +161,10 @@ class SiteController extends Controller
         }
         $this->view->params['meta']=$page;
         if ($hrurl == 'sitemap') {
+//            $category = Menu::find()->where(['url'=>'home'])->one();
             return $this->render('sitemap',[
                 'page' => $page,
+//                'category'=>$category,
             ]);
         }
         if (!empty($page->view)) {
@@ -191,14 +193,12 @@ class SiteController extends Controller
         $this->view->params['pageName']=$hrurl;
 
         $category = Menu::find()->where(['url'=>'gruzoperevozki.html'])->one();
-        $childs = $category->children(1)->all();
-//        var_dump($childs);
 
 
         return $this->render('page_gruzoperevozki_index',[
             'page' => $page,
             'utm' => $utm,
-            'pages'=>$childs
+            'category'=>$category,
         ]);
 
     }
@@ -206,9 +206,6 @@ class SiteController extends Controller
     public function actionSitemap()
     {
         $this->layout = 'clear';
-
-
-//        var_dump('adsf'); die;
 
         $sitemap = new Sitemap();
 

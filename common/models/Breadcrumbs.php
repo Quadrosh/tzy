@@ -25,13 +25,10 @@ class Breadcrumbs extends Model
                     if (isset($parent) && $parent->id != $cat->tree) {
                         $this->ifBGParent($parent,$cat);
 
-//                        Yii::$app->params['breadcrumbs'][] = ['label' => $parent->name, 'url' => ['/' . $parent->url]];
                         $this->breadcrumbs[] = ['label' => $parent->name, 'url' => ['/' . $parent->url]];
                     }
 
-//                    Yii::$app->params['breadcrumbs'][] = [
-//                        'label' => $cat->name,
-//                    ];
+
                     $this->breadcrumbs[] = ['label' => $cat->name];
                     return $this->breadcrumbs;
                 }
