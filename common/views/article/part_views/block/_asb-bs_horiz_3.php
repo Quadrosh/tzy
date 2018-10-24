@@ -44,7 +44,7 @@ use yii\helpers\Html;
 
                     <?php if (!$item->view) : ?>
                         <?php if ($item->image) : ?>
-                            <?= Html::img('/img/'.$item->image,['class'=>$item->image_class])  ?>
+                            <?= Html::img('/img/'.$item->image,['class'=>$item->image_class,'alt'=>$item->image_alt])  ?>
                         <?php endif; ?>
                         <?php if ($item->header) : ?>
                             <<?= strpos($item->header_class, 'strong')!==false?'strong':'p' ?> <?= $item->header_class?'class="'.$item->header_class.'"':null ?>><?= $item->header ?></<?= strpos($item->header_class, 'strong')!==false?'strong':'p' ?>>
