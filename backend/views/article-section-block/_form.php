@@ -103,6 +103,7 @@ use yii\widgets\ActiveForm;
         <div class="col-sm-3">
             <?= $form->field($model, 'view')->dropDownList([
                 '_asb-bs_horiz_4' => 'bs_horiz_4',
+                '_asb-bs_horiz_3' => 'bs_horiz_3',
                 '_asb-bs_horiz_2' => 'bs_horiz_2',
                 '_asb-slick_banner_1' => 'slick_banner_1',
                 '_asb-ul-li' => 'ul-li',
@@ -110,7 +111,11 @@ use yii\widgets\ActiveForm;
             ],['prompt' => 'Выбери']) ?>
         </div>
         <div class="col-sm-3">
-            <?= $form->field($model, 'color_key')->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, 'color_key')->dropDownList([
+                'bright' => 'bright',
+                'dark' => 'dark',
+                'grey' => 'grey',
+            ],['prompt' => 'Выбери']) ?>
         </div>
         <div class="col-sm-3">
             <?= $form->field($model, 'structure')->textInput(['maxlength' => true]) ?>

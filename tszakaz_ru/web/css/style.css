@@ -424,7 +424,10 @@ p {
 
 .b-content {
     min-height: 400px;
-    font-size: 12px;
+    /*font-size: 12px;*/
+    font-size: 13px;
+    /*color:#5f6973;*/
+    color:#444;
     line-height: 15px;
     padding-left: 30px;
     padding-right: 30px;

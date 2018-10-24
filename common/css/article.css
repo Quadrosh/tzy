@@ -27,6 +27,33 @@ body {
     max-width: 100%;
 }
 
+.w50perSm{
+    width:50%;
+}
+@media only screen and (max-width : 767px) {
+    .w50perSm {
+        width:100%;
+    }
+}
+.w50per{
+    width:50%;
+}
+.w30per{
+    width:30%;
+}
+.w30perCenter{
+    width:30%;
+    display: block;
+    position: relative;
+    margin-left:35%;
+    margin-bottom: 5px;
+}
+.w20per{
+    width:20%;
+}
+.w10per{
+    width:10%;
+}
 
 .article_front_1 h1{
     font-size: 42px;
@@ -35,7 +62,10 @@ body {
 .article_front_1 h3{
     font-size: 18px;
 }
-
+.text-center {
+    text-align: center;
+    display: block;
+}
 
 
 /* projects */
@@ -206,4 +236,36 @@ h1,h2,h3,h4,h5,h6 {
         left: 50%;
         margin-left: -150px;
     }
+}
+
+.grey {
+    background-color: #f5f5f5;
+    color: #333;
+}
+.box {
+    padding: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.float-right{
+    float:right;
+    margin-left: 10px;
+}
+.float-left{
+    float:left;
+    margin-right: 10px;
+}
+
+section::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+img {
+    max-width: 100%;
+}
+.article_view  {
+    font-size: 13px;
+    /*color:#5f6973;*/
+    color:#444;
 }

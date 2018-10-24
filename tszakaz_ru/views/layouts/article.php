@@ -11,7 +11,7 @@ use tszakaz_ru\assets\AppAsset;
 use yii\bootstrap\ActiveForm;
 
 //AppAsset::register($this);
-tszakaz_ru\assets\MainAsset::register($this);
+tszakaz_ru\assets\ArticleAsset::register($this);
 //$feedback = Yii::$app->view->params['feedback'];
 $feedback = new \common\models\Feedback();
 
@@ -148,7 +148,7 @@ $feedback = new \common\models\Feedback();
                     'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
                 ]) ?>
             </div>
-            <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-xs-12  b-content pt20">
+            <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-xs-12  b-content ">
 
 
                 <?= $content ?>

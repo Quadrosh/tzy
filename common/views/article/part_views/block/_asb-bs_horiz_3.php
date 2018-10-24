@@ -11,14 +11,18 @@ use yii\helpers\Html;
 
 
 ?>
-<div class="asb-bs_horiz_4">
+<div class="asb-bs_horiz_3">
 
     <?php if ($model->header) : ?>
-        <h4 class="<?= $model->header_class ?>"><?= $model->header ?></h4>
+        <h4 <?= $item->header_class?'class="'.$item->header_class.'"':null ?>><?= $model->header ?></h4>
     <?php endif; ?>
 
     <?php if ($model->description) : ?>
-        <p class="text-center"><?= $model->description ?></p>
+        <p <?= $item->description_class?'class="'.$item->description_class.'"':null ?>><?= $model->description ?></p>
+    <?php endif; ?>
+
+    <?php if ($model->raw_text) : ?>
+        <p <?= $model->raw_text_class?'class="'.$model->raw_text_class.'"':null ?>><?= $model->raw_text ?></p>
     <?php endif; ?>
 
     <?php if ($model->items) : ?>
@@ -28,8 +32,8 @@ use yii\helpers\Html;
         </div>
         <div class="row">
                 <?php endif; ?>
-                <div class="col-sm-3 <?php
-                if ($i!=1 && $i%4==1 && $i+1 == $count){echo'col-sm-offset-3';}
+                <div class="col-sm-4 <?php
+                if ($i!=1 && $i%3==1 && $i+1 == $count){echo'col-sm-offset-4';}
                 ?>">
 
                     <?php if ($item->view) : ?>
@@ -39,20 +43,22 @@ use yii\helpers\Html;
                     <?php endif; ?>
 
                     <?php if (!$item->view) : ?>
+                        <?php if ($item->image) : ?>
+                            <?= Html::img('/img/'.$item->image,['class'=>$item->image_class])  ?>
+                        <?php endif; ?>
                         <?php if ($item->header) : ?>
                             <<?= strpos($item->header_class, 'strong')!==false?'strong':'p' ?> <?= $item->header_class?'class="'.$item->header_class.'"':null ?>><?= $item->header ?></<?= strpos($item->header_class, 'strong')!==false?'strong':'p' ?>>
                         <?php endif; ?>
+
                         <?php if ($item->description) : ?>
                             <p <?= $item->description_class?'class="'.$item->description_class.'"':null ?>><?= $item->description ?></p>
                         <?php endif; ?>
                         <?php if ($item->text) : ?>
                             <p <?= $item->text_class?'class="'.$item->text_class.'"':null ?>><?= $item->text ?></p>
                         <?php endif; ?>
-                        <?php if ($item->image) : ?>
-                            <?= Html::img('/img/'.$item->image,['class'=>'w100 '.$item->image_class])  ?>
-                        <?php endif; ?>
+
                         <?php if ($item->link_name) : ?>
-                            <a href="<?= $item->link_url ?>" class="<?= $item->link_class ?>"><?= $item->link_name ?></a>
+                            <a href="<?= $item->link_url ?>" <?= $item->link_class?'class="'.$item->link_class.'"':null ?>><?= $item->link_name ?></a>
                         <?php endif; ?>
                         <?php if ($item->link_description) : ?>
                             <p class="text-center"><?= $item->link_description ?></p>

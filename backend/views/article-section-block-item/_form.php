@@ -39,6 +39,9 @@ use yii\widgets\ActiveForm;
                     'text-left' => 'text-left',
                     'text-right' => 'text-right',
                     'blue_circle' => 'blue_circle',
+                    'text-uppercase' => 'text-uppercase',
+                    'strong' => 'strong',
+                    'text-center strong' => 'text-center strong',
                 ],['prompt' => 'Выбери']) ?>
         </div>
         <div class="col-sm-8">
@@ -81,7 +84,13 @@ use yii\widgets\ActiveForm;
             <?= $form->field($model, 'image')->textarea(['rows' => 1]) ?>
         </div>
         <div class="col-sm-4">
-            <?= $form->field($model, 'image_class')->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, 'image_class')->dropDownList([
+                'float-right w50perSm' => 'float-right w50perSm',
+                'float-left w50perSm' => 'float-left w50perSm',
+                'w50perSm' => 'w50perSm',
+                'w30perCenter' => 'w30perCenter',
+                'w20per' => 'w20per',
+            ],['prompt' => 'Выбери']) ?>
         </div>
         <div class="col-sm-4">
             <?= $form->field($model, 'image_alt')->textInput(['maxlength' => true]) ?>

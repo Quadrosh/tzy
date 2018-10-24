@@ -30,10 +30,10 @@ use Yii;
  * @property integer $created_at
  * @property integer $updated_at
  * @property integer $sort
- * @property integer $code_name
- * @property integer $description_class
- * @property integer $raw_text_class
- * @property integer $image_class
+ * @property string $code_name
+ * @property string $description_class
+ * @property string $raw_text_class
+ * @property string $image_class
  */
 class ArticleSectionBlock extends \yii\db\ActiveRecord
 {

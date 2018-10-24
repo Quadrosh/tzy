@@ -66,7 +66,14 @@ use yii\widgets\ActiveForm;
             <?= $form->field($model, 'section_image')->textarea(['rows' => 1]) ?>
         </div>
         <div class="col-sm-2">
-            <?= $form->field($model, 'image_class')->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, 'image_class')->dropDownList([
+                'float-right w50perSm' => 'float-right w50perSm',
+                'float-left w50perSm' => 'float-left w50perSm',
+                'w50perSm' => 'w50perSm',
+                'w50per' => 'w50per',
+                'w30per' => 'w30per',
+                'w20per' => 'w20per',
+            ],['prompt' => 'Выбери']) ?>
         </div>
         <div class="col-sm-4">
             <?= $form->field($model, 'section_image_alt')->textInput(['maxlength' => true]) ?>
@@ -99,6 +106,7 @@ use yii\widgets\ActiveForm;
         <div class="col-sm-3">
             <?= $form->field($model, 'view')->dropDownList([
                 '_as-head-descr-blocks-text' => 'head-descr-blocks-text',
+                '_as-image_float_in_text' => 'image_float_in_text',
             ],['prompt' => 'Выбери вьюху']) ?>
         </div>
         <div class="col-sm-3">
