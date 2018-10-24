@@ -30,6 +30,9 @@ use yii\widgets\ActiveForm;
                     ->all(),'id',function($model) {return str_repeat('-', $model->depth).$model['name'];}
                 ),['prompt'=>'Выберите категорию','multiple' => true])
                 ->label('Категория в каталоге') ?>
+            <p>
+                <?= Html::a('Создать категорию', ['/menu/create'], ['class' => 'btn btn-success btn-xs']) ?>
+            </p>
         </div>
         <div class="col-sm-12">
             <?= $form->field($model, 'hrurl')->textInput(['maxlength' => true]) ?>
