@@ -9,6 +9,7 @@ use common\models\LandingListitem;
 use common\models\LandingPage;
 use common\models\LandingSection;
 use common\models\Preorders;
+use common\models\PriceCalculator;
 use common\models\Visit;
 use Yii;
 use yii\base\Exception;
@@ -218,9 +219,14 @@ class ArticleController extends Controller
     }
 
 
+    public function actionCalculator()
+    {
+        if (Yii::$app->request->isPost) {
 
-
-
+            $request = Yii::$app->request->post('PriceCalculator');
+            return PriceCalculator::calculate($request['from_city_id'],$request['to_city_id'],$request['truck_id'],$request['shipment_type']);
+        }
+    }
 
 
 }

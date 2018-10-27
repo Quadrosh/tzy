@@ -25,8 +25,11 @@ class PriceCalculator extends \yii\base\Model
     public $truck_id;
     public $shipment_type;
     const NOT_FOUND_MESSAGE = 'Позвоните нам и мы быстро рассчитаем цену';
-    const FOUND_MESSAGE = 'Стоимость доставки составит ';
+    const FOUND_MESSAGE = 'Стоимость доставки составит: ';
+    const INFO_MESSAGE = 'Приведенные цены являются приблизительными, для точного расчета оформите заявку.';
     const DISTANCE_MESSAGE = 'Расстояние: ';
+    const TRUCK_MESSAGE = 'Автомобиль: ';
+    const LOAD_MESSAGE = 'Грузоподъемность: ';
     const HALF_LOAD = 0.7;
 
 
@@ -57,4 +60,27 @@ class PriceCalculator extends \yii\base\Model
         ];
     }
 
+    public static function calculate($from_city_id,$to_city_id,$truck_id,$shipment_type)
+    {
+
+        $price = Price::find()->where([
+            'from_city_id' => $from_city_id,
+            'to_city_id'=>$to_city_id,
+            'truck_id'=>$truck_id,
+        ])->one();
+
+        if ($price) {
+            if ($shipment_type=='half') {
+                $finalPrice = $price['price'] * PriceCalculator::HALF_LOAD;
+            } else {
+                $finalPrice = $price['price'];
+            }
+            return nl2br( PriceCalculator::TRUCK_MESSAGE . $price->truck->name.'. '.
+            PriceCalculator::LOAD_MESSAGE . $price->truck->load_capacity.'. '.
+            PriceCalculator::DISTANCE_MESSAGE . $price['distance'].' км.'.PHP_EOL.PHP_EOL.
+            PriceCalculator::FOUND_MESSAGE . $finalPrice .' руб.');
+        } else {
+            return PriceCalculator::NOT_FOUND_MESSAGE;
+        }
+    }
 }

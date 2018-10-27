@@ -200,12 +200,10 @@ class ArticleController extends Controller
         if (Yii::$app->request->isPost) {
 
             $request = Yii::$app->request->post('PriceCalculator');
-            $price = Price::find()->where([
-                'from_city_id' => $request['from_city_id'],
-                'to_city_id'=>$request['to_city_id'],
-                'truck_id'=>$request['truck_id'],
-            ])->one();
-
+            return PriceCalculator::calculate($request['from_city_id'],$request['to_city_id'],$request['truck_id'],$request['shipment_type']);
+        }
+    }
+}
 
 
 
@@ -213,20 +211,3 @@ class ArticleController extends Controller
 //            'Yii::$app->request->post(\'PriceCalculator\')'=>Yii::$app->request->post('PriceCalculator'),
 //            '$price'=>$price,
 //            ], 'back');
-            if ($price) {
-                if ($request['shipment_type']=='half') {
-                    return PriceCalculator::DISTANCE_MESSAGE . $price['distance'].' км.'.PHP_EOL.
-                    PriceCalculator::FOUND_MESSAGE . $price['price'] * PriceCalculator::HALF_LOAD .' руб.';
-                } else {
-                    return PriceCalculator::DISTANCE_MESSAGE . $price['distance'].' км.'.PHP_EOL.
-                    PriceCalculator::FOUND_MESSAGE . $price['price'] .' руб.';
-                }
-
-            } else {
-                return PriceCalculator::NOT_FOUND_MESSAGE;
-            }
-
-
-        }
-    }
-}

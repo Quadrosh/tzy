@@ -80,7 +80,7 @@ $city = \common\models\City::find()->where(['name'=>$toCityName])->one();
     </div>
 
     <sup>
-        Приведенные цены являются приблизительными
+        <?= \common\models\PriceCalculator::INFO_MESSAGE ?>
     </sup>
 
 
