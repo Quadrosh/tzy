@@ -14,11 +14,15 @@ use yii\helpers\Html;
 <div class="asb-ul-li">
 
     <?php if ($model->header) : ?>
-        <h4 class="<?= $model->header_class ?>"><?= $model->header ?></h4>
+        <h4 <?= $model->header_class?'class="'.$model->header_class.'"':null ?>><?= $model->header ?></h4>
     <?php endif; ?>
 
     <?php if ($model->description) : ?>
-        <p class="text-center"><?= $model->description ?></p>
+        <p <?= $model->description_class?'class="'.$model->description_class.'"':null ?>><?= $model->description ?></p>
+    <?php endif; ?>
+
+    <?php if ($model->raw_text) : ?>
+        <p <?= $model->raw_text_class?'class="'.$model->raw_text_class.'"':null ?>><?= nl2br($model->raw_text) ?></p>
     <?php endif; ?>
 
     <?php if ($model->items) : ?>
@@ -59,7 +63,11 @@ use yii\helpers\Html;
             <?php endforeach; ?>
         </ul>
 
+
     <?php endif; ?>
 
+    <?php if ($model->conclusion) : ?>
+        <p <?= $model->conclusion_class?'class="'.$model->conclusion_class.'"':null ?>><?= nl2br($model->conclusion)  ?></p>
+    <?php endif; ?>
 </div>
 

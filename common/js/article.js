@@ -37,3 +37,31 @@ $(document).ready(function() {
 
 
 });
+
+$(document).on("beforeSubmit", "#priceCalculator", function () {
+    var form = $(this);
+    if (form.find('.has-error').length) {
+        return false;
+    }
+    $.ajax({
+        url    : form.attr('action'),
+        type   : 'post',
+        data   : form.serialize(),
+        success: function (response)
+        {
+            //alert(response);
+            //var getupdatedata = $(response).find('#filter_id_test');
+            // $.pjax.reload('#note_update_id'); for pjax update
+            $('#calculatorResult').html(response);
+            console.log(response);
+        },
+
+        error  : function ()
+        {
+            console.log('internal server error');
+        }
+        });
+
+
+    return false; // Cancel form submitting.
+});

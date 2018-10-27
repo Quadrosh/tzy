@@ -54,7 +54,19 @@ use yii\widgets\ActiveForm;
             <?= $form->field($model, 'raw_text')->textarea(['rows' => 1]) ?>
         </div>
         <div class="col-sm-4">
-            <?= $form->field($model, 'description_class')
+            <?= $form->field($model, 'raw_text_class')
+                ->dropDownList([
+                    'text-center' => 'text-center',
+                    'text-left' => 'text-left',
+                    'text-right' => 'text-right',
+                ],['prompt' => 'Выбери']) ?>
+        </div>
+
+        <div class="col-sm-8">
+            <?= $form->field($model, 'conclusion')->textarea(['rows' => 1]) ?>
+        </div>
+        <div class="col-sm-4">
+            <?= $form->field($model, 'conclusion_class')
                 ->dropDownList([
                     'text-center' => 'text-center',
                     'text-left' => 'text-left',
@@ -73,6 +85,8 @@ use yii\widgets\ActiveForm;
                 'w50per' => 'w50per',
                 'w30per' => 'w30per',
                 'w20per' => 'w20per',
+                'float-left w20per' => 'float-left w20per',
+                'float-right w20per' => 'float-right w20per',
             ],['prompt' => 'Выбери']) ?>
         </div>
         <div class="col-sm-4">

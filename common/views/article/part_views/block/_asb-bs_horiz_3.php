@@ -18,11 +18,11 @@ use yii\helpers\Html;
     <?php endif; ?>
 
     <?php if ($model->description) : ?>
-        <p <?= $item->description_class?'class="'.$item->description_class.'"':null ?>><?= $model->description ?></p>
+        <p <?= $model->description_class?'class="'.$model->description_class.'"':null ?>><?= $model->description ?></p>
     <?php endif; ?>
 
     <?php if ($model->raw_text) : ?>
-        <p <?= $model->raw_text_class?'class="'.$model->raw_text_class.'"':null ?>><?= $model->raw_text ?></p>
+        <p <?= $model->raw_text_class?'class="'.$model->raw_text_class.'"':null ?>><?= nl2br($model->raw_text)  ?></p>
     <?php endif; ?>
 
     <?php if ($model->items) : ?>
@@ -72,5 +72,8 @@ use yii\helpers\Html;
 
     <?php endif; ?>
 
+    <?php if ($model->conclusion) : ?>
+        <p <?= $model->conclusion_class?'class="'.$model->conclusion_class.'"':null ?>><?= nl2br($model->conclusion)  ?></p>
+    <?php endif; ?>
 </div>
 

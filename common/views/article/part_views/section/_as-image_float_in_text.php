@@ -54,6 +54,9 @@ use yii\helpers\Html;
     <?php endif; ?>
 
 
+    <?php if ($model->conclusion) : ?>
+        <p <?= $model->conclusion_class?'class="'.$model->conclusion_class.'"':null ?>><?= nl2br($model->conclusion)  ?></p>
+    <?php endif; ?>
 
 </section>
 

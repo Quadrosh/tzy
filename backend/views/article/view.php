@@ -432,10 +432,15 @@ $this->params['breadcrumbs'][] = $this->title;
                                 <?php $itemNum++; endforeach; ?>
                             </li>
                             <?php endif; ?>
+                            <?= $block->conclusion?'<li> Conclusion - '.\common\models\Article::excerpt($block->conclusion,100).'</li>':'' ?>
+                            <?= $block->conclusion_class?'<li> Conclusion Class - '.$block->conclusion_class.'</li>':'' ?>
                         </ul>
                     <?php $blockNum++; endforeach; ?>
                 </li>
             <?php endif; ?>
+
+            <?= $section->conclusion?'<li> Conclusion - '.\common\models\Article::excerpt($section->conclusion,100).'</li>':'' ?>
+            <?= $section->conclusion_class?'<li> Conclusion Class - '.$section->conclusion_class.'</li>':'' ?>
         </ul>
 
     <?php $sectionNum++; endforeach; ?>

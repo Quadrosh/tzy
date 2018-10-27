@@ -66,6 +66,19 @@ use yii\widgets\ActiveForm;
                 ],['prompt' => 'Выбери']) ?>
         </div>
 
+        <div class="col-sm-8">
+            <?= $form->field($model, 'conclusion')->textarea(['rows' => 1]) ?>
+        </div>
+        <div class="col-sm-4">
+            <?= $form->field($model, 'conclusion_class')
+                ->dropDownList([
+                    'text-center' => 'text-center',
+                    'text-left' => 'text-left',
+                    'text-right' => 'text-right',
+                    'text_small' => 'text_small',
+                ],['prompt' => 'Выбери']) ?>
+        </div>
+
 
         <div class="col-sm-2">
             <?= $form->field($model, 'image')->textarea(['rows' => 1]) ?>
@@ -108,6 +121,7 @@ use yii\widgets\ActiveForm;
                 '_asb-slick_banner_1' => 'slick_banner_1',
                 '_asb-ul-li' => 'ul-li',
                 '_asb-ol-li' => 'ol-li',
+                '_asb-price_calculator' => 'price_calculator',
             ],['prompt' => 'Выбери']) ?>
         </div>
         <div class="col-sm-3">

@@ -2,6 +2,8 @@
 
 namespace backend\controllers;
 
+use common\models\Price;
+use common\models\PriceCalculator;
 use common\models\UploadForm;
 use Yii;
 use common\models\Article;
@@ -189,6 +191,42 @@ class ArticleController extends Controller
                 Yii::$app->session->setFlash('error', 'не получается');
             }
             return $this->redirect(Url::previous());
+        }
+    }
+
+
+    public function actionCalculator()
+    {
+        if (Yii::$app->request->isPost) {
+
+            $request = Yii::$app->request->post('PriceCalculator');
+            $price = Price::find()->where([
+                'from_city_id' => $request['from_city_id'],
+                'to_city_id'=>$request['to_city_id'],
+                'truck_id'=>$request['truck_id'],
+            ])->one();
+
+
+
+
+//            Yii::info([
+//            'Yii::$app->request->post(\'PriceCalculator\')'=>Yii::$app->request->post('PriceCalculator'),
+//            '$price'=>$price,
+//            ], 'back');
+            if ($price) {
+                if ($request['shipment_type']=='half') {
+                    return PriceCalculator::DISTANCE_MESSAGE . $price['distance'].' км.'.PHP_EOL.
+                    PriceCalculator::FOUND_MESSAGE . $price['price'] * PriceCalculator::HALF_LOAD .' руб.';
+                } else {
+                    return PriceCalculator::DISTANCE_MESSAGE . $price['distance'].' км.'.PHP_EOL.
+                    PriceCalculator::FOUND_MESSAGE . $price['price'] .' руб.';
+                }
+
+            } else {
+                return PriceCalculator::NOT_FOUND_MESSAGE;
+            }
+
+
         }
     }
 }

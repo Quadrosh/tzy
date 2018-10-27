@@ -8,10 +8,24 @@ use yii\helpers\Html;
 /* @var $block common\models\ArticleSectionBlock */
 /* @var $item common\models\ArticleSectionBlockItem */
 
+$structure = $model->structure;
+$toCityName = '';
+$fromCityName = '';
+if ($structure) {
+    foreach (explode('&', $structure) as $chunk) {
+        $param = explode("=", $chunk);
+        if ($param[0]=='to') {
+            $toCityName=$param[1];
+        }
+        if ($param[0]=='from') {
+            $fromCityName=$param[1];
+        }
+    }
+}
 
 
 ?>
-<div class="asb-ul-li">
+<div class="asb-price-calculator">
 
     <?php if ($model->header) : ?>
         <h4 <?= $model->header_class?'class="'.$model->header_class.'"':null ?>><?= $model->header ?></h4>
@@ -21,9 +35,13 @@ use yii\helpers\Html;
         <p <?= $model->description_class?'class="'.$model->description_class.'"':null ?>><?= $model->description ?></p>
     <?php endif; ?>
 
-    <?php if ($model->raw_text) : ?>
-        <p <?= $model->raw_text_class?'class="'.$model->raw_text_class.'"':null ?>><?= nl2br($model->raw_text) ?></p>
-    <?php endif; ?>
+
+    <?= \common\widgets\PriceCalculatorWidget::widget([
+        'toCityName' => $toCityName,
+        'fromCityName' => $fromCityName,
+    ]) ?>
+
+
 
     <?php if ($model->items) : ?>
         <ol>
@@ -62,9 +80,10 @@ use yii\helpers\Html;
                 </li>
             <?php endforeach; ?>
         </ol>
-    <?php endif; ?>
-    <?php if ($model->conclusion) : ?>
-        <p <?= $model->conclusion_class?'class="'.$model->conclusion_class.'"':null ?>><?= nl2br($model->conclusion)  ?></p>
+        <?php if ($model->raw_text) : ?>
+            <p <?= $model->raw_text_class?'class="'.$model->raw_text_class.'"':null ?>><?= nl2br($model->raw_text) ?></p>
+        <?php endif; ?>
+
     <?php endif; ?>
 
 </div>

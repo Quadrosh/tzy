@@ -33,6 +33,8 @@ use Yii;
  * @property integer $description_class
  * @property integer $raw_text_class
  * @property integer $image_class
+ * @property integer $conclusion
+ * @property integer $conclusion_class
  */
 class ArticleSection extends \yii\db\ActiveRecord
 {
@@ -62,9 +64,9 @@ class ArticleSection extends \yii\db\ActiveRecord
             [['article_id'], 'required'],
             [['article_id','sort'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
-            [['description', 'raw_text', 'section_image', 'background_image', 'thumbnail_image'], 'string'],
+            [['description', 'raw_text', 'section_image', 'background_image', 'thumbnail_image', 'conclusion'], 'string'],
             [['header', 'header_class', 'call2action_description'], 'string', 'max' => 510],
-            [['section_image_alt', 'call2action_name', 'call2action_link', 'call2action_class', 'call2action_comment', 'view', 'color_key', 'structure', 'custom_class', 'code_name','description_class', 'raw_text_class', 'image_class'], 'string', 'max' => 255],
+            [['section_image_alt', 'call2action_name', 'call2action_link', 'call2action_class', 'call2action_comment', 'view', 'color_key', 'structure', 'custom_class', 'code_name','description_class', 'raw_text_class', 'image_class', 'conclusion_class'], 'string', 'max' => 255],
         ];
     }
 

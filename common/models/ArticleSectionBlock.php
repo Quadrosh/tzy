@@ -34,6 +34,8 @@ use Yii;
  * @property string $description_class
  * @property string $raw_text_class
  * @property string $image_class
+ * @property string $conclusion
+ * @property string $conclusion_class
  */
 class ArticleSectionBlock extends \yii\db\ActiveRecord
 {
@@ -61,9 +63,9 @@ class ArticleSectionBlock extends \yii\db\ActiveRecord
         return [
             [['article_section_id'], 'required'],
             [['article_section_id', 'accent', 'sort', 'created_at', 'updated_at'], 'integer'],
-            [['description', 'raw_text', 'image', 'background_image', 'thumbnail_image'], 'string'],
+            [['description', 'raw_text', 'image', 'background_image', 'thumbnail_image', 'conclusion'], 'string'],
             [['header', 'header_class', 'call2action_description'], 'string', 'max' => 510],
-            [['image_alt', 'call2action_name', 'call2action_link', 'call2action_class', 'call2action_comment', 'view', 'color_key', 'structure', 'custom_class', 'code_name', 'description_class', 'raw_text_class', 'image_class'], 'string', 'max' => 255],
+            [['image_alt', 'call2action_name', 'call2action_link', 'call2action_class', 'call2action_comment', 'view', 'color_key', 'structure', 'custom_class', 'code_name', 'description_class', 'raw_text_class', 'image_class', 'conclusion_class'], 'string', 'max' => 255],
         ];
     }
 
