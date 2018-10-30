@@ -30,7 +30,7 @@ class PriceCalculator extends \yii\base\Model
     const DISTANCE_MESSAGE = 'Расстояние: ';
     const TRUCK_MESSAGE = 'Автомобиль: ';
     const LOAD_MESSAGE = 'Грузоподъемность: ';
-    const HALF_LOAD = 0.7;
+    const HALF_LOAD = 0.8;
 
 
     /**
