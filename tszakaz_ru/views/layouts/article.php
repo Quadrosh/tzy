@@ -38,9 +38,9 @@ $feedback = new \common\models\Feedback();
     <meta property="og:image" content="<?= Url::base(true) ?>/img/logo.png" />
 
     <script type="text/javascript" src="https://vk.com/js/api/openapi.js?159"></script>
-    <script type="text/javascript">
-        VK.init({apiId: 6736681, onlyWidgets: true});
-    </script>
+<!--    <script type="text/javascript">-->
+<!--        VK.init({apiId: 6736681, onlyWidgets: true});-->
+<!--    </script>-->
 
 
     <?php $this->head() ?>
@@ -177,12 +177,12 @@ $feedback = new \common\models\Feedback();
     </div><!-- /.b-main -->
 
 
-    <div id="vk_comments"></div>
-    <?php
-
-    $script = "VK.Widgets.Comments(\"vk_comments\", {limit: 10, attach: \"*\"});";
-    $this->registerJs($script, yii\web\View::POS_READY);
-    ?>
+<!--    <div id="vk_comments"></div>-->
+<!--    --><?php
+//
+//    $script = "VK.Widgets.Comments(\"vk_comments\", {limit: 10, attach: \"*\"});";
+//    $this->registerJs($script, yii\web\View::POS_READY);
+//    ?>
 
 
 
