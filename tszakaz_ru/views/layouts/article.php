@@ -170,7 +170,7 @@ $feedback = new \common\models\Feedback();
                 <?= $content ?>
 
 
-                <div id="vk_comments"></div>
+                <div id="vk_comments" class="mt80"></div>
 
             </div><!-- /.b-content -->
             <div id="push"></div>
