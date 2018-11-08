@@ -209,12 +209,6 @@ class ArticleController extends Controller
         $article = Article::find()->where(['id'=>$id])->one();
 
         if ($article->export()) {
-//            $jsonfile= Yii::getAlias('@webroot/tmp_export_article.json');
-//            if (file_exists($jsonfile)) {
-//
-//                Yii::$app->response->sendFile($jsonfile);
-//
-//            }
             return $this->redirect(Url::previous());
         } else {
             Yii::$app->session->setFlash('error', 'не получается');

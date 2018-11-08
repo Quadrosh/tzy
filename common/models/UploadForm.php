@@ -22,8 +22,8 @@ class UploadForm  extends Model
     public function rules()
     {
         return [
-            [['imageFile'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg, svg'],
-            [['jsonFile'], 'file', 'skipOnEmpty' => false, 'extensions' => 'json'],
+            [['imageFile'], 'file', 'skipOnEmpty' => true, 'extensions' => 'png, jpg, svg'],
+            [['jsonFile'], 'file', 'skipOnEmpty' => true, 'extensions' => 'json'],
         ];
     }
 
@@ -40,8 +40,18 @@ class UploadForm  extends Model
             if ($this->imageFile->saveAs('img/' . $fileName)) {
                 return true;
             } else {
+                Yii::error([
+                    'action'=> 'uploadForm  $this->imageFile->saveAs',
+                    '$this->errors'=>$this->errors,
+                ]);
                 return false;
             }
+        } else {
+            Yii::error([
+                'action'=> 'uploadForm  $this->validate() && $imageListItem->addNew',
+                '$this->errors'=>$this->errors,
+            ]);
+            return false;
         }
     }
 
