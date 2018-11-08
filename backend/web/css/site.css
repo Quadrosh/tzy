@@ -159,3 +159,7 @@ h1 {
     font-size: 28px;
     color: #5f6973;
 }
+.article-view .viewImageSvg svg {
+    width: 40px;
+    height: 40px;
+}

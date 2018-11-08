@@ -30,6 +30,13 @@ $this->params['breadcrumbs'][] = $this->title;
                 'method' => 'post',
             ],
         ]) ?>
+        <?= Html::a('Export', ['/article/export', 'id' => $model->id], [
+            'class' => 'btn btn-success',
+            'data' => [
+                'confirm' => 'Are you sure you want to export this item?',
+                'method' => 'post',
+            ],
+        ]) ?>
     </p>
 
     <?= DetailView::widget([
@@ -314,17 +321,27 @@ $this->params['breadcrumbs'][] = $this->title;
                             <?= $block->header_class?'<li> Header - '.$block->header_class.'</li>':'' ?>
                             <?= $block->description?'<li> Description - '.$block->description.'</li>':'' ?>
                             <?= $block->raw_text?'<li> Raw Text - '.\common\models\Article::excerpt($block->raw_text,100).'</li>':'' ?>
-                            <?= $block->image?'<li> Image - '
-                                .Html::img('/img/'. $block->image, ['class'=>'gridThumb'])
-                                .'<sup>'.$block->image.'</sup>'
-                                .Html::a( '<span class="glyphicon glyphicon-trash"></span>',
-                                    '/article-section-block/delete-image?id='.$block->id.'&propertyName=image',
-                                    [
-                                        'title' => Yii::t('yii', 'Удалить image'),
-                                        'data-confirm' =>'Точно удалить?',
-                                        'data-method'=>'post'
-                                    ])
-                                .'</li>':'' ?>
+                            <?php
+                            $blockImageLi='';
+                            if ($block->image) {
+                                if (substr(trim($block->image),0,4)=='<svg') {
+                                    $blockImageLi = '<li class="viewImageSvg"> Image <sup>svg</sup> - '.$block->image.'</li>';
+                                } else {
+                                    $blockImageLi = '<li> Image - '
+                                        .Html::img('/img/'. $block->image, ['class'=>'gridThumb'])
+                                        .'<sup>'.$block->image.'</sup>'
+                                        .Html::a( '<span class="glyphicon glyphicon-trash"></span>',
+                                            '/article-section-block/delete-image?id='.$block->id.'&propertyName=image',
+                                            [
+                                                'title' => Yii::t('yii', 'Удалить image'),
+                                                'data-confirm' =>'Точно удалить?',
+                                                'data-method'=>'post'
+                                            ])
+                                        .'</li>';
+                                }
+                            }
+                            ?>
+                            <?= $block->image?$blockImageLi:'' ?>
                             <?= $block->background_image?'<li> Background Image - '
                                 .Html::img('/img/'. $block->background_image, ['class'=>'gridThumb'])
                                 .'<sup>'.$block->background_image.'</sup>'
@@ -405,17 +422,26 @@ $this->params['breadcrumbs'][] = $this->title;
                                         <?= $item->description?'<li> Description - '.$item->description.'</li>':'' ?>
                                         <?= $item->text?'<li> Text - '.\common\models\Article::excerpt($item->text,100).'</li>':'' ?>
                                         <?= $item->comment?'<li> Comment - '.\common\models\Article::excerpt($item->comment,100).'</li>':'' ?>
-                                        <?= $item->image?'<li> Image - '
-                                            . Html::img('/img/'. $item->image, ['class'=>'gridThumb'])
-                                            .'<sup>'.$item->image.'</sup>'
-                                            .Html::a( '<span class="glyphicon glyphicon-trash"></span>',
-                                                '/article-section-block-item/delete-image?id='.$item->id.'&propertyName=image',
-                                                [
-                                                    'title' => Yii::t('yii', 'Удалить image'),
-                                                    'data-confirm' =>'Точно удалить?',
-                                                    'data-method'=>'post'
-                                                ])
-                                            .'</li>':'' ?>
+                                        <?php
+                                        if ($item->image) {
+                                            if (substr(trim($item->image),0,4)=='<svg') {
+                                                $itemImageLi = '<li class="viewImageSvg"> Image <sup>svg</sup> - '.$item->image.'</li>';
+                                            } else {
+                                                $itemImageLi = '<li> Image - '
+                                                    . Html::img('/img/'. $item->image, ['class'=>'gridThumb'])
+                                                    .'<sup>'.$item->image.'</sup>'
+                                                    .Html::a( '<span class="glyphicon glyphicon-trash"></span>',
+                                                        '/article-section-block-item/delete-image?id='.$item->id.'&propertyName=image',
+                                                        [
+                                                            'title' => Yii::t('yii', 'Удалить image'),
+                                                            'data-confirm' =>'Точно удалить?',
+                                                            'data-method'=>'post'
+                                                        ])
+                                                    .'</li>';
+                                            }
+                                        }
+                                        ?>
+                                        <?= $item->image?$itemImageLi:'' ?>
                                         <?= $item->image_alt?'<li> Image Alt - '.$item->image_alt.'</li>':'' ?>
                                         <?= $item->link_name?'<li> Link Name - '.$item->link_name.'</li>':'' ?>
                                         <?= $item->link_url?'<li> Link Url - '.$item->link_url.'</li>':'' ?>

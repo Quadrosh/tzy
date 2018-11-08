@@ -80,10 +80,10 @@ use yii\widgets\ActiveForm;
                 ],['prompt' => 'Выбери']) ?>
         </div>
 
-        <div class="col-sm-4">
+        <div class="col-sm-6">
             <?= $form->field($model, 'image')->textarea(['rows' => 1]) ?>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-2">
             <?= $form->field($model, 'image_class')->dropDownList([
                 'float-right w50perSm' => 'float-right w50perSm',
                 'float-left w50perSm' => 'float-left w50perSm',
@@ -114,8 +114,9 @@ use yii\widgets\ActiveForm;
 
         <div class="col-sm-3">
             <?= $form->field($model, 'view')->dropDownList([
-                '_asbi-img_link_description' => 'img_link_description',
-                '_asbi-header_on_img' => 'header_on_img',
+                '_asbi-img_link_description' => '| img_link_description',
+                '_asbi-header_on_img' => '| header_on_img',
+                '_asbi-v_svg_head_text' => '| svg_head_text',
             ],['prompt' => 'Выбери']) ?>
         </div>
         <div class="col-sm-3">

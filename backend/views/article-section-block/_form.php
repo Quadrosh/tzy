@@ -56,7 +56,13 @@ use yii\widgets\ActiveForm;
         <div class="col-sm-8">
             <?= $form->field($model, 'raw_text')->textarea(['rows' => 1]) ?>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-1">
+            <?= Html::button('b', ['class' => 'btn btn-default',
+                'id'=>'2bold_text',
+                'onClick'=>"addTag('b','#articlesectionblock-raw_text');"
+            ]) ?>
+        </div>
+        <div class="col-sm-3">
             <?= $form->field($model, 'raw_text_class')
                 ->dropDownList([
                     'text-center' => 'text-center',
@@ -158,3 +164,20 @@ use yii\widgets\ActiveForm;
     <?php ActiveForm::end(); ?>
 
 </div>
+
+<?php
+$script = "
+
+function addTag(tag, sharpedId) {
+    var textArea = $(sharpedId);
+    var start = textArea[0].selectionStart;
+    var end = textArea[0].selectionEnd;
+    if(textArea[0].selectionEnd - textArea[0].selectionStart != 0){
+        var replacement = '<'+tag+' >' + textArea.val().substring(start, end) + '</'+tag+'>';
+        textArea.val(textArea.val().substring(0, start) + replacement + textArea.val().substring(end, textArea.val().length));
+    }
+}
+
+";
+$this->registerJs($script, yii\web\View::POS_BEGIN);
+?>

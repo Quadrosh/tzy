@@ -15,6 +15,7 @@ class UploadForm  extends Model
      * @var UploadedFile
      */
     public $imageFile;
+    public $jsonFile;
     public $toModelId;
     public $toModelProperty;
 
@@ -22,6 +23,7 @@ class UploadForm  extends Model
     {
         return [
             [['imageFile'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg, svg'],
+            [['jsonFile'], 'file', 'skipOnEmpty' => false, 'extensions' => 'json'],
         ];
     }
 
@@ -53,6 +55,25 @@ class UploadForm  extends Model
             }
         }
     }
+
+//    public function tempJsonFileUpload($fileName=null)
+//    {
+//
+//        if ($this->validate()) {
+//            if ($fileName) {
+//                $res = $this->jsonFile->saveAs('@webroot/' . $fileName);
+//            } else {
+//                $res = $this->jsonFile->saveAs('@webroot/temp.json' );
+//            }
+//
+//            if ($res) {
+//                return true;
+//            } else {
+//                return false;
+//            }
+//
+//        }
+//    }
 
 
 

@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
+use \yii\widgets\ActiveForm;
 /* @var $this yii\web\View */
 /* @var $searchModel common\models\ArticleSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -18,6 +19,21 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>
         <?= Html::a('Create Article', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
+
+    <h4>import Article from file</h4>
+    <?php
+    $uploadmodel = new \common\models\UploadForm();
+    $form = ActiveForm::begin([
+        'method' => 'post',
+        'action' => ['/article/import'],
+        'options' => ['enctype' => 'multipart/form-data'],
+    ]); ?>
+
+    <?= $form->field($uploadmodel, 'jsonFile')->fileInput()->label(false) ?>
+
+    <?= Html::submitButton('import', ['class' => 'btn btn-primary']) ?>
+    <?php ActiveForm::end() ?>
+
 <?php Pjax::begin(); ?>    <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,

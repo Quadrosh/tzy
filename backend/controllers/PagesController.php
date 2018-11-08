@@ -53,6 +53,8 @@ class PagesController extends AdminController
         $dataProvider = new ActiveDataProvider([
             'query' => Pages::find(),
         ]);
+        $dataProvider->pagination = ['pageSize' => 100];
+        $dataProvider->sort = ['defaultOrder'=> ['id' => SORT_DESC]];
 
         return $this->render('index', [
             'dataProvider' => $dataProvider,

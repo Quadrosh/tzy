@@ -203,6 +203,39 @@ class ArticleController extends Controller
             return PriceCalculator::calculate($request['from_city_id'],$request['to_city_id'],$request['truck_id'],$request['shipment_type']);
         }
     }
+
+    public function actionExport($id)
+    {
+        $article = Article::find()->where(['id'=>$id])->one();
+
+        if ($article->export()) {
+//            $jsonfile= Yii::getAlias('@webroot/tmp_export_article.json');
+//            if (file_exists($jsonfile)) {
+//
+//                Yii::$app->response->sendFile($jsonfile);
+//
+//            }
+            return $this->redirect(Url::previous());
+        } else {
+            Yii::$app->session->setFlash('error', 'не получается');
+        }
+    }
+
+    public function actionImport()
+    {
+        $article = new Article();
+
+        if ($article->import()) {
+            Yii::$app->session->setFlash('success', 'ога');
+            return $this->redirect(Url::previous());
+        } else {
+            Yii::$app->session->setFlash('error', 'не получается');
+            return $this->redirect(Url::previous());
+        }
+    }
+
+
+
 }
 
 

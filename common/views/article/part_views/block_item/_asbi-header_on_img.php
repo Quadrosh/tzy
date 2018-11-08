@@ -24,7 +24,7 @@ use yii\helpers\Html;
 
 
     <?php if ($model->description) : ?>
-        <p <?= $model->description_class?'class="'.$model->description_class.'"':null ?>><?= $model->text ?>><?= $model->description ?></p>
+        <p <?= $model->description_class?'class="'.$model->description_class.'"':null ?>><?= $model->description ?>><?= $model->description ?></p>
     <?php endif; ?>
     <?php if ($model->text) : ?>
         <p <?= $model->text_class?'class="'.$model->text_class.'"':null ?>><?= $model->text ?></p>

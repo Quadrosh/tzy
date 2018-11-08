@@ -28,12 +28,12 @@ use yii\helpers\Html;
     <?php if ($model->items) : ?>
         <div class="row">
             <?php $i=0; $count = count($model->items); foreach ( $model->items as $item)  : ?>
-                <?php $i++; if ($i!=1 && $i%4==1) : ?>
+                <?php $i++; if ($i!=1 && $i%3==1) : ?>
         </div>
         <div class="row">
                 <?php endif; ?>
                 <div class="col-sm-4 <?php
-                if ($i!=1 && $i%3==1 && $i+1 == $count){echo'col-sm-offset-4';}
+                if ($i!=1 && $i%3==1 && $i+1 == $count){echo'col-sm-offset-2';}
                 ?>">
 
                     <?php if ($item->view) : ?>
