@@ -267,7 +267,7 @@ class Article extends \yii\db\ActiveRecord
         fclose($fp);
         if (file_exists($jsonfile)) {
             Yii::$app->response->xSendFile($jsonfile)->send();
-            unlink($jsonfile);
+//            unlink($jsonfile);
         }
         return true;
     }
