@@ -261,7 +261,7 @@ class Article extends \yii\db\ActiveRecord
 
 
         $json = Json::encode($arr);
-        $jsonfile= Yii::getAlias('@webroot/export_article-'.$this->hrurl.'.json');
+        $jsonfile= Yii::getAlias('@webroot/tmp/export_article-'.$this->hrurl.'.json');
         $fp = fopen($jsonfile, 'w+');
         fwrite($fp, $json);
         fclose($fp);
@@ -282,7 +282,7 @@ class Article extends \yii\db\ActiveRecord
             $importFile = UploadedFile::getInstance($uploadmodel, 'jsonFile');
 
             $root= Yii::getAlias('@webroot/');
-            $tempPath = $root.'temp_export_article.json';
+            $tempPath = $root.'tmp/temp_import_article.json';
             if ($importFile->saveAs($tempPath)) {
                 //            $jsonfile= Yii::getAlias('@webroot/export_article.json');
                 $string = file_get_contents($tempPath,true);
