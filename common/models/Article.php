@@ -266,13 +266,9 @@ class Article extends \yii\db\ActiveRecord
         fwrite($fp, $json);
         fclose($fp);
         if (file_exists($jsonfile)) {
-            if ( Yii::$app->response->xSendFile($jsonfile)->send()) {
-               unlink($jsonfile);
-            } else {
-                Yii::$app->session->setFlash('error', 'Ошибка загрузки файла экспорта');
-            }
+            Yii::$app->response->xSendFile($jsonfile)->send();
+            unlink($jsonfile);
         }
-
         return true;
     }
 
