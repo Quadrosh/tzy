@@ -38,6 +38,14 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ]) ?>
     </p>
+    <p>
+        <?= Html::a('Создать категорию', ['/menu/create',
+            'url'=>$model->hrurl,
+            'name'=>$model->list_name], ['class' => 'btn btn-success btn-xs']) ?>
+        <?= Html::a('Создать страницу', ['/pages/create',
+            'hrurl'=>$model->hrurl,
+            'status'=>'article'], ['class' => 'btn btn-success btn-xs']) ?>
+    </p>
 
     <?= DetailView::widget([
         'model' => $model,

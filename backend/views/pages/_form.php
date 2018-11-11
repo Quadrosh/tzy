@@ -16,7 +16,8 @@ use yii\widgets\ActiveForm;
                     'published' => 'published',
                     'draft' => 'draft',
                     'article' => 'article (by hrurl)',
-                ],['prompt' => 'Выбери статус']) ?></div>
+                ],['prompt' => 'Выбери статус',
+                    'value'=>Yii::$app->request->get('status')]) ?></div>
     </div>
     <div class="row">
         <div class="col-sm-6">
@@ -35,7 +36,8 @@ use yii\widgets\ActiveForm;
             </p>
         </div>
         <div class="col-sm-12">
-            <?= $form->field($model, 'hrurl')->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, 'hrurl')->textInput(['maxlength' => true,
+                'value'=>Yii::$app->request->get('hrurl')]) ?>
         </div>
         <div class="col-sm-12"><?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?></div>
 

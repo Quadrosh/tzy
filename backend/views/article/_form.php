@@ -33,7 +33,9 @@ use yii\widgets\ActiveForm;
                 ),['prompt'=>'Выберите категорию','multiple' => true])
                 ->label('Категория в каталоге') ?>
             <p>
-                <?= Html::a('Создать категорию', ['/menu/create'], ['class' => 'btn btn-success btn-xs']) ?>
+                <?= Html::a('Создать категорию', ['/menu/create',
+                    'url'=>$model->hrurl,
+                    'name'=>$model->list_name], ['class' => 'btn btn-success btn-xs']) ?>
             </p>
         </div>
         <div class="col-sm-12">

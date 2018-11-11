@@ -8,6 +8,7 @@ use common\models\ChatMessage;
 use common\models\LandingListitem;
 use common\models\LandingPage;
 use common\models\LandingSection;
+use common\models\MenuTop;
 use common\models\Preorders;
 use common\models\PriceCalculator;
 use common\models\Visit;
@@ -88,7 +89,7 @@ class ArticleController extends Controller
             $this->layout = $this->article->layout;
         }
         $this->view->params['meta']=$this->article;
-        $this->view->params['currentItem']=14;
+        $this->view->params['currentItem']=0;
 
         return $this->render('part_views/article/'.$this->article->view,[
             'article' => $this->article,
@@ -122,7 +123,13 @@ class ArticleController extends Controller
         }
 
         $this->view->params['meta']=$this->article;
-        $this->view->params['currentItem']=14;
+        $topMenuItem = MenuTop::find()->where(['link'=>$this->article->hrurl.'.html'])->one();
+        if ($topMenuItem) {
+            $this->view->params['currentItem']=$topMenuItem->id;
+        } else {
+            $this->view->params['currentItem']=0;
+        }
+
 
         return $this->render('article_view',[
             'article' => $this->article,
@@ -130,36 +137,9 @@ class ArticleController extends Controller
             'sections' => $sections,
             'utm' => $utm,
         ]);
-//        return $this->render($this->article->view,[
-//            'article' => $this->article,
-//            'sections' => $sections,
-//            'utm' => $utm,
-//        ]);
+
     }
 
-    public function actionPageJurlits()
-    {
-        Url::remember();
-        $utm = $this->getUtm();
-        $this->article = Article::find()
-            ->where(['site'=>Yii::$app->params['site']])
-            ->andwhere(['hrurl'=>'perevozki-dlya-juridicheskih-lits'])
-            ->one();
-        $sections = $this->article->sections;
-        if ($this->article->layout == null) {
-            $this->layout = 'article';
-        } else {
-            $this->layout = $this->article->layout;
-        }
-        $this->view->params['meta']=$this->article;
-        $this->view->params['currentItem']=14;
-
-        return $this->render($this->article->view,[
-            'article' => $this->article,
-            'sections' => $sections,
-            'utm' => $utm,
-        ]);
-    }
 
 
 

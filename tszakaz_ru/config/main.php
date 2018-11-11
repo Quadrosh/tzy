@@ -65,7 +65,6 @@ return [
 
                 $params['botAddress'] => '/chat/bot',
                 'chat/post' => '/chat/post',
-//                'perevozki-dlya-juridicheskih-lits.html' => '/article/page-jurlits',
                 'news.html' => '/article/index',
                 'baza-znaniy.html' => '/article/index',
 
