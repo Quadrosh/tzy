@@ -260,8 +260,9 @@ class Article extends \yii\db\ActiveRecord
 
 
 
+
         $json = Json::encode($arr);
-        $jsonfile= Yii::getAlias('@webroot/tmp/export_article-'.$this->hrurl.'.json');
+        $jsonfile= Yii::getAlias('@webroot/tmp/export_article-'.str_replace('/','_',$this->hrurl) .'.json');
         $fp = fopen($jsonfile, 'w+');
         fwrite($fp, $json);
         fclose($fp);

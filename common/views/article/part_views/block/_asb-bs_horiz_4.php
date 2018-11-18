@@ -49,7 +49,7 @@ use yii\helpers\Html;
                             <p <?= $item->text_class?'class="'.$item->text_class.'"':null ?>><?= $item->text ?></p>
                         <?php endif; ?>
                         <?php if ($item->image) : ?>
-                            <?= Html::img('/img/'.$item->image,['class'=>'w100 '.$item->image_class])  ?>
+                            <?= Html::img('/img/'.$item->image,['class'=>'max-w100per '.$item->image_class])  ?>
                         <?php endif; ?>
                         <?php if ($item->link_name) : ?>
                             <a href="<?= $item->link_url ?>" class="<?= $item->link_class ?>"><?= $item->link_name ?></a>

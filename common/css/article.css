@@ -32,10 +32,22 @@ body {
         margin-bottom: 50px;
     }
 }
-.w100{
+.max-w100per{
     max-width: 100%;
 }
 
+.w100{
+    width: 100px;
+}
+.w80{
+    width: 80px;
+}
+.w50{
+    width: 50px;
+}
+/*'w100' => 'w100',
+                'w80' => 'w80',
+                'w50' => 'w50',*/
 .w50perSm{
     width:50%;
 }
@@ -76,6 +88,18 @@ body {
     display: block;
 }
 
+.table{
+    display: table;
+}
+.table-cell {
+    display: table-cell;
+}
+.table-row {
+    display: table-row;
+}
+.table-column {
+    display: table-column;
+}
 
 /* projects */
 .carouselControl {

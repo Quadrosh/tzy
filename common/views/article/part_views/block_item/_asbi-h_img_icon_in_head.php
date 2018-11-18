@@ -9,16 +9,23 @@ use yii\helpers\Html;
 
 
 ?>
-<div class="asbi-v_svg_head_text text-center">
+<div class="asbi-h_img_icon_in_head">
 
-    <?php if ($model->image) : ?>
-        <div class="svg">
-            <?= $model->image ?>
-        </div>
-    <?php endif; ?>
-    <?php if ($model->header) : ?>
-        <p <?= $model->header_class?'class="'.$model->header_class.'"':null ?>><?= $model->header ?></p>
-    <?php endif; ?>
+    <div class="table">
+        <?php if ($model->image) : ?>
+            <div class="table-cell <?= $model->image_class ?>">
+                <?php if ($model->image) {
+                    echo Html::img('/img/'.$model->image,[ 'alt'=>$model->image_alt]);
+                } ?>
+            </div>
+        <?php endif; ?>
+        <?php if ($model->header) : ?>
+            <div class="table-cell">
+                <h5 <?= $model->header_class?'class="'.$model->header_class.'"':null ?>><?= $model->header ?></h5>
+            </div>
+        <?php endif; ?>
+    </div>
+
     <?php if ($model->description) : ?>
         <p <?= $model->description_class?'class="'.$model->description_class.'"':null ?>><?= $model->description ?></p>
     <?php endif; ?>
@@ -35,9 +42,4 @@ use yii\helpers\Html;
     <?php endif; ?>
 
 </div>
-
-
-
-
-
 

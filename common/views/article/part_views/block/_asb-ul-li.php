@@ -44,7 +44,7 @@ use yii\helpers\Html;
                             <p <?= $item->description_class?'class="'.$item->description_class.'"':null ?>><?= $item->description ?></p>
                         <?php endif; ?>
                         <?php if ($item->image) : ?>
-                            <?= Html::img('/img/'.$item->image,['class'=>'w100'])  ?>
+                            <?= Html::img('/img/'.$item->image,['class'=>'max-w100per'])  ?>
                         <?php endif; ?>
                         <?php if ($item->link_name) : ?>
                             <a href="<?= $item->link_url ?>" <?= $item->link_class?'class="'.$item->link_class.'"':null ?>><?= $item->link_name ?></a>

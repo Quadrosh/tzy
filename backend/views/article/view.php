@@ -83,7 +83,21 @@ $this->params['breadcrumbs'][] = $this->title;
                 'format'=> 'html',
                 'label'=> 'Категории в каталоге',
             ],
-            'hrurl:url',
+            [
+                'attribute'=>'hrurl',
+                'value' => function($data)
+                {
+                    if (Yii::$app->request->getHostName() == 'cp.tszakaz.local') {
+                        $lpSite = $data['site'];
+                        $site = str_replace('.ru','.local',$lpSite);
+                        $site = str_replace('.su','.local',$site);
+                        return '<a  href="http://'.$site.'/'.$data['hrurl'].'.html'.'">'.$data['hrurl'].'</a>';
+                    } else {
+                        return '<a  href="http://'.$data['site'].'/'.$data['hrurl'].'.html'.'">'.$data['hrurl'].'</a>';
+                    }
+                },
+                'format'=> 'html',
+            ],
             'title',
             'description:ntext',
             'keywords:ntext',
@@ -214,7 +228,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     </div>
                     <div class="col-sm-4">
                         <?= $form->field($uploadmodel, 'imageFile')
-                            ->fileInput(['style'=>'color:gainsboro;'])->label(false) ?>
+                            ->fileInput(['class'=>'fileField'])->label(false) ?>
                         <?= $form->field($uploadmodel, 'toModelId')->hiddenInput(['value'=>$section->id])->label(false) ?>
                     </div>
                     <div class="col-sm-4">
@@ -313,7 +327,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                         </div>
                                         <div class="col-sm-4">
                                             <?= $form->field($uploadmodel, 'imageFile')
-                                                ->fileInput(['style'=>'color:gainsboro;'])->label(false) ?>
+                                                ->fileInput(['class'=>'fileField'])->label(false) ?>
                                             <?= $form->field($uploadmodel, 'toModelId')->hiddenInput(['value'=>$block->id])->label(false) ?>
                                         </div>
                                         <div class="col-sm-4">
@@ -328,7 +342,25 @@ $this->params['breadcrumbs'][] = $this->title;
                             <?= $block->header?'<li> Header - '.$block->header.'</li>':'' ?>
                             <?= $block->header_class?'<li> Header - '.$block->header_class.'</li>':'' ?>
                             <?= $block->description?'<li> Description - '.$block->description.'</li>':'' ?>
-                            <?= $block->raw_text?'<li> Raw Text - '.\common\models\Article::excerpt($block->raw_text,100).'</li>':'' ?>
+                            <?= $block->raw_text?'<li> Raw Text '.
+                                Html::a( '<span class="glyphicon glyphicon-fullscreen"></span>',
+                                    '/article-section-block/raw-text-to-items?id='.$block->id,
+                                    [
+                                        'title' => Yii::t('yii', 'raw text to items (each line to item)'),
+                                        'data-confirm' =>'Точно конвертировать текст в items построчно?',
+                                        'data-method'=>'post'
+                                    ]).' '.
+                                Html::a( '<span class="glyphicon glyphicon-th-list"></span>',
+                                    ['/article-section-block/raw-text-to-items',
+                                        'id'=>$block->id,
+                                        'mode'=>2,
+                                    ],
+                                    [
+                                        'title' => Yii::t('yii', 'raw text to items mode 2 (1-st line - head, next lines - text, delimeter - empty string)'),
+                                        'data-confirm' =>'Точно конвертировать текст в items режим 2? (1 строка заголовок, 1 строка тело, разделитель пустая строка.) ?',
+                                        'data-method'=>'post'
+                                    ]).
+                                ' - '.\common\models\Article::excerpt($block->raw_text,100).'</li>':'' ?>
                             <?php
                             $blockImageLi='';
                             if ($block->image) {
@@ -413,7 +445,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                                         ])->label(false) ?>
                                                     </div>
                                                     <div class="col-sm-4">
-                                                        <?= $form->field($uploadmodel, 'imageFile')->fileInput(['style'=>'color:gainsboro;'])->label(false) ?>
+                                                        <?= $form->field($uploadmodel, 'imageFile')->fileInput(['class'=>'fileField'])->label(false) ?>
                                                         <?= $form->field($uploadmodel, 'toModelId')->hiddenInput(['value'=>$item->id])->label(false) ?>
                                                     </div>
                                                     <div class="col-sm-4">

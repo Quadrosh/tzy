@@ -75,7 +75,21 @@ $this->params['breadcrumbs'][] = $this->title;
                 'format'=> 'html',
                 'label'=> 'Категории в каталоге',
             ],
-            'hrurl:url',
+            [
+                'attribute'=>'hrurl',
+                'value' => function($data)
+                {
+                    if (Yii::$app->request->getHostName() == 'cp.tszakaz.local') {
+                        $lpSite = $data['site'];
+                        $site = str_replace('.ru','.local',$lpSite);
+                        $site = str_replace('.su','.local',$site);
+                        return '<a  href="http://'.$site.'/'.$data['hrurl'].'.html'.'">'.$data['hrurl'].'</a>';
+                    } else {
+                        return '<a  href="http://'.$data['site'].'/'.$data['hrurl'].'.html'.'">'.$data['hrurl'].'</a>';
+                    }
+                },
+                'format'=> 'html',
+            ],
             'title',
             // 'description:ntext',
             // 'keywords:ntext',

@@ -93,6 +93,9 @@ use yii\widgets\ActiveForm;
                 'w20per' => 'w20per',
                 'float-left w20per' => 'float-left w20per',
                 'float-right w20per' => 'float-right w20per',
+                'w100' => 'w100',
+                'w80' => 'w80',
+                'w50' => 'w50',
             ],['prompt' => 'Выбери']) ?>
         </div>
         <div class="col-sm-4">
@@ -127,6 +130,8 @@ use yii\widgets\ActiveForm;
             <?= $form->field($model, 'view')->dropDownList([
                 '_as-head-descr-blocks-text' => 'head-descr-blocks-text',
                 '_as-image_float_in_text' => 'image_float_in_text',
+                '_as-image_icon_in_head' => 'image_icon_in_head',
+
             ],['prompt' => 'Выбери вьюху']) ?>
         </div>
         <div class="col-sm-3">
