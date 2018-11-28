@@ -186,8 +186,8 @@ $feedback = new \common\models\Feedback();
 
                 </div><!-- b-sidebar__no_banner -->
 
-            </div><!-- /.b-sidebar -->
-            <div class="col-sm-9 col-xs-12  b-content pt20">
+            </div><!-- /.b-sidebar b-content  -->
+            <div class="col-sm-9 col-xs-12   pt20">
 
 
                 <?= $content ?>

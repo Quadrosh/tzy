@@ -5,9 +5,9 @@ use yii\helpers\Html;
 ?>
 
 
-<section class="as-image_float_in_text <?= $model->color_key ?> <?= $model->custom_class ?>">
+<section class="as-image_float_in_text fw <?= $model->color_key ?> <?= $model->custom_class ?>">
     <div class="row">
-        <div class="col-md-10 col-md-offset-1  col-lg-8 col-lg-offset-2">
+        <div class="col-sm-12">
             <?php if ($model->header) : ?>
                 <h2 class="<?= $model->header_class ?>"><?= $model->header ?></h2>
             <?php endif; ?>

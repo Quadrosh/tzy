@@ -14,11 +14,15 @@ use yii\helpers\Html;
 <div class="asb-bs_horiz_2">
 
     <?php if ($model->header) : ?>
-        <h4 class="<?= $model->header_class ?>"><?= $model->header ?></h4>
+        <h3 <?= $model->header_class?'class="'.$model->header_class.'"':null ?>><?= nl2br($model->header) ?></h3>
     <?php endif; ?>
 
     <?php if ($model->description) : ?>
-        <p class="text-center"><?= $model->description ?></p>
+        <p <?= $model->description_class?'class="'.$model->description_class.'"':null ?>><?= nl2br($model->description) ?></p>
+    <?php endif; ?>
+
+    <?php if ($model->raw_text) : ?>
+        <p <?= $model->raw_text_class?'class="'.$model->raw_text_class.'"':null ?>><?= nl2br($model->raw_text) ?></p>
     <?php endif; ?>
 
     <?php if ($model->items) : ?>
@@ -34,11 +38,12 @@ use yii\helpers\Html;
 
                     <?php if (!$item->view) : ?>
                         <?php if ($item->header) : ?>
-                            <h6 class="<?= $item->header_class ?>"><?= $item->header ?></h6>
+                            <h4 <?= $item->header_class?'class="'.$item->header_class.'"':null ?>><?= nl2br($item->header) ?></h4>
                         <?php endif; ?>
                         <?php if ($item->description) : ?>
                             <p class="text-center"><?= $item->description ?></p>
                         <?php endif; ?>
+
                         <?php if ($item->image) : ?>
                             <?= Html::img('/img/'.$item->image,['class'=>'max-w100per'])  ?>
                         <?php endif; ?>

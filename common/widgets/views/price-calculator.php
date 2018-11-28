@@ -44,9 +44,17 @@ $city = \common\models\City::find()->where(['name'=>$toCityName])->one();
                             \common\models\City::find()->all(), 'id','name'))?>
                 </div>
                 <div class="col-sm-6">
-                    <?= $form->field($price, 'to_city_id')
-                        ->dropDownList(\yii\helpers\ArrayHelper::map(
-                            \common\models\City::find()->where(['name'=>$toCityName])->orWhere(['parent_id'=>$city->id])->all(), 'id','name'),['options'=>[$city->id =>['selected'=>true]]]) ?>
+                    <?php if ($toCityName) : ?>
+                        <?= $form->field($price, 'to_city_id')
+                            ->dropDownList(\yii\helpers\ArrayHelper::map(
+                                \common\models\City::find()->where(['name'=>$toCityName])->orWhere(['parent_id'=>$city->id])->all(), 'id','name'),['options'=>[$city->id =>['selected'=>true]]]) ?>
+                    <?php endif; ?>
+                    <?php if (!$toCityName) : ?>
+                        <?= $form->field($price, 'to_city_id')
+                            ->dropDownList(\yii\helpers\ArrayHelper::map(
+                                \common\models\City::find()->all(), 'id','name')) ?>
+                    <?php endif; ?>
+
                 </div>
                 <div class="col-sm-4 ">
                     <?= $form->field($price, 'truck_id')

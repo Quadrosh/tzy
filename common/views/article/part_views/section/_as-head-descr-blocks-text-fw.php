@@ -5,22 +5,15 @@ use yii\helpers\Html;
 ?>
 
 
-<section class="as-image_float_in_text <?= $model->color_key ?> <?= $model->custom_class ?>">
+<section class="as-head-descr-blocks-text fw <?= $model->color_key ?> <?= $model->custom_class ?>">
     <div class="row">
-        <div class="col-md-10 col-md-offset-1  col-lg-8 col-lg-offset-2">
+        <div class=" col-sm-12">
             <?php if ($model->header) : ?>
                 <h2 class="<?= $model->header_class ?>"><?= $model->header ?></h2>
             <?php endif; ?>
             <?php if ($model->description) : ?>
                 <p class="text-left"><?= nl2br($model->description)  ?></p>
             <?php endif; ?>
-
-            <?php if ($model->raw_text) : ?>
-                <p><?php if ($model->section_image) {
-                        echo Html::img('/img/'.$model->section_image,['class'=> $model->image_class, 'alt'=>$model->section_image_alt]);
-                    } ?><?= nl2br($model->raw_text)  ?></p>
-            <?php endif; ?>
-
 
             <?php if ($model->blocks) : ?>
                 <div class="mt30 mb30">
@@ -54,13 +47,16 @@ use yii\helpers\Html;
                     <?php endforeach; ?>
                 </div>
             <?php endif; ?>
-
-
+            <?php if ($model->raw_text) : ?>
+                <p><?= nl2br($model->raw_text)  ?></p>
+            <?php endif; ?>
             <?php if ($model->conclusion) : ?>
                 <p <?= $model->conclusion_class?'class="'.$model->conclusion_class.'"':null ?>><?= nl2br($model->conclusion)  ?></p>
             <?php endif; ?>
         </div>
     </div>
+
+
 
 
 </section>

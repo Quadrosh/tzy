@@ -28,7 +28,7 @@ if ($structure) {
 <div class="asb-price-calculator">
 
     <?php if ($model->header) : ?>
-        <h4 <?= $model->header_class?'class="'.$model->header_class.'"':null ?>><?= $model->header ?></h4>
+        <h3 <?= $model->header_class?'class="'.$model->header_class.'"':null ?>><?= $model->header ?></h3>
     <?php endif; ?>
 
     <?php if ($model->description) : ?>
@@ -56,7 +56,7 @@ if ($structure) {
 
                     <?php if (!$item->view) : ?>
                         <?php if ($item->header) : ?>
-                            <h6 <?= $item->header_class?'class="'.$item->header_class.'"':null ?>><?= $item->header ?></h6>
+                            <h4 <?= $item->header_class?'class="'.$item->header_class.'"':null ?>><?= $item->header ?></h4>
                         <?php endif; ?>
                         <?php if ($item->description) : ?>
                             <p <?= $item->description_class?'class="'.$item->description_class.'"':null ?>><?= $item->description ?></p>

@@ -13,7 +13,7 @@ use yii\helpers\Html;
 
     <div class="image_box">
         <?php if ($model->header) : ?>
-            <p class="header <?= $model->header_class ?>"><?= $model->header ?></p>
+            <h4 class="header <?= $model->header_class ?>"><?= $model->header ?></h4>
         <?php endif; ?>
         <?php if ($model->image) : ?>
             <?= Html::img('/img/'.$model->image,['class'=>'max-w100per mb10','alt'=>$model->image_alt])  ?>

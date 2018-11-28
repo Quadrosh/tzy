@@ -21,7 +21,7 @@ use yii\helpers\Html;
         <?php endif; ?>
         <?php if ($model->header) : ?>
             <div class="table-cell">
-                <h5 <?= $model->header_class?'class="'.$model->header_class.'"':null ?>><?= $model->header ?></h5>
+                <h4 <?= $model->header_class?'class="'.$model->header_class.'"':null ?>><?= $model->header ?></h4>
             </div>
         <?php endif; ?>
     </div>
