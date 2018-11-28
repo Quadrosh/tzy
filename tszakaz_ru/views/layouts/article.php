@@ -170,9 +170,12 @@ $feedback = new \common\models\Feedback();
                 <?= $content ?>
 
 
-                <div id="vk_comments" class="mt80"></div>
+
 
             </div><!-- /.b-content -->
+            <div class="col-md-10 col-md-offset-1  col-lg-8 col-lg-offset-2">
+                <div id="vk_comments" class="mt80"></div>
+            </div>
             <div id="push"></div>
         </div>
     </div><!-- /.b-main -->
