@@ -109,6 +109,32 @@ $preorderForm = new \common\models\Preorders();
                             <?php if ($section->conclusion) : ?>
                                 <p <?= $section->conclusion_class?'class="'.$section->conclusion_class.'"':null ?>><?= nl2br($section->conclusion)  ?></p>
                             <?php endif; ?>
+
+                            <div <?= $section->call2action_class?'class="'.$section->call2action_class.'"':null ?>>
+                                <?php if ($section->call2action_description) : ?>
+                                    <p class="text-center mt50" ><?= nl2br($section->call2action_description)  ?></p>
+                                <?php endif; ?>
+                                <?php if ($section->call2action_name) : ?>
+                                    <?php if ($section->call2action_link == 'callMe') : ?>
+                                        <div class="col-sm-12 ">
+                                            <?= $this->render('/article/part_views/article/_phone-form', [
+                                                'section' => $section,
+                                                'article' => $article,
+                                                'utm' => isset($utm)?$utm:null,
+                                            ]) ?>
+
+                                        </div>
+                                    <?php endif; ?>
+                                    <?php if ($section->call2action_link != 'callMe') : ?>
+                                        <?=
+                                        Html::a( $section->call2action_name, [$section->call2action_link],['class'=>$section->call2action_class]);
+                                        ?>
+                                    <?php endif; ?>
+                                <?php endif; ?>
+                            </div>
+
+
+
                         </div>
                     </div>
 
@@ -122,7 +148,7 @@ $preorderForm = new \common\models\Preorders();
         <?= Html::a('Оформить заявку', '#orderForm',['class' => 'btn btn-primary order-btn mt10 mb20', 'data-toggle'=>'collapse']) ?>
     </div>
 
-    <div class="feedback-form panel-collapse collapse" id="orderForm">
+    <div class="feedback-form panel-collapse collapse col-md-10 col-md-offset-1  col-lg-8 col-lg-offset-2 " id="orderForm">
         <?php $form = ActiveForm::begin([
             'action' =>['site/order'],
             'id' => 'order-form',

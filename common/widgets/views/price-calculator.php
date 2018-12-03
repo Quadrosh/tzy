@@ -11,12 +11,22 @@ use yii\widgets\ActiveForm;
 
 $price = new \common\models\PriceCalculator();
 
-//if (!$toCityName) {
-//    $toCityName = 'Санкт-Петербург';
-//}
 
 $city = \common\models\City::find()->where(['name'=>$toCityName])->one();
-//$this->title = $name;
+$from = [];
+$to = [];
+
+    if ($onlyExisted) {
+        $existedPrices = \common\models\Price::find()->all();
+        foreach ($existedPrices as $_price) {
+            if (!in_array($_price->from_city_id,$from)) {
+                $from[]=$_price->from_city_id;
+            }
+            if (!in_array($_price->to_city_id,$to)) {
+                $to[]=$_price->to_city_id;
+            }
+        }
+    }
 
 ?>
 
@@ -33,8 +43,6 @@ $city = \common\models\City::find()->where(['name'=>$toCityName])->one();
             <?php $form = ActiveForm::begin([
                 'id'=>'priceCalculator',
                 'action' => ['/article/calculator'],
-//                'options' => ['data-pjax' => true ]
-
             ]); ?>
             <div class="row">
 
@@ -47,12 +55,22 @@ $city = \common\models\City::find()->where(['name'=>$toCityName])->one();
                     <?php if ($toCityName) : ?>
                         <?= $form->field($price, 'to_city_id')
                             ->dropDownList(\yii\helpers\ArrayHelper::map(
-                                \common\models\City::find()->where(['name'=>$toCityName])->orWhere(['parent_id'=>$city->id])->all(), 'id','name'),['options'=>[$city->id =>['selected'=>true]]]) ?>
+                                \common\models\City::find()
+                                    ->where(['name'=>$toCityName])
+                                    ->orWhere(['parent_id'=>$city->id])->all(), 'id','name'),[
+                                'options'=>[$city->id =>['selected'=>true]]]) ?>
                     <?php endif; ?>
                     <?php if (!$toCityName) : ?>
+                        <?php
+                            if ($onlyExisted) {
+                                $toCities = \common\models\City::find()
+                                    ->where(['id'=>$to])->all();
+                            } else {
+                                $toCities =  \common\models\City::find()->all();
+                            }
+                        ?>
                         <?= $form->field($price, 'to_city_id')
-                            ->dropDownList(\yii\helpers\ArrayHelper::map(
-                                \common\models\City::find()->all(), 'id','name')) ?>
+                            ->dropDownList(\yii\helpers\ArrayHelper::map($toCities , 'id','name')) ?>
                     <?php endif; ?>
 
                 </div>

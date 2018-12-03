@@ -42,6 +42,7 @@ use yii\widgets\ActiveForm;
                     'text-uppercase' => 'text-uppercase',
                     'strong' => 'strong',
                     'text-center strong' => 'text-center strong',
+                    'text-grey' => 'text-grey',
                 ],['prompt' => 'Выбери']) ?>
         </div>
         <div class="col-sm-8">
@@ -53,6 +54,7 @@ use yii\widgets\ActiveForm;
                     'text-center' => 'text-center',
                     'text-left' => 'text-left',
                     'text-right' => 'text-right',
+                    'text-grey' => 'text-grey',
                 ],['prompt' => 'Выбери']) ?>
         </div>
         <div class="col-sm-8">
@@ -66,6 +68,7 @@ use yii\widgets\ActiveForm;
                     'text-right' => 'text-right',
                     'text_blue_center' => 'text_blue_center',
                     'text_small' => 'text_small',
+                    'text-grey' => 'text-grey',
                 ],['prompt' => 'Выбери']) ?>
         </div>
         <div class="col-sm-8">
@@ -77,6 +80,7 @@ use yii\widgets\ActiveForm;
                     'text-center' => 'text-center',
                     'text-left' => 'text-left',
                     'text-right' => 'text-right',
+                    'text-grey' => 'text-grey',
                 ],['prompt' => 'Выбери']) ?>
         </div>
 
@@ -90,6 +94,7 @@ use yii\widgets\ActiveForm;
                 'w50perSm' => 'w50perSm',
                 'w30perCenter' => 'w30perCenter',
                 'w20per' => 'w20per',
+                'w200' => 'w200',
                 'w100' => 'w100',
                 'w80' => 'w80',
                 'w50' => 'w50',
@@ -120,7 +125,12 @@ use yii\widgets\ActiveForm;
                 '_asbi-img_link_description' => '| img_link_description',
                 '_asbi-header_on_img' => '| header_on_img',
                 '_asbi-v_svg_head_text' => '| svg_head_text',
+                '_asbi-v_img_head_text' => '| img_head_text',
                 '_asbi-h_img_icon_in_head' => '-- img_icon_in_head',
+                '_asbi-h_2col-img_text' => '-- 2col-img_text',
+                '_asbi-h_tbl2_img_head--text__w1-structure' => '-- tbl2_img_head--text__w1-structure',
+                '_asbi-h_tbl2_img--head_text__w1-structure' => '-- tbl2_img--head_text__w1-structure',
+
             ],['prompt' => 'Выбери']) ?>
         </div>
         <div class="col-sm-3">

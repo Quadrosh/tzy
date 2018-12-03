@@ -11,6 +11,8 @@ use yii\helpers\Html;
 $structure = $model->structure;
 $toCityName = '';
 $fromCityName = '';
+$onlyExisted = '';
+$truckName = '';
 if ($structure) {
     foreach (explode('&', $structure) as $chunk) {
         $param = explode("=", $chunk);
@@ -19,6 +21,12 @@ if ($structure) {
         }
         if ($param[0]=='from') {
             $fromCityName=$param[1];
+        }
+        if ($param[0]=='existed') {
+            $onlyExisted=$param[1];
+        }
+        if ($param[0]=='truck') {
+            $truckName=$param[1];
         }
     }
 }
@@ -39,6 +47,8 @@ if ($structure) {
     <?= \common\widgets\PriceCalculatorWidget::widget([
         'toCityName' => $toCityName,
         'fromCityName' => $fromCityName,
+        'onlyExisted' => $onlyExisted,
+        'truckName' => $truckName,
     ]) ?>
 
 

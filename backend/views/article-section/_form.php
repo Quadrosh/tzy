@@ -142,8 +142,10 @@ use yii\widgets\ActiveForm;
             <?= $form->field($model, 'color_key')
                 ->dropDownList([
                     'bright' => 'bright',
-                    'dark' => 'dark',
+                    'light_yellow' => 'light_yellow',
                     'grey' => 'grey',
+                    'blue' => 'blue',
+                    'dark' => 'dark',
                 ],['prompt' => 'Выбери']) ?>
         </div>
         <div class="col-sm-3">

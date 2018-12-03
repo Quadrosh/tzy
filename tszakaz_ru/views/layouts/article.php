@@ -164,7 +164,7 @@ $feedback = new \common\models\Feedback();
                     'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
                 ]) ?>
             </div>
-            <div class=" col-sm-12 ">
+            <div class=" col-sm-12 pl0 pr0">
 
 
                 <?= $content ?>
