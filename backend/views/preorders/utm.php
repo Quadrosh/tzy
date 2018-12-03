@@ -27,6 +27,40 @@ $this->params['breadcrumbs'][] = $this->title;
                 'format'=> 'html',
             ],
             'id',
+            [
+                'class' => \yii\grid\ActionColumn::className(),
+                'buttons' => [
+                    'delete'=>function($url,$model){
+                        return false;
+
+                    },
+                    'view'=>function($url,$model){
+                        return false;
+                    },
+                    'update'=>function($url,$model){
+
+                        if (Yii::$app->user->can('Creator')) {
+                            if ($model['type']=='quickForm') {
+                                $newUrl = Yii::$app->getUrlManager()->createUrl(['/feedback/delete','id'=>$model['id']]);
+                            } else {
+
+                                $newUrl = Yii::$app->getUrlManager()->createUrl(['/preorders/delete','id'=>$model['id']]);
+
+                            }
+                            return \yii\helpers\Html::a( '<span class="glyphicon glyphicon-trash"></span>', $newUrl,
+                                [
+                                    'title' => Yii::t('yii', 'удалить'),
+                                    'data-pjax' => '0','data-method'=>'post',
+                                    'data-confirm'=> 'точно удалить?'
+                                ]);
+                        } else {
+                            return false;
+                        }
+
+                    },
+
+                ]
+            ],
             'site',
 
 //            'type',
