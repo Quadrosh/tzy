@@ -9,3 +9,4 @@ Yii::setAlias('@perevozki_furoi_ru', dirname(dirname(__DIR__)) . '/perevozki_fur
 Yii::setAlias('@perevozki_negabarit_su', dirname(dirname(__DIR__)) . '/perevozki_negabarit_su');
 Yii::setAlias('@perevozki_tralom_ru', dirname(dirname(__DIR__)) . '/perevozki_tralom_ru');
 Yii::setAlias('@tszakaz_ru', dirname(dirname(__DIR__)) . '/tszakaz_ru');
+Yii::setAlias('@perevertish', dirname(dirname(__DIR__)) . '/perevertish');

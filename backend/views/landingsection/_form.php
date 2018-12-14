@@ -32,6 +32,7 @@ use yii\widgets\ActiveForm;
                 'dark' => 'Dark',
                 'bright'=>'Bright',
                 'grey'=>'Grey',
+                'blue'=>'Blue',
             ]) ?>
         </div>
         <div class="col-sm-4">
@@ -60,6 +61,7 @@ use yii\widgets\ActiveForm;
                 'call2action'=>'call2action',
                 'call2action2'=>'call2action2',
                 'call2action3'=>'call2action3',
+                'map'=>'map',
             ]); ?>
         </div>
 

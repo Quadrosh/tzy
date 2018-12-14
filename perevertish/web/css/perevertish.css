@@ -1,0 +1,397 @@
+html,
+body {
+    height: 100%;
+    color: rgb(128, 128, 128);
+    overflow-x: hidden;
+}
+@font-face {
+    font-family: "Helvetica";
+    src: url("fonts/HelveticaRegular/HelveticaRegular.eot");
+    src: url("fonts/HelveticaRegular/HelveticaRegular.eot?#iefix") format("embedded-opentype"),
+    url("fonts/HelveticaRegular/HelveticaRegular.woff") format("woff"),
+    url("fonts/HelveticaRegular/HelveticaRegular.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+@font-face {
+    font-family: "HelveticaBold";
+    src: url("fonts/HelveticaBold/HelveticaBold.eot");
+    src: url("fonts/HelveticaBold/HelveticaBold.eot?#iefix") format("embedded-opentype"),
+    url("fonts/HelveticaBold/HelveticaBold.woff") format("woff"),
+    url("fonts/HelveticaBold/HelveticaBold.ttf") format("truetype");
+    font-style: normal;
+    font-weight: bold;
+}
+@font-face {
+    font-family: "NeoSansProBold";
+    src: url("fonts/NeoSansProBold/neosanspro-bold.eot");
+    src: url("fonts/NeoSansProBold/neosanspro-bold.eot?#iefix") format("embedded-opentype"),
+    url("fonts/NeoSansProBold/neosanspro-bold.woff") format("woff"),
+    url("fonts/NeoSansProBold/neosanspro-bold.ttf") format("truetype");
+    font-style: normal;
+    font-weight: bold;
+}
+@font-face {
+    font-family: "NeoSansProRegular";
+    src: url("fonts/NeoSansProRegular/neosanspro-regular.eot");
+    src: url("fonts/NeoSansProRegular/neosanspro-regular.eot?#iefix") format("embedded-opentype"),
+    url("fonts/NeoSansProRegular/neosanspro-regular.woff") format("woff"),
+    url("fonts/NeoSansProRegular/neosanspro-regular.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+@font-face {
+    font-family: "MyriadProRegular";
+    src: url("fonts/MyriadProRegular/MyriadProRegular.eot");
+    src: url("fonts/MyriadProRegular/MyriadProRegular.eot?#iefix") format("embedded-opentype"),
+    url("fonts/MyriadProRegular/MyriadProRegular.woff") format("woff"),
+    url("fonts/MyriadProRegular/MyriadProRegular.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+.wrap {
+    min-height: 100%;
+    height: auto;
+    margin: 0 auto -60px;
+    padding: 0 0 60px;
+}
+
+.wrap > .container {
+    padding: 70px 15px 20px;
+}
+
+.footer {
+    height: 60px;
+    background-color: #f5f5f5;
+    border-top: 1px solid #ddd;
+    padding-top: 20px;
+}
+.mt200{
+    margin-top: 200px;
+}
+.mt100{
+    margin-top: 100px;
+}
+.mt50{
+    margin-top: 50px;
+}
+.pt20{
+    padding-top: 20px;
+}
+.ml20{
+    margin-left: 20px;
+}
+
+
+.navbar-toggle .icon-bar {
+    /*display: block;*/
+    /*width: 22px;*/
+    /*height: 2px;*/
+    /*border-radius: 1px;*/
+    background-color: #5a8092;
+}
+
+.not-set {
+    color: #c55;
+    font-style: italic;
+}
+
+/* add sorting icons to gridview sort links */
+a.asc:after, a.desc:after {
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    padding-left: 5px;
+}
+
+a.asc:after {
+    content: "\e151";
+}
+
+a.desc:after {
+    content: "\e152";
+}
+
+.sort-numerical a.asc:after {
+    content: "\e153";
+}
+
+.sort-numerical a.desc:after {
+    content: "\e154";
+}
+
+.sort-ordinal a.asc:after {
+    content: "\e155";
+}
+
+.sort-ordinal a.desc:after {
+    content: "\e156";
+}
+
+.grid-view td {
+    white-space: nowrap;
+}
+
+.grid-view .filters input,
+.grid-view .filters select {
+    min-width: 50px;
+}
+
+.hint-block {
+    display: block;
+    margin-top: 5px;
+    color: #999;
+}
+
+.error-summary {
+    color: #a94442;
+    background: #fdf7f7;
+    border-left: 3px solid #eed3d7;
+    padding: 10px 20px;
+    margin: 0 0 15px 0;
+}
+
+
+
+
+.noPadding {
+    padding-left: 0;
+    padding-right: 0;
+}
+.navbar {
+    font-size: 16px;
+}
+.navbar-brand {
+    padding: 5px;
+}
+.navbar-brand img{
+    width: 70px;
+}
+@media only screen and (max-width : 767px) {
+    .navbar-brand img{
+        width: 50px;
+        margin-top: -5px;
+    }
+}
+.block {
+    display: block;
+}
+
+
+.top {
+    min-height: 600px;
+    background-size: cover;
+    background-position: center;
+    padding-top: 100px;
+    padding-bottom: 50px;
+
+}
+.dark {
+    color: #ffffff;
+    background-color: #30353b;
+}
+.grey {
+    background-color: #f5f5f5;
+}
+
+.blue {
+    /*background-color: #7197A9;*/
+    background-color: #46AEDE;
+    color:white;
+}
+.top .center_image{
+    max-width:80%;
+}
+.top h1,
+.top .lead,
+.top .text{
+    text-shadow: 2px 2px 3px  #000;
+}
+h1{
+    text-transform: uppercase;
+    font-size: 24px;
+}
+.lead {
+    text-transform: uppercase;
+    font-size: 42px;
+}
+@media only screen and (max-width : 480px) {
+    .lead {
+        font-size: 24px;
+    }
+}
+.text {
+    font-size: 24px;
+}
+.discountedFull {
+    /*content: '';*/
+    /*text-decoration: line-through;*/
+    /*text-decoration-color: red;*/
+    /*text-decoration-style: solid;*/
+    font-size: 1em;
+    line-height:1em;
+    position: relative;
+
+}
+
+.discountedFull::after {
+    content: '';
+    border-bottom:0.125em solid red;
+    position: absolute;
+    left: 0;
+    /*margin-top: -2em;*/
+    top:50%;
+    right: 0;
+
+}
+.services .lead {
+    font-size: 18px;
+}
+.services{
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+.tech{
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+.tech .text {
+    font-size: 16px;
+}
+.b-icon__close {
+    height: 16px;
+    width: 16px;
+}
+
+.b-icon {
+    position: relative;
+    display: inline-block;
+    line-height: 1;
+}
+
+.slick-dots {
+    position: absolute;
+    bottom: -50px;
+    display: block;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    text-align: center;
+
+}
+.slick-dots li  {
+
+    display: inline-block;
+    margin: 5px;
+
+}
+.slick-dots li button {
+    font-size: 0;
+    line-height: 0;
+    display: block;
+    width: 20px;
+    height: 20px;
+    padding: 5px;
+    cursor: pointer;
+    color: transparent;
+    border: 1px solid grey;
+    outline: none;
+    background: transparent;
+    border-radius: 50px;
+}
+.slick-dots li button:hover {
+border: 1px solid #838e9a;
+}
+
+.slick-dots li.slick-active button {
+    opacity: .75;
+    background: grey;
+    color: black;
+}
+.max-w100per {
+    max-width: 100%;
+}
+.call2action2{
+    padding-top: 30px;
+    padding-bottom: 50px;
+}
+
+.why_we .item {
+    margin-bottom: 50px;
+}
+.why_we .item .icon{
+    width: 100px;
+}
+.why_we .item p{
+    /*color: rgb(128, 128, 128);*/
+    color: #7197A9;
+}
+
+.call2action3{
+    padding-top: 20px;
+    padding-bottom: 50px;
+}
+.contactBlock {
+    position: absolute;
+    top: 100px;
+    left: 50px;
+    z-index:1000;
+    padding: 10px 20px 20px;
+}
+.dark .btn-bordered {
+    border: 1px solid white;
+    color: white;
+}
+.btn-bordered {
+    border: 1px solid grey;
+    color:grey;
+}
+.bottomOrderForm {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.navbar {
+    margin-bottom: 0;
+}
+.navbar a {
+    color: grey;
+
+}
+.navbar a:hover,
+.navbar a:focus {
+    color: grey;
+    text-decoration: underline;
+}
+.navbar-nav > li > a {
+    padding-top: 30px;
+    padding-bottom: 6px;
+    text-align: center;
+}
+.navbar .btn-link {
+    text-transform: uppercase;
+    color: #5a8092;
+    /*padding-right: 0px;*/
+    /*color: #7197A9;*/
+}
+.navbar-nav > li > a:hover {
+    background-color: transparent;
+}
+.reviews {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.btn-danger {
+    /*background-color: #E35E70;*/
+    border-radius: 50px;
+    /*border-color: #E35E70;*/
+}
+#video_section iframe{
+    max-width: 100%;
+}

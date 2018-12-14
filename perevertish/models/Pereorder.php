@@ -1,6 +1,6 @@
 <?php
 
-namespace common\models;
+namespace perevertish\models;
 
 use Yii;
 use yii\behaviors\TimestampBehavior;
@@ -21,7 +21,7 @@ use yii\behaviors\TimestampBehavior;
  * @property int $done
  *
  */
-class Feedback extends \yii\db\ActiveRecord
+class Pereorder extends \yii\db\ActiveRecord
 {
     public $emailForSend;
     /**
@@ -128,13 +128,13 @@ class Feedback extends \yii\db\ActiveRecord
      * @param string $email the target email address
      * @return bool whether the email was sent
      */
-    public function sendEmail($subject)
+    public function mailOrder($subject)
     {
 
         if ($GLOBALS['YII_APP_MODE']=='DEV') {
-            $this->emailForSend = Yii::$app->params['devOrderEmail'];
+            $this->emailForSend = Yii::$app->params['devOrderEmailPerevertish'];
         } elseif ($GLOBALS['YII_APP_MODE']=='PROD') {
-            $this->emailForSend = Yii::$app->params['prodOrderEmail'];
+            $this->emailForSend = Yii::$app->params['prodOrderEmailPerevertish'];
         }
 
         if ($subject == Yii::$app->params['site'].': Запрос обратного звонка') {
@@ -149,7 +149,7 @@ class Feedback extends \yii\db\ActiveRecord
                     " <br/> Со страницы: ".$this->from_page
                 )
                 ->send();
-        } elseif ($subject == Yii::$app->params['site'].': Заявка на грузоперевозку') {
+        } elseif ($subject == Yii::$app->params['site'].': Заказ') {
             return Yii::$app->mailer->compose()
                 ->setTo($this->emailForSend)
                 ->setFrom('sender@'.Yii::$app->params['site'])
