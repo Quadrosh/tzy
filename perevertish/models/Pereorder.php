@@ -190,12 +190,6 @@ class Pereorder extends \yii\db\ActiveRecord
     }
 
 
-//* @property string $from_page
-//* @property string $phone
-//* @property string $email
-//* @property string $contacts
-//* @property string $text
-
 
 
 

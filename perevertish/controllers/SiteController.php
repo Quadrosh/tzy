@@ -187,6 +187,7 @@ class SiteController extends Controller
     public function actionFeedback()
     {
         $feedback = new Pereorder();
+
         if ($feedback->load(Yii::$app->request->post())) {
             $spamOrders = Preorders::find()
                 ->where(['ip'=>Yii::$app->request->userIP])

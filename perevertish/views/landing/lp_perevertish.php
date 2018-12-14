@@ -12,8 +12,9 @@ use yii\bootstrap\ActiveForm;
 //$this->title = 'Page View';
 //$this->params['breadcrumbs'][] = $this->title;
 
-$feedback = new common\models\Feedback();
-$preorder = new common\models\Preorders();
+//$feedback = new common\models\Feedback();
+$feedback = new \perevertish\models\Pereorder();
+//$preorder = new common\models\Preorders();
 ?>
 
 <?php
