@@ -156,15 +156,10 @@ class Pereorder extends \yii\db\ActiveRecord
                 ->setSubject($subject)
                 ->setHtmlBody(
                     "Данные запроса <br>".
-                    " <br/> Со страницы: ".$this->from_page .
-                    " <br/> Откуда: ".$this->user_id .
-                    " <br/> Куда: ".$this->city .
+                    " <br/> Имя: ".$this->name .
                     " <br/> Телефон: ".$this->phone .
-                    " <br/> Email: ".$this->email .
-                    " <br/> Груз: ".$this->name .
-                    " <br/> Вес: ".$this->contacts .
-                    " <br/> Комментарий: <br/> " .
-                    nl2br($this->text)
+                    " <br/> Адрес: ".nl2br($this->text)
+
                 )
                 ->send();
         } else {
@@ -174,15 +169,9 @@ class Pereorder extends \yii\db\ActiveRecord
                 ->setSubject($subject)
                 ->setHtmlBody(
                     "Данные запроса <br>".
-                    " <br/> Со страницы: ".$this->from_page .
-                    " <br/> Откуда: ".$this->user_id .
-                    " <br/> Куда: ".$this->city .
+                    " <br/> Имя: ".$this->name .
                     " <br/> Телефон: ".$this->phone .
-                    " <br/> Email: ".$this->email .
-                    " <br/> Груз: ".$this->name .
-                    " <br/> Вес: ".$this->contacts .
-                    " <br/> Комментарий: <br/> " .
-                    nl2br($this->text)
+                    " <br/> Адрес: ".nl2br($this->text)
                 )
                 ->send();
         }

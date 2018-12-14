@@ -189,6 +189,9 @@ class SiteController extends Controller
         $feedback = new Pereorder();
 
         if ($feedback->load(Yii::$app->request->post())) {
+
+//            var_dump($feedback); die;
+
             $spamOrders = Preorders::find()
                 ->where(['ip'=>Yii::$app->request->userIP])
                 ->andWhere(['>','date',time()-86400])
@@ -205,7 +208,12 @@ class SiteController extends Controller
             $feedback['site'] = Yii::$app->params['site'];
             $feedback['ip'] = Yii::$app->request->userIP;
             if ( $feedback->save()) {
-                if ($feedback->mailOrder( Yii::$app->params['site'].': Запрос обратного звонка')) {
+                if (isset($feedback->text)) {
+                    $sendResult = $feedback->mailOrder( Yii::$app->params['site'].': Заказ');
+                } else {
+                    $sendResult = $feedback->mailOrder( Yii::$app->params['site'].': Запрос обратного звонка');
+                }
+                if ($sendResult) {
                     Yii::$app->session->setFlash('success', 'Ваша заявка отправлена. <br> Мы свяжемся с Вами в ближайшее время.');
                     return $this->redirect(Url::previous());
                 } else {
