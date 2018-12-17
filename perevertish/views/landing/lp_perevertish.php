@@ -210,19 +210,23 @@ NavBar::end();
                     <?= common\widgets\Alert::widget() ?>
                 </div>
 
-                <div class="text-center">
-                    <?= Html::img('/img/ht1.png',['class'=>'center_image']) ?>
-                </div>
-                <p class="text"><?= $sections['top']['text'] ?></p>
-                <p class="text"><?= nl2br($sections['top']['extra'])  ?></p>
+
 
 
                 <div class="col-xs-12">
+                    <p class="text"><?= nl2br($sections['top']['extra'])  ?></p>
+                    <p class="text"><?= $sections['top']['text'] ?></p>
+
                     <a href="#"
                        data-toggle="modal"
                        data-target="#orderModal"
                        class="btn btn-danger">Купить</a>
                 </div>
+
+                <div class="text-center">
+                    <?= Html::img('/img/ht1.png',['class'=>'center_image']) ?>
+                </div>
+
 
             </div>
         </div>
@@ -334,13 +338,8 @@ NavBar::end();
             <div class="row">
                 <h2 ><?= nl2br($sections['reviews']['head']) ?></h2>
                 <div class="col-sm-12">
-<!--                     -->
-                    <iframe
-                        width="560"
-                        height="315"
-                        src="https://www.youtube.com/embed/z_lpsM3-SEM"
-                        frameborder="0"
-                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<!--          embed video           -->
+                    <?= $sections['reviews']['text'] ?>
                 </div>
             </div>
         </div>
