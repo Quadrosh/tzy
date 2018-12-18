@@ -232,6 +232,8 @@ h1{
     /*text-decoration: line-through;*/
     /*text-decoration-color: red;*/
     /*text-decoration-style: solid;*/
+    padding-right:3px;
+    padding-left: 3px;
     font-size: 1em;
     line-height:1em;
     position: relative;
@@ -240,12 +242,13 @@ h1{
 
 .discountedFull::after {
     content: '';
-    border-bottom:0.125em solid red;
+    border-bottom:0.1em solid red;
     position: absolute;
     left: 0;
     /*margin-top: -2em;*/
-    top:50%;
+    top:52%;
     right: 0;
+    transform: rotate(160deg);
 
 }
 .services .lead {
