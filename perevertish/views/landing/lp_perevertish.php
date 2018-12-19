@@ -395,8 +395,8 @@ NavBar::end();
                                 <p>  <?= nl2br($item['text'])  ?> </p>
                             </div>
 
-                            <?= Html::img('/img/ht2.png',[
-                                'class'=>'icon max-w100per','alt'=>'изображение Ultimate X 01'])  ?>
+                            <?= Html::img('/img/_match_bottom.png',[
+                                'class'=>'icon max-w100per','alt'=>'изображение машинки - перевертыша на радиоуправлении'])  ?>
 
                         </div>
                         <div class="col-sm-4 mt100">
