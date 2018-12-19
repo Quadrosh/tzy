@@ -398,3 +398,6 @@ border: 1px solid #838e9a;
 #video_section iframe{
     max-width: 100%;
 }
+.nowrap {
+    white-space: nowrap;
+}
