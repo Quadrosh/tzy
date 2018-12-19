@@ -253,7 +253,7 @@ NavBar::end();
     <section id="tech_section" class="<?= $sections['what_we_do']['stylekey'] ?> tech text-left" >
         <div class="container">
             <div class="row">
-                <div class="col-sm-6 pt20">
+                <div class="col-sm-6 pt20 pb70">
 <?php $model = $sections['what_we_do']; ?>
 
                     <div class="carouselWrapper slickMulti"
