@@ -199,7 +199,7 @@ NavBar::end();
 <div >
 
     <!--   dark top-->
-    <section class="<?= $sections['top']['stylekey'] ?> <?= $sections['top']['section_type'] ?> text-center" style=" background-image: url(/img/<?= $sections['top']['image'] ?>)">
+    <section class="<?= $sections['top']['stylekey'] ?> <?= $sections['top']['section_type'] ?> text-center" style=" background-image: url(/img/background4.jpg)">
 
         <div class="container">
             <div class="row">
@@ -224,7 +224,10 @@ NavBar::end();
                 </div>
 
                 <div class="text-center">
-                    <?= Html::img('/img/ht1.png',['class'=>'center_image']) ?>
+<!--                    --><?//= Html::img('/img/_match_top.png',['class'=>'center_image']) ?>
+                    <?= Html::img('/img/'. $sections['top']['image'] ,[
+                        'class'=>'center_image',
+                        'alt'=>$sections['top']['image_alt']]) ?>
                 </div>
 
 
