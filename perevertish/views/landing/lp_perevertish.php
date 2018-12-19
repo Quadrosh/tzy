@@ -297,7 +297,7 @@ NavBar::end();
                 <div class="col-sm-6 ">
                     <p class="text "><?= nl2br($model['head']) ?></p>
                     <p class="text ">  <?= nl2br($model['lead'])  ?></p>
-                    <p class="text"><?= nl2br($model['text']) ?></p>
+                    <p class="text"><?= $model['text'] ?></p>
                     <p  class="price"><?= nl2br($model['extra']) ?></p>
                     <p><span><a href="#"
                                 data-toggle="modal"
