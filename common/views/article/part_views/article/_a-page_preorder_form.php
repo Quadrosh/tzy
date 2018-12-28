@@ -13,7 +13,9 @@ $preorderForm = new \common\models\Preorders();
     <div class="row">
         <div class="col-md-10 col-md-offset-1  col-lg-8 col-lg-offset-2">
             <?= Alert::widget() ?>
-            <h1 class="text-center"><?= Html::encode($article->h1) ?></h1>
+            <?php if ($article->h1) : ?>
+                <h1 class="text-center"><?= Html::encode($article->h1) ?></h1>
+            <?php endif; ?>
 
             <?php if ($article->exerpt) : ?>
                 <p><?= $article->exerpt ?></p>

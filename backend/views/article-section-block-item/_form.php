@@ -126,6 +126,7 @@ use yii\widgets\ActiveForm;
                 '_asbi-header_on_img' => '| header_on_img',
                 '_asbi-v_svg_head_text' => '| svg_head_text',
                 '_asbi-v_img_head_text' => '| img_head_text',
+                '_asbi-v_2_links' => '| 2_links',
                 '_asbi-h_img_icon_in_head' => '-- img_icon_in_head',
                 '_asbi-h_2col-img_text' => '-- 2col-img_text',
                 '_asbi-h_tbl2_img_head--text__w1-structure' => '-- tbl2_img_head--text__w1-structure',

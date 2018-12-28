@@ -678,6 +678,7 @@ header .b-top__banner .b-top__banner__shadow {
 .breadcrumb {
     background-color: transparent;
     margin-top: 10px;
+    margin-bottom: 0;
 }
 .breadcrumb li a {
     /*color: #706f6f;*/

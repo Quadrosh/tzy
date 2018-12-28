@@ -24,8 +24,8 @@ use yii\widgets\ActiveForm;
     <div class="row">
         <div class="col-sm-6">
 
-            <?= $form->field($model, 'site')->dropDownList(\yii\helpers\ArrayHelper::map(\common\models\Sites::find()->all(), 'name','name'))?>
-<!--            --><?//= $form->field($model, 'site')->dropDownList(Yii::$app->params['siteList'],['prompt'=>'Выберите сайт'])?>
+            <?= $form->field($model, 'site')->dropDownList(\yii\helpers\ArrayHelper::map(\common\models\Sites::find()->all(), 'name','name'),['prompt'=>'Выберите сайт'])?>
+
         </div>
         <div class="col-sm-6">
             <?= $form->field($model, 'categories')

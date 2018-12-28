@@ -129,6 +129,7 @@ use yii\widgets\ActiveForm;
                 '_asb-ul-li' => 'ul-li',
                 '_asb-ol-li' => 'ol-li',
                 '_asb-price_calculator' => 'price_calculator',
+                '_asb-how_we_work' => 'how_we_work',
             ],['prompt' => 'Выбери']) ?>
         </div>
         <div class="col-sm-3">

@@ -131,6 +131,7 @@ use yii\widgets\ActiveForm;
                 '_as-head-descr-blocks-text' => 'head-descr-blocks-text',
                 '_as-image_float_in_text' => 'image_float_in_text',
                 '_as-image_icon_in_head' => 'image_icon_in_head',
+                '_as-top_h1_bgr_image-fw' => 'top_h1_bgr_image-fw',
                 '_as-head-descr-blocks-text-fw' => 'head-descr-blocks-text-fw',
                 '_as-image_float_in_text-fw' => 'image_float_in_text-fw',
                 '_as-image_icon_in_head-fw' => 'image_icon_in_head-fw',

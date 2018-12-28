@@ -56,7 +56,9 @@ $preorder = new common\models\Preorders();
 </nav>
 <div class="container <?= $page['color'] ?>">
 <!--   dark top-->
-    <section class="<?= $sections['top']['stylekey'] ?> <?= $sections['top']['section_type'] ?>" style=" background-image: url(/img/<?= $sections['top']['image'] ?>)">
+    <section
+        class="<?= $sections['top']['stylekey'] ?> <?= $sections['top']['section_type'] ?>"
+        style=" background-image: url(/img/<?= $sections['top']['image'] ?>)">
         <h1 class="head c_def"><?= $sections['top']['head'] ?></h1>
         <h2 class="extra c_def"><?= $sections['top']['extra'] ?></h2>
         <div class="col-sm-4 col-sm-offset-4 ">
