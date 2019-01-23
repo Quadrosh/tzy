@@ -77,7 +77,7 @@ $to = [];
                 <div class="col-sm-4 ">
                     <?= $form->field($price, 'truck_id')
                         ->dropDownList(\yii\helpers\ArrayHelper::map(
-                            \common\models\Truck::find()->all(), 'id','name'))?>
+                            \common\models\Truck::find()->all(), 'id','name'),['options'=>['4'=>['selected'=>true]]])?>
                 </div>
                 <div class="col-sm-4">
                     <?= $form->field($price, 'shipment_type')
