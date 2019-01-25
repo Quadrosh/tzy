@@ -34,6 +34,7 @@ use yii\helpers\Html;
                 <?php endif; ?>
                 <div class="col-sm-4 <?php
                 if ($i!=1 && $i%3==1 && $i+1 == $count){echo'col-sm-offset-2';}
+                if ($i!=1 && $i%3==1 && $i == $count){echo'col-sm-offset-4';}
                 ?>">
 
                     <?php if ($item->view) : ?>
