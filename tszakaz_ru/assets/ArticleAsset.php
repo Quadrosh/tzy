@@ -19,7 +19,7 @@ class ArticleAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
         'libs/slick/slick.css',
-        'libs/magnific/magnificpopup.css',
+        'libs/magnific/magnificpopup.min.css',
         'libs/font-awesome/css/font-awesome.min.css',
         'css/style.css',
         'css/common/article.css',
