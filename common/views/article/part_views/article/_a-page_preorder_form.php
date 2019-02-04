@@ -145,6 +145,14 @@ $preorderForm = new \common\models\Preorders();
            
         <?php endforeach; ?>
     <?php endif; ?>
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1  col-lg-8 col-lg-offset-2 text-right">
+            <script src="//yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script>
+            <script src="//yastatic.net/share2/share.js"></script>
+            <div class="ya-share2" data-services="vkontakte,facebook,odnoklassniki,moimir,twitter,lj,viber,whatsapp,skype,telegram"></div>
+    </div>
+
+    </div>
 
     <div class="text-center">
         <?= Html::a('Оформить заявку', '#orderForm',['class' => 'btn btn-primary order-btn mt10 mb20', 'data-toggle'=>'collapse']) ?>
@@ -155,7 +163,6 @@ $preorderForm = new \common\models\Preorders();
             'action' =>['site/order'],
             'id' => 'order-form',
             'method' => 'post',]); ?>
-        <!--    --><?php //$form = ActiveForm::begin(['action' =>['site/ordercaptcha'], 'method' => 'post',]); ?>
         <div class="row">
             <div class="col-sm-6">
                 <?= $form->field($preorderForm, 'dispatch')
@@ -185,8 +192,7 @@ $preorderForm = new \common\models\Preorders();
                 <?= $form->field($preorderForm, 'text')
                     ->textarea(['rows' => 1,'id' => 'preorder_form-text'])->label('Комментарий') ?>
             </div>
-            <!--        captcha -->
-            <!--        <div class="col-sm-12"> --><?//= $form->field($preorderForm, 'captcha')->widget(Captcha::className()) ?><!--</div>-->
+
 
             <?= $form->field($preorderForm, 'from_page')
                 ->hiddenInput(['value'=>$article->hrurl ,'id' => 'preorder_form-from_page'])->label(false) ?>
