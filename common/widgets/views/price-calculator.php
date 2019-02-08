@@ -45,7 +45,6 @@ $to = [];
     <div class="box">
 
 
-
         <div class="price-form">
 
             <?php $form = ActiveForm::begin([
