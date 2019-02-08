@@ -256,6 +256,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         'data-method'=>'post'
                     ])
                 .'</li>':'' ?>
+            <?= $section->section_image_alt?'<li class="text-success"> Image Alt - '.$section->section_image_alt.'</li>':'' ?>
             <?= $section->background_image?'<li> Background Image - '
                 .Html::img('/img/'. $section->background_image, ['class'=>'gridThumb'])
                 .'<sup>'.$section->background_image.'</sup>'
@@ -382,6 +383,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             }
                             ?>
                             <?= $block->image?$blockImageLi:'' ?>
+                            <?= $block->image_alt?'<li class="text-success"> Image Alt - '.$block->image_alt.'</li>':'' ?>
                             <?= $block->background_image?'<li> Background Image - '
                                 .Html::img('/img/'. $block->background_image, ['class'=>'gridThumb'])
                                 .'<sup>'.$block->background_image.'</sup>'
@@ -482,7 +484,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                         }
                                         ?>
                                         <?= $item->image?$itemImageLi:'' ?>
-                                        <?= $item->image_alt?'<li> Image Alt - '.$item->image_alt.'</li>':'' ?>
+                                        <?= $item->image_alt?'<li class="text-success"> Image Alt - '.$item->image_alt.'</li>':'' ?>
                                         <?= $item->link_name?'<li> Link Name - '.$item->link_name.'</li>':'' ?>
                                         <?= $item->link_url?'<li> Link Url - '.$item->link_url.'</li>':'' ?>
                                         <?= $item->link_class?'<li> Link Class - '.$item->link_class.'</li>':'' ?>

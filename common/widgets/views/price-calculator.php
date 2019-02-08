@@ -5,14 +5,22 @@
 /* @var $message string */
 /* @var $exception Exception */
 /* @var $price common\models\Price */
+/* @var $toCityName string */
+/* @var $fromCityName string */
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 $price = new \common\models\PriceCalculator();
 
+if ($toCityName) {
+    $city = \common\models\City::find()->where(['name'=>$toCityName])->one();
+} elseif ($fromCityName) {
+    $city = \common\models\City::find()->where(['name'=>$fromCityName])->one();
+} else {
+    $city =  \common\models\City::find()->where(['name'=>'Москва'])->one();
+}
 
-$city = \common\models\City::find()->where(['name'=>$toCityName])->one();
 $from = [];
 $to = [];
 
@@ -47,9 +55,26 @@ $to = [];
             <div class="row">
 
                 <div class="col-sm-6">
-                    <?= $form->field($price, 'from_city_id')
-                        ->dropDownList(\yii\helpers\ArrayHelper::map(
-                            \common\models\City::find()->all(), 'id','name'))?>
+                    <?php if ($fromCityName) : ?>
+                        <?= $form->field($price, 'from_city_id')
+                            ->dropDownList(\yii\helpers\ArrayHelper::map(
+                                \common\models\City::find()
+                                    ->where(['name'=>$fromCityName])
+                                    ->all(), 'id','name'),[
+                                'options'=>[$city->id =>['selected'=>true]]]) ?>
+                    <?php endif; ?>
+                    <?php if (!$fromCityName) : ?>
+                        <?php
+                        if ($onlyExisted) {
+                            $fromCities = \common\models\City::find()
+                                ->where(['id'=>$from])->all();
+                        } else {
+                            $fromCities =  \common\models\City::find()->all();
+                        }
+                        ?>
+                        <?= $form->field($price, 'from_city_id')
+                            ->dropDownList(\yii\helpers\ArrayHelper::map($fromCities , 'id','name')) ?>
+                    <?php endif; ?>
                 </div>
                 <div class="col-sm-6">
                     <?php if ($toCityName) : ?>
@@ -57,7 +82,7 @@ $to = [];
                             ->dropDownList(\yii\helpers\ArrayHelper::map(
                                 \common\models\City::find()
                                     ->where(['name'=>$toCityName])
-                                    ->orWhere(['parent_id'=>$city->id])->all(), 'id','name'),[
+                                    ->all(), 'id','name'),[
                                 'options'=>[$city->id =>['selected'=>true]]]) ?>
                     <?php endif; ?>
                     <?php if (!$toCityName) : ?>
