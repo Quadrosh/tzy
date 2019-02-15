@@ -187,13 +187,13 @@ $feedback = new \common\models\Feedback();
             </div>
             <div class="col-xs-6 col-sm-8 b-footer__menu">
                 <div class="col-sm-3 text-center ">
-                    <a href="about.html">О компании</a>
+                    <a href="/about.html">О компании</a>
                 </div>
                 <div class="col-sm-3 text-center ">
-                    <a href="services.html">Услуги</a>
+                    <a href="/services.html">Услуги</a>
                 </div>
                 <div class="col-sm-3 text-center ">
-                    <a href="contacts.html">Контакты</a>
+                    <a href="/contacts.html">Контакты</a>
                 </div>
                 <div class="col-sm-3 text-center hidden-xs">
                     <a href="/sitemap.html">Карта сайта</a>
