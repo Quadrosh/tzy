@@ -13,36 +13,43 @@ class Sitemap extends Model
         $urls = [];
         $pages = Pages::find()->where(['site'=>Yii::$app->params['site'],'status'=>'published'])->all();
         foreach ($pages as $page){
-            if ($page->hrurl=='home') {
-                $this->homeLastMod =  \Yii::$app->formatter->asDatetime($page->updated_at, 'yyyy-MM-dd');
-            } else{
                 $urls[]=[
                     'url'=>Yii::$app->urlManager->createUrl([$page->hrurl.'.html']),
-                    'changefreq'=>'daily',
+                    'priority'=>'0.6',
                     'lastmod'=> \Yii::$app->formatter->asDatetime($page->updated_at, 'yyyy-MM-dd')
                 ];
-            }
-
         }
         $articlePages = Pages::find()->where([
             'site'=>Yii::$app->params['site'],
             'status'=>'article'
         ])->all();
+        $topPriority='0.9';
+        $normPriority='0.8';
         foreach ($articlePages as $articlePage){
-            $article = Article::find()->where([
+            $articleForPage = Article::find()->where([
                 'site'=>Yii::$app->params['site'],
                 'hrurl'=>$articlePage->hrurl,
                 'status'=>'page'
             ])->one();
-            if ($article && $article->hrurl!='home') {
-                $urls[]=[
-                    'url'=>Yii::$app->urlManager->createUrl([$article->hrurl.'.html']),
-                    'changefreq'=>'daily',
-                    'lastmod'=> \Yii::$app->formatter->asDatetime($article->updated_at, 'yyyy-MM-dd')
-                ];
+            if ($articleForPage) {
+                $priority=$normPriority;
+                if ($articleForPage->hrurl=='perevozki-dlya-juridicheskih-lits'||
+                    $articleForPage->hrurl=='services_russia') {
+                    $priority=$topPriority;
+                }
+                if ($articleForPage->hrurl=='home') {
+                    $this->homeLastMod =  \Yii::$app->formatter->asDatetime($articleForPage->updated_at, 'yyyy-MM-dd');
+                } else {
+                    $urls[]=[
+                        'url'=>Yii::$app->urlManager->createUrl([$articleForPage->hrurl.'.html']),
+                        'priority'=>$priority,
+                        'lastmod'=> \Yii::$app->formatter->asDatetime($articleForPage->updated_at, 'yyyy-MM-dd')
+                    ];
+                }
             }
 
         }
+
         $landingPages = LandingPage::find()->where([
             'site'=>Yii::$app->params['site'],
             'status'=>'published'
@@ -50,7 +57,7 @@ class Sitemap extends Model
         foreach ($landingPages as $landingPage){
             $urls[]=[
                 'url'=>Yii::$app->urlManager->createUrl(['/lp/'.$landingPage->hrurl]),
-                'changefreq'=>'daily',
+                'priority'=>'0.5',
                 'lastmod'=> \Yii::$app->formatter->asDatetime($landingPage->updated_at, 'yyyy-MM-dd')
             ];
         }
@@ -64,7 +71,6 @@ class Sitemap extends Model
         <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
             <url>
                 <loc><?= $host ?></loc>
-                <changefreq>daily</changefreq>
                 <priority>1</priority>
                 <lastmod><?= $this->homeLastMod ?></lastmod>
             </url>
@@ -72,7 +78,7 @@ class Sitemap extends Model
                 <url>
                     <loc><?= $host.$url['url'] ?></loc>
                     <lastmod><?= $url['lastmod'] ?></lastmod>
-                    <changefreq><?= $url['changefreq'] ?></changefreq>
+                    <priority><?= $url['priority'] ?></priority>
                 </url>
             <?php endforeach; ?>
         </urlset>

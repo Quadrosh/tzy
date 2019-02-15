@@ -209,7 +209,8 @@ class SiteController extends Controller
 
         $sitemap = new Sitemap();
 
-        if (true or !$xml_sitemap = Yii::$app->cache->get('sitemap')) {
+        $xml_sitemap = Yii::$app->cache->get('sitemap');
+        if (true or !$xml_sitemap) {
 
             $urls = $sitemap->getUrl();
 
