@@ -35,15 +35,24 @@ $this->params['breadcrumbs'][] = $this->title;
 
                     },
                     'view'=>function($url,$model){
-                        return false;
+                        if (Yii::$app->user->can('Creator')) {
+                            if ($model['type']=='quickForm') {
+                                $newUrl = Yii::$app->getUrlManager()
+                                    ->createUrl(['/feedback/view','id'=>$model['id']]);
+                            } else {
+                                $newUrl = Yii::$app->getUrlManager()
+                                    ->createUrl(['/preorders/view','id'=>$model['id']]);
+                            }
+                            return \yii\helpers\Html::a( '<span class="glyphicon glyphicon-eye-open"></span>', $newUrl, ['title' => Yii::t('yii', 'просмотр'),]);
+                        } else {
+                            return false;
+                        }
                     },
                     'update'=>function($url,$model){
-
                         if (Yii::$app->user->can('Creator')) {
                             if ($model['type']=='quickForm') {
                                 $newUrl = Yii::$app->getUrlManager()->createUrl(['/feedback/delete','id'=>$model['id']]);
                             } else {
-
                                 $newUrl = Yii::$app->getUrlManager()->createUrl(['/preorders/delete','id'=>$model['id']]);
 
                             }

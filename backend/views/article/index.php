@@ -41,6 +41,7 @@ $this->params['breadcrumbs'][] = $this->title;
 //            ['class' => 'yii\grid\SerialColumn'],
 
             'id',
+            'site',
             'list_name',
 //            'cat_ids:ntext',
             [
