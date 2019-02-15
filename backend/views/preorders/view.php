@@ -40,8 +40,10 @@ $this->params['breadcrumbs'][] = $this->title;
             'weight',
             'text:ntext',
             'from_page',
-            'date',
             'done',
+            ['attribute'=>'date', 'format'=> 'html',
+                'value' => function($data) {
+                    return \Yii::$app->formatter->asDatetime($data['date'], 'dd/MM/yy HH:mm');}],
         ],
     ]) ?>
 

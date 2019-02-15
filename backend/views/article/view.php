@@ -4,6 +4,8 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 use \yii\widgets\ActiveForm;
 
+//var_dump(Yii::$app->request->getHostName()); die;
+
 /* @var $this yii\web\View */
 /* @var $model common\models\Article */
 /* @var $section common\models\ArticleSection */
