@@ -367,4 +367,13 @@ class Article extends \yii\db\ActiveRecord
 
 
     }
+
+    public static function getViews()
+    {
+        return [
+            '_a-default' => 'default',
+            '_a-page_preorder_form' => 'page_preorder_form',
+            '_a-1' => '1',
+        ];
+    }
 }

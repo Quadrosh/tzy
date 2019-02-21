@@ -121,22 +121,12 @@ $this->params['breadcrumbs'][] = $this->title;
             'status',
             'view',
             'layout',
-            [
-                'attribute'=>'created_at',
-                'value' => function($data)
-                {
-                    return \Yii::$app->formatter->asDatetime($data['created_at'], 'dd/MM/yy HH:mm');
-                },
-                'format'=> 'html',
-            ],
-            [
-                'attribute'=>'updated_at',
-                'value' => function($data)
-                {
-                    return \Yii::$app->formatter->asDatetime($data['updated_at'], 'dd/MM/yy HH:mm');
-                },
-                'format'=> 'html',
-            ],
+            ['attribute'=>'created_at', 'format'=> 'html',
+                'value' => function($data) {
+                    return \Yii::$app->formatter->asDatetime($data['created_at'], 'dd/MM/yy HH:mm');},],
+            ['attribute'=>'updated_at', 'format'=> 'html',
+                'value' => function($data) {
+                    return \Yii::$app->formatter->asDatetime($data['updated_at'], 'dd/MM/yy HH:mm');},],
 
         ],
     ]) ?>

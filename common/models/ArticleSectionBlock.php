@@ -213,4 +213,21 @@ class ArticleSectionBlock extends \yii\db\ActiveRecord
         }
 
     }
+
+    public static function getViews()
+    {
+        return [
+            '_asb-bs_horiz_4' => 'bs_horiz_4',
+            '_asb-bs_horiz_3' => 'bs_horiz_3',
+            '_asb-bs_horiz_2' => 'bs_horiz_2',
+            '_asb-slick_1' => 'slick_1',
+            '_asb-slick_3' => 'slick_3',
+            '_asb-slick_banner_1' => 'slick_banner_1',
+            '_asb-ul-li' => 'ul-li',
+            '_asb-ol-li' => 'ol-li',
+            '_asb-price_calculator' => 'price_calculator',
+            '_asb-city_price_calc' => 'city_price_calc',
+            '_asb-how_we_work' => 'how_we_work',
+        ];
+    }
 }

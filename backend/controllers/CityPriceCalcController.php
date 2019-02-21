@@ -4,8 +4,8 @@ namespace backend\controllers;
 
 use common\models\ImportCsv;
 use Yii;
-use common\models\Price;
-use common\models\PriceSearch;
+use common\models\CityPriceCalc;
+use common\models\CityPriceCalcSearch;
 use yii\helpers\Url;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -13,9 +13,9 @@ use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
 
 /**
- * PriceController implements the CRUD actions for Price model.
+ * CityPriceCalcController implements the CRUD actions for CityPriceCalc model.
  */
-class PriceController extends Controller
+class CityPriceCalcController extends Controller
 {
     /**
      * @inheritdoc
@@ -33,13 +33,13 @@ class PriceController extends Controller
     }
 
     /**
-     * Lists all Price models.
+     * Lists all CityPriceCalc models.
      * @return mixed
      */
     public function actionIndex()
     {
         Url::remember();
-        $searchModel = new PriceSearch();
+        $searchModel = new CityPriceCalcSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -49,7 +49,7 @@ class PriceController extends Controller
     }
 
     /**
-     * Displays a single Price model.
+     * Displays a single CityPriceCalc model.
      * @param integer $id
      * @return mixed
      */
@@ -62,13 +62,13 @@ class PriceController extends Controller
     }
 
     /**
-     * Creates a new Price model.
+     * Creates a new CityPriceCalc model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Price();
+        $model = new CityPriceCalc();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(Url::previous());
@@ -80,7 +80,7 @@ class PriceController extends Controller
     }
 
     /**
-     * Updates an existing Price model.
+     * Updates an existing CityPriceCalc model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -99,7 +99,7 @@ class PriceController extends Controller
     }
 
     /**
-     * Deletes an existing Price model.
+     * Deletes an existing CityPriceCalc model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -112,15 +112,15 @@ class PriceController extends Controller
     }
 
     /**
-     * Finds the Price model based on its primary key value.
+     * Finds the CityPriceCalc model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Price the loaded model
+     * @return CityPriceCalc the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Price::findOne($id)) !== null) {
+        if (($model = CityPriceCalc::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
@@ -132,17 +132,11 @@ class PriceController extends Controller
         $importModel = new ImportCsv();
         if (Yii::$app->request->isPost) {
             $importModel->file = UploadedFile::getInstance($importModel,'file');
-            if ($importModel->import(ImportCsv::TYPE_PRICE)) {
+            if ($importModel->import(ImportCsv::TYPE_CITY_PRICE_CALC)) {
                 Yii::$app->session->setFlash('success', 'Файл импортирован успешно');
             }
             return $this->redirect(Url::previous());
 
-
-//            $uploadmodel->imageFile = UploadedFile::getInstance($uploadmodel, 'imageFile');
-//            if ($uploadmodel->upload()) {
-//                Yii::$app->session->setFlash('success', 'Файл загружен успешно');
-//            }
-//            return $this->redirect(Url::previous());
         }
     }
 }
