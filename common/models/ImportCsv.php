@@ -10,6 +10,9 @@ use Yii;
 
 class ImportCsv  extends Model
 {
+    const TYPE_CITY_PRICE_CALC = 'cityPriceCalc';
+    const TYPE_PRICE = 'price';
+
     /**
      * @var $file UploadedFile
      */
@@ -25,7 +28,7 @@ class ImportCsv  extends Model
 
     public function import($type)
     {
-        if ($type == 'price') {
+        if ($type == self::TYPE_PRICE) {
             $res = [];
             $fileName = $this->file->baseName .'.' . $this->file->extension;
             $tempPath = "img/{$fileName}";
@@ -82,6 +85,41 @@ class ImportCsv  extends Model
                 throw new HttpException('Ошибка загрузки файла');
             }
 
+        }
+
+        // CITY PRICE CALC
+        if ($type == self::TYPE_CITY_PRICE_CALC) {
+            $res = [];
+            $fileName = $this->file->baseName .'.' . $this->file->extension;
+            $tempPath = "img/{$fileName}";
+            if ($this->file->saveAs($tempPath)) {
+                $names=[];
+                $strArr = array_map('str_getcsv', file($tempPath));
+                unlink($tempPath);
+                $i=0;
+                foreach ($strArr as $line) {
+                    $i++;
+                    if ($line[0]=='city') { // заголовки
+                        foreach ($line as $col) {
+                            $names[]=$col;
+                        }
+                    } else {
+                        $price = new CityPriceCalc();
+                        foreach ($line as $key => $col) {
+                            $colname = $names[$key];
+                            $price->$colname = $col;
+                        }
+
+                        $res[] = $price;
+                    }
+                }
+                foreach ($res as $price) {
+                    $price->save();
+                }
+                return true;
+            } else {
+                throw new HttpException('Ошибка загрузки файла');
+            }
 
         }
 
@@ -91,7 +129,7 @@ class ImportCsv  extends Model
 
         $object = $type::find()->where(['name'=>trim($sting)])->one();
         if (!$object) {
-            Yii::$app->session->setFlash('error', 'В строке "'.$i.'" не распознан объект"'.$sting.'". Все города и кузовы должны уже быть в базе до импорта файла');
+            Yii::$app->session->setFlash('error', 'В строке "'.$i.'" не распознан объект"'.$sting.'". Все объекты (города и кузовы) должны уже быть в базе до импорта файла');
             return false;
         } else {
             return $object->id;

@@ -5,6 +5,7 @@ namespace tszakaz_ru\controllers;
 use common\models\Article;
 use common\models\ChatItem;
 use common\models\ChatMessage;
+use common\models\CityPriceCalc;
 use common\models\LandingListitem;
 use common\models\LandingPage;
 use common\models\LandingSection;
@@ -208,5 +209,12 @@ class ArticleController extends Controller
         }
     }
 
+    public function actionCityPriceCalc()
+    {
+        if (Yii::$app->request->isPost) {
+            $request = Yii::$app->request->post('CityPriceCalc');
+            return CityPriceCalc::calculate($request);
+        }
+    }
 
 }

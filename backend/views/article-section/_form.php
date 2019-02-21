@@ -127,17 +127,7 @@ use yii\widgets\ActiveForm;
 
 
         <div class="col-sm-3">
-            <?= $form->field($model, 'view')->dropDownList([
-                '_as-head-descr-blocks-text' => 'head-descr-blocks-text',
-                '_as-image_float_in_text' => 'image_float_in_text',
-                '_as-image_icon_in_head' => 'image_icon_in_head',
-                '_as-top_h1_bgr_image-fw' => 'top_h1_bgr_image-fw',
-                '_as-head-descr-blocks-text-fw' => 'head-descr-blocks-text-fw',
-                '_as-image_float_in_text-fw' => 'image_float_in_text-fw',
-                '_as-image_icon_in_head-fw' => 'image_icon_in_head-fw',
-
-
-            ],['prompt' => 'Выбери вьюху']) ?>
+            <?= $form->field($model, 'view')->dropDownList($model::getViews(),['prompt' => 'Выбери вьюху']) ?>
         </div>
         <div class="col-sm-3">
             <?= $form->field($model, 'color_key')

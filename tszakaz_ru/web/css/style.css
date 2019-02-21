@@ -46,6 +46,7 @@ html {
     margin:0;
     padding: 0;
     min-height: 100%;
+    font-size:inherit;
 }
 body {
     height: 100%;
@@ -679,6 +680,7 @@ header .b-top__banner .b-top__banner__shadow {
     background-color: transparent;
     margin-top: 10px;
     margin-bottom: 0;
+    font-size:0.8rem;
 }
 .breadcrumb li a {
     /*color: #706f6f;*/

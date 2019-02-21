@@ -61,6 +61,7 @@ AppAsset::register($this);
                     ['label' => 'Menu Nested Sets', 'url' => ['/menu']],
                     ['label' => 'Цены', 'url' => ['/price']],
                     ['label' => 'Города', 'url' => ['/city']],
+                    ['label' => 'City Price Calc', 'url' => ['/city-price-calc']],
 
                 ],
             ],

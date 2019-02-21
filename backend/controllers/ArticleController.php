@@ -2,6 +2,7 @@
 
 namespace backend\controllers;
 
+use common\models\CityPriceCalc;
 use common\models\Price;
 use common\models\PriceCalculator;
 use common\models\UploadForm;
@@ -228,6 +229,13 @@ class ArticleController extends Controller
         }
     }
 
+    public function actionCityPriceCalc()
+    {
+        if (Yii::$app->request->isPost) {
+            $request = Yii::$app->request->post('CityPriceCalc');
+            return CityPriceCalc::calculate($request);
+        }
+    }
 
 
 }

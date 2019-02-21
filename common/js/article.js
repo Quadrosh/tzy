@@ -99,21 +99,31 @@ $(document).on("beforeSubmit", "#priceCalculator", function () {
         url    : form.attr('action'),
         type   : 'post',
         data   : form.serialize(),
-        success: function (response)
-        {
-            //alert(response);
-            //var getupdatedata = $(response).find('#filter_id_test');
-            // $.pjax.reload('#note_update_id'); for pjax update
+        success: function (response) {
             $('#calculatorResult').html(response);
-            console.log(response);
         },
-
-        error  : function ()
-        {
+        error  : function () {
             console.log('internal server error');
         }
-        });
+    });
+    return false; // Cancel form submitting.
+});
 
-
+$(document).on("beforeSubmit", "#cityPriceCalc", function () {
+    var form = $(this);
+    if (form.find('.has-error').length) {
+        return false;
+    }
+    $.ajax({
+        url    : form.attr('action'),
+        type   : 'post',
+        data   : form.serialize(),
+        success: function (response) {
+            $('#calcResult').html(response);
+        },
+        error  : function () {
+            console.log('internal server error');
+        }
+    });
     return false; // Cancel form submitting.
 });
