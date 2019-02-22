@@ -1,3 +1,14 @@
+/*
+TZ
+BLUE   #1F8CCD;
+RED   #FF511A;
+YELLOW   #FFC21A;
+LIGHT YELLOW BGR   #FFF4D7;
+GREEN   #16D674;
+
+
+*/
+
 html,
 body {
     height: 100%;
@@ -307,11 +318,10 @@ body {
 
 }
 .blue-bgr {
-    /*background-color: rgba(0,0,0,0.7);*/
-    /*background-color:  rgba(0,144,215,0.7);*/
     background-color:  #0090d7;
-    /*background-image: linear-gradient(to bottom,#0090d7 0,#0e3e74 100%);*/
-    /*background-repeat: repeat-x;*/
+}
+.yellow-bgr {
+    background-color:  #FFF4D7;
 }
 /* slick  */
 .carouselControl {
@@ -575,9 +585,10 @@ img {
     color:#444;
 }
 .price-calculator .box {
-    /*background-color: #ececec;*/
+    /*background-color: #f5f5f5;*/
     background-color: #f5f5f5;
-    border: 1px #ececec solid;
+    border: 1px #ccc solid;
+    border-radius: 10px;
 }
 .asbi-v_svg_head_text .svg svg {
     width: 80px;
@@ -616,4 +627,10 @@ img {
 }
 .city-price-calc #calcResult {
     font-size: 1rem;
+    color: #FF511A;
+}
+.city-price-calc{
+    border:1px solid #ccc;
+    border-radius: 10px;
+    background-color: #FFF4D7;
 }

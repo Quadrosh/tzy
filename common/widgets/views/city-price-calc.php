@@ -24,7 +24,7 @@ $allPrices = \common\models\CityPriceCalc::find()
 
 <div class="city-price-calc">
 
-    <div class="box grey">
+    <div class="box ">
 
         <div class="price-form">
 
@@ -79,9 +79,7 @@ $allPrices = \common\models\CityPriceCalc::find()
         </div>
     </div>
 
-    <sup>
-        <?= \common\models\PriceCalculator::INFO_MESSAGE ?>
-    </sup>
+
 
 
 </div>

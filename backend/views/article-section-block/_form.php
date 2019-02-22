@@ -127,6 +127,7 @@ use yii\widgets\ActiveForm;
                 'bright' => 'bright',
                 'dark' => 'dark',
                 'grey' => 'grey',
+                'yellow-bgr' => 'yellow-bgr',
             ],['prompt' => 'Выбери']) ?>
         </div>
         <div class="col-sm-3">
