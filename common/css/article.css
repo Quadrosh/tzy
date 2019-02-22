@@ -627,7 +627,8 @@ img {
 }
 .city-price-calc #calcResult {
     font-size: 1rem;
-    color: #FF511A;
+    color: #000000;
+    /*color: #FF511A;*/
 }
 .city-price-calc{
     border:1px solid #ccc;
