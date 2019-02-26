@@ -431,3 +431,6 @@ border: 1px solid #838e9a;
 .nowrap {
     white-space: nowrap;
 }
+.has-success, .has-error{
+    text-shadow: 0 0 1px white, 0 0 2px white, 0 0 3px white;
+}
