@@ -1,3 +1,12 @@
+/*
+
+old dark 30353b
+new dark + main seavawe   #298182
+red D94444
+blue 43AED7
+
+*/
+
 html,
 body {
     height: 100%;
@@ -201,12 +210,16 @@ a.desc:after {
     background-color: #30353b;
 }
 .grey {
-    background-color: #f5f5f5;
+    /*background-color: #f5f5f5;*/
+    background-color: #d6f3e1;
+    /*color: #43AED7;*/
+    /*color: #30353b;*/
+    color: #298182;
 }
 
 .blue {
-    /*background-color: #7197A9;*/
-    background-color: #46AEDE;
+    /*background-color: #46AEDE;*/
+    background-color: #43AED7;
     color:white;
 }
 .top .center_image{
@@ -338,7 +351,8 @@ border: 1px solid #838e9a;
 }
 .why_we .item p{
     /*color: rgb(128, 128, 128);*/
-    color: #7197A9;
+    /*color: #7197A9;*/
+    color: #43AED7;
 }
 
 .call2action3{
@@ -351,30 +365,37 @@ border: 1px solid #838e9a;
     left: 50px;
     z-index:1000;
     padding: 10px 20px 20px;
+    background-color: rgba(0,0,0,0.7);
 }
 .dark .btn-bordered {
     border: 1px solid white;
     color: white;
 }
 .btn-bordered {
-    border: 1px solid grey;
-    color:grey;
+    border: 1px solid #298182;
+    color:#298182;
+}
+.btn-bordered:hover {
+    border: 1px solid #D94444;
+    color:#D94444;
 }
 .bottomOrderForm {
     padding-top: 50px;
     padding-bottom: 50px;
+    background-color: #298182;
 }
 
 .navbar {
     margin-bottom: 0;
 }
 .navbar a {
-    color: grey;
-
+    /*color: grey;*/
+    color: #298182;
 }
+
 .navbar a:hover,
 .navbar a:focus {
-    color: grey;
+    color: #D94444;
     text-decoration: underline;
 }
 .navbar-nav > li > a {
@@ -384,7 +405,7 @@ border: 1px solid #838e9a;
 }
 .navbar .btn-link {
     text-transform: uppercase;
-    color: #5a8092;
+    color: #D94444;
     /*padding-right: 0px;*/
     /*color: #7197A9;*/
 }
@@ -397,9 +418,12 @@ border: 1px solid #838e9a;
 }
 
 .btn-danger {
-    /*background-color: #E35E70;*/
     border-radius: 50px;
-    /*border-color: #E35E70;*/
+    background-color: #D94444;
+    border-color: white;
+}
+.btn-danger:hover {
+    border-color: white;
 }
 #video_section iframe{
     max-width: 100%;
