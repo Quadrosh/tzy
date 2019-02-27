@@ -81,13 +81,7 @@ NavBar::end();
 
             ]); ?>
             <div class="modal-body">
-<!--                <p>Оставьте ваши контактные данные,<br/>-->
-<!--                    и наш специалист свяжется с Вами в течение 30 минут.</p>-->
 
-<!--                <div id="feedbackLoading">-->
-<!--                    <span class="b-icon b-icon__loading"></span>-->
-<!--                </div>-->
-<!--                <div id="feedbackNote"></div>-->
 
                 <div class="form-group clearfix">
 
