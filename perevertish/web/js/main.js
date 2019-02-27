@@ -2,15 +2,34 @@ $(document).ready(function() {
 
 
     // цели в метрику и GA
-    //$("#feedback-form").on("afterValidate", function () {
-    //    yaCounter30134129.reachGoal("callMe");
-    //    ga("send","event","feedback","call","callMe");
-    //});
-    //
-    //$("#order-form").on("afterValidate", function () {
-    //    yaCounter30134129.reachGoal("preorderSend");
-    //    ga("send","event","feedback","order","sendOrder");
-    //});
+
+    $("#call_form").on("afterValidate", function () {
+        yaCounter52570411.reachGoal("order");
+        gtag('event', 'order', {
+            'event_category': 'siteAction',
+            'event_action': 'sendForm',
+            'event_label': 'commonPreOrder'
+        });
+    });
+
+    $("#fast_order_form").on("afterValidate", function () {
+        yaCounter52570411.reachGoal("order");
+        gtag('event', 'order', {
+            'event_category': 'siteAction',
+            'event_action': 'sendForm',
+            'event_label': 'commonPreOrder'
+        });
+    });
+
+    $("#order_form").on("afterValidate", function () {
+        yaCounter52570411.reachGoal("order");
+        gtag('event', 'order', {
+            'event_category': 'siteAction',
+            'event_action': 'sendForm',
+            'event_label': 'commonPreOrder'
+        });
+    });
+
 
 
 
@@ -65,19 +84,6 @@ $(document).ready(function() {
         }
     }
 
-
-    //$('.test-target').click(function(){
-    //    $.ajax({
-    //        url: '/test/target',
-    //        data: {
-    //            id: $(this).data('tid'),
-    //            //url: window.location.toString()
-    //        },
-    //        success: function(data) {
-    //            // process data
-    //        }
-    //    });
-    //});
 
 
     if (document.getElementsByClassName('slickMulti')) {
