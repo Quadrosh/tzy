@@ -77,6 +77,7 @@ use yii\widgets\ActiveForm;
                     'text-center' => 'text-center',
                     'text-left' => 'text-left',
                     'text-right' => 'text-right',
+                    'grey box text-center' => 'grey box text-center',
                 ],['prompt' => 'Выбери']) ?>
         </div>
 
