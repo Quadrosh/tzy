@@ -36,8 +36,10 @@ $feedback = new \common\models\Feedback();
     <meta property="og:description" content="<?= Yii::$app->view->params['meta']['description'] ?>" />
     <meta property="og:url" content="<?= Url::current(['lg'=>null], true) ?>" />
     <meta property="og:image" content="<?= Url::base(true) ?>/img/tz_logo_square.jpg" />
+    <meta property="og:image" content="<?= Url::base(true) ?>/img/tz_logo_blue.jpg" />
 
-<!--    <script type="text/javascript" src="https://vk.com/js/api/openapi.js?159"></script>-->
+
+    <!--    <script type="text/javascript" src="https://vk.com/js/api/openapi.js?159"></script>-->
 <!--    <script type="text/javascript">-->
 <!--        VK.init({apiId: 6736681, onlyWidgets: true});-->
 <!--    </script>-->
