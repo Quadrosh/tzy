@@ -27,7 +27,14 @@ use yii\helpers\Html;
 
     <?php if ($model->items) : ?>
         <div class="row">
-            <?php foreach ($model->items as $item) : ?>
+
+        <?php $i=0; $count = count($model->items); ?>
+        <?php foreach ( $model->items as $item)  : ?>
+            <?php $i++; if ($i!=1 && $i%2==1) : ?>
+        </div>
+        <div class="row">
+            <?php endif; ?>
+
                 <div class="col-sm-6">
 
                     <?php if ($item->view) : ?>

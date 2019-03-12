@@ -27,7 +27,8 @@ use yii\helpers\Html;
 
     <?php if ($model->items) : ?>
         <div class="row">
-            <?php $i=0; $count = count($model->items); foreach ( $model->items as $item)  : ?>
+            <?php $i=0; $count = count($model->items);
+            foreach ( $model->items as $item)  : ?>
                 <?php $i++; if ($i!=1 && $i%3==1) : ?>
         </div>
         <div class="row">
