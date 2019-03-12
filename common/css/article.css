@@ -635,3 +635,6 @@ img {
     border-radius: 10px;
     background-color: #FFF4D7;
 }
+.ul_no_dot ul {
+    list-style-type:none;
+}
