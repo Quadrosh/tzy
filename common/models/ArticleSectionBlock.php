@@ -15,8 +15,12 @@ use Yii;
  * @property string $raw_text
  * @property string $image
  * @property string $image_alt
+ * @property string $image_title
  * @property string $background_image
+ * @property string $background_image_title
  * @property string $thumbnail_image
+ * @property string $thumbnail_image_alt
+ * @property string $thumbnail_image_title
  * @property string $call2action_description
  * @property string $call2action_name
  * @property string $call2action_link
@@ -63,9 +67,9 @@ class ArticleSectionBlock extends \yii\db\ActiveRecord
         return [
             [['article_section_id'], 'required'],
             [['article_section_id', 'accent', 'sort', 'created_at', 'updated_at'], 'integer'],
-            [['description', 'raw_text', 'image', 'background_image', 'thumbnail_image', 'conclusion'], 'string'],
+            [['description', 'raw_text', 'image', 'background_image', 'thumbnail_image', 'conclusion','image_title','background_image_title','thumbnail_image_title'], 'string'],
             [['header', 'header_class', 'call2action_description'], 'string', 'max' => 510],
-            [['image_alt', 'call2action_name', 'call2action_link', 'call2action_class', 'call2action_comment', 'view', 'color_key', 'structure', 'custom_class', 'code_name', 'description_class', 'raw_text_class', 'image_class', 'conclusion_class'], 'string', 'max' => 255],
+            [['image_alt', 'call2action_name', 'call2action_link', 'call2action_class', 'call2action_comment', 'view', 'color_key', 'structure', 'custom_class', 'code_name', 'description_class', 'raw_text_class', 'image_class', 'conclusion_class','thumbnail_image_alt'], 'string', 'max' => 255],
         ];
     }
 
@@ -219,11 +223,13 @@ class ArticleSectionBlock extends \yii\db\ActiveRecord
         return [
             '_asb-bs_horiz_4' => 'bs_horiz_4',
             '_asb-bs_horiz_3' => 'bs_horiz_3',
+            '_asb-bs_horiz_3_img_icon' => 'bs_horiz_3_img_icon',
             '_asb-bs_horiz_2' => 'bs_horiz_2',
             '_asb-slick_1' => 'slick_1',
             '_asb-slick_3' => 'slick_3',
             '_asb-slick_banner_1' => 'slick_banner_1',
             '_asb-ul-li' => 'ul-li',
+            '_asb-ul-li_img_icon' => 'ul-li_img_icon',
             '_asb-ol-li' => 'ol-li',
             '_asb-price_calculator' => 'price_calculator',
             '_asb-city_price_calc' => 'city_price_calc',

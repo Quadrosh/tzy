@@ -11,14 +11,29 @@ use yii\helpers\Html;
 
 
 ?>
-<div class="asb-bs_horiz_2 <?= $model->color_key ?> <?= $model->custom_class ?>">
+<div class="asb-ul-li  <?= $model->custom_class?>">
 
-    <?php if ($model->header) : ?>
-        <h3 <?= $model->header_class?'class="'.$model->header_class.'"':null ?>><?= nl2br($model->header) ?></h3>
-    <?php endif; ?>
+    <div class="table mb0">
+        <?php if ($model->image) : ?>
+            <div class="table-cell <?= $model->image_class ?>">
+                <?php if ($model->image) {
+                    echo Html::img('/img/'.$model->image,[
+                        'alt'=>$model->image_alt,
+                        'title'=>$model->image_title?$model->image_title:null,
+                    ]);
+                } ?>
+            </div>
+        <?php endif; ?>
+
+        <?php if ($model->header) : ?>
+            <div class="table-cell">
+                <h3 <?= $model->header_class?'class="'.$model->header_class.'"':null ?>><?= $model->header ?></h3>
+            </div>
+        <?php endif; ?>
+    </div>
 
     <?php if ($model->description) : ?>
-        <p <?= $model->description_class?'class="'.$model->description_class.'"':null ?>><?= nl2br($model->description) ?></p>
+        <p <?= $model->description_class?'class="'.$model->description_class.'"':null ?>><?= $model->description ?></p>
     <?php endif; ?>
 
     <?php if ($model->raw_text) : ?>
@@ -26,16 +41,9 @@ use yii\helpers\Html;
     <?php endif; ?>
 
     <?php if ($model->items) : ?>
-        <div class="row">
-
-        <?php $i=0; $count = count($model->items); ?>
-        <?php foreach ( $model->items as $item)  : ?>
-            <?php $i++; if ($i!=1 && $i%2==1) : ?>
-        </div>
-        <div class="row">
-            <?php endif; ?>
-
-                <div class="col-sm-6">
+        <ul>
+            <?php foreach ($model->items as $item) : ?>
+                <li >
 
                     <?php if ($item->view) : ?>
                         <?= $this->render('/article/part_views/block_item/'.$item->view, [
@@ -45,12 +53,11 @@ use yii\helpers\Html;
 
                     <?php if (!$item->view) : ?>
                         <?php if ($item->header) : ?>
-                            <h4 <?= $item->header_class?'class="'.$item->header_class.'"':null ?>><?= nl2br($item->header) ?></h4>
+                            <h4 <?= $item->header_class?'class="'.$item->header_class.'"':null ?>><?= $item->header ?></h4>
                         <?php endif; ?>
                         <?php if ($item->description) : ?>
-                            <p class="text-center"><?= $item->description ?></p>
+                            <p <?= $item->description_class?'class="'.$item->description_class.'"':null ?>><?= $item->description ?></p>
                         <?php endif; ?>
-
                         <?php if ($item->image) : ?>
                             <?= Html::img('/img/'.$item->image,[
                                 'class'=>'max-w100per',
@@ -59,7 +66,7 @@ use yii\helpers\Html;
                             ])  ?>
                         <?php endif; ?>
                         <?php if ($item->link_name) : ?>
-                            <a href="<?= $item->link_url ?>" class="<?= $item->link_class ?>"><?= $item->link_name ?></a>
+                            <a href="<?= $item->link_url ?>" <?= $item->link_class?'class="'.$item->link_class.'"':null ?>><?= $item->link_name ?></a>
                         <?php endif; ?>
                         <?php if ($item->link_description) : ?>
                             <p class="text-center"><?= $item->link_description ?></p>
@@ -71,9 +78,10 @@ use yii\helpers\Html;
 
                     <?php endif; ?>
 
-                </div>
+                </li>
             <?php endforeach; ?>
-        </div>
+        </ul>
+
 
     <?php endif; ?>
 

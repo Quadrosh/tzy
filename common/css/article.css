@@ -83,6 +83,12 @@ body {
 .min-h600{
     min-height: 600px;
 }
+.h500{
+    height: 500px;
+}
+.h600{
+    height: 600px;
+}
 .w200{
     width: 200px;
 }
@@ -637,4 +643,28 @@ img {
 }
 .ul_no_dot ul {
     list-style-type:none;
+}
+.illustration_fw{
+    overflow: hidden;
+}
+.alignFullImg {
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    max-width: 1000%;
+    width: auto;
+}
+
+
+.text-success {
+    color: #449d44;
+}
+.text-warning{
+    color: #F7941E;
+}
+.text-info{
+    color: #17a2b8;
+}
+.text-danger{
+    color: #dc3545;
+
 }

@@ -83,8 +83,9 @@ use yii\widgets\ActiveForm;
                     'text-grey' => 'text-grey',
                 ],['prompt' => 'Выбери']) ?>
         </div>
-
-        <div class="col-sm-6">
+    </div>
+    <div class="row">
+        <div class="col-sm-3">
             <?= $form->field($model, 'image')->textarea(['rows' => 1]) ?>
         </div>
         <div class="col-sm-2">
@@ -100,10 +101,14 @@ use yii\widgets\ActiveForm;
                 'w50' => 'w50',
             ],['prompt' => 'Выбери']) ?>
         </div>
-        <div class="col-sm-4">
-            <?= $form->field($model, 'image_alt')->textInput(['maxlength' => true]) ?>
+        <div class="col-sm-7">
+            <?= $form->field($model, 'image_alt')->textarea(['rows' => 1,'maxlength' => true]) ?>
         </div>
-
+        <div class="col-sm-12">
+            <?= $form->field($model, 'image_title')->textarea(['rows' => 1]) ?>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-sm-4">
             <?= $form->field($model, 'link_name')->textInput(['maxlength' => true]) ?>
         </div>

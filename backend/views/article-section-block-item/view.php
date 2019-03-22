@@ -38,6 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'comment:ntext',
             'image:ntext',
             'image_alt',
+            'image_title',
             'link_description',
             'link_name',
             'link_url:url',
