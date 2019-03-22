@@ -95,6 +95,7 @@ class Preorders extends \yii\db\ActiveRecord
                 return $newValue;
             }],
             [['dispatch', 'destination', 'cargo', 'name', 'phone', 'email', 'weight', 'from_page'], 'string', 'max' => 255],
+            // спам фильтры
             ['cargo', 'match', 'not'=>true, 'pattern' => '/(базы данных)/i'],
             ['weight', 'match', 'not'=>true, 'pattern' => '/(базы данных)/i'],
             ['text', 'match', 'not'=>true, 'pattern' => '/(базы данных)/i'],
