@@ -22,8 +22,12 @@ use yii\web\UploadedFile;
  * @property string $h1
  * @property string $topimage
  * @property string $topimage_alt
+ * @property string $topimage_title
  * @property string $background_image
+ * @property string $background_image_title
  * @property string $thumbnail_image
+ * @property string $thumbnail_image_alt
+ * @property string $thumbnail_image_title
  * @property string $call2action_description
  * @property string $call2action_name
  * @property string $call2action_link
@@ -68,9 +72,11 @@ class Article extends \yii\db\ActiveRecord
     {
         return [
             [['list_name'], 'required'],
-            [['cat_ids', 'description', 'keywords', 'exerpt', 'exerpt_big', 'raw_text', 'background_image', 'thumbnail_image'], 'string'],
+            [['cat_ids', 'description', 'keywords', 'exerpt', 'exerpt_big',
+                'raw_text', 'background_image', 'thumbnail_image',
+                'topimage_title','background_image_title','thumbnail_image_title'], 'string'],
             [['created_at', 'updated_at'], 'integer'],
-            [['list_name', 'hrurl', 'title', 'h1', 'topimage', 'topimage_alt', 'call2action_name', 'call2action_link', 'call2action_class', 'call2action_comment', 'imagelink', 'imagelink_alt', 'author', 'status', 'view', 'layout', 'site'], 'string', 'max' => 255],
+            [['list_name', 'hrurl', 'title', 'h1', 'topimage', 'topimage_alt', 'call2action_name', 'call2action_link', 'call2action_class', 'call2action_comment', 'imagelink', 'imagelink_alt', 'author', 'status', 'view', 'layout', 'site', 'thumbnail_image_alt'], 'string', 'max' => 255],
             [['call2action_description'], 'string', 'max' => 510],
             [['categories'], 'safe'],
         ];
@@ -364,8 +370,6 @@ class Article extends \yii\db\ActiveRecord
             var_dump($oModel); die;
 
         }
-
-
     }
 
     public static function getViews()

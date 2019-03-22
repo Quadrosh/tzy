@@ -37,7 +37,11 @@ use yii\helpers\Html;
 
                         <?php if (!$item->view) : ?>
                             <?php if ($item->image) : ?>
-                                <?= Html::img('/img/'.$item->image,['class'=>'max-w100per '.$item->image_class,'alt'=>$item->image_alt])  ?>
+                                <?= Html::img('/img/'.$item->image,[
+                                    'class'=>'max-w100per '.$item->image_class,
+                                    'alt'=>$item->image_alt,
+                                    'title'=>$item->image_title?$item->image_title:null,
+                                ])  ?>
                             <?php endif; ?>
                             <?php if ($item->header) : ?>
                                 <h4 class="<?= $item->header_class ?>"><?= $item->header ?></h4>

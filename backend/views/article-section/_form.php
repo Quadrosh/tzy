@@ -54,7 +54,7 @@ use yii\widgets\ActiveForm;
             <?= $form->field($model, 'raw_text')->textarea(['rows' => 1]) ?>
         </div>
         <div class="col-sm-1">
-            <?= Html::button('b', ['class' => 'btn btn-default',
+            <?= Html::button('b', ['class' => 'btn btn-default mt25',
                 'id'=>'2bold_text',
                 'onClick'=>"addTag('b','#articlesection-raw_text');"
             ]) ?>
@@ -80,8 +80,9 @@ use yii\widgets\ActiveForm;
                     'grey box text-center' => 'grey box text-center',
                 ],['prompt' => 'Выбери']) ?>
         </div>
-
-        <div class="col-sm-2">
+    </div>
+    <div class="row">
+        <div class="col-sm-3">
             <?= $form->field($model, 'section_image')->textarea(['rows' => 1]) ?>
         </div>
         <div class="col-sm-2">
@@ -99,17 +100,31 @@ use yii\widgets\ActiveForm;
                 'w50' => 'w50',
             ],['prompt' => 'Выбери']) ?>
         </div>
-        <div class="col-sm-4">
-            <?= $form->field($model, 'section_image_alt')->textInput(['maxlength' => true]) ?>
+        <div class="col-sm-7">
+            <?= $form->field($model, 'section_image_alt')->textarea(['rows' => 1,'maxlength' => true]) ?>
         </div>
+        <div class="col-sm-12">
+            <?= $form->field($model, 'section_image_title')->textarea(['rows' => 1,'maxlength' => true]) ?>
+        </div>
+
         <div class="col-sm-2">
             <?= $form->field($model, 'background_image')->textarea(['rows' => 1]) ?>
+        </div>
+        <div class="col-sm-10">
+            <?= $form->field($model, 'background_image_title')->textarea(['rows' => 1]) ?>
         </div>
         <div class="col-sm-2">
             <?= $form->field($model, 'thumbnail_image')->textarea(['rows' => 1]) ?>
         </div>
+        <div class="col-sm-5">
+            <?= $form->field($model, 'thumbnail_image_alt')->textarea(['rows' => 1]) ?>
+        </div>
+        <div class="col-sm-5">
+            <?= $form->field($model, 'thumbnail_image_title')->textarea(['rows' => 1]) ?>
+        </div>
 
-
+    </div>
+    <div class="row">
         <div class="col-sm-4">
             <?= $form->field($model, 'call2action_name')->textInput(['maxlength' => true]) ?>
         </div>

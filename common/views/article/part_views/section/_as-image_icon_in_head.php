@@ -10,11 +10,14 @@ use yii\helpers\Html;
     <div class="row">
         <div class="  col-md-10 col-md-offset-1  col-lg-8 col-lg-offset-2">
 
-            <div class="table">
+            <div class="table mb0">
                 <?php if ($model->section_image) : ?>
                     <div class="table-cell <?= $model->image_class ?>">
                         <?php if ($model->section_image) {
-                            echo Html::img('/img/'.$model->section_image,[ 'alt'=>$model->section_image_alt]);
+                            echo Html::img('/img/'.$model->section_image,[
+                                'alt'=>$model->section_image_alt,
+                                'title'=>$model->section_image_title?$model->section_image_title:null,
+                            ]);
                         } ?>
                     </div>
                 <?php endif; ?>

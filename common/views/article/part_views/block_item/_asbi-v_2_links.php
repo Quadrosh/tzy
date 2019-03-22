@@ -13,7 +13,11 @@ use yii\helpers\Html;
 
 
     <?php if ($model->image) {
-        echo Html::img('/img/'.$model->image,[ 'alt'=>$model->image_alt, 'class'=>$model->image_class]);
+        echo Html::img('/img/'.$model->image,[
+            'class'=>$model->image_class,
+            'alt'=>$model->image_alt,
+            'title'=>$model->image_title?$model->image_title:null,
+        ]);
     } ?>
 
     <?php if ($model->header) : ?>
