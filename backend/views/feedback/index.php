@@ -64,6 +64,7 @@ $spamRemoveForm = new \common\models\SpamRemoveForm();
         'dataProvider' => $dataProvider,
         'columns' => [
 //            ['class' => 'yii\grid\SerialColumn'],
+            ['class' => 'yii\grid\ActionColumn'],
 
             'id',
             'ip',
@@ -91,7 +92,7 @@ $spamRemoveForm = new \common\models\SpamRemoveForm();
                 },
                 'format'=> 'html',
             ],
-            // 'done',
+             'comment',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
