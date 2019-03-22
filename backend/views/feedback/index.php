@@ -65,7 +65,7 @@ $spamRemoveForm = new \common\models\SpamRemoveForm();
         'columns' => [
 //            ['class' => 'yii\grid\SerialColumn'],
             ['class' => 'yii\grid\ActionColumn'],
-
+            'text',
             'id',
             'ip',
             'site',
@@ -84,7 +84,7 @@ $spamRemoveForm = new \common\models\SpamRemoveForm();
             'utm_term',
             'utm_content',
 //             'date',
-            'text',
+
             [
                 'attribute'=>'date',
                 'value' => function($data)
