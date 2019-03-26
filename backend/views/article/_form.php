@@ -88,12 +88,16 @@ use yii\widgets\ActiveForm;
         <div class="col-sm-12">
             <?= $form->field($model, 'topimage_title')->textarea(['rows' => 1]) ?>
         </div>
+    </div>
+    <div class="row">
         <div class="col-sm-2">
             <?= $form->field($model, 'background_image')->textarea(['rows' => 1]) ?>
         </div>
         <div class="col-sm-10">
             <?= $form->field($model, 'background_image_title')->textarea(['rows' => 1]) ?>
         </div>
+    </div>
+    <div class="row">
         <div class="col-sm-2">
             <?= $form->field($model, 'thumbnail_image')->textarea(['rows' => 1]) ?>
         </div>

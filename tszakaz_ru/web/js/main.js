@@ -12,6 +12,11 @@ $(document).ready(function() {
         ga("send","event","feedback","order","sendOrder");
     });
 
+    $("#shortOrderForm").on("afterValidate", function () {
+        yaCounter30134129.reachGoal("preorderSend");
+        ga("send","event","feedback","order","sendOrder");
+    });
+
 
     $("#hamburger").click(function() {
         $(this).toggleClass('is-active');
