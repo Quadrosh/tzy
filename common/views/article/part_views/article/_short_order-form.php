@@ -60,7 +60,7 @@ $shortOrderForm = new \common\models\Preorders();
             ->hiddenInput([ 'id' => 'shortOrderForm-utm_content'])->label(false) ?>
 
         <div class="col-sm-6 col-sm-offset-3 text-center">
-            <?= Html::submitButton('отправить заявку', ['class' => 'btn btn-primary sendorder-btn mt10']) ?>
+            <?= Html::submitButton('Уточнить цену', ['class' => 'btn btn-primary sendorder-btn mt10']) ?>
         </div>
     </div>
     <?php $form = ActiveForm::end(); ?>
