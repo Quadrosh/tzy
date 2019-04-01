@@ -99,9 +99,8 @@ return [
 
                 'ts/<testpage:[0-9a-z\-\_]+>' => 'test/test',
                 '<pagename:[0-9a-z\-\_]+>.html' => 'site/page',
-//                'gruzoperevozki/po-rossii/otpravit-gruz-iz-moskvy-v-sankt-peterburg.html' => 'site/page',
+                '<pagename:[0-9a-z\-\_]+/[0-9a-z\-\_]+>.html' => 'site/page',
                 '<pagename:[0-9a-z\-\_]+/[0-9a-z\-\_]+/[0-9a-z\-\_]+>.html' => 'site/page',
-//                '<pagename:[0-9a-z\-\_]+/[0-9a-z\-\_]+/[0-9a-z\-\_]+>' => 'site/page',
                 ['pattern'=>'<action>', 'route'=>'site/page'],
             ],
 

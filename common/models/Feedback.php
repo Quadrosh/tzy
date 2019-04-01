@@ -95,6 +95,11 @@ class Feedback extends \yii\db\ActiveRecord
             }],
             [['user_id','name', 'city', 'from_page', 'phone', 'email', 'contacts'], 'string', 'max' => 255],
             [['name', 'phone'], 'required'],
+
+            // спам фильтры
+//            [['name'], 'match', 'not'=>true, 'pattern' => '/рассылки/i',
+//                'message' => 'Поле содержит недопустимые символы.'],
+
         ];
     }
 

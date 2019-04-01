@@ -49,7 +49,7 @@ class Pereorder extends \yii\db\ActiveRecord
     {
         return [
             [['done','date'], 'integer'],
-            [['text'], 'string'],
+            [['text'], 'string','max' => 510],
             [['quality','site','manager','ip'], 'string', 'max' => 255],
             [['comment'], 'string', 'max' => 510],
             [['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'], 'string'],
@@ -95,6 +95,22 @@ class Pereorder extends \yii\db\ActiveRecord
             }],
             [['user_id','name', 'city', 'from_page', 'phone', 'email', 'contacts'], 'string', 'max' => 255],
             [['name', 'phone'], 'required'],
+            // спам фильтры
+            [['name'], 'match', 'not'=>true, 'pattern' => '/рассылки/i',
+                'message' => 'Поле содержит недопустимые символы.'],
+            [['text'], 'match', 'not'=>true, 'pattern' => '/рассылк/i',
+                'message' => 'Поле содержит недопустимые символы.'],
+            [['text'], 'match', 'not'=>true, 'pattern' => '/выбор/i',
+                'message' => 'Поле содержит недопустимые символы.'],
+            [['text'], 'match', 'not'=>true, 'pattern' => '/предлагаем/i',
+                'message' => 'Поле содержит недопустимые символы.'],
+            [['text'], 'match', 'not'=>true, 'pattern' => '/прибыль/i',
+                'message' => 'Поле содержит недопустимые символы.'],
+            [['text'], 'match', 'not'=>true, 'pattern' => '/регистрация/i',
+                'message' => 'Поле содержит недопустимые символы.'],
+            [['text'], 'match', 'not'=>true, 'pattern' => '/выбери/i',
+                'message' => 'Поле содержит недопустимые символы.'],
+
         ];
     }
 

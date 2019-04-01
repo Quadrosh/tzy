@@ -7,13 +7,16 @@
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
-//use \yii\widgets\ActiveForm;
-use yii\bootstrap\ActiveForm;
+use \yii\widgets\ActiveForm;
+//use yii\bootstrap\ActiveForm;
+
+
 //$this->title = 'Page View';
 //$this->params['breadcrumbs'][] = $this->title;
 
 //$feedback = new common\models\Feedback();
 $feedback = new \perevertish\models\Pereorder();
+
 //$preorder = new common\models\Preorders();
 ?>
 
@@ -505,7 +508,7 @@ NavBar::end();
                             </div>
                             <div class="col-xs-12 ">
                                 <?= $form->field($feedback, 'text')
-                                    ->textarea(['maxlength' => true, 'id' => 'order_form-phone'])
+                                    ->textarea([ 'id' => 'order_form-text'])
                                     ->label('Адрес доставки') ?>
                             </div>
                             <?= $form->field($feedback, 'from_page')
