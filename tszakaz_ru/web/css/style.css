@@ -42,6 +42,7 @@ blue2  #0e3e74
     margin: 0;
     /*padding: 0;*/
 }
+
 html {
     margin:0;
     padding: 0;
@@ -165,7 +166,11 @@ header .b-top__header {
     color: #fff;
     background-color: #428bca;
     border-color: #357ebd;
+    border-radius:3px;
+    padding-left: 1em;
+    padding-right:1em;
 }
+
 .b-top__info__above .b-top-btn i {
     top: 6px;
     margin-right: 3px;
@@ -569,13 +574,21 @@ header .b-top__banner .b-top__banner__shadow {
     text-transform: uppercase;
     font-size:12px;
     border: 0;
-    padding: 10px;
+    padding: 10px 1em;
     color: #fff;
-    border-radius: 0;
+    border-radius: 3px;
     /*-webkit-box-shadow: 0 5.67px 20px 5px rgba(72,154,213,.31);*/
     /*-moz-box-shadow: 0 5.67px 20px 5px rgba(72,154,213,.31);*/
     /*box-shadow: 0 5.67px 20px 5px rgba(72,154,213,.31);*/
 }
+.order-btn[aria-expanded="true"] {
+    color: #fff;
+    background-image: none;
+    background-color: #286090;
+    /*background-color: #f5f5f5;*/
+    border-color: #204d74;
+}
+
 .sendorder-btn {
     background-image: linear-gradient(to bottom,#F3BB00 0,#f39200 100%);
     background-repeat: repeat-x;
