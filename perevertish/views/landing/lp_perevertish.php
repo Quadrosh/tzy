@@ -212,12 +212,13 @@ NavBar::end();
 
                 <div class="col-xs-12">
                     <p class="text"><?= nl2br($sections['top']['extra'])  ?></p>
-                    <p class="text"><?= nl2br($sections['top']['text']) ?></p>
 
                     <a href="#"
                        data-toggle="modal"
                        data-target="#orderModal"
                        class="btn btn-danger">Купить</a>
+
+                    <p class="text"><?= nl2br($sections['top']['text']) ?></p>
                 </div>
 
                 <div class="text-center">
