@@ -218,7 +218,7 @@ NavBar::end();
                        data-target="#orderModal"
                        class="btn btn-danger">Купить</a>
 
-                    <p class="text"><?= nl2br($sections['top']['text']) ?></p>
+                    <sup class="text"><?= nl2br($sections['top']['text']) ?></sup>
                 </div>
 
                 <div class="text-center">
