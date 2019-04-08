@@ -11,7 +11,7 @@ use yii\helpers\Html;
 
 
 ?>
-<div class="asb-ul-li  <?= $model->custom_class?>">
+<div class="asb-ul-li_img_icon  <?= $model->custom_class?>">
 
     <div class="table mb0">
         <?php if ($model->image) : ?>
@@ -60,7 +60,7 @@ use yii\helpers\Html;
                         <?php endif; ?>
                         <?php if ($item->image) : ?>
                             <?= Html::img('/img/'.$item->image,[
-                                'class'=>'max-w100per',
+                                'class'=>'max-w100per '.$item->image_class,
                                 'alt'=>$item->image_alt,
                                 'title'=>$item->image_title?$item->image_title:null,
                             ])  ?>

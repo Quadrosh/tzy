@@ -11,7 +11,7 @@ use yii\helpers\Html;
 ?>
 <div class="asbi-h_img_icon_in_head">
 
-    <div class="table">
+    <div class="table mb0">
         <?php if ($model->image) : ?>
             <div class="table-cell <?= $model->image_class ?>">
                 <?php if ($model->image) {

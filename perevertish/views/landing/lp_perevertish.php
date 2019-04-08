@@ -212,7 +212,7 @@ NavBar::end();
 
                 <div class="col-xs-12">
                     <p class="text"><?= nl2br($sections['top']['extra'])  ?></p>
-                    <p class="text"><?= $sections['top']['text'] ?></p>
+                    <p class="text"><?= nl2br($sections['top']['text']) ?></p>
 
                     <a href="#"
                        data-toggle="modal"
