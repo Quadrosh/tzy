@@ -227,8 +227,13 @@ a.desc:after {
 }
 .top h1,
 .top .lead,
-.top .text{
+.top .text,
+.top .text_extra{
     text-shadow: 2px 2px 3px  #000;
+}
+.top .text_extra{
+    margin-top: 10px;
+    font-size:16px;
 }
 h1{
     text-transform: uppercase;
