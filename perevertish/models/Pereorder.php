@@ -110,6 +110,16 @@ class Pereorder extends \yii\db\ActiveRecord
                 'message' => 'Поле содержит недопустимые символы.'],
             [['text'], 'match', 'not'=>true, 'pattern' => '/выбери/i',
                 'message' => 'Поле содержит недопустимые символы.'],
+            [['text'], 'match', 'not'=>true, 'pattern' => '/http://bit./i',
+                'message' => 'Поле содержит недопустимые символы.'],
+            [['text'], 'match', 'not'=>true, 'pattern' => '/поделиться/i',
+                'message' => 'Поле содержит недопустимые символы.'],
+            [['text'], 'match', 'not'=>true, 'pattern' => '/Бронирование отелей/i',
+                'message' => 'Поле содержит недопустимые символы.'],
+            [['text'], 'match', 'not'=>true, 'pattern' => '/заработать/i',
+                'message' => 'Поле содержит недопустимые символы.'],
+            [['text'], 'match', 'not'=>true, 'pattern' => '/http:/i',
+                'message' => 'Поле содержит недопустимые символы.'],
 
         ];
     }

@@ -12,7 +12,7 @@ use yii\helpers\Html;
                 <h2 class="<?= $model->header_class ?>"><?= $model->header ?></h2>
             <?php endif; ?>
             <?php if ($model->description) : ?>
-                <p class="text-left"><?= nl2br($model->description)  ?></p>
+                <p <?= $model->description_class?'class="'.$model->description_class.'"':null ?>><?= nl2br($model->description) ?></p>
             <?php endif; ?>
 
             <?php if ($model->raw_text) : ?>

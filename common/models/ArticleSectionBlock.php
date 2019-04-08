@@ -234,6 +234,9 @@ class ArticleSectionBlock extends \yii\db\ActiveRecord
             '_asb-price_calculator' => 'price_calculator',
             '_asb-city_price_calc' => 'city_price_calc',
             '_asb-how_we_work' => 'how_we_work',
+            '_asb-table' => 'table',
+            '_asb-2col_specs' => 'tbl_2col_specs',
+
         ];
     }
 }
