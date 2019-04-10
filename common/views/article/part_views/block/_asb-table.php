@@ -16,11 +16,18 @@ foreach ($model->items as $key => $item) {
 }
 
 ?>
-<div class="asb-table">
+<div class="asb-table <?= $model->custom_class ?>">
 
     <?php if ($model->header) : ?>
         <h3 class="<?= $model->header_class ?>"><?= $model->header ?></h3>
     <?php endif; ?>
+
+    <?php if ($model->image) {
+        echo Html::img('/img/'.$model->image,[
+            'alt'=>$model->image_alt,
+            'title'=>$model->image_title?$model->image_title:null,
+        ]);
+    } ?>
 
     <?php if ($model->description) : ?>
         <p class="text-center"><?= $model->description ?></p>
