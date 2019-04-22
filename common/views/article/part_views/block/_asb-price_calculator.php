@@ -13,6 +13,8 @@ $toCityName = '';
 $fromCityName = '';
 $onlyExisted = '';
 $truckName = '';
+$selectFromCityName='';
+$selectToCityName='';
 if ($structure) {
     foreach (explode('&', $structure) as $chunk) {
         $param = explode("=", $chunk);
@@ -27,6 +29,12 @@ if ($structure) {
         }
         if ($param[0]=='truck') {
             $truckName=$param[1];
+        }
+        if ($param[0]=='select_to' || $param[0]=='selectTo') {
+            $selectToCityName=$param[1];
+        }
+        if ($param[0]=='select_from' || $param[0]=='selectFrom') {
+            $selectFromCityName=$param[1];
         }
     }
 }
@@ -49,6 +57,8 @@ if ($structure) {
         'fromCityName' => $fromCityName,
         'onlyExisted' => $onlyExisted,
         'truckName' => $truckName,
+        'selectFromCityName' => $selectFromCityName,
+        'selectToCityName' => $selectToCityName,
     ]) ?>
 
 

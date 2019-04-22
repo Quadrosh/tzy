@@ -12,10 +12,9 @@ use yii\helpers\Html;
 <div class="asbi-h_tbl2_img--head_text">
 
     <div class="table mb0">
-        <div class="table-cell vertical-middle <?= $model->structure ?>">
+        <div class="table-cell vertical-middle <?= $model->structure ?> <?= $model->image_class ?>">
             <?php if ($model->image) {
                 echo Html::img('/img/'.$model->image,[
-                    'class'=>$model->image_class,
                     'alt'=>$model->image_alt,
                     'title'=>$model->image_title?$model->image_title:null,
                 ]);

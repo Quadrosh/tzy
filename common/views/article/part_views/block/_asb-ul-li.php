@@ -12,6 +12,14 @@ use yii\helpers\Html;
 
 ?>
 <div class="asb-ul-li  <?= $model->custom_class?>">
+    <?php if ($model->image) : ?>
+            <?php if ($model->image) {
+                echo Html::img('/img/'.$model->image,[
+                    'alt'=>$model->image_alt,
+                    'title'=>$model->image_title?$model->image_title:null,
+                ]);
+            } ?>
+    <?php endif; ?>
 
     <?php if ($model->header) : ?>
         <h3 <?= $model->header_class?'class="'.$model->header_class.'"':null ?>><?= $model->header ?></h3>

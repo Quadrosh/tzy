@@ -154,10 +154,10 @@ header .b-top__header {
 
     border: 0;
     color: #fff;
-    border-radius: 0;
-    -webkit-box-shadow: 0 5.67px 20px 5px rgba(72,154,213,.31);
-    -moz-box-shadow: 0 5.67px 20px 5px rgba(72,154,213,.31);
-    box-shadow: 0 5.67px 20px 5px rgba(72,154,213,.31);
+    border-radius: 3px;
+    /*-webkit-box-shadow: 0 5.67px 20px 5px rgba(72,154,213,.31);*/
+    /*-moz-box-shadow: 0 5.67px 20px 5px rgba(72,154,213,.31);*/
+    /*box-shadow: 0 5.67px 20px 5px rgba(72,154,213,.31);*/
     position: relative;
     top:-7px;
 }
@@ -577,16 +577,21 @@ header .b-top__banner .b-top__banner__shadow {
     padding: 10px 1em;
     color: #fff;
     border-radius: 3px;
+    text-shadow:0px 1px 0px rgba(0,0,0,0.6);
     /*-webkit-box-shadow: 0 5.67px 20px 5px rgba(72,154,213,.31);*/
     /*-moz-box-shadow: 0 5.67px 20px 5px rgba(72,154,213,.31);*/
     /*box-shadow: 0 5.67px 20px 5px rgba(72,154,213,.31);*/
 }
 .order-btn[aria-expanded="true"] {
-    color: #fff;
+    color: #0e3e74;
     background-image: none;
-    background-color: #286090;
-    /*background-color: #f5f5f5;*/
+    /*background-color: #286090;*/
+    background-color: rgba(40,90,144,0.5);
     border-color: #204d74;
+    box-shadow:inset 0px 0px 7px 1px #286090;
+    text-shadow:0px 1px 0px rgba(255,255,255,0.6);
+    position:relative;
+    top:1px;
 }
 
 .sendorder-btn {
@@ -703,6 +708,14 @@ header .b-top__banner .b-top__banner__shadow {
     .b-top__info__menu ul.list-inline li.dropdown:hover > ul.dropdown-menu {
         display: block;
     }
+}
+
+.phoneIconSvg{
+    width: 25px;
+    height: 25px;
+    position: relative;
+    left: 0;
+    top: 7px;
 }
 
 
