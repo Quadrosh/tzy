@@ -63,6 +63,27 @@ use yii\helpers\Html;
             <?php if ($model->conclusion) : ?>
                 <p <?= $model->conclusion_class?'class="'.$model->conclusion_class.'"':null ?>><?= nl2br($model->conclusion)  ?></p>
             <?php endif; ?>
+
+            <?php if ($model->call2action_description) : ?>
+                <p class="text-center mt50" ><?= nl2br($model->call2action_description)  ?></p>
+            <?php endif; ?>
+            <?php if ($model->call2action_name) : ?>
+                <?php if ($model->call2action_link == 'callMe' || $model->call2action_link == 'call_me') : ?>
+                    <div class="col-sm-12 <?= $model->call2action_class ?>">
+                        <?= $this->render('/article/part_views/article/_phone-form', [
+                            'section' => $model,
+                            'article' => $article,
+                            'utm' => isset($utm)?$utm:null,
+                        ]) ?>
+
+                    </div>
+                <?php endif; ?>
+                <?php if ($model->call2action_link != 'callMe' && $model->call2action_link != 'call_me') : ?>
+                    <?=
+                    Html::a( $model->call2action_name, [$model->call2action_link],['class'=>$model->call2action_class]);
+                    ?>
+                <?php endif; ?>
+            <?php endif; ?>
         </div>
     </div>
 

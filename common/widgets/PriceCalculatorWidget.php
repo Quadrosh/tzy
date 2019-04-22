@@ -14,6 +14,8 @@ class PriceCalculatorWidget extends Widget
     public $toCityName;
     public $onlyExisted;
     public $truckName;
+    public $selectFromCityName;
+    public $selectToCityName;
 
 
 
@@ -33,6 +35,8 @@ class PriceCalculatorWidget extends Widget
             'fromCityName' => $this->fromCityName,
             'onlyExisted' => $this->onlyExisted,
             'truckName' => $this->truckName,
+            'selectFromCityName' => $this->selectFromCityName,
+            'selectToCityName' => $this->selectToCityName,
         ]);
 
     }
