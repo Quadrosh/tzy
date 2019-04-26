@@ -101,9 +101,15 @@ body {
 .w50{
     width: 50px;
 }
-/*'w100' => 'w100',
-                'w80' => 'w80',
-                'w50' => 'w50',*/
+.w100per{
+    width:100%;
+}
+.w90per{
+    width:90%;
+}
+.w80per{
+    width:80%;
+}
 .w50perSm{
     width:50%;
 }
