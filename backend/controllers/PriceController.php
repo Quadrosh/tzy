@@ -42,7 +42,7 @@ class PriceController extends Controller
         $searchModel = new PriceSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         $dataProvider->sort = ['defaultOrder'=> ['id' => SORT_DESC]];
-        $dataProvider->pagination = ['defaultOrder'=> ['id' => SORT_DESC]];
+        $dataProvider->pagination = ['pageSize' => 100];
 
 
         return $this->render('index', [
