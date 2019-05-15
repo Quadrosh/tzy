@@ -53,10 +53,10 @@ use yii\helpers\Html;
                                 <h3 <?= $block->header_class?'class="'.$block->header_class.'"':null ?>><?= $block->header ?></h3>
                             <?php endif; ?>
                             <?php if ($block->description) : ?>
-                                <p <?= $block->description_class?'class="'.$block->description_class.'"':null ?>><?= $block->description ?></p>
+                                <p <?= $block->description_class?'class="'.$block->description_class.'"':null ?>><?= nl2br($block->description) ?></p>
                             <?php endif; ?>
                             <?php if ($block->raw_text) : ?>
-                                <p <?= $block->raw_text_class?'class="'.$block->raw_text_class.'"':null ?>><?= $block->raw_text ?></p>
+                                <p <?= $block->raw_text_class?'class="'.$block->raw_text_class.'"':null ?>><?= nl2br($block->raw_text)  ?></p>
                             <?php endif; ?>
                             <?php if ($block->items) : ?>
                                 <?php foreach ($block->items as $item) : ?>
@@ -67,9 +67,12 @@ use yii\helpers\Html;
                                         <p <?= $item->description_class?'class="'.$item->description_class.'"':null ?>><?= $item->description ?></p>
                                     <?php endif; ?>
                                     <?php if ($item->text) : ?>
-                                        <p <?= $item->text_class?'class="'.$item->text_class.'"':null ?>><?= $item->text ?></p>
+                                        <p <?= $item->text_class?'class="'.$item->text_class.'"':null ?>><?= nl2br($item->text)  ?></p>
                                     <?php endif; ?>
                                 <?php endforeach; ?>
+                            <?php endif; ?>
+                            <?php if ($block->conclusion) : ?>
+                                <p <?= $block->conclusion_class?'class="'.$block->conclusion_class.'"':null ?>><?= nl2br($block->conclusion)  ?></p>
                             <?php endif; ?>
                         <?php endif; ?>
                     <?php endforeach; ?>
