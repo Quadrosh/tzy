@@ -19,7 +19,8 @@
         "yiisoft/yii2-bootstrap": "~2.0.0",
         "yiisoft/yii2-swiftmailer": "~2.0.0",
         "phpunit/phpunit": "5.7.*",
-        "creocoder/yii2-nested-sets": "0.9.*"
+        "creocoder/yii2-nested-sets": "0.9.*",
+        "yii2mod/yii2-comments": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",
