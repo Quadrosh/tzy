@@ -47,6 +47,13 @@ use yii\web\UploadedFile;
 class Article extends \yii\db\ActiveRecord
 {
     public $categories;
+    const VIEW_OPTIONS = [
+        '_a-default' => 'default',
+        '_a-page_preorder_form' => 'page_preorder_form',
+        '_a-page_preorder_form-nocomment' => 'page_preorder_form-nocomment',
+        '_a-1' => '1',
+    ];
+
 
     /**
      * @inheritdoc
@@ -372,12 +379,5 @@ class Article extends \yii\db\ActiveRecord
         }
     }
 
-    public static function getViews()
-    {
-        return [
-            '_a-default' => 'default',
-            '_a-page_preorder_form' => 'page_preorder_form',
-            '_a-1' => '1',
-        ];
-    }
+
 }

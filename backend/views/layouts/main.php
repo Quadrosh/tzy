@@ -41,6 +41,18 @@ AppAsset::register($this);
                 ? (['label' => 'Users', 'url' => ['/usermanage']])
                 : (['label' => false]),
             [
+                'label' => 'frontUsers',
+                'items' => [
+                    ['label' => 'index', 'url' => ['/front-user']],
+                ],
+            ],
+            [
+                'label' => 'Comments',
+                'items' => [
+                    ['label' => 'manage index', 'url' => ['/comment/manage/index']],
+                ],
+            ],
+            [
                 'label' => 'Landing',
                 'items' => [
                     ['label' => 'Landing Page', 'url' => ['/landingpage']],

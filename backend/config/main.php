@@ -10,8 +10,10 @@ return [
     'id' => 'app-backend',
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
+    'language' => 'ru-RU',
     'bootstrap' => ['log'],
-    'modules' => [],
+    'modules' => [
+    ],
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-backend',
@@ -52,6 +54,7 @@ return [
             'showScriptName' => false,
             'rules' => [
                 'aaa'=>'site/index',
+//                'commen'=>'comments/index',
             ],
         ],
 

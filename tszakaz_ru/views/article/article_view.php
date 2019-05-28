@@ -82,5 +82,8 @@ $this->params['breadcrumbs'] = $breadcrumbs->construct($model->cat_ids);
             <?php endforeach; ?>
         <?php endif; ?>
     <?php endif; ?>
+
+
+
 </div>
 

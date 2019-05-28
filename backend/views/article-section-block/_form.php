@@ -133,7 +133,7 @@ use yii\widgets\ActiveForm;
 
 
         <div class="col-sm-3">
-            <?= $form->field($model, 'view')->dropDownList($model::getViews(),['prompt' => 'Выбери']) ?>
+            <?= $form->field($model, 'view')->dropDownList(\common\models\ArticleSectionBlock::VIEW_OPTIONS,['prompt' => 'Выбери']) ?>
         </div>
         <div class="col-sm-3">
             <?= $form->field($model, 'color_key')->dropDownList([

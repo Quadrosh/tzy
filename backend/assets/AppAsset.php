@@ -19,11 +19,13 @@ class AppAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
         'libs/slick/slick.css',
+        'libs/magnific/magnificpopup.min.css',
         'css/site.css',
         'css/common/article.css',
     ];
     public $js = [
         'libs/slick/slick.min.js',
+        'libs/magnific/magnificpopup.min.js',
         'js/common/article.js',
         'js/backend.js',
     ];

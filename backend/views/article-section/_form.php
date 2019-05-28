@@ -143,7 +143,7 @@ use yii\widgets\ActiveForm;
 
 
         <div class="col-sm-3">
-            <?= $form->field($model, 'view')->dropDownList($model::getViews(),['prompt' => 'Выбери вьюху']) ?>
+            <?= $form->field($model, 'view')->dropDownList(\common\models\ArticleSection::VIEW_OPTIONS,['prompt' => 'Выбери вьюху']) ?>
         </div>
         <div class="col-sm-3">
             <?= $form->field($model, 'color_key')

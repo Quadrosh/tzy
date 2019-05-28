@@ -2,6 +2,7 @@
 
 namespace tszakaz_ru\controllers;
 
+use common\models\FrontUser;
 use common\models\Menu;
 use common\models\RateLimit;
 use common\models\MenuTop;
@@ -22,6 +23,7 @@ use common\models\ContactForm;
 use common\models\Feedback;
 use yii\web\HttpException;
 use yii\base\ErrorException;
+use yii\web\NotFoundHttpException;
 
 class SiteController extends Controller
 {
@@ -251,7 +253,9 @@ class SiteController extends Controller
     {
         Yii::$app->user->logout();
 
-        return $this->goHome();
+        return true;
+//        return $this->redirect(Url::previous());
+//        return $this->goHome();
     }
 
     /**
@@ -441,5 +445,31 @@ class SiteController extends Controller
 
         return $utm;
 
+    }
+
+    public function actionConfirmEmail($token)
+    {
+
+        $user = FrontUser::findIdentityByAccessToken($token);
+        if (!$user) {
+            Yii::$app->session->setFlash('error', 'Еmail не найден');
+            return $this->redirect(Url::previous());
+//            throw new NotFoundHttpException('email не найден');
+
+        } else {
+            Yii::$app->user->login($user, FrontUser::REMEMBER_USER_TIME);
+        }
+        $page=[];
+        $page['title']= 'Подтверждение email';
+        $page['description']= 'Подтверждение email для комментирования на сайте';
+        $page['keywords']= '';
+        $page['seo_logo']= 'Подтверждение email адреса';
+
+        $this->view->params['meta']=$page;
+        $this->view->params['pageName']='Подтверждение email '.$user->email;
+
+        return $this->render('confirm-email', [
+            'user' => $user,
+        ]);
     }
 }
