@@ -215,3 +215,8 @@ $preorderForm = new \common\models\Preorders();
         <?php $form = ActiveForm::end(); ?>
     </div>
 </div>
+
+<?php echo \common\modules\comments\widgets\Comment::widget([
+    'model' => $article,
+//    'commentView' => '@app/views/site/comments/index',
+]); ?>

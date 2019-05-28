@@ -49,14 +49,15 @@ return [
             'class' => 'yii\rbac\DbManager',
         ],
         'user' => [
-            'identityClass' => 'common\models\User',
+            'identityClass' => 'common\models\FrontUser',
             'enableAutoLogin' => true,
+            'enableSession' => true,
             'identityCookie' => ['name' => '_identity-tszakaz', 'httpOnly' => true],
         ],
-//        'session' => [
-//            // this is the name of the session cookie used for login
-//            'name' => 'tszakaz.ru',
-//        ],
+        'session' => [
+            // this is the name of the session cookie used for login
+            'name' => 'cookie_tszakaz',
+        ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [
@@ -83,16 +84,14 @@ return [
             'showScriptName' => false,
             'rules' => [
 
+                'confirm-email/<token:[0-9a-zA-Z\-\_]+>' => 'site/confirm-email',
+
                 $params['botAddress'] => '/chat/bot',
                 'chat/post' => '/chat/post',
                 'news.html' => '/article/index',
                 'baza-znaniy.html' => '/article/index',
 
                 'sitemap.xml' => 'site/sitemap',
-
-//                'gruzoperevozki/*' => 'site/page',
-
-
                 't/<testpage:[0-9a-z\-\_]+>' => 'test/test',
                 'dev/<testpage:[0-9a-z\-\_]+>' => 'test/dev',
                 'lp/<landingpage:[0-9a-z\-\_]+>' => 'landing/page',

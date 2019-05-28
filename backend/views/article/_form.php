@@ -135,7 +135,7 @@ use yii\widgets\ActiveForm;
         </div>
 
         <div class="col-sm-6">
-            <?= $form->field($model, 'view')->dropDownList($model::getViews(),['prompt' => 'Выбери вьюху']) ?>
+            <?= $form->field($model, 'view')->dropDownList(\common\models\Article::VIEW_OPTIONS,['prompt' => 'Выбери вьюху']) ?>
         </div>
         <div class="col-sm-6">
             <?= $form->field($model, 'layout')->textInput(['maxlength' => true]) ?>
