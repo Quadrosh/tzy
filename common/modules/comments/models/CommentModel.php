@@ -327,11 +327,11 @@ class CommentModel extends ActiveRecord
      */
     public function getAuthorName()
     {
-        if ($this->author->hasMethod('getUsername')) {
+        if ($this->author && $this->author->hasMethod('getUsername')) {
             return $this->author->getUsername();
         }
 
-        return $this->author->username;
+        return $this->author ? $this->author->username : null;
     }
 
     /**
@@ -349,7 +349,7 @@ class CommentModel extends ActiveRecord
      */
     public function getAvatar()
     {
-        if ($this->author->hasMethod('getAvatar')) {
+        if ($this->author && $this->author->hasMethod('getAvatar')) {
             return $this->author->getAvatar();
         }
 

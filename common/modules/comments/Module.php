@@ -14,7 +14,7 @@ class Module extends \yii\base\Module
     /**
      * @var string the class name of the [[identity]] object
      */
-    public $userIdentityClass;
+    public $userIdentityClass = 'common\models\FrontUser';
 
     /**
      * @var string the class name of the comment model object, by default its yii2mod\comments\models\CommentModel

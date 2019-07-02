@@ -25,7 +25,7 @@ class ManageController extends Controller
     /**
      * @var string path to update view file, which is used in admin panel
      */
-    public $updateView = '@comments/modules/comments/views/manage/update';
+    public $updateView = '@common/modules/comments/views/manage/update';
 
     /**
      * @var string search class name for searching
@@ -97,12 +97,16 @@ class ManageController extends Controller
      */
     public function actionUpdate($id)
     {
+
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             Yii::$app->session->setFlash('success', Yii::t('yii2mod.comments', 'Comment has been saved.'));
 
             return $this->redirect(['index']);
+        }
+        if ($model->errors) {
+            var_dump($model->errors); die;
         }
 
         return $this->render($this->updateView, [
