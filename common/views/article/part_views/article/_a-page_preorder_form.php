@@ -154,7 +154,7 @@ $preorderForm = new \common\models\Preorders();
 
     </div>
 
-    <div class="text-center">
+    <div class="text-center mb20 mt100">
         <?= Html::a('Оформить заявку', '#orderForm',['class' => 'btn btn-primary order-btn mt10 mb20', 'data-toggle'=>'collapse']) ?>
     </div>
 
@@ -208,7 +208,7 @@ $preorderForm = new \common\models\Preorders();
             <?= $form->field($preorderForm, 'utm_content')
                 ->hiddenInput([ 'id' => 'preorder_form-utm_content'])->label(false) ?>
 
-            <div class="col-sm-6 col-sm-offset-3 text-center">
+            <div class="col-sm-6 col-sm-offset-3 text-center mt50 mb100">
                 <?= Html::submitButton('отправить заявку', ['class' => 'btn btn-primary sendorder-btn mt10']) ?>
             </div>
         </div>

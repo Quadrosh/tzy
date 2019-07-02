@@ -14,7 +14,7 @@ use yii\widgets\Pjax;
 /* @var $listViewConfig array */
 /* @var $commentWrapperId string */
 ?>
-<div class="comment-wrapper" id="<?php echo $commentWrapperId; ?>">
+<div class="comment-wrapper mt100" id="<?php echo $commentWrapperId; ?>">
 
     <?php Pjax::begin(['enablePushState' => false, 'timeout' => 20000, 'id' => $pjaxContainerId]); ?>
     <div class="comments row">
