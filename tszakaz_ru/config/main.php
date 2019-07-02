@@ -15,6 +15,13 @@ return [
     'defaultRoute' => 'site/index',
     'timeZone' => 'Europe/Moscow',
     'components' => [
+        'reCaptcha' => [
+            'class' => 'himiklab\yii2\recaptcha\ReCaptchaConfig',
+//            'siteKeyV2' => 'your siteKey v2',
+//            'secretV2' => 'your secret key v2',
+            'siteKeyV3' => $params['reCaptchaTszakazSite'],
+            'secretV3' => $params['reCaptchaTszakazClient'],
+        ],
         'assetManager' => [
             'class' => 'yii\web\AssetManager',
             'bundles' => [

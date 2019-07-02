@@ -37,7 +37,9 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'createdBy',
                 'value' => function ($model) {
-                    return $model->getAuthorName();
+                    if($model->author){
+                        return $model->getAuthorName();
+                    }
                 },
                 'filter' => $commentModel::getAuthors(),
                 'filterInputOptions' => ['prompt' => Yii::t('yii2mod.comments', 'Select Author'), 'class' => 'form-control'],
@@ -74,7 +76,9 @@ $this->params['breadcrumbs'][] = $this->title;
                         $url = $model->getViewUrl();
 
                         if (!empty($url)) {
-                            return Html::a($icon, $url, $options);
+                            $base = \yii\helpers\Url::base(true);
+                            $frontUrl =  str_ireplace('cp.','',$base) . $url;
+                            return Html::a($icon, $frontUrl, $options);
                         }
 
                         return null;

@@ -28,6 +28,21 @@ $this->params['breadcrumbs'][] = Yii::t('yii2mod.comments', 'Update');
             'id' => 'content',
         ]);
         ?>
+        <div class="row">
+            <div class="col-sm-6">
+<!--                --><?php //print_r($model->author->email,false)?>
+                <?php echo $form->field($model, 'email', ['template' => '{input}{error}'])
+                    ->textInput([
+                            'value'=>$model->author?$model->author->email:null,
+                            'readonly'=>true]); ?>
+            </div>
+            <div class="col-sm-6">
+                <?php echo $form->field($model, 'name', ['template' => '{input}{error}'])
+                    ->textInput([
+                        'value'=>$model->author?$model->author->username:null,
+                        'readonly'=>true]); ?>
+            </div>
+        </div>
         <?php echo $form->field($model, 'status')->dropDownList(Status::listData()); ?>
         <div class="form-group">
             <?php echo Html::submitButton(Yii::t('yii2mod.comments', 'Update'), ['class' => 'btn btn-primary']); ?>
