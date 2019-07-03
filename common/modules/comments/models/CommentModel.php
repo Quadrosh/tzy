@@ -77,6 +77,11 @@ class CommentModel extends ActiveRecord
             [['email'], 'email'],
             [['name'], 'string'],
             [['email','name'], 'required'],
+            [['reCaptcha'], \himiklab\yii2\recaptcha\ReCaptchaValidator3::className(),
+//                'secret' => 'your secret key', // unnecessary if reСaptcha is already configured
+                'threshold' => 0.5,
+                'action' => 'comment',
+            ],
 
         ];
     }

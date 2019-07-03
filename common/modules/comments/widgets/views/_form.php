@@ -43,6 +43,15 @@ use yii\widgets\ActiveForm;
 
 
     <div class="col-sm-12">
+        <?= \himiklab\yii2\recaptcha\ReCaptcha3::widget([
+            'name' => 'reCaptcha',
+//            'siteKey' => 'your siteKey', // unnecessary is reCaptcha component was set up
+            'action' => 'comment',
+//            'widgetOptions' => ['class' => 'col-sm-offset-3'],
+        ]) ?>
+    </div>
+
+    <div class="col-sm-12">
         <?php echo $form->field($commentModel, 'content', ['template' => '{input}{error}'])->textarea(['placeholder' => Yii::t('yii2mod.comments', 'Add a comment...'), 'rows' => 4, 'data' => ['comment' => 'content']]); ?>
         <?php echo $form->field($commentModel, 'parentId', ['template' => '{input}'])->hiddenInput(['data' => ['comment' => 'parent-id']]); ?>
         <div class="comment-box-partial">
