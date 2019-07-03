@@ -50,9 +50,12 @@ use yii\widgets\ActiveForm;
 ////            'widgetOptions' => ['class' => 'col-sm-offset-3'],
 //        ]) ?>
 
+
         <?= \himiklab\yii2\recaptcha\ReCaptcha2::widget([
             'name' => 'reCaptcha',
+            'jsCallback' => '$( "commentSubmitButton" ).removeAttr("disabled");',
         ]) ?>
+
 
     </div>
 
@@ -62,7 +65,11 @@ use yii\widgets\ActiveForm;
         <div class="comment-box-partial">
             <div class="button-container show">
                 <?php echo Html::a(Yii::t('yii2mod.comments', 'Click here to cancel reply.'), '#', ['id' => 'cancel-reply', 'class' => 'pull-right', 'data' => ['action' => 'cancel-reply']]); ?>
-                <?php echo Html::submitButton(Yii::t('yii2mod.comments', 'Comment'), ['class' => 'btn btn-primary comment-submit']); ?>
+                <?php echo Html::submitButton(Yii::t('yii2mod.comments', 'Comment'), [
+                        'class' => 'btn btn-primary comment-submit',
+                        'id' => 'commentSubmitButton',
+                        'disabled' => true,
+                ]); ?>
             </div>
         </div>
 
