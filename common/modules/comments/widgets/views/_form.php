@@ -43,12 +43,17 @@ use yii\widgets\ActiveForm;
 
 
     <div class="col-sm-12">
-        <?= \himiklab\yii2\recaptcha\ReCaptcha3::widget([
+<!--        --><?//= \himiklab\yii2\recaptcha\ReCaptcha3::widget([
+//            'name' => 'reCaptcha',
+////            'siteKey' => 'your siteKey', // unnecessary is reCaptcha component was set up
+//            'action' => 'comment',
+////            'widgetOptions' => ['class' => 'col-sm-offset-3'],
+//        ]) ?>
+
+        <?= \himiklab\yii2\recaptcha\ReCaptcha2::widget([
             'name' => 'reCaptcha',
-//            'siteKey' => 'your siteKey', // unnecessary is reCaptcha component was set up
-            'action' => 'comment',
-//            'widgetOptions' => ['class' => 'col-sm-offset-3'],
         ]) ?>
+
     </div>
 
     <div class="col-sm-12">
