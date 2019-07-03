@@ -82,8 +82,9 @@ $(document).ready(function() {
 
 
 
-    function enableSubmitByRecaptcha(param) {
-        $( "#submitBlockedByRecaptcha" ).removeAttr("disabled");
+    function enableSubmitByRecaptcha() {
+        alert('Ура');
+        // $( "#submitBlockedByRecaptcha" ).removeAttr("disabled");
     }
 
 });
