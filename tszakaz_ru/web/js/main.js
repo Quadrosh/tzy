@@ -82,8 +82,8 @@ $(document).ready(function() {
 
 
 
-    // function enableSubmitByRecaptcha(param) {
-    //     $( "submitBlocked" ).removeAttr("disabled");
-    // }
+    function enableSubmitByRecaptcha(param) {
+        $( "#submitBlockedByRecaptcha" ).removeAttr("disabled");
+    }
 
 });
