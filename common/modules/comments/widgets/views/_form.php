@@ -51,10 +51,10 @@ use yii\widgets\ActiveForm;
 //        ]) ?>
 
 
-        <?= \himiklab\yii2\recaptcha\ReCaptcha2::widget([
-            'name' => 'reCaptcha',
-            'jsCallback' => 'enableSubmitByRecaptcha()',
-        ]) ?>
+<!--        --><?//= \himiklab\yii2\recaptcha\ReCaptcha2::widget([
+//            'name' => 'reCaptcha',
+//            'jsCallback' => 'enableSubmitByRecaptcha()',
+//        ]) ?>
 
 
     </div>
