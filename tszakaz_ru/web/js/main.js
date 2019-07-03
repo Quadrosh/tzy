@@ -82,9 +82,11 @@ $(document).ready(function() {
 
 
 
-    function enableSubmitByRecaptcha() {
-        alert('Ура');
-        // $( "#submitBlockedByRecaptcha" ).removeAttr("disabled");
-    }
+
 
 });
+
+function enableSubmitByRecaptcha() {
+    alert('Ура');
+    // $( "#submitBlockedByRecaptcha" ).removeAttr("disabled");
+}
