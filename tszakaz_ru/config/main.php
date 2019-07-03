@@ -17,8 +17,8 @@ return [
     'components' => [
         'reCaptcha' => [
             'class' => 'himiklab\yii2\recaptcha\ReCaptchaConfig',
-//            'siteKeyV2' => 'your siteKey v2',
-//            'secretV2' => 'your secret key v2',
+            'siteKeyV2' => $params['reCaptchaTszakazSite'],
+            'secretV2' => $params['reCaptchaTszakazClient'],
             'siteKeyV3' => $params['reCaptchaTszakazSite'],
             'secretV3' => $params['reCaptchaTszakazClient'],
         ],
