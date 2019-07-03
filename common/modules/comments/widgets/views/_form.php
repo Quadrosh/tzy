@@ -68,7 +68,7 @@ use yii\widgets\ActiveForm;
                 <?php echo Html::submitButton(Yii::t('yii2mod.comments', 'Comment'), [
                         'class' => 'btn btn-primary comment-submit',
                         'id' => 'submitBlockedByRecaptcha',
-//                        'disabled' => true,
+                        'disabled' => true,
                 ]); ?>
             </div>
         </div>
