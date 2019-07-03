@@ -53,7 +53,7 @@ use yii\widgets\ActiveForm;
 
         <?= \himiklab\yii2\recaptcha\ReCaptcha2::widget([
             'name' => 'reCaptcha',
-            'jsCallback' => '$( "commentSubmitButton" ).removeAttr("disabled");',
+            'jsCallback' => '$( "#commentSubmitButton" ).removeAttr("disabled");',
         ]) ?>
 
 
