@@ -3,6 +3,8 @@
 use yii\helpers\ArrayHelper;
 use yii\widgets\ListView;
 use yii\widgets\Pjax;
+use yii\helpers\Html;
+
 
 /* @var $this \yii\web\View */
 /* @var $commentModel \yii2mod\comments\models\CommentModel */
@@ -22,35 +24,36 @@ use yii\widgets\Pjax;
             <!--            --><?//= common\widgets\Alert::widget() ?>
             <div class="title-block clearfix">
                 <h3 class="h3-body-title">
-                    <?php echo Yii::t('yii2mod.comments', 'Comments ({0})', $commentModel->getCommentsCount()); ?>
+                    <?= Html::a(Yii::t('yii2mod.comments', 'Comments ({0})', $commentModel->getCommentsCount()), '#commentsList',[ 'class'=>'text-grey','data-toggle'=>'collapse']) ?>
                 </h3>
                 <div class="title-separator"></div>
             </div>
-            <?php echo ListView::widget(ArrayHelper::merge(
-                [
-                    'dataProvider' => $commentDataProvider,
-                    'layout' => "{items}\n{pager}",
-                    'itemView' => '_list',
-                    'viewParams' => [
-                        'maxLevel' => $maxLevel,
+            <div class="panel-collapse collapse" id="commentsList">
+                <?php echo ListView::widget(ArrayHelper::merge(
+                    [
+                        'dataProvider' => $commentDataProvider,
+                        'layout' => "{items}\n{pager}",
+                        'itemView' => '_list',
+                        'viewParams' => [
+                            'maxLevel' => $maxLevel,
+                        ],
+                        'options' => [
+                            'tag' => 'ol',
+                            'class' => 'comments-list',
+                        ],
+                        'itemOptions' => [
+                            'tag' => false,
+                        ],
                     ],
-                    'options' => [
-                        'tag' => 'ol',
-                        'class' => 'comments-list',
-                    ],
-                    'itemOptions' => [
-                        'tag' => false,
-                    ],
-                ],
-                $listViewConfig
-            )); ?>
-            <?php // if (!Yii::$app->user->isGuest) : ?>
-            <?php echo $this->render('_form', [
-                'commentModel' => $commentModel,
-                'formId' => $formId,
-                'encryptedEntity' => $encryptedEntity,
-            ]); ?>
-            <?php // endif; ?>
+                    $listViewConfig
+                )); ?>
+                <?php echo $this->render('_form', [
+                    'commentModel' => $commentModel,
+                    'formId' => $formId,
+                    'encryptedEntity' => $encryptedEntity,
+                ]); ?>
+            </div>
+
         </div>
     </div>
     <?php Pjax::end(); ?>
