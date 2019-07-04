@@ -197,7 +197,10 @@
 }
 .comment_email_wrapper .logout_btn{
     position: absolute;
-    top: 0;
-    right: -3px;
+    top: 25px;
+    right: -.5em;
     z-index: 10;
+    color: #337ab7;
+    font-size: 2em;
 }
+
