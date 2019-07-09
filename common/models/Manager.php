@@ -28,7 +28,7 @@ class Manager extends \yii\db\ActiveRecord
     {
         return [
             [['name'], 'required'],
-            [['name', 'hrurl'], 'string', 'max' => 255],
+            [['name', 'hrurl','email'], 'string', 'max' => 255],
         ];
     }
 
@@ -41,6 +41,7 @@ class Manager extends \yii\db\ActiveRecord
             'id' => 'ID',
             'name' => 'Name',
             'hrurl' => 'Hrurl',
+            'email' => 'e-mail',
         ];
     }
 }
