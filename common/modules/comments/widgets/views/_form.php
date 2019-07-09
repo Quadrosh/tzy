@@ -84,15 +84,16 @@ $this->registerJs($js);
 //                //            'widgetOptions' => ['class' => 'col-sm-offset-3'],
 //                        ]) ?>
 
-                <?= \himiklab\yii2\recaptcha\ReCaptcha2::widget([
-                    'name' => 'reCaptcha',
-                    'jsCallback' => 'enableSubmitByRecaptcha',
-                ]) ?>
+
+<!--                --><?//= \himiklab\yii2\recaptcha\ReCaptcha2::widget([
+//                    'name' => 'reCaptcha',
+//                    'jsCallback' => 'enableSubmitByRecaptcha',
+//                ]) ?>
 
                 <?php echo Html::submitButton(Yii::t('yii2mod.comments', 'Comment'), [
                         'class' => 'btn btn-primary comment-submit',
-                        'id' => 'submitBlockedByRecaptcha',
-                        'disabled' => true,
+//                        'id' => 'submitBlockedByRecaptcha',
+//                        'disabled' => true,
                 ]); ?>
             </div>
         </div>
