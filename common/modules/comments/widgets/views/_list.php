@@ -5,13 +5,14 @@ use yii\helpers\Url;
 use yii2mod\editable\Editable;
 
 /* @var $this \yii\web\View */
-/* @var $model \yii2mod\comments\models\CommentModel */
+/* @var $model \common\modules\comments\models\CommentModel */
 /* @var $maxLevel null|integer comments max level */
 ?>
 <li class="comment" id="comment-<?php echo $model->id; ?>">
     <div class="comment-content" data-comment-content-id="<?php echo $model->id; ?>">
         <div class="comment-author-avatar">
-            <?php echo Html::img($model->getAvatar(), ['alt' => $model->getAuthorName()]); ?>
+            <?php echo $model->getAvatar(); ?>
+<!--            --><?php //echo Html::img($model->getAvatar(), ['alt' => $model->getAuthorName()]); ?>
         </div>
         <div class="comment-details">
             <div class="comment-action-buttons">
