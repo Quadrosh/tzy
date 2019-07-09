@@ -199,9 +199,9 @@ class CommentModel extends ActiveRecord
                 $this->level += $parentNodeLevel;
             }
 
-            if ($this->author->email && Manager::findOne(['email'=>$this->author->email]) ) {
-                $this->is_manager = true ;
-            }
+//            if ($this->author->email && Manager::findOne(['email'=>$this->author->email]) ) {
+//                $this->is_manager = true ;
+//            }
 
             return true;
         } else {
@@ -357,7 +357,6 @@ class CommentModel extends ActiveRecord
                 } else {
                     return $this->author->username;
                 }
-
             }
         } else {
             return null;
