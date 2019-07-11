@@ -85,17 +85,14 @@ $this->registerJs($js);
 //                        ]) ?>
 
 
-<!--                --><?//= \himiklab\yii2\recaptcha\ReCaptcha2::widget([
-//                    'name' => 'reCaptcha',
-////                    'jsCallback' => 'enableSubmitByRecaptcha',
-//                ]) ?>
 
-                <?= $form->field($commentModel, 'reCaptcha')->widget(
-                    \himiklab\yii2\recaptcha\ReCaptcha2::className(),
-                    [
-                        'jsCallback' => 'enableSubmitByRecaptcha',
-                    ]
-                ) ?>
+                <?php
+                $activeField = $form->field($commentModel, 'reCaptcha')->widget(\himiklab\yii2\recaptcha\ReCaptcha2::className(),
+                    ['jsCallback' => 'enableSubmitByRecaptcha',]
+                )->label(false);
+                $activeField->enableAjaxValidation=false;
+                echo $activeField;
+                ?>
 
 
                 <?php echo Html::submitButton(Yii::t('yii2mod.comments', 'Comment'), [
