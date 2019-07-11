@@ -53,6 +53,8 @@ class CommentModel extends ActiveRecord
     public $name;
     public $email;
 
+    public $reCaptcha;
+
 
 
     /**
