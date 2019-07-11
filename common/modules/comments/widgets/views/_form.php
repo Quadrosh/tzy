@@ -90,7 +90,7 @@ $this->registerJs($js);
 ////                    'jsCallback' => 'enableSubmitByRecaptcha',
 //                ]) ?>
 
-                <?= $form->field($model, 'reCaptcha')->widget(
+                <?= $form->field($commentModel, 'reCaptcha')->widget(
                     \himiklab\yii2\recaptcha\ReCaptcha2::className(),
                     [
 //                        'siteKey' => 'your siteKey', // unnecessary is reCaptcha component was set up
