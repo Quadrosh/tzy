@@ -89,9 +89,9 @@ class CommentModel extends ActiveRecord
 //            ],
 
 
-//            [['reCaptcha'], \himiklab\yii2\recaptcha\ReCaptchaValidator2::className(),
-//                'uncheckedMessage' => 'Пожалуйста, подтвердите что Вы не бот'
-//            ],
+            [['reCaptcha'], \himiklab\yii2\recaptcha\ReCaptchaValidator2::className(),
+                'uncheckedMessage' => 'Пожалуйста, подтвердите что Вы не бот'
+            ],
 
         ];
     }
