@@ -93,15 +93,15 @@ $this->registerJs($js);
                 <?= $form->field($commentModel, 'reCaptcha')->widget(
                     \himiklab\yii2\recaptcha\ReCaptcha2::className(),
                     [
-//                        'siteKey' => 'your siteKey', // unnecessary is reCaptcha component was set up
+                        'jsCallback' => 'enableSubmitByRecaptcha',
                     ]
                 ) ?>
 
 
                 <?php echo Html::submitButton(Yii::t('yii2mod.comments', 'Comment'), [
                         'class' => 'btn btn-primary comment-submit',
-//                        'id' => 'submitBlockedByRecaptcha',
-//                        'disabled' => true,
+                        'id' => 'submitBlockedByRecaptcha',
+                        'disabled' => true,
                 ]); ?>
             </div>
         </div>
