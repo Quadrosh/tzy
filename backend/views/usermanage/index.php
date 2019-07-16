@@ -13,9 +13,43 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>
-        <?= Html::a('Create User', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+    <div class="row">
+        <div class="col-sm-6">
+            <p>
+                <?= Html::a('Create User', ['create'], ['class' => 'btn btn-success']) ?>
+            </p>
+        </div>
+        <div class="col-xs-6 ">
+            <h4>Приглос</h4>
+            <?php
+            $invite = new \common\models\InviteForm();
+             $form = yii\bootstrap\ActiveForm::begin([
+                'method' => 'post',
+                'action' => ['/admin/usermanage/invite'],
+                'layout' => 'horizontal',
+                'fieldConfig' => [
+                    'template' => "{beginWrapper}\n{input}\n{error}\n{endWrapper}",
+                    'horizontalCssClasses' => [
+                        'wrapper' => 'col-sm-12',
+                        'error' => '',
+                        'hint' => 'статус',
+                    ],
+                ],
+                'options' => ['enctype' => 'multipart/form-data'],
+            ]); ?>
+            <div class="col-sm-6">
+                <?= $form->field($invite, 'email')->textInput(['placeholder'=>'email'])->label('email') ?>
+            </div>
+            <div class="col-sm-6">
+                <?= $form->field($invite, 'role',[
+                    'inputTemplate' => '<div class="input-group"><span class="lRound">{input}</span><span class="input-group-btn">'.
+                        '<button type="submit" class="btn rRound btn-primary">Send </button></span></div>',
+                ])->dropDownList(\yii\helpers\ArrayHelper::map(\common\models\Roles::find()->where(['type'=>1])->andWhere(['!=','name','Creator'])->orderBy('name')->all(), 'name','name')) ?>
+            </div>
+            <?php yii\bootstrap\ActiveForm::end() ?>
+        </div>
+    </div>
+
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
