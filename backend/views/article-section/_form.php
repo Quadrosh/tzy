@@ -89,6 +89,10 @@ use yii\widgets\ActiveForm;
             <?= $form->field($model, 'image_class')->dropDownList([
                 'float-right w50perSm' => 'float-right w50perSm',
                 'float-left w50perSm' => 'float-left w50perSm',
+                'float-right w30perSm' => 'float-right w30perSm',
+                'float-left w30perSm' => 'float-left w30perSm',
+                'float-right w20perSm' => 'float-right w20perSm',
+                'float-left w20perSm' => 'float-left w20perSm',
                 'w50perSm' => 'w50perSm',
                 'w50per' => 'w50per',
                 'w30per' => 'w30per',

@@ -49,28 +49,9 @@ use yii\helpers\Html;
                             ]) ?>
                         <?php endif; ?>
                         <?php if (!$block->view) : ?>
-                            <?php if ($block->header) : ?>
-                                <h3 <?= $block->header_class?'class="'.$block->header_class.'"':null ?>><?= $block->header ?></h3>
-                            <?php endif; ?>
-                            <?php if ($block->description) : ?>
-                                <p <?= $block->description_class?'class="'.$block->description_class.'"':null ?>><?= $block->description ?></p>
-                            <?php endif; ?>
-                            <?php if ($block->raw_text) : ?>
-                                <p <?= $block->raw_text_class?'class="'.$block->raw_text_class.'"':null ?>><?= $block->raw_text ?></p>
-                            <?php endif; ?>
-                            <?php if ($block->items) : ?>
-                                <?php foreach ($block->items as $item) : ?>
-                                    <?php if ($item->header) : ?>
-                                        <h4 <?= $item->header_class?'class="'.$item->header_class.'"':null ?>><?= $item->header ?></h4>
-                                    <?php endif; ?>
-                                    <?php if ($item->description) : ?>
-                                        <p <?= $item->description_class?'class="'.$item->description_class.'"':null ?>><?= $item->description ?></p>
-                                    <?php endif; ?>
-                                    <?php if ($item->text) : ?>
-                                        <p <?= $item->text_class?'class="'.$item->text_class.'"':null ?>><?= $item->text ?></p>
-                                    <?php endif; ?>
-                                <?php endforeach; ?>
-                            <?php endif; ?>
+                            <?= $this->render('/article/part_views/block/_asb-default', [
+                                'model' => $block,
+                            ]) ?>
                         <?php endif; ?>
                     <?php endforeach; ?>
                 </div>

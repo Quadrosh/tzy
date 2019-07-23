@@ -11,7 +11,7 @@ use yii\helpers\Html;
 
 
 ?>
-<div class="asb-how_we_work">
+<div class="asb-how_we_work  <?= $model->custom_class?>">
 
     <?php if ($model->header) : ?>
         <h3 <?= $item->header_class?'class="'.$item->header_class.'"':null ?>><?= $model->header ?></h3>

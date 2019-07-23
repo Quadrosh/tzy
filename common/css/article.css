@@ -131,6 +131,25 @@ body {
     margin-left:35%;
     margin-bottom: 5px;
 }
+.w30perSm{
+    width:30%;
+}
+@media only screen and (max-width : 767px) {
+    .w30perSm {
+        width:100%;
+    }
+}
+.w30per{
+    width:30%;
+}
+.w20perSm{
+    width:20%;
+}
+@media only screen and (max-width : 767px) {
+    .w20perSm {
+        width:100%;
+    }
+}
 .w20per{
     width:20%;
 }
@@ -570,6 +589,11 @@ h1,h2,h3,h4,h5,h6 {
     padding: 10px;
     margin-top: 20px;
     margin-bottom: 20px;
+}
+.bigBox {
+    padding: 50px;
+    margin-top: 80px;
+    margin-bottom: 80px;
 }
 .float-right{
     float:right;
