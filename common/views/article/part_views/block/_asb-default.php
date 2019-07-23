@@ -8,65 +8,25 @@ use yii\helpers\Html;
 /* @var $block common\models\ArticleSectionBlock */
 /* @var $item common\models\ArticleSectionBlockItem */
 
-$structure = $model->structure;
-$toCityName = '';
-$fromCityName = '';
-$onlyExisted = '';
-$truckName = '';
-$selectFromCityName='';
-$selectToCityName='';
-if ($structure) {
-    foreach (explode('&', $structure) as $chunk) {
-        $param = explode("=", $chunk);
-        if ($param[0]=='to') {
-            $toCityName=$param[1];
-        }
-        if ($param[0]=='from') {
-            $fromCityName=$param[1];
-        }
-        if ($param[0]=='existed') {
-            $onlyExisted=$param[1];
-        }
-        if ($param[0]=='truck') {
-            $truckName=$param[1];
-        }
-        if ($param[0]=='select_to' || $param[0]=='selectTo') {
-            $selectToCityName=$param[1];
-        }
-        if ($param[0]=='select_from' || $param[0]=='selectFrom') {
-            $selectFromCityName=$param[1];
-        }
-    }
-}
 
 
 ?>
-<div class="asb-price-calculator  <?= $model->custom_class?>">
+<div class="asb-default  <?= $model->color_key?> <?= $model->custom_class?>">
+
 
     <?php if ($model->header) : ?>
         <h3 <?= $model->header_class?'class="'.$model->header_class.'"':null ?>><?= $model->header ?></h3>
     <?php endif; ?>
-
     <?php if ($model->description) : ?>
-        <p <?= $model->description_class?'class="'.$model->description_class.'"':null ?>><?= $model->description ?></p>
+        <p <?= $model->description_class?'class="'.$model->description_class.'"':null ?>><?= nl2br($model->description) ?></p>
     <?php endif; ?>
-
-
-    <?= \common\widgets\PriceCalculatorWidget::widget([
-        'toCityName' => $toCityName,
-        'fromCityName' => $fromCityName,
-        'onlyExisted' => $onlyExisted,
-        'truckName' => $truckName,
-        'selectFromCityName' => $selectFromCityName,
-        'selectToCityName' => $selectToCityName,
-    ]) ?>
-
-
-
+    <?php if ($model->raw_text) : ?>
+        <p <?= $model->raw_text_class?'class="'.$model->raw_text_class.'"':null ?>><?= nl2br($model->raw_text)  ?></p>
+    <?php endif; ?>
     <?php if ($model->items) : ?>
-        <ol>
+        <div>
             <?php foreach ($model->items as $item) : ?>
-                <li >
+                <div >
 
                     <?php if ($item->view) : ?>
                         <?= $this->render('/article/part_views/block_item/'.$item->view, [
@@ -83,7 +43,7 @@ if ($structure) {
                         <?php endif; ?>
                         <?php if ($item->image) : ?>
                             <?= Html::img('/img/'.$item->image,[
-                                'class'=>'max-w100per',
+                                'class'=>'max-w100per '.$item->image_class,
                                 'alt'=>$item->image_alt,
                                 'title'=>$item->image_title?$item->image_title:null,
                             ])  ?>
@@ -101,13 +61,14 @@ if ($structure) {
 
                     <?php endif; ?>
 
-                </li>
+                </div>
             <?php endforeach; ?>
-        </ol>
-        <?php if ($model->raw_text) : ?>
-            <p <?= $model->raw_text_class?'class="'.$model->raw_text_class.'"':null ?>><?= nl2br($model->raw_text) ?></p>
-        <?php endif; ?>
+        </div>
 
+
+    <?php endif; ?>
+    <?php if ($model->conclusion) : ?>
+        <p <?= $model->conclusion_class?'class="'.$model->conclusion_class.'"':null ?>><?= nl2br($model->conclusion)  ?></p>
     <?php endif; ?>
 
 </div>

@@ -11,7 +11,7 @@ use yii\helpers\Html;
 
 
 ?>
-<div class="asb-slick_3">
+<div class="asb-slick_3  <?= $model->custom_class?>">
 
     <div class="carouselWrapper slickMulti"
          data-id="<?= $model->id ?>" data-showItems="3">

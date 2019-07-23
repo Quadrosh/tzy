@@ -23,7 +23,7 @@ if ($structure) {
 
 
 ?>
-<div class="asb-city-price-calc ">
+<div class="asb-city-price-calc  <?= $model->custom_class?>">
 
     <?php if ($model->header) : ?>
         <h3 <?= $model->header_class?'class="'.$model->header_class.'"':null ?>><?= $model->header ?></h3>

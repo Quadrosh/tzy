@@ -11,7 +11,7 @@ use yii\helpers\Html;
 
 
 ?>
-<div class="asb-bs_horiz_3_img_icon">
+<div class="asb-bs_horiz_3_img_icon  <?= $model->custom_class?>">
 
     <div class="table mb0">
         <?php if ($model->image) : ?>

@@ -24,25 +24,9 @@ use yii\helpers\Html;
                             ]) ?>
                         <?php endif; ?>
                         <?php if (!$block->view) : ?>
-                            <?php if ($block->header) : ?>
-                                <h3 class="<?= $block->header_class ?>"><?= $block->header ?></h3>
-                            <?php endif; ?>
-                            <?php if ($block->description) : ?>
-                                <p class="text-center"><?= $block->description ?></p>
-                            <?php endif; ?>
-                            <?php if ($block->items) : ?>
-                                <?php foreach ($block->items as $item) : ?>
-                                    <?php if ($item->header) : ?>
-                                        <h4 class="<?= $item->header_class ?>"><?= $item->header ?></h4>
-                                    <?php endif; ?>
-                                    <?php if ($item->description) : ?>
-                                        <p class="text-center"><?= $item->description ?></p>
-                                    <?php endif; ?>
-                                    <?php if ($item->text) : ?>
-                                        <p class="text-center"><?= $item->text ?></p>
-                                    <?php endif; ?>
-                                <?php endforeach; ?>
-                            <?php endif; ?>
+                            <?= $this->render('/article/part_views/block/_asb-default', [
+                                'model' => $block,
+                            ]) ?>
                         <?php endif; ?>
                     <?php endforeach; ?>
                 </div>

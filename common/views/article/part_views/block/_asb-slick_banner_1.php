@@ -11,7 +11,7 @@ use yii\helpers\Html;
 
 
 ?>
-<div class="asb-slick_banner_1">
+<div class="asb-slick_banner_1  <?= $model->custom_class?>">
 
     <div class="carouselWrapper">
         <?php if ($model->header) : ?>
