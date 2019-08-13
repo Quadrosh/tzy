@@ -10,6 +10,8 @@ use yii2mod\moderation\enums\Status;
 /* @var $dataProvider yii\data\ActiveDataProvider */
 /* @var $searchModel \yii2mod\comments\models\search\CommentSearch */
 /* @var $commentModel \yii2mod\comments\models\CommentModel */
+$dataProvider->pagination = ['pageSize' => 100];
+$dataProvider->sort = ['defaultOrder'=> ['id' => SORT_DESC]];
 
 $this->title = Yii::t('yii2mod.comments', 'Comments Management');
 $this->params['breadcrumbs'][] = $this->title;
@@ -33,9 +35,9 @@ $this->params['breadcrumbs'][] = $this->title;
                     return StringHelper::truncate($model->content, 100);
                 },
             ],
-            'attribute' => 'relatedTo',
             [
                 'attribute' => 'createdBy',
+                'label'=>'Автор',
                 'value' => function ($model) {
                     if($model->author){
                         return $model->getAuthorName();
@@ -44,6 +46,25 @@ $this->params['breadcrumbs'][] = $this->title;
                 'filter' => $commentModel::getAuthors(),
                 'filterInputOptions' => ['prompt' => Yii::t('yii2mod.comments', 'Select Author'), 'class' => 'form-control'],
             ],
+            [
+                'attribute' => 'relatedTo',
+                'label'=>'Статья',
+                'value' => function ($model) {
+                   $string = $model->relatedTo;
+
+                    if (strpos($string,'Article')) {
+                        $article = \common\models\Article::findOne(substr($string,22));
+                        return $article->site .' '.$article->list_name;
+                    }
+                },
+                'filter' => false,
+            ],
+            [
+                'attribute' => 'relatedTo',
+                'label'=>'объект',
+            ],
+
+
             [
                 'attribute' => 'status',
                 'value' => function ($model) {
@@ -55,14 +76,14 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'createdAt',
                 'value' => function ($model) {
-                    return Yii::$app->formatter->asDatetime($model->createdAt);
+                    return Yii::$app->formatter->asDatetime($model->createdAt, 'dd/MM/yy HH:mm');
                 },
                 'filter' => false,
             ],
             [
                 'header' => 'Actions',
                 'class' => 'yii\grid\ActionColumn',
-                'template' => '{view}{update}{delete}',
+                'template' => '{view}{delete}',
                 'buttons' => [
                     'view' => function ($url, $model, $key) {
                         $title = Yii::t('yii2mod.comments', 'View');

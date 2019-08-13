@@ -37,6 +37,8 @@ class FrontUserController extends Controller
     {
         $searchModel = new FrontUserSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider->pagination = ['pageSize' => 100];
+        $dataProvider->sort = ['defaultOrder'=> ['id' => SORT_DESC]];
 
         return $this->render('index', [
             'searchModel' => $searchModel,

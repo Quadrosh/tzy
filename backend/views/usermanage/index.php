@@ -25,7 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
             $invite = new \common\models\InviteForm();
              $form = yii\bootstrap\ActiveForm::begin([
                 'method' => 'post',
-                'action' => ['/admin/usermanage/invite'],
+                'action' => ['/usermanage/invite'],
                 'layout' => 'horizontal',
                 'fieldConfig' => [
                     'template' => "{beginWrapper}\n{input}\n{error}\n{endWrapper}",
@@ -67,17 +67,22 @@ $this->params['breadcrumbs'][] = $this->title;
                     return $theData['item_name'];
                 },
             ],
-//            'auth_key',
-//            'password_hash',
-//            'password_reset_token',
+
              'email:email',
-             'status',
             [
-                'attribute'=>'created_at',
+                'attribute'=>'status',
                 'value'=> function($data){
-                    return  \Yii::$app->formatter->asDatetime($data->created_at, "php:d-m-Y H:i:s");
+                    if ($data->status == \common\models\User::STATUS_INVITED) {
+                        return 'invited';
+                    } else if ($data->status == \common\models\User::STATUS_ACTIVE) {
+                        return 'active';
+                    }  else if ($data->status == \common\models\User::STATUS_DELETED) {
+                        return 'deleted';
+                    }
+
                 }
             ],
+
 
             [
                 'attribute'=>'updated_at',
@@ -86,6 +91,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 }
             ],
 
+            [
+                'attribute'=>'created_at',
+                'value'=> function($data){
+                    return  \Yii::$app->formatter->asDatetime($data->created_at, "php:d-m-Y H:i:s");
+                }
+            ],
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>

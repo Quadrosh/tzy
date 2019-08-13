@@ -17,7 +17,7 @@ class AdminController extends Controller
         return [
             'access' => [
                 'class' => \yii\filters\AccessControl::className(),
-                'except' => ['login', 'error'],
+                'except' => ['login', 'error','request-password-reset','reset-password'],
                 'rules' => [
                     // allow authenticated users
                     [
@@ -38,4 +38,20 @@ class AdminController extends Controller
             ],
         ];
     }
+
+    /**
+     * @inheritdoc
+     */
+    public function actions()
+    {
+        return
+            [
+                'error' => [
+                    'class' => 'yii\web\ErrorAction',
+                    'view' => '@app/views/site/error.php',
+                ],
+            ];
+    }
+
+
 }

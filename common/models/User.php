@@ -5,6 +5,7 @@ use Yii;
 use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
+use yii\helpers\Json;
 use yii\web\IdentityInterface;
 
 /**
@@ -25,11 +26,10 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
 {
     const STATUS_DELETED = 0;
     const STATUS_ACTIVE = 10;
+    const STATUS_INVITED = 1;
     public $password;
 
     public $role;
-
-
 
 
     /**
@@ -40,19 +40,15 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
         return 'admin';
     }
 
-    /**
-     * @inheritdoc
-     */
+
     public function behaviors()
     {
         return [
-            TimestampBehavior::className(),
+            [
+                'class' => \yii\behaviors\TimestampBehavior::class,
+            ],
         ];
     }
-
-
-
-
 
 
     /**
@@ -62,8 +58,12 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     {
         return [
             ['status', 'default', 'value' => self::STATUS_ACTIVE],
-            ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
-            [['username', 'password_hash', 'email', 'created_at', 'updated_at'], 'required'],
+            ['status', 'in', 'range' => [
+                self::STATUS_ACTIVE,
+                self::STATUS_DELETED,
+                self::STATUS_INVITED,
+            ]],
+            [['username', 'password_hash', 'email'], 'required'],
             [['status'], 'integer'],
             [['username', 'password_hash', 'password_reset_token', 'email'], 'string', 'max' => 255],
             [['auth_key'], 'string', 'max' => 32],
@@ -71,7 +71,7 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
             [['username'], 'unique'],
             [['email'], 'unique'],
             [['password_reset_token'], 'unique'],
-            [[ 'role'], 'safe'],
+            [['role'], 'safe'],
 
 //            [[ 'created_at', 'updated_at'], 'safe'],
 //            [[ 'created_at', 'updated_at'], 'integer'],
@@ -82,10 +82,10 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     {
         return [
             'id' => 'ID',
-            'username' => 'Username',
+            'username' => 'Имя пользователя',
             'auth_key' => 'Auth Key',
             'password_hash' => 'Password Hash',
-            'password' => 'Password',
+            'password' => 'Пароль',
             'password_reset_token' => 'Password Reset Token',
             'email' => 'Email',
             'status' => 'Status',
@@ -94,6 +94,7 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
 
         ];
     }
+
     /**
      * @inheritdoc
      */
@@ -126,7 +127,6 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     }
 
 
-
     /**
      * Finds user by password reset token
      *
@@ -141,7 +141,7 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
 
         return static::findOne([
             'password_reset_token' => $token,
-            'status' => self::STATUS_ACTIVE,
+            'status' => [self::STATUS_ACTIVE,self::STATUS_INVITED],
         ]);
     }
 
@@ -156,8 +156,7 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
         if (empty($token)) {
             return false;
         }
-
-        $timestamp = (int) substr($token, strrpos($token, '_') + 1);
+        $timestamp = (int)substr($token, strrpos($token, '_') + 1);
         $expire = Yii::$app->params['user.passwordResetTokenExpire'];
         return $timestamp + $expire >= time();
     }
@@ -236,9 +235,64 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
      */
     public function getRoleAssign()
     {
-        return $this->hasOne(RolesAssignment::className(),['user_id'=>'id']);
+        return $this->hasOne(RolesAssignment::className(), ['user_id' => 'id']);
     }
 
 
+    public static function invite($email, $role)
+    {
+        $user = new User();
+        $user->username = 'Приглашенный пользователь ' . $email;
+        $user->setPassword('123456');
+        $user->generatePasswordResetToken();
+        $user->email = $email;
+        $user->generateAuthKey();
+        $user->status = User::STATUS_INVITED;
+        if ($user->save()) {
+            $role = \Yii::$app->authManager->getRole($role);
+            if (!$role) {
+                var_dump('Нет такой роли');
+                die;
+            }
+
+            if (\Yii::$app->authManager->assign($role, $user->id)) {
+                Yii::$app->session->setFlash('success', 'Роль назначена');
+                $user->sendEmail('inviteToCommentModeration');
+                return true;
+            } else {
+                var_dump('Houston, we have a problem!');
+                die;
+            }
+
+        } else {
+            var_dump($user->errors);
+            die;
+        }
+    }
+
+
+    public function sendEmail($type)
+    {
+
+        if ($type == 'inviteToCommentModeration') {
+
+            Yii::$app->mailer->htmlLayout = "layouts/montserrat";
+            return Yii::$app->mailer->compose('sign-up-comment-moderator', ['token' => $this->password_reset_token])
+                ->setFrom(Yii::$app->params['noreplyEmail'])
+                ->setTo($this->email)
+                ->setSubject('Доступ к редактированию коментариев')
+                ->send();
+        } else {
+            return ['error' => 'метод не запилен'];
+        }
+    }
+
+
+
+//    public static function verifyAndSignup($token)
+//    {
+////        $form = Yii::$app->request->post('InviteForm');
+//
+//    }
 
 }

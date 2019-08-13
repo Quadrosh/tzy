@@ -134,17 +134,37 @@ class DefaultController extends Controller
                     $user = FrontUser::findByEmail($commentModel->email);
                     $subject = 'tszakaz.ru - подтверждение email';
 
-                    $mail = Yii::$app->mailer->compose()
-                        ->setTo($commentModel->email)
-                        ->setFrom('sender@'.Yii::$app->params['site'])
-                        ->setSubject($subject)
-                        ->setHtmlBody(
-                            "Здравствуйте <br>".
-                            " Для подтверждения email на сайте ".Yii::$app->params['site'] .
-                            " <br/> перейдите по ссылке " .
-                            Yii::$app->params['confirmFrontUserEmailLink'].$user->auth_key
+
+
+                    Yii::$app->mailer->htmlLayout = "layouts/montserrat";
+                    $mail =  Yii::$app->mailer
+                        ->compose(
+                            ['html' => 'goToLink-html', 'text' => 'goToLink-text'],
+                            [
+                                'link' => Yii::$app->params['confirmFrontUserEmailLink'].$user->auth_key,
+                                'header'=> 'Подтверждение email',
+                                'name' => $user->username,
+                                'text' => 'Для подтверждения email',
+                                'button' => 'Подтвердить',
+                            ]
                         )
+                        ->setFrom(Yii::$app->params['noreplyEmail'])
+                        ->setTo($commentModel->email)
+                        ->setSubject($subject)
                         ->send();
+
+
+//                    $mail = Yii::$app->mailer->compose()
+//                        ->setTo($commentModel->email)
+//                        ->setFrom('sender@'.Yii::$app->params['site'])
+//                        ->setSubject($subject)
+//                        ->setHtmlBody(
+//                            "Здравствуйте <br>".
+//                            " Для подтверждения email на сайте ".Yii::$app->params['site'] .
+//                            " <br/> перейдите по ссылке " .
+//                            Yii::$app->params['confirmFrontUserEmailLink'].$user->auth_key
+//                        )
+//                        ->send();
 
                     $error = 'Данный email уже зарегистрирован. На этот адрес отправлен запрос. Перейдите по ссылке в письме, для подтверждения, что это Ваш email.';
                     $commentModel->addError('commentmodel-email', $error);
@@ -155,7 +175,7 @@ class DefaultController extends Controller
                         'errors' => $commentModel['errors'],
                         'message' => $error
                     ];
-//                    return json_encode('user finded by email') ;
+
                 }
 
             }

@@ -38,7 +38,8 @@ $this->registerJs($js);
         <?php echo $form->field($commentModel, 'name', ['template' => '{label}{input}{error}'])
             ->textInput([
                 'placeholder' => Yii::t('yii2mod.comments', 'Name...'),
-                'value'=>!Yii::$app->user->isGuest?Yii::$app->user->identity->username:null
+                'value'=>!Yii::$app->user->isGuest?Yii::$app->user->identity->username:null,
+                'readonly'=>!Yii::$app->user->isGuest?true:false,
             ])->label('Имя'); ?>
     </div>
     <div class="col-sm-6 comment_email_wrapper">
@@ -48,7 +49,7 @@ $this->registerJs($js);
         if (!Yii::$app->user->isGuest) {
             echo Html::a(Yii::t('yii2mod.comments', '<i class="glyphicon glyphicon-floppy-remove"></i>'), '/comment/default/logout', [
                     'class'=>'logout_btn',
-                'title'=>'Удалить сохраненный e-mail',
+                'title'=>'Забыть сохраненный e-mail',
                 'data-toggle'=>'tooltip',
             ]);
 
@@ -56,7 +57,8 @@ $this->registerJs($js);
         <?php echo $form->field($commentModel, 'email', ['template' => '{label}{input}{error}'])
             ->textInput([
                 'placeholder' => Yii::t('yii2mod.comments', 'email...'),
-                'value'=>!Yii::$app->user->isGuest?Yii::$app->user->identity->email:null
+                'value'=>!Yii::$app->user->isGuest?Yii::$app->user->identity->email:null,
+                'readonly'=>!Yii::$app->user->isGuest?true:false,
             ])->label('e-mail <span class="noBold">(не будет опубликован)<span>'); ?>
     </div>
 
@@ -71,8 +73,10 @@ $this->registerJs($js);
     </div>
 
     <div class="col-sm-12">
-        <?php echo $form->field($commentModel, 'content', ['template' => '{input}{error}'])->textarea(['placeholder' => Yii::t('yii2mod.comments', 'Add a comment...'), 'rows' => 4, 'data' => ['comment' => 'content']]); ?>
-        <?php echo $form->field($commentModel, 'parentId', ['template' => '{input}'])->hiddenInput(['data' => ['comment' => 'parent-id']]); ?>
+        <?php echo $form->field($commentModel, 'content', ['template' => '{input}{error}'])
+            ->textarea(['placeholder' => Yii::t('yii2mod.comments', 'Add a comment...'), 'rows' => 4, 'data' => ['comment' => 'content']]); ?>
+        <?php echo $form->field($commentModel, 'parentId', ['template' => '{input}'])
+            ->hiddenInput(['data' => ['comment' => 'parent-id']]); ?>
         <div class="comment-box-partial">
             <div class="button-container show">
                 <?php echo Html::a(Yii::t('yii2mod.comments', 'Click here to cancel reply.'), '#', ['id' => 'cancel-reply', 'class' => 'pull-right', 'data' => ['action' => 'cancel-reply']]); ?>
@@ -87,19 +91,27 @@ $this->registerJs($js);
 
 
                 <?php
-                $activeField = $form->field($commentModel, 'reCaptcha')->widget(\himiklab\yii2\recaptcha\ReCaptcha2::className(),
-                    ['jsCallback' => 'enableSubmitByRecaptcha',]
-                )->label(false);
-                $activeField->enableAjaxValidation=false;
-                echo $activeField;
-                ?>
 
-
-                <?php echo Html::submitButton(Yii::t('yii2mod.comments', 'Comment'), [
+                if (!strpos(Url::base(true),'.local')) {
+                    $activeField = $form->field($commentModel, 'reCaptcha')->widget(\himiklab\yii2\recaptcha\ReCaptcha2::className(),
+                        ['jsCallback' => 'enableSubmitByRecaptcha',]
+                    )->label(false);
+                    $activeField->enableAjaxValidation=false;
+                    echo $activeField;
+                    echo Html::submitButton(Yii::t('yii2mod.comments', 'Comment'), [
                         'class' => 'btn btn-primary comment-submit',
                         'id' => 'submitBlockedByRecaptcha',
                         'disabled' => true,
-                ]); ?>
+                    ]);
+                } else {
+                    echo Html::submitButton(Yii::t('yii2mod.comments', 'Comment'), [
+                        'class' => 'btn btn-primary comment-submit',
+                        'id' => 'submitNotBlocked',
+                    ]);
+                }
+
+
+                ?>
             </div>
         </div>
 

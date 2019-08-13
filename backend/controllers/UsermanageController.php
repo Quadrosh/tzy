@@ -3,6 +3,7 @@
 namespace backend\controllers;
 
 use common\models\RolesAssignment;
+use common\models\SignupAdminForm;
 use Yii;
 use common\models\User;
 use yii\data\ActiveDataProvider;
@@ -11,6 +12,8 @@ use yii\helpers\Url;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\Response;
+use yii\widgets\ActiveForm;
 
 /**
  * UsermanageController implements the CRUD actions for User model.
@@ -25,7 +28,7 @@ class UsermanageController extends Controller
         return [
             'access' => [
                 'class' => \yii\filters\AccessControl::className(),
-                'except' => ['error'],
+                'except' => ['error','verification'],
                 'rules' => [
                     [
                         'allow' => true,
@@ -55,6 +58,8 @@ class UsermanageController extends Controller
         $dataProvider = new ActiveDataProvider([
             'query' => User::find(),
         ]);
+        $dataProvider->pagination = ['pageSize' => 100];
+        $dataProvider->sort = ['defaultOrder'=> ['id' => SORT_DESC]];
 
         return $this->render('index', [
             'dataProvider' => $dataProvider,
@@ -199,4 +204,56 @@ class UsermanageController extends Controller
             return $this->redirect(Url::previous());
         }
     }
+
+    public function actionInvite()
+    {
+        $form = Yii::$app->request->post('InviteForm');
+
+        if (User::invite($form['email'],$form['role'])) {
+            Yii::$app->session->setFlash('success', 'Инвайт успешно отправлен на адрес '.$form['email']);
+        } else {
+            Yii::$app->session->setFlash('error', 'что-то пошло не так');
+        };
+
+        return $this->redirect(Url::previous());
+
+    }
+
+    public function actionVerification($token)
+    {
+        $this->layout = 'verification';
+
+        $formModel = new SignupAdminForm();
+
+        $user = User::findByPasswordResetToken($token);
+
+
+         if  ($formModel->load(Yii::$app->request->post()) && $formModel->validate()) {
+            $result = $formModel->signupAdmin($user->id);
+            if ( $result ) {
+                return $this->render('signup-thanx',[
+                    'model' => $user,
+                ]);
+            } else {
+                var_dump($result);
+            }
+
+
+        } else {
+            return $this->render('verify-and-signup', [
+                'model' => $user,
+                'formModel' => $formModel
+            ]);
+        }
+
+
+//        var_dump('пилим '.$user->id);
+
+//        return $this->render('verify-and-signup', [
+//            'model' => $user,
+//        ]);
+
+    }
+
+
 }

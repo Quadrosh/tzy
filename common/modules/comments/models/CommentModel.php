@@ -2,6 +2,7 @@
 
 namespace common\modules\comments\models;
 
+use common\models\FrontUser;
 use common\models\Manager;
 use paulzi\adjacencyList\AdjacencyListBehavior;
 use Yii;
@@ -10,6 +11,7 @@ use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveQuery;
 use yii\db\ActiveRecord;
 use yii\helpers\ArrayHelper;
+use yii\helpers\Url;
 use yii2mod\behaviors\PurifyBehavior;
 use yii2mod\comments\traits\ModuleTrait;
 use yii2mod\moderation\enums\Status;
@@ -70,7 +72,8 @@ class CommentModel extends ActiveRecord
      */
     public function rules()
     {
-        return [
+
+        $rules =  [
             [['entity', 'entityId'], 'required'],
             ['content', 'required', 'message' => Yii::t('yii2mod.comments', 'Comment cannot be blank.')],
             [['content', 'entity', 'relatedTo', 'url'], 'string'],
@@ -92,11 +95,17 @@ class CommentModel extends ActiveRecord
 //            ],
 
 
-            [['reCaptcha'], \himiklab\yii2\recaptcha\ReCaptchaValidator2::className(),
-                'uncheckedMessage' => 'Пожалуйста, подтвердите что Вы не бот'
-            ],
+//            [['reCaptcha'], \himiklab\yii2\recaptcha\ReCaptchaValidator2::className(),
+//                'uncheckedMessage' => 'Пожалуйста, подтвердите что Вы не бот'
+//            ],
 
         ];
+        if (!strpos(Url::base(true),'.local')) {
+            $rules[] = [['reCaptcha'], \himiklab\yii2\recaptcha\ReCaptchaValidator2::className(),
+                'uncheckedMessage' => 'Пожалуйста, подтвердите что Вы не бот'
+            ];
+        }
+        return $rules;
     }
 
     /**
@@ -198,10 +207,7 @@ class CommentModel extends ActiveRecord
     public function beforeSave($insert)
     {
         if (parent::beforeSave($insert)) {
-            if ($this->parentId > 0 && $this->isNewRecord) {
-                $parentNodeLevel = static::find()->select('level')->where(['id' => $this->parentId])->scalar();
-                $this->level += $parentNodeLevel;
-            }
+
 
             if ($this->author && $this->author->email && Manager::findOne(['email'=>$this->author->email]) ) {
                 $this->is_manager = true ;
@@ -221,6 +227,14 @@ class CommentModel extends ActiveRecord
      */
     public function afterSave($insert, $changedAttributes)
     {
+        if ($insert) { // isNewRecord
+            if ($this->parentId > 0) {
+                $parentNodeLevel = static::find()->select('level')->where(['id' => $this->parentId])->scalar();
+                $this->level += $parentNodeLevel;
+                static::sendNotificationAboutNewChild($this->parentId);
+            }
+        }
+
         parent::afterSave($insert, $changedAttributes);
 
         if (!$insert) {
@@ -510,5 +524,40 @@ class CommentModel extends ActiveRecord
         }
 
         return true;
+    }
+
+    public static function sendNotificationAboutNewChild($commentId)
+    {
+        $comment = static::findOne($commentId);
+        $user = $comment->getAuthor()->one();
+
+        if ($user->subscribe_for_answers){
+            $text = 'Вы получили ответ на Ваш комментарий "'.$comment->content.'".';
+
+            $url = $comment->getViewUrl();
+            $base = \yii\helpers\Url::base(true);
+            $link = $base . $url;
+            $unsubscribeLink = $base.'/comments-unsubscribe/'.$user->auth_key;
+
+            Yii::$app->mailer->htmlLayout = "layouts/montserrat";
+            $mail =  Yii::$app->mailer
+                ->compose(
+                    ['html' => 'goToLink-html', 'text' => 'goToLink-text'],
+                    [
+                        'link' => $link,
+                        'header'=> 'Ответ на комментарий',
+                        'name' => $user->username,
+                        'text' => $text,
+                        'call2action' => 'Перейти к ответу можно по ссылке',
+                        'button' => 'Перейти',
+                        'comment' => 'Вы получили это письмо, поскольку подписаны на оповещения об ответах на Ваши комментарии.<br> Отписаться от подписки можно перейдя по ссылке <a class="link" target="_blank" style="color:#1d4788;" href="'.$unsubscribeLink.'">отключить оповещения</a>',
+                    ]
+                )
+                ->setFrom(Yii::$app->params['noreplyEmail'])
+                ->setTo($user->email)
+                ->setSubject('tszakaz.ru - ответ на Ваш комментарий')
+                ->send();
+        }
+
     }
 }

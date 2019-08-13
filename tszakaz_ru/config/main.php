@@ -9,6 +9,7 @@ $params = array_merge(
 return [
     'id' => 'app-frontend',
     'basePath' => dirname(__DIR__),
+    'name'=>'ТрансЗаказ',
     'bootstrap' => ['log'],
     'controllerNamespace' => 'tszakaz_ru\controllers',
     'language' => 'ru-RU',
@@ -92,6 +93,7 @@ return [
             'rules' => [
 
                 'confirm-email/<token:[0-9a-zA-Z\-\_]+>' => 'site/confirm-email',
+                'comments-unsubscribe/<token:[0-9a-zA-Z\-\_]+>' => 'site/comments-unsubscribe',
 
                 $params['botAddress'] => '/chat/bot',
                 'chat/post' => '/chat/post',
