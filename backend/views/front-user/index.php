@@ -60,21 +60,38 @@ $this->params['breadcrumbs'][] = $this->title;
                 'class' => \yii\grid\ActionColumn::class,
                 'buttons' => [
                     'update'=>function($url,$item){
-                      return false;
+                        return false;
+//                        if ( !Yii::$app->user->can('creatorPermission', [])) {
+//                            return false;
+//                        } else {
+//                            $_url = Yii::$app->getUrlManager()->createUrl([
+//                                '/front-user/update',
+//                                'id'=>$item['id'],
+//                            ]);
+//                            return \yii\helpers\Html::a( '<span class="glyphicon glyphicon-pencil"></span>', $_url,
+//                                [
+//                                    'title' => 'Редактроовать',
+//                                    'data-method' => 'post',
+//                                ]);
+//                        }
                     },
                     'delete'=>function($url,$item){
-                        return false;
+                        if ( !Yii::$app->user->can('creatorPermission', [])) {
+                            return false;
+                        } else {
+                            $_url = Yii::$app->getUrlManager()->createUrl([
+                                '/front-user/delete',
+                                'id'=>$item['id'],
+                            ]);
+                            return \yii\helpers\Html::a( '<span class="glyphicon glyphicon-trash"></span>', $_url,
+                                [
+                                    'title' => 'Удалить',
+                                    'data-method' => 'post',
+                                    'data-confirm'=>'точно удалить пользователя со всеми комментариями и ответами других пользователей на его комментарии?',
+                                ]);
+                        }
 
-//                        $_url = Yii::$app->getUrlManager()->createUrl([
-//                            '/front-user/delete',
-//                            'id'=>$item['id'],
-//                        ]);
-//                        return \yii\helpers\Html::a( '<span class="glyphicon glyphicon-trash"></span>', $_url,
-//                            [
-//                                'title' => 'Удалить',
-//                                'data-method' => 'post',
-//                                'data-confirm'=>'точно удалить пользователя со всеми комментариями и ответами других пользователей на его комментарии?',
-//                            ]);
+
                     },
 
                 ]
