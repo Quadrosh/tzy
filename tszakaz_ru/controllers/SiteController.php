@@ -450,15 +450,11 @@ class SiteController extends Controller
     public function actionConfirmEmail($token)
     {
 
-        $user = FrontUser::findIdentityByAccessToken($token);
+        $user = FrontUser::confirmEmail($token);
         if (!$user) {
-            Yii::$app->session->setFlash('error', 'Еmail не найден');
             return $this->redirect(Url::previous());
-//            throw new NotFoundHttpException('email не найден');
-
-        } else {
-            Yii::$app->user->login($user, FrontUser::REMEMBER_USER_TIME);
         }
+
         $page=[];
         $page['title']= 'Подтверждение email';
         $page['description']= 'Подтверждение email для комментирования на сайте';
@@ -469,6 +465,37 @@ class SiteController extends Controller
         $this->view->params['pageName']='Подтверждение email '.$user->email;
 
         return $this->render('confirm-email', [
+            'user' => $user,
+        ]);
+    }
+
+
+    public function actionCommentsUnsubscribe($token)
+    {
+
+        $user = FrontUser::findIdentityByAccessToken($token);
+        if (!$user) {
+            Yii::$app->session->setFlash('error', 'Пользователя не найдено');
+            return $this->redirect(Url::previous());
+        } else {
+            if ($user->unsubscribeComments()) {
+                Yii::$app->session->setFlash('success', 'Оповещения отменены');
+            } else {
+                Yii::$app->session->setFlash('error', 'Ошибка, обратитесь к администратору');
+            }
+
+//            Yii::$app->user->login($user, FrontUser::REMEMBER_USER_TIME);
+        }
+        $page=[];
+        $page['title']= 'Отмена оповещений';
+        $page['description']= 'Отмена оповещений об ответах на мои комментарии на сайте';
+        $page['keywords']= '';
+        $page['seo_logo']= 'комментарии на сайте';
+
+        $this->view->params['meta']=$page;
+        $this->view->params['pageName']='Отмена оповещений об ответах пользователю '.$user->email;
+
+        return $this->render('comments-unsubscribe', [
             'user' => $user,
         ]);
     }

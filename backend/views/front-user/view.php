@@ -31,6 +31,20 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'site',
             'username',
+            [
+                'attribute'=>'subscribe_for_answers',
+                'value' => function($model)
+                {
+                    if ($model['subscribe_for_answers'] === 1) {
+                        return 'да';
+                    } else if ($model['subscribe_for_answers']===0) {
+                        return 'нет';
+                    }
+
+                },
+                'format'=> 'html',
+            ],
+            'email_status',
             'auth_key',
             'password_hash',
             'password_reset_token',
@@ -40,8 +54,14 @@ $this->params['breadcrumbs'][] = $this->title;
             'country',
             'address',
             'status',
-            'created_at',
-            'updated_at',
+
+
+            ['attribute'=>'created_at', 'format'=> 'html',
+                'value' => function($data) {
+                    return \Yii::$app->formatter->asDatetime($data['created_at'], 'dd/MM/yy HH:mm');},],
+            ['attribute'=>'updated_at', 'format'=> 'html',
+                'value' => function($data) {
+                    return \Yii::$app->formatter->asDatetime($data['updated_at'], 'dd/MM/yy HH:mm');},],
         ],
     ]) ?>
 

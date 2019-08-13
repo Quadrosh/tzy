@@ -37,18 +37,16 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
-            Yii::$app->user->can('commentsModerPermission', [])
-                ? (['label' => 'Комментарии', 'url' => ['/comment/manage/index']])
-                : (['label' => false]),
 
+            ['label' => 'Заявки - качество', 'url' => ['/preorders/lead-quality']],
 
             Yii::$app->user->isGuest ? (
-            ['label' => 'Вход', 'url' => ['/site/login']]
+            ['label' => 'Login', 'url' => ['/site/login']]
             ) : (
                 '<li>'
                 . Html::beginForm(['/site/logout'], 'post')
                 . Html::submitButton(
-                    'Выйти (' . Yii::$app->user->identity->username . ')',
+                    'Logout (' . Yii::$app->user->identity->username . ')',
                     ['class' => 'btn btn-link logout']
                 )
                 . Html::endForm()
@@ -60,9 +58,10 @@ AppAsset::register($this);
     ?>
 
     <div class="container">
+        <?= Breadcrumbs::widget([
+            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+        ]) ?>
         <?= common\widgets\Alert::widget() ?>
-
-
         <?= $content ?>
     </div>
 </div>

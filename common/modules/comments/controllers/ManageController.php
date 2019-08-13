@@ -52,7 +52,7 @@ class ManageController extends Controller
         'rules' => [
             [
                 'allow' => true,
-                'roles' => ['admin'],
+                'roles' => ['admin','CommentsModerator'],
             ],
         ],
     ];
@@ -75,6 +75,13 @@ class ManageController extends Controller
      */
     public function actionIndex()
     {
+        if (Yii::$app->user->can('commentsModerPermission', [])) {
+            $this->layout = '/comment-moder';
+        }
+        if (Yii::$app->user->can('adminPermission', []) ) {
+            $this->layout = '/main';
+        }
+
         $searchModel = Yii::createObject($this->searchClass);
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         $commentModel = $this->getModule()->commentModelClass;

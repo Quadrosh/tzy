@@ -40,16 +40,14 @@ AppAsset::register($this);
             Yii::$app->user->can('creatorPermission', [])
                 ? (['label' => 'Users', 'url' => ['/usermanage']])
                 : (['label' => false]),
-            [
-                'label' => 'frontUsers',
-                'items' => [
-                    ['label' => 'index', 'url' => ['/front-user']],
-                ],
-            ],
+
+
+
             [
                 'label' => 'Comments',
                 'items' => [
-                    ['label' => 'manage index', 'url' => ['/comment/manage/index']],
+                    ['label' => 'comments', 'url' => ['/comment/manage/index']],
+                    ['label' => 'frontUsers', 'url' => ['/front-user']],
                 ],
             ],
             [

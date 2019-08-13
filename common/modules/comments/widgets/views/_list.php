@@ -12,7 +12,6 @@ use yii2mod\editable\Editable;
     <div class="comment-content" data-comment-content-id="<?php echo $model->id; ?>">
         <div class="comment-author-avatar">
             <?php echo $model->getAvatar(); ?>
-<!--            --><?php //echo Html::img($model->getAvatar(), ['alt' => $model->getAuthorName()]); ?>
         </div>
         <div class="comment-details">
             <div class="comment-action-buttons">

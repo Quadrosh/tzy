@@ -11,6 +11,7 @@ return [
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
     'language' => 'ru-RU',
+    'name'=>'ТрансЗаказ Админ',
     'bootstrap' => ['log'],
     'modules' => [
     ],
@@ -47,6 +48,8 @@ return [
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',
+            'maxSourceLines' => 20,
+//            'errorView' => 'exception',
         ],
 
         'urlManager' => [
@@ -54,6 +57,8 @@ return [
             'showScriptName' => false,
             'rules' => [
                 'aaa'=>'site/index',
+                'comment-moder-verification/<token:[0-9a-zA-Z\-\_]+>'=>'usermanage/verification',
+//                'comment-moder-verification'=>'usermanage/verification'
 //                'commen'=>'comments/index',
             ],
         ],

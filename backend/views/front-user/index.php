@@ -27,10 +27,26 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'site',
             'username',
-            'auth_key',
-            'password_hash',
+//            'subscribe_for_answers',
+            [
+                'attribute'=>'subscribe_for_answers',
+                'value' => function($model)
+                {
+                    if ($model['subscribe_for_answers'] === 1) {
+                       return 'да';
+                    } else if ($model['subscribe_for_answers']===0) {
+                        return 'нет';
+                    }
+
+                },
+                'format'=> 'html',
+            ],
+            'email:email',
+            'email_status',
+//            'auth_key',
+//            'password_hash',
             // 'password_reset_token',
-            // 'email:email',
+
             // 'phone',
             // 'city',
             // 'country',
@@ -39,7 +55,30 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'created_at',
             // 'updated_at',
 
-            ['class' => 'yii\grid\ActionColumn'],
+//            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'class' => \yii\grid\ActionColumn::class,
+                'buttons' => [
+                    'update'=>function($url,$item){
+                      return false;
+                    },
+                    'delete'=>function($url,$item){
+                        return false;
+
+//                        $_url = Yii::$app->getUrlManager()->createUrl([
+//                            '/front-user/delete',
+//                            'id'=>$item['id'],
+//                        ]);
+//                        return \yii\helpers\Html::a( '<span class="glyphicon glyphicon-trash"></span>', $_url,
+//                            [
+//                                'title' => 'Удалить',
+//                                'data-method' => 'post',
+//                                'data-confirm'=>'точно удалить пользователя со всеми комментариями и ответами других пользователей на его комментарии?',
+//                            ]);
+                    },
+
+                ]
+            ],
         ],
     ]); ?>
 </div>

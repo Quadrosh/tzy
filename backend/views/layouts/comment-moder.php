@@ -37,13 +37,16 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
-            Yii::$app->user->can('commentsModerPermission', [])
-                ? (['label' => 'Комментарии', 'url' => ['/comment/manage/index']])
-                : (['label' => false]),
 
+            [
+                'label' => 'Комментарии',
+                'items' => [
+                    ['label' => 'manage index', 'url' => ['/comment/manage/index']],
+                ],
+            ],
 
             Yii::$app->user->isGuest ? (
-            ['label' => 'Вход', 'url' => ['/site/login']]
+            ['label' => 'Login', 'url' => ['/site/login']]
             ) : (
                 '<li>'
                 . Html::beginForm(['/site/logout'], 'post')
@@ -60,9 +63,10 @@ AppAsset::register($this);
     ?>
 
     <div class="container">
+        <?= Breadcrumbs::widget([
+            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+        ]) ?>
         <?= common\widgets\Alert::widget() ?>
-
-
         <?= $content ?>
     </div>
 </div>
