@@ -38,8 +38,6 @@ AppAsset::register($this);
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
 
-            ['label' => 'Заявки - качество', 'url' => ['/preorders/lead-quality']],
-
             Yii::$app->user->isGuest ? (
             ['label' => 'Login', 'url' => ['/site/login']]
             ) : (
