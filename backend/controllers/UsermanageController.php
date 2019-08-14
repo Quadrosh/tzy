@@ -226,6 +226,10 @@ class UsermanageController extends Controller
         $formModel = new SignupAdminForm();
 
         $user = User::findByPasswordResetToken($token);
+        if (!$user) {
+            Yii::$app->session->setFlash('error', 'Ссылка устарелв или использована');
+            return $this->redirect(Url::previous());
+        }
 
 
          if  ($formModel->load(Yii::$app->request->post()) && $formModel->validate()) {
