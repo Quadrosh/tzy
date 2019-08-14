@@ -227,7 +227,7 @@ class UsermanageController extends Controller
 
         $user = User::findByPasswordResetToken($token);
         if (!$user) {
-            Yii::$app->session->setFlash('error', 'Ссылка устарелв или использована');
+            Yii::$app->session->setFlash('error', 'Ссылка устарела или использована');
             return $this->redirect(Url::previous());
         }
 
