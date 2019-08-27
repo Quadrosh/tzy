@@ -178,7 +178,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     </section>
 
-    <?= Html::a('Добавить секцию','/article-section/create?article_id='.$model->id, ['class' => 'mt50 btn btn-success']) ?>
+    <?= Html::a('Добавить секцию '.'<i class="glyphicon glyphicon-menu-right"></i>','/article-section/create?article_id='.$model->id, ['class' => 'mt50 btn btn-success']) ?>
 
     <section class="mt50 article-sections">
 
@@ -191,7 +191,15 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php $sectionNum=1; foreach ($model->sections as $section) : ?>
         <div class="row admin_section_head">
             <div class="col-sm-4">
-                Секция: <?= $sectionNum ?>. <?= $section->sort?'<sup class="glyphicon glyphicon-sort-by-attributes"></sup>'.$section->sort:'' ?> <span class="text-danger"><?= $section->code_name ?></span> <?= \yii\helpers\Html::a( '<span class="glyphicon glyphicon-pencil"></span>', '/article-section/update?id='.$section->id,
+                Секция: <?= $sectionNum ?>. <?= $section->sort?'<span style="color:rgba(0,0,0,.3);"><sup class="glyphicon glyphicon-sort-by-attributes"></sup>'.$section->sort.'</span>':'' ?> <span class="text-danger"><?= $section->code_name ?></span> <?= \yii\helpers\Html::a( '<span class="glyphicon glyphicon-arrow-up"></span>', '/article-section/move-up?id='.$section->id,
+                    [
+                        'title' => Yii::t('yii', 'Переместить вверх'),
+                        'data-method'=>'post'
+                    ]); ?> <?= \yii\helpers\Html::a( '<span class="glyphicon glyphicon-arrow-down"></span>', '/article-section/move-down?id='.$section->id,
+                    [
+                        'title' => Yii::t('yii', 'Переместить вниз'),
+                        'data-method'=>'post'
+                    ]); ?> <?= \yii\helpers\Html::a( '<span class="glyphicon glyphicon-pencil"></span>', '/article-section/update?id='.$section->id,
                     [
                         'title' => Yii::t('yii', 'Редактировать секцию'),
                         'data-method'=>'post'
@@ -524,7 +532,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     </section>
 
-    <?= Html::a('Добавить секцию','/article-section/create?article_id='.$model->id, ['class' => 'mt50 btn btn-success']) ?>
+    <?= Html::a('Добавить секцию '.'<i class="glyphicon glyphicon-menu-right"></i>','/article-section/create?article_id='.$model->id, ['class' => 'mt50 btn btn-success']) ?>
 
 
 </div>

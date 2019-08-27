@@ -158,4 +158,18 @@ class ArticleSectionController extends Controller
         $this->findModel($id)->deleteImage($propertyName);
         return $this->redirect(Url::previous());
     }
+
+    public function actionMoveUp($id)
+    {
+        ArticleSection::moveUpBySort($id);
+
+        return $this->redirect(Url::previous());
+    }
+
+    public function actionMoveDown($id)
+    {
+        ArticleSection::moveDownBySort($id);
+
+        return $this->redirect(Url::previous());
+    }
 }
