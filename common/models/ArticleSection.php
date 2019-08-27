@@ -54,6 +54,7 @@ class ArticleSection extends \yii\db\ActiveRecord
             '_as-illustration-fw' => 'illustration-fw',
         ];
 
+    const DEFAULT_VIEW = '_as-image_icon_in_head';
     /**
      * @inheritdoc
      */
@@ -128,6 +129,29 @@ class ArticleSection extends \yii\db\ActiveRecord
             ->orderBy(['sort' => SORT_ASC]);
     }
 
+    public function beforeSave($insert)
+    {
+        if (parent::beforeSave($insert)) {
+
+            if ($this->isNewRecord) {
+                if (!$this->sort ) {
+                    $article = Article::findOne($this->article_id);
+                    if ($article->sections) {
+                        $this->sort = count($article->sections)+1;
+                    } else {
+                        $this->sort = 1;
+                    }
+                }
+                if (!$this->view) {
+                    $this->view = static::DEFAULT_VIEW;
+                }
+            }
+
+            return true;
+        }
+        return false;
+    }
+
     public function beforeDelete()
     {
         if (!parent::beforeDelete()) {
@@ -158,6 +182,60 @@ class ArticleSection extends \yii\db\ActiveRecord
         }
         $this->$propertyName = null;
         $this->save();
+    }
+
+//    public static function moveElement(&$array, $a, $b) {
+//        $out = array_splice($array, $a, 1);
+//        array_splice($array, $b, 0, $out);
+//        return $out;
+//    }
+
+    public static function moveUpBySort($id)
+    {
+        $model = static::findOne($id);
+
+        $siblings = ArticleSection::find()->where([
+            'article_id'=>$model->article_id
+        ])->orderBy(['sort'=>SORT_ASC])->all();
+
+
+        if (count($siblings)>1) {
+            foreach ($siblings as $key => $child) {
+                if ($child['id'] == $id && $key > 0) {
+                    $item = $child;
+                    $siblings[$key] = $siblings[$key-1];
+                    $siblings[$key-1] = $item;
+                }
+            }
+            foreach ($siblings as $key => $child) {
+                $child->sort = $key+1;
+                $child->save();
+            }
+        }
+    }
+
+    public static function moveDownBySort($id)
+    {
+        $model = static::findOne($id);
+
+        $siblings = ArticleSection::find()->where([
+            'article_id'=>$model->article_id
+        ])->orderBy(['sort'=>SORT_ASC])->all();
+
+
+        if (count($siblings)>1) {
+            foreach ($siblings as $key => $child) {
+                if ($child['id'] == $id && $key < count($siblings)-1) {
+                    $item = $child;
+                    $siblings[$key] = $siblings[$key+1];
+                    $siblings[$key+1] = $item;
+                }
+            }
+            foreach ($siblings as $key => $child) {
+                $child->sort = $key+1;
+                $child->save();
+            }
+        }
     }
 
 
