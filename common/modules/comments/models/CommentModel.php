@@ -228,6 +228,18 @@ class CommentModel extends ActiveRecord
     public function afterSave($insert, $changedAttributes)
     {
         if ($insert) { // isNewRecord
+            $user = $this->getAuthor()->one();
+            $managers = Manager::find()->asArray()->select('email')->all();
+            $isManager = null;
+            foreach ($managers as $manager) {
+                if ($user->email == $manager['email']) {
+                    $isManager = true;
+                }
+            }
+            if (!$isManager) {
+                static::sendNotificationToUs($this->id);
+            }
+
             if ($this->parentId > 0) {
                 $parentNodeLevel = static::find()->select('level')->where(['id' => $this->parentId])->scalar();
                 $this->level += $parentNodeLevel;
@@ -237,7 +249,7 @@ class CommentModel extends ActiveRecord
 
         parent::afterSave($insert, $changedAttributes);
 
-        if (!$insert) {
+        if (!$insert) {  // edit existed
             if (array_key_exists('status', $changedAttributes)) {
                 $this->beforeModeration();
             }
@@ -558,6 +570,41 @@ class CommentModel extends ActiveRecord
                 ->setSubject('tszakaz.ru - ответ на Ваш комментарий')
                 ->send();
         }
+
+    }
+
+
+    public static function sendNotificationToUs($commentId)
+    {
+        $comment = static::findOne($commentId);
+
+
+
+        $text = 'Оставлен новый комментарий "'.$comment->content.'".';
+
+        $url = $comment->getViewUrl();
+        $base = \yii\helpers\Url::base(true);
+        $link = $base . $url;
+
+        Yii::$app->mailer->htmlLayout = "layouts/montserrat";
+        $mail =  Yii::$app->mailer
+            ->compose(
+                ['html' => 'goToLink-html', 'text' => 'goToLink-text'],
+                [
+                    'link' => $link,
+                    'header'=> 'Ответ на комментарий',
+                    'name' => 'ТрансЗаказ',
+                    'text' => $text,
+                    'call2action' => 'Пожалуйста, отвечайте на ВСЕ комментарии (или удаляйте, если это спам). <br>Перейти к комментарию можно по ссылке',
+                    'button' => 'Перейти',
+                    'comment' => '',
+                ]
+            )
+            ->setFrom(Yii::$app->params['noreplyEmail'])
+            ->setTo(Yii::$app->params['feedbackEmail'])  // feedbackEmail
+            ->setSubject('tszakaz.ru - новый комментарий')
+            ->send();
+
 
     }
 }
