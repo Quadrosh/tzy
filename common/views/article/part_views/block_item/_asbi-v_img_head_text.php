@@ -9,7 +9,7 @@ use yii\helpers\Html;
 
 
 ?>
-<div class="asbi-h-img_head_text text-center">
+<div class="asbi-h-img_head_text <?= $model->custom_class?' '.$model->custom_class.' ':' text-center ' ?>">
 
     <?php if ($model->image) {
         echo Html::img('/img/'.$model->image,[
@@ -26,7 +26,7 @@ use yii\helpers\Html;
     <?php endif; ?>
 
     <?php if ($model->text) : ?>
-        <p <?= $model->text_class?'class="'.$model->text_class.'"':null ?>><?= $model->text ?></p>
+        <p <?= $model->text_class?'class="'.$model->text_class.'"':null ?>><?= nl2br($model->text)  ?></p>
     <?php endif; ?>
 
     <?php if ($model->link_name) : ?>

@@ -34,12 +34,7 @@ use yii\widgets\ActiveForm;
         </div>
         <div class="col-sm-4">
             <?= $form->field($model, 'header_class')
-                ->dropDownList([
-                    'text-center' => 'text-center',
-                    'text-left' => 'text-left',
-                    'text-right' => 'text-right',
-                    'text_small' => 'text_small',
-                ],['prompt' => 'Выбери']) ?>
+                ->dropDownList(\common\models\ArticleSectionBlock::HEADER_CLASS_OPTIONS,['prompt' => 'Выбери']) ?>
         </div>
         <div class="col-sm-8">
             <?= $form->field($model, 'description')->textarea(['rows' => 1]) ?>

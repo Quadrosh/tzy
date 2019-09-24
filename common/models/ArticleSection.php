@@ -53,6 +53,30 @@ class ArticleSection extends \yii\db\ActiveRecord
             '_as-image_icon_in_head-fw' => 'image_icon_in_head-fw',
             '_as-illustration-fw' => 'illustration-fw',
         ];
+    const HEADER_CLASS_OPTIONS = [
+        'text-center' => 'text-center',
+        'text-left' => 'text-left',
+        'text-right' => 'text-right',
+        'text_small' => 'text_small',
+        'pl5' => 'pl5',
+    ];
+    const IMAGE_CLASS_OPTIONS = [
+        'float-right w50perSm' => 'float-right w50perSm',
+        'float-left w50perSm' => 'float-left w50perSm',
+        'float-right w30perSm' => 'float-right w30perSm',
+        'float-left w30perSm' => 'float-left w30perSm',
+        'float-right w20perSm' => 'float-right w20perSm',
+        'float-left w20perSm' => 'float-left w20perSm',
+        'w50perSm' => 'w50perSm',
+        'w50per' => 'w50per',
+        'w30per' => 'w30per',
+        'w20per' => 'w20per',
+        'float-left w20per' => 'float-left w20per',
+        'float-right w20per' => 'float-right w20per',
+        'w100' => 'w100',
+        'w80' => 'w80',
+        'w50' => 'w50',
+    ];
 
     const DEFAULT_VIEW = '_as-image_icon_in_head';
     /**
