@@ -32,11 +32,7 @@ use yii\widgets\ActiveForm;
         </div>
         <div class="col-sm-4">
             <?= $form->field($model, 'header_class')
-                ->dropDownList([
-                'text-center' => 'text-center',
-                'text-left' => 'text-left',
-                'text-right' => 'text-right',
-            ],['prompt' => 'Выбери']) ?>
+                ->dropDownList(\common\models\ArticleSection::HEADER_CLASS_OPTIONS,['prompt' => 'Выбери']) ?>
         </div>
         <div class="col-sm-8">
             <?= $form->field($model, 'description')->textarea(['rows' => 1]) ?>
@@ -86,23 +82,7 @@ use yii\widgets\ActiveForm;
             <?= $form->field($model, 'section_image')->textarea(['rows' => 1]) ?>
         </div>
         <div class="col-sm-2">
-            <?= $form->field($model, 'image_class')->dropDownList([
-                'float-right w50perSm' => 'float-right w50perSm',
-                'float-left w50perSm' => 'float-left w50perSm',
-                'float-right w30perSm' => 'float-right w30perSm',
-                'float-left w30perSm' => 'float-left w30perSm',
-                'float-right w20perSm' => 'float-right w20perSm',
-                'float-left w20perSm' => 'float-left w20perSm',
-                'w50perSm' => 'w50perSm',
-                'w50per' => 'w50per',
-                'w30per' => 'w30per',
-                'w20per' => 'w20per',
-                'float-left w20per' => 'float-left w20per',
-                'float-right w20per' => 'float-right w20per',
-                'w100' => 'w100',
-                'w80' => 'w80',
-                'w50' => 'w50',
-            ],['prompt' => 'Выбери']) ?>
+            <?= $form->field($model, 'image_class')->dropDownList(\common\models\ArticleSection::IMAGE_CLASS_OPTIONS,['prompt' => 'Выбери']) ?>
         </div>
         <div class="col-sm-7">
             <?= $form->field($model, 'section_image_alt')->textarea(['rows' => 1,'maxlength' => true]) ?>

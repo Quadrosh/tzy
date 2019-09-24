@@ -14,9 +14,24 @@ use yii\helpers\Html;
 <div class="asb-default  <?= $model->color_key?> <?= $model->custom_class?>">
 
 
-    <?php if ($model->header) : ?>
-        <h3 <?= $model->header_class?'class="'.$model->header_class.'"':null ?>><?= $model->header ?></h3>
-    <?php endif; ?>
+    <div class="table mb0">
+        <?php if ($model->image) : ?>
+            <div class="table-cell <?= $model->image_class ?>">
+                <?php if ($model->image) {
+                    echo Html::img('/img/'.$model->image,[
+                        'alt'=>$model->image_alt,
+                        'title'=>$model->image_title?$model->image_title:null,
+                    ]);
+                } ?>
+            </div>
+        <?php endif; ?>
+
+        <?php if ($model->header) : ?>
+            <div class="table-cell">
+                <h3 <?= $model->header_class?'class="'.$model->header_class.'"':null ?>><?= $model->header ?></h3>
+            </div>
+        <?php endif; ?>
+    </div>
     <?php if ($model->description) : ?>
         <p <?= $model->description_class?'class="'.$model->description_class.'"':null ?>><?= nl2br($model->description) ?></p>
     <?php endif; ?>

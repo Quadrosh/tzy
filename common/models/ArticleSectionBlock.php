@@ -58,7 +58,16 @@ class ArticleSectionBlock extends \yii\db\ActiveRecord
         '_asb-city_price_calc' => 'city_price_calc',
         '_asb-how_we_work' => 'how_we_work',
         '_asb-table' => 'table',
+        '_asb-table_vertical' => 'table_vertical',
         '_asb-2col_specs' => 'tbl_2col_specs',
+    ];
+
+    const HEADER_CLASS_OPTIONS = [
+        'text-center' => 'text-center',
+        'text-left' => 'text-left',
+        'text-right' => 'text-right',
+        'text_small' => 'text_small',
+        'pl5' => 'pl5',
     ];
     /**
      * @inheritdoc
