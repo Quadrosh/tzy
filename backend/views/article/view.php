@@ -448,6 +448,21 @@ $this->params['breadcrumbs'][] = $this->title;
                                                         'data-confirm' =>'Точно удалить?',
                                                         'data-method'=>'post'
                                                     ]); ?>
+                                                <?= \yii\helpers\Html::a( '<span class="glyphicon glyphicon-asterisk">2</span>', '/article-section-block-item/multiply?id='.$item->id.'&qnt=2',
+                                                    [
+                                                        'title' => Yii::t('yii', 'добавить 1 item'),
+                                                        'data-method'=>'post'
+                                                    ]); ?>
+                                                <?= \yii\helpers\Html::a( '<span class="glyphicon glyphicon-asterisk">3</span>', '/article-section-block-item/multiply?id='.$item->id.'&qnt=3',
+                                                    [
+                                                        'title' => Yii::t('yii', 'добавить 3 items'),
+                                                        'data-method'=>'post'
+                                                    ]); ?>
+                                                <?= \yii\helpers\Html::a( '<span class="glyphicon glyphicon-asterisk">5</span>', '/article-section-block-item/multiply?id='.$item->id.'&qnt=5',
+                                                    [
+                                                        'title' => Yii::t('yii', 'добавить 5 items'),
+                                                        'data-method'=>'post'
+                                                    ]); ?>
                                             </div>
                                             <div class="col-sm-8">
                                                 <?php $form = ActiveForm::begin([

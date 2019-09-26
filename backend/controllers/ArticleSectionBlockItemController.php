@@ -157,4 +157,11 @@ class ArticleSectionBlockItemController extends Controller
         $this->findModel($id)->deleteImage($propertyName);
         return $this->redirect(Url::previous());
     }
+
+
+    public function actionMultiply($id,$qnt)
+    {
+        $this->findModel($id)->multiply($qnt);
+        return $this->redirect(Url::previous());
+    }
 }
