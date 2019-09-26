@@ -139,4 +139,25 @@ class ArticleSectionBlockItem extends \yii\db\ActiveRecord
     }
 
 
+    public function multiply($qnt)
+    {
+        $i = intval($qnt)-1 ;
+        $iter=0;
+        while ($i>0){
+            $_model = new self();
+            $_model->attributes = $this->attributes;
+            $_model->save();
+            if ($_model->save()) {
+                $iter++;
+            }
+            $i--;
+
+        }
+        Yii::$app->session->addFlash('success', 'Создано '.$iter.' объектов.');
+
+        return true;
+
+    }
+
+
 }
