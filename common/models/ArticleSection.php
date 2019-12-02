@@ -52,6 +52,8 @@ class ArticleSection extends \yii\db\ActiveRecord
             '_as-image_float_in_text-fw' => 'image_float_in_text-fw',
             '_as-image_icon_in_head-fw' => 'image_icon_in_head-fw',
             '_as-illustration-fw' => 'illustration-fw',
+            '_as-nogutters' => 'nogutters',
+            '_as-h_2col-text--fix_image-fw' => 'h_2col-text--fix_image-fw',
         ];
     const HEADER_CLASS_OPTIONS = [
         'text-center' => 'text-center',

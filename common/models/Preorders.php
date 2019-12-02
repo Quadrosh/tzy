@@ -100,6 +100,28 @@ class Preorders extends \yii\db\ActiveRecord
             ['weight', 'match', 'not'=>true, 'pattern' => '/(базы данных)/i'],
             ['text', 'match', 'not'=>true, 'pattern' => '/(базы данных)/i'],
             ['email', 'match', 'not'=>true, 'pattern' => '/(prodawez395@gmail.com)/i'],
+
+            ['text', 'match', 'not'=>true, 'pattern' => '/(sexy)/i'],
+            ['cargo', 'match', 'not'=>true, 'pattern' => '/(file_links)/i'],
+            ['weight', 'match', 'not'=>true, 'pattern' => '/(file_links)/i'],
+            ['text', 'match', 'not'=>true, 'pattern' => '/(file_links)/i'],
+            ['email', 'match', 'not'=>true, 'pattern' => '/(file_links)/i'],
+            ['dispatch', 'match', 'not'=>true, 'pattern' => '/(file_links)/i'],
+            ['destination', 'match', 'not'=>true, 'pattern' => '/(file_links)/i'],
+
+            ['text', 'match', 'not'=>true, 'pattern' => '/(http)/i'],
+            ['cargo', 'match', 'not'=>true, 'pattern' => '/(http)/i'],
+            ['weight', 'match', 'not'=>true, 'pattern' => '/(http)/i'],
+            ['text', 'match', 'not'=>true, 'pattern' => '/(http)/i'],
+            ['dispatch', 'match', 'not'=>true, 'pattern' => '/(http)/i'],
+            ['destination', 'match', 'not'=>true, 'pattern' => '/(http)/i'],
+
+            ['text', 'match', 'not'=>true, 'pattern' => '/(www)/i'],
+            ['cargo', 'match', 'not'=>true, 'pattern' => '/(www)/i'],
+            ['weight', 'match', 'not'=>true, 'pattern' => '/(www)/i'],
+            ['text', 'match', 'not'=>true, 'pattern' => '/(www)/i'],
+            ['dispatch', 'match', 'not'=>true, 'pattern' => '/(www)/i'],
+            ['destination', 'match', 'not'=>true, 'pattern' => '/(www)/i'],
         ];
     }
 

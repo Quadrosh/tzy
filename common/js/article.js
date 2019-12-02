@@ -1,12 +1,67 @@
 
-
 $(document).ready(function() {
 
+
+    $("body").on("click", ".linkToElement", function(e) {
+
+
+        var el = $(this).attr('data-target');
+        var name = "#"+el;
+
+        console.log('$(this).offset().top');console.log($(this).offset().top);
+        console.log('$(name).offset().top');console.log($(name).offset().top);
+
+        if($(name).length > 0){
+            $('html, body').animate({ scrollTop: $(name).offset().top}, 1000);
+        }
+
+
+    });
+
+
+    // equal_columns('div[class*=equalHeight_]');
     //
-    //$("#services-call2action").on("afterValidate", function () {
-    //    yaCounter30134129.reachGoal("callMe");
-    //    ga("send","event","feedback","call","callMe");
-    //});
+    // function equal_columns(el){
+    //     var groups = {};
+    //     $(el).each(function(){
+    //         var classList = $(this).prop("classList");
+    //         for (var i1=0; i1<classList.length; i1++) {
+    //             if (classList[i1].substring(0, 12) == 'equalHeight_' && !groups[classList[i1]]) {
+    //                 groups[classList[i1]] = classList[i1];
+    //             }
+    //         }
+    //     });
+    //     for (var key in groups) {
+    //         if (groups.hasOwnProperty(key)) {
+    //             var h = 0;
+    //             var groupItems = $('.'+key);
+    //             groupItems.each(function(){
+    //                 $(this).css({'height':'auto'});
+    //                 if($(this).outerHeight() > h)
+    //                 {
+    //                     h = $(this).outerHeight();
+    //                 }
+    //             });
+    //             groupItems.each(function(){
+    //                 $(this).css({'height':h});
+    //             });
+    //         }
+    //     }
+    // }
+
+
+
+    $('.asb-slick_top_carousel').slick({
+        autoplay: true,
+        autoplaySpeed: 4500,
+        infinite: true,
+        dots: false,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        easing:'easeInOutSine',
+        prevArrow:'.sticky_slick_top_slickPrev',
+        nextArrow:'.sticky_slick_top_slickNext',
+    });
 
 
     $('.asb-slick_banner_1_carousel').slick({
@@ -32,6 +87,8 @@ $(document).ready(function() {
             }
         ],
     });
+
+
     if (document.getElementsByClassName('slickMulti')) {
         var arr = document.getElementsByClassName('slickMulti');
 
@@ -50,6 +107,9 @@ $(document).ready(function() {
                 easing:'easeInOutSine',
                 prevArrow:'.slickPrev'+id,
                 nextArrow:'.slickNext'+id,
+
+                // adaptiveHeight: true,
+
                 responsive: [
                     {
                         breakpoint: 769,
@@ -127,3 +187,5 @@ $(document).on("beforeSubmit", "#cityPriceCalc", function () {
     });
     return false; // Cancel form submitting.
 });
+
+

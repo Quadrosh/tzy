@@ -582,47 +582,15 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php if ($article->sections) : ?>
         <?php foreach ($article->sections as $section) : ?>
             <?php if ($section->view) : ?>
-                <?= $this->render('/article/part_views/block/'.$section->view, [
-                    'model' => $block,
+                <?= $this->render('/article/part_views/section/'.$section->view, [
+                    'model' => $section,
                 ]) ?>
             <?php endif; ?>
 
             <?php if (!$section->view) : ?>
-                <section class="<?= $section->color_key ?> <?= $section->custom_class ?>">
-                    <?php if ($section->header) : ?>
-                        <h2 class="<?= $section->header_class ?>"><?= $section->header ?></h2>
-                    <?php endif; ?>
-                    <?php if ($section->description) : ?>
-                        <h3 class="text-center"><?= $section->description ?></h3>
-                    <?php endif; ?>
-                    <?php if ($section->blocks) : ?>
-                        <?php foreach ($section->blocks as $block) : ?>
-                            <?php if ($block->view) : ?>
-                                <?= $this->render('/article/part_views/block/'.$block->view, [
-                                    'model' => $block,
-                                ]) ?>
-                            <?php endif; ?>
-                            <?php if (!$block->view) : ?>
-                                <?php if ($block->header) : ?>
-                                    <h4 class="<?= $block->header_class ?>"><?= $block->header ?></h4>
-                                <?php endif; ?>
-                                <?php if ($block->description) : ?>
-                                    <p class="text-center"><?= $block->description ?></p>
-                                <?php endif; ?>
-                                <?php if ($block->items) : ?>
-                                    <?php foreach ($block->items as $item) : ?>
-                                        <?php if ($item->header) : ?>
-                                            <p class="<?= $item->header_class ?>"><?= $item->header ?></p>
-                                        <?php endif; ?>
-                                        <?php if ($item->description) : ?>
-                                            <p class="text-center"><?= $item->description ?></p>
-                                        <?php endif; ?>
-                                    <?php endforeach; ?>
-                                <?php endif; ?>
-                            <?php endif; ?>
-                        <?php endforeach; ?>
-                    <?php endif; ?>
-                </section>
+                <?= $this->render('/article/part_views/section/_as-default', [
+                    'model' => $section,
+                ]) ?>
             <?php endif; ?>
 
         <?php endforeach; ?>

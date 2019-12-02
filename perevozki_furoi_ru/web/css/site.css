@@ -1,7 +1,101 @@
+/*
+
+blue 0D689E
+green 05AE58
+red F84107
+yellow F8B807
+
+*/
+
+
 html,
 body {
     height: 100%;
+    overflow-x: hidden;
 }
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,600&display=swap&subset=cyrillic');
+
+.container {
+    width: 100%;
+    margin:0;
+    padding: 0;
+}
+.row{
+    margin: 0;
+    /*padding: 0;*/
+}
+
+@font-face {
+    font-family: "Helvetica";
+    src: url("fonts/HelveticaRegular/HelveticaRegular.eot");
+    src: url("fonts/HelveticaRegular/HelveticaRegular.eot?#iefix") format("embedded-opentype"),
+    url("fonts/HelveticaRegular/HelveticaRegular.woff") format("woff"),
+    url("fonts/HelveticaRegular/HelveticaRegular.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+@font-face {
+    font-family: "NeoSansProBold";
+    src: url("fonts/NeoSansProBold/neosanspro-bold.eot");
+    src: url("fonts/NeoSansProBold/neosanspro-bold.eot?#iefix") format("embedded-opentype"),
+    url("fonts/NeoSansProBold/neosanspro-bold.woff") format("woff"),
+    url("fonts/NeoSansProBold/neosanspro-bold.ttf") format("truetype");
+    font-style: normal;
+    font-weight: bold;
+}
+@font-face {
+    font-family: "NeoSansProRegular";
+    src: url("fonts/NeoSansProRegular/neosanspro-regular.eot");
+    src: url("fonts/NeoSansProRegular/neosanspro-regular.eot?#iefix") format("embedded-opentype"),
+    url("fonts/NeoSansProRegular/neosanspro-regular.woff") format("woff"),
+    url("fonts/NeoSansProRegular/neosanspro-regular.ttf") format("truetype");
+    font-style: normal;
+    font-weight: bold;
+}
+
+/* позиционирование*/
+.mt10{
+    margin-top: 10px;
+}
+.mt20{
+    margin-top: 20px;
+}
+.mt30{
+    margin-top: 30px;
+}
+.mt50{
+    margin-top: 50px;
+}
+.mt100{
+    margin-top: 100px;
+}
+.mb10{
+    margin-bottom: 10px;
+}
+.mb20{
+    margin-bottom: 20px;
+}
+.mb30{
+    margin-bottom: 30px;
+}
+.mb50{
+    margin-bottom: 50px;
+}
+.mb100{
+    margin-bottom: 100px;
+}
+.pt10{
+    padding-top: 10px;
+}
+.pt20{
+    padding-top: 20px;
+}
+.pt30{
+    padding-top: 30px;
+}
+
+
+
 
 .wrap {
     min-height: 100%;
@@ -10,26 +104,17 @@ body {
     padding: 0 0 60px;
 }
 
-.wrap > .container {
-    padding: 70px 15px 20px;
-}
+/*.wrap > .container {*/
+/*    padding: 0px 15px 20px;*/
+/*}*/
 
 .footer {
-    height: 60px;
     background-color: #f5f5f5;
     border-top: 1px solid #ddd;
     padding-top: 20px;
 }
 
-.jumbotron {
-    text-align: center;
-    background-color: transparent;
-}
 
-.jumbotron .btn {
-    font-size: 21px;
-    padding: 14px 24px;
-}
 
 .not-set {
     color: #c55;
@@ -95,26 +180,140 @@ a.desc:after {
     margin: 0 0 15px 0;
 }
 
-/* align the logout "link" (button in form) of the navbar */
-.nav li > form > button.logout {
-    padding: 15px;
-    border: none;
+
+
+
+.btn-primary {
+    border-radius: 0;
+    text-transform: uppercase;
+    background-color: #0d689e;
+}
+.navbar-default {
+    background-color: #fff;
+    border-color: #fff;
+    margin-top: 10px;
+    margin-bottom: 0px;
 }
 
-@media(max-width:767px) {
-    .nav li > form > button.logout {
-        display:block;
-        text-align: left;
-        width: 100%;
-        padding: 10px 15px;
+.navbar-default .navbar-nav > li > a {
+    padding-top: 2px;
+    padding-bottom: 2px;
+    line-height: 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #53565a;
+    /*color: red;*/
+}
+.navbar-nav > li {
+    border-right: 1px solid grey;
+}
+.navbar-nav > li:last-child {
+    border-right: none;
+}
+.navbar-default .navbar-toggle {
+    border-color: transparent;
+}
+.navbar-default .navbar-toggle:hover {
+    border-color: #0d689e;
+    background-color: transparent;
+}
+.navbar-toggle {
+    padding:9px 10px;
+    margin-top: 8px;
+    border-radius: 0;
+
+}
+.navbar-toggle .icon-bar {
+    width: 30px;
+    margin-bottom: 6px;
+    background-color: #0d689e;
+}
+.navbar-toggle .icon-bar:last-child {
+    margin-bottom: 0;
+}
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #0d689e;
+}
+.main_phone{
+    margin-right: 10px;
+    top: 2px;
+    position: relative;
+    color: #888b8d;
+}
+.before_navbar{
+    position: relative;
+}
+.before_navbar .logo{
+    position: absolute;
+    left: 10px;
+    top: 12px;
+    z-index: 1;
+    width: 280px;
+    height: 70px;
+}
+@media only screen and (min-width : 1200px) {
+    .before_navbar .logo{
+        left: 10vw;
     }
 }
-
-.nav > li > form > button.logout:focus,
-.nav > li > form > button.logout:hover {
-    text-decoration: none;
+@media only screen and (max-width : 767px) {
+    .before_navbar .logo{
+        top: 30px;
+    }
+}
+@media only screen and (max-width : 360px) {
+    .before_navbar .logo{
+        top: 50px;
+        width: 200px;
+        height: 50px;
+    }
+}
+.navbar-right {
+    margin-top: 10px;
+}
+.btn-danger {
+    background-color: #F8B807;
+}
+.btn-danger:hover {
+    background-color: #E8A800;
+    color: #ffffff;
 }
 
-.nav > li > form > button.logout:focus {
-    outline: none;
+
+
+.link_style1 .link{
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: border-bottom-color .3s;
+    padding: .3em .5em;
+    border-style: solid;
+    border-width: 1px;
+    border-bottom-color: #0d689e;
+    border-top-color: transparent;
+    border-left-color: transparent;
+    border-right-color: transparent;
+}
+.link_style1 .link:hover,
+.link_style1 .link:focus,
+.link_style1 .link:active{
+    transition: border .3s;
+    border-bottom-color: transparent;
+    border-top-color: transparent;
+    border-left-color: #0d689e;
+    border-right-color: #0d689e;
+}
+.link_style1.dark .link{
+    border-bottom-color: white;
+    border-top-color: transparent;
+    border-left-color: transparent;
+    border-right-color: transparent;
+}
+.link_style1.dark .link:hover,
+.link_style1.dark .link:focus,
+.link_style1.dark .link:active{
+    transition: border .3s;
+    border-bottom-color: transparent;
+    border-top-color: transparent;
+    border-left-color: white;
+    border-right-color: white;
 }

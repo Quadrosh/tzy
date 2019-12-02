@@ -145,9 +145,9 @@ class ArticleSectionController extends Controller
 
                 $model->$toModelProperty = $fileName . '.' . $uploadmodel->imageFile->extension;
                 $model->save();
-                Yii::$app->session->setFlash('success', 'Файл загружен успешно');
+                Yii::$app->session->addFlash('success', 'Файл загружен успешно');
             } else {
-                Yii::$app->session->setFlash('error', 'не получается загрузить изображение в секцию');
+                Yii::$app->session->addFlash('error', 'не получается загрузить изображение в секцию');
             }
             return $this->redirect(Url::previous());
         }

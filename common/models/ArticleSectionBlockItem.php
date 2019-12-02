@@ -49,6 +49,10 @@ class ArticleSectionBlockItem extends \yii\db\ActiveRecord
         '_asbi-h_2col-img_text' => '-- 2col-img_text',
         '_asbi-h_tbl2_img_head--text__w1-structure' => '-- tbl2_img_head--text__w1-structure',
         '_asbi-h_tbl2_img--head_text__w1-structure' => '-- tbl2_img--head_text__w1-structure',
+        '_asbi-slick_top_h1_fullback' => 'slick_top_h1_fullback',
+        '_asbi-slick_box_fullback' => 'slick_box_fullback',
+        '_asbi-v_text_link_svg_in_comment_on_image' => '| text_link_svg_in_comment_on_image',
+        '_asbi-v_svg_in_comment_on_image_text_link' => '| svg_in_comment_on_image_text_link',
     ];
     /**
      * @inheritdoc

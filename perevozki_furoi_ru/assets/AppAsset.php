@@ -12,12 +12,21 @@ class AppAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
+        'libs/slick/slick.css',
+        'libs/magnific/magnificpopup.min.css',
+        'libs/font-awesome/css/font-awesome.min.css',
+        'css/common/article.css',
         'css/site.css',
+
     ];
     public $js = [
+        'libs/slick/slick.min.js',
+        'libs/magnific/magnificpopup.min.js',
+        'js/common/article.js',
+        'js/main.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',
-        'yii\bootstrap\BootstrapAsset',
+        'yii\bootstrap\BootstrapPluginAsset',
     ];
 }
