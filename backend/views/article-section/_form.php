@@ -28,7 +28,7 @@ use yii\widgets\ActiveForm;
 
         </div>
         <div class="col-sm-8">
-            <?= $form->field($model, 'header')->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, 'header')->textarea(['rows' => 1,'maxlength' => true]) ?>
         </div>
         <div class="col-sm-4">
             <?= $form->field($model, 'header_class')
@@ -97,6 +97,8 @@ use yii\widgets\ActiveForm;
         <div class="col-sm-10">
             <?= $form->field($model, 'background_image_title')->textarea(['rows' => 1]) ?>
         </div>
+    </div>
+    <div class="row">
         <div class="col-sm-2">
             <?= $form->field($model, 'thumbnail_image')->textarea(['rows' => 1]) ?>
         </div>

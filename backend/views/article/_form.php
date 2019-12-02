@@ -72,7 +72,7 @@ use yii\widgets\ActiveForm;
             <?= $form->field($model, 'exerpt_big')->textarea(['rows' => 1]) ?>
         </div>
         <div class="col-sm-12">
-            <?= $form->field($model, 'h1')->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, 'h1')->textarea(['rows' => 1,'maxlength' => true]) ?>
         </div>
         <div class="col-sm-12">
             <?= $form->field($model, 'raw_text')->textarea(['rows' => 1]) ?>

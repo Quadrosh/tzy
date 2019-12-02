@@ -9,7 +9,7 @@ use yii\helpers\Html;
 
 
 ?>
-<div class="asbi-h-img_head_text <?= $model->custom_class?' '.$model->custom_class.' ':' text-center ' ?>">
+<div class="asbi-h-img_head_text h100per text-center <?= $model->custom_class ?>">
 
     <?php if ($model->image) {
         echo Html::img('/img/'.$model->image,[

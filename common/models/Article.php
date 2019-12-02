@@ -51,6 +51,8 @@ class Article extends \yii\db\ActiveRecord
         '_a-default' => 'default',
         '_a-page_preorder_form' => 'page_preorder_form',
         '_a-page_preorder_form-nocomment' => 'page_preorder_form-nocomment',
+        '_a-page_preorder_form-nocomment-noshare' => 'page_preorder_form-nocomment-noshare',
+        '_a-topline_bgr_preorder_form-nocomment-noshare' => 'topline_bgr_preorder_form-nocomment-noshare',
         '_a-1' => '1',
     ];
 

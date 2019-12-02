@@ -5,6 +5,7 @@ namespace common\models;
 use backend\controllers\ImagefilesController;
 use yii\base\Action;
 use yii\base\Model;
+use yii\helpers\Json;
 use yii\web\UploadedFile;
 use Yii;
 use common\models\Imagefiles;
@@ -22,8 +23,17 @@ class UploadForm  extends Model
     public function rules()
     {
         return [
-            [['imageFile'], 'file', 'skipOnEmpty' => true, 'extensions' => 'png, jpg, svg'],
-            [['jsonFile'], 'file', 'skipOnEmpty' => true, 'extensions' => 'json'],
+            [['imageFile'],
+                'file',
+                'skipOnEmpty' => true,
+                'extensions' => 'svg,png,jpg',
+                'checkExtensionByMimeType' => false
+            ],
+            [['jsonFile'],
+                'file',
+                'skipOnEmpty' => true,
+                'extensions' => 'json'
+            ],
         ];
     }
 
@@ -40,6 +50,7 @@ class UploadForm  extends Model
             if ($this->imageFile->saveAs('img/' . $fileName)) {
                 return true;
             } else {
+                Yii::$app->session->addFlash('error', Json::encode($this->errors));
                 Yii::error([
                     'action'=> 'uploadForm  $this->imageFile->saveAs',
                     '$this->errors'=>$this->errors,
@@ -47,6 +58,7 @@ class UploadForm  extends Model
                 return false;
             }
         } else {
+            Yii::$app->session->addFlash('error', Json::encode($this->errors));
             Yii::error([
                 'action'=> 'uploadForm  $this->validate() && $imageListItem->addNew',
                 '$this->errors'=>$this->errors,
