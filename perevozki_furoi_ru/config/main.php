@@ -11,6 +11,8 @@ return [
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'controllerNamespace' => 'perevozki_furoi_ru\controllers',
+    'language' => 'ru-RU',
+    'timeZone' => 'Europe/Moscow',
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-frontend',
@@ -42,6 +44,7 @@ return [
             'showScriptName' => false,
             'rules' => [
                 '' => 'article/page',
+                '<hrurl:contacts>' => 'article/page',
                 '<hrurl:uslugi>' => 'article/page',
 //                '<hrurl:food>' => 'article/page',
 

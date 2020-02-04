@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use \common\models\Visit;
 
 $preorder = new \common\models\Feedback();
 
@@ -36,23 +37,23 @@ $preorder = new \common\models\Feedback();
         ->hiddenInput(['value'=>'-',
             'id' => 'quickorder-form-section'.$section->id.'-name'])->label(false) ?>
     <?= $form->field($preorder, 'utm_source',['template' => '{input}', 'options' => ['tag' => false]])
-        ->hiddenInput(['value'=>\common\models\Visit::getUtm('utm_source'),
+        ->hiddenInput(['value'=> Visit::getUtm('utm_source'),
             'id' => 'quickorder-form-section'.$section->id.'-utm_sourse'])->label(false) ?>
     <?= $form->field($preorder, 'utm_medium',['template'=>'{input}','options'=>['tag'=>false]])
-        ->hiddenInput(['value'=>\common\models\Visit::getUtm('utm_medium'),
+        ->hiddenInput(['value'=> Visit::getUtm('utm_medium'),
             'id' => 'quickorder-form-section'.$section->id.'-utm_medium'])->label(false) ?>
     <?= $form->field($preorder, 'utm_campaign',['template'=>'{input}','options'=>['tag'=>false]])
-        ->hiddenInput(['value'=>\common\models\Visit::getUtm('utm_campaign'),
+        ->hiddenInput(['value'=> Visit::getUtm('utm_campaign'),
             'id' => 'quickorder-form-section'.$section->id.'-utm_campaign'])->label(false) ?>
     <?= $form->field($preorder, 'utm_term',['template' => '{input}', 'options' => ['tag' => false]])
-        ->hiddenInput(['value'=>\common\models\Visit::getUtm('utm_term'),
+        ->hiddenInput(['value'=> Visit::getUtm('utm_term'),
             'id' => 'quickorder-form-section'.$section->id.'-utm_term'])->label(false) ?>
     <?= $form->field($preorder, 'utm_content',['template' => '{input}', 'options' => ['tag' => false]])
-        ->hiddenInput(['value'=>\common\models\Visit::getUtm('utm_content'),
+        ->hiddenInput(['value'=> Visit::getUtm('utm_content'),
             'id' => 'quickorder-form-section'.$section->id.'-utm_content'])->label(false) ?>
 
     <?= $form->field($preorder, 'from_page',['template' => '{input}', 'options' => ['tag' => false]])
-        ->hiddenInput(['value'=>$article ['hrurl'],
+        ->hiddenInput(['value'=>isset($article)&&$article ['hrurl']?$article ['hrurl']: $_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'],
             'id' => 'quickorder-form-section'.$section->id.'-from_page'])->label(false) ?>
     <?php yii\bootstrap\ActiveForm::end(); ?>
 </div>

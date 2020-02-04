@@ -207,13 +207,15 @@ class Feedback extends \yii\db\ActiveRecord
     {
         parent::afterSave($insert, $changedAttributes);
 
-        Yii::$app->amo->send(
-            Yii::$app->params['site'].': Запрос обратного звонка'.PHP_EOL.
-            " Тел.: ".$this->phone .PHP_EOL.
-            " Имя: ".$this->name .PHP_EOL.
-            nl2br($this->text).PHP_EOL.
-           " Со страницы: ".$this->from_page .PHP_EOL
-        );
+        if ($GLOBALS['YII_APP_MODE']!='DEV') {
+            Yii::$app->amo->send(
+                Yii::$app->params['site'].': Запрос обратного звонка'.PHP_EOL.
+                " Тел.: ".$this->phone .PHP_EOL.
+                " Имя: ".$this->name .PHP_EOL.
+                nl2br($this->text).PHP_EOL.
+                " Со страницы: ".$this->from_page .PHP_EOL
+            );
+        }
     }
 
 

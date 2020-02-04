@@ -20,7 +20,7 @@ class AppAsset extends AssetBundle
     public $css = [
         'libs/slick/slick.css',
         'libs/magnific/magnificpopup.min.css',
-        'css/site.css',
+        'css/backend.css',
         'css/common/article.css',
     ];
     public $js = [

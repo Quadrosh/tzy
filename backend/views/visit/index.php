@@ -28,7 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'lp_hrurl',
             'ip',
 //            'city',
-//            'url:url',
+            'url:url',
             'utm_source',
              'utm_medium',
              'utm_campaign',

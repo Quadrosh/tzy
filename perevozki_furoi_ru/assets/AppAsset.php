@@ -16,7 +16,7 @@ class AppAsset extends AssetBundle
         'libs/magnific/magnificpopup.min.css',
         'libs/font-awesome/css/font-awesome.min.css',
         'css/common/article.css',
-        'css/site.css',
+        'css/perevozki_furoi.css',
 
     ];
     public $js = [

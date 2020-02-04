@@ -17,19 +17,21 @@ class Breadcrumbs extends Model
         if ($ids) {
             foreach ($ids as $id) {
                 $cat=\common\models\Menu::find()->where(['id'=>$id])->one();
+
                 if (isset($cat)) {
                     if ( $cat->tree==0) {
                         $cat->tree=1;
                     }
                     $parent = $this->parent($cat);
+
                     if (isset($parent) && $parent->id != $cat->tree) {
                         $this->ifBGParent($parent,$cat);
 
                         $this->breadcrumbs[] = ['label' => $parent->name, 'url' => ['/' . $parent->url]];
                     }
 
-
                     $this->breadcrumbs[] = ['label' => $cat->name];
+
                     return $this->breadcrumbs;
                 }
             }
@@ -39,6 +41,7 @@ class Breadcrumbs extends Model
 
     public function parent($category){
         return \common\models\Menu::find()
+            ->andWhere(['tree'=>$category->tree])
             ->andWhere('lft <='.$category->lft)
             ->andWhere('rgt >='.$category->rgt)
             ->andWhere(['depth'=>$category->depth-1])

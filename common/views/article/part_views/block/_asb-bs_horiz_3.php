@@ -33,7 +33,7 @@ use yii\helpers\Html;
         </div>
         <div class="row">
                 <?php endif; ?>
-                <div class="col-sm-4 <?php
+                <div class="col-sm-4 bs_horiz_3_item <?php
                 if ($i!=1 && $i%3==1 && $i+1 == $count){echo'col-sm-offset-2';}
                 if ($i!=1 && $i%3==1 && $i == $count){echo'col-sm-offset-4';}
                 ?>">
