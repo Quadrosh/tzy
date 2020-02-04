@@ -22,13 +22,13 @@ use yii\helpers\Html;
     <?php endif; ?>
 
     <?php if ($model->items) : ?>
-        <div class="row">
+        <div class="row no-gutters flex-sm">
             <?php $i=0; $count = count($model->items); foreach ( $model->items as $item)  : ?>
                 <?php $i++; if ($i!=1 && $i%4==1) : ?>
         </div>
-        <div class="row">
+        <div class="row no-gutters flex-sm ">
                 <?php endif; ?>
-                <div class="col-sm-3 <?php
+                <div class="col-sm-3 pl5 pr5 mb20  <?php
                 if ($i!=1 && $i%4==1 && $i+1 == $count){echo'col-sm-offset-3';}
                 ?>">
 

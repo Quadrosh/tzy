@@ -371,7 +371,10 @@ $feedback = new \common\models\Feedback();
     ?>
 
     <div class="container">
-        <?= Breadcrumbs::widget([
+<!--        --><?//= Breadcrumbs::widget([
+//            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+//        ]) ?><!--        -->
+        <?= \common\widgets\BreadcrumbsH2::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
         <?= Alert::widget() ?>

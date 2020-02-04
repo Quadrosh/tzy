@@ -8,6 +8,20 @@ use yii\helpers\Html;
 /* @var $block common\models\ArticleSectionBlock */
 /* @var $item common\models\ArticleSectionBlockItem */
 
+$noColPadding = false;
+
+
+$structure = $model->structure;
+
+if ($structure) {
+    foreach (explode('&', $structure) as $chunk) {
+        $param = explode("=", $chunk);
+        if ($param[0]=='no_col_padding' || $param[0]=='noColPadding') {
+            $noColPadding=true;
+        }
+
+    }
+}
 
 
 ?>
@@ -35,7 +49,7 @@ use yii\helpers\Html;
         <div class="row">
             <?php endif; ?>
 
-                <div class="col-sm-6">
+                <div class="col-sm-6 <?= $noColPadding?' pl0 pr0 ':null ?> ">
 
                     <?php if ($item->view) : ?>
                         <?= $this->render('/article/part_views/block_item/'.$item->view, [

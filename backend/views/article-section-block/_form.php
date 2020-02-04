@@ -30,7 +30,7 @@ use yii\widgets\ActiveForm;
     </div>
     <div class="row">
         <div class="col-sm-8">
-            <?= $form->field($model, 'header')->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, 'header')->textarea(['rows' => 1,'maxlength' => true]) ?>
         </div>
         <div class="col-sm-4">
             <?= $form->field($model, 'header_class')

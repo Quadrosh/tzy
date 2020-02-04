@@ -53,7 +53,57 @@ class ArticleSectionBlockItem extends \yii\db\ActiveRecord
         '_asbi-slick_box_fullback' => 'slick_box_fullback',
         '_asbi-v_text_link_svg_in_comment_on_image' => '| text_link_svg_in_comment_on_image',
         '_asbi-v_svg_in_comment_on_image_text_link' => '| svg_in_comment_on_image_text_link',
+        '_asbi-v_sm_svg_in_comment_on_image_text_link' => '| sm_svg_in_comment_on_image_text_link',
+        '_asbi-v_svg_in_comment_on_image_centered_square' => '| svg_in_comment_on_image_centered_square',
     ];
+
+    const COLOR_KEY_OPTIONS = [
+        'white_bgr',
+        'dark',
+    ];
+
+    const IMAGE_CLASS_OPTIONS = [
+      'float-right w50perSm',
+      'float-left w50perSm',
+      'w50perSm',
+      'w30perCenter',
+      'w100per',
+      'w90per',
+      'w80per',
+      'w50per',
+      'w20per',
+      'w200',
+      'w100',
+      'w80',
+      'w50',
+    ];
+
+    const TEXT_CLASS_OPTIONS = [
+        'text-center',
+        'text-left',
+        'text-right',
+        'text_blue_center',
+        'text_small',
+        'text-grey',
+        'text-uppercase',
+        'mt_auto',
+        'mb_auto',
+        'flex_grow',
+        'bt',
+        'bb',
+    ];
+    const HEADER_CLASS_OPTIONS = [
+        'text-center',
+        'text-left',
+        'text-right',
+        'blue_circle',
+        'text-uppercase',
+        'strong',
+        'text-center strong',
+        'text-grey',
+    ];
+
+
     /**
      * @inheritdoc
      */

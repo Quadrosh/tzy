@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use \yii\widgets\ActiveForm;
 
 $shortOrderForm = new \common\models\Preorders();
-
+$session = Yii::$app->session;
 
 ?>
 <div class=" shortOrderForm bordered box" >
@@ -46,18 +46,35 @@ $shortOrderForm = new \common\models\Preorders();
     <div class="row">
 
         <?= $form->field($shortOrderForm, 'from_page')
-            ->hiddenInput(['value'=>$article->hrurl ,'id' => 'shortOrderForm-from_page'])->label(false) ?>
+            ->hiddenInput([
+                    'value'=>isset($article) ? $article->hrurl : $_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'] ,
+                    'id' => 'shortOrderForm-from_page'
+            ])->label(false) ?>
 
         <?= $form->field($shortOrderForm, 'utm_source')
-            ->hiddenInput([ 'id' => 'shortOrderForm-utm_source'])->label(false) ?>
+            ->hiddenInput([
+                    'value'=>isset($session['utm_source'])?$session['utm_source']:null,
+                    'id' => 'shortOrderForm-utm_source',
+            ])->label(false) ?>
         <?= $form->field($shortOrderForm, 'utm_medium')
-            ->hiddenInput([ 'id' => 'shortOrderForm-utm_medium'])->label(false) ?>
+            ->hiddenInput([
+                    'value'=>isset($session['utm_medium'])?$session['utm_medium']:null,
+                    'id' => 'shortOrderForm-utm_medium',
+            ])->label(false) ?>
         <?= $form->field($shortOrderForm, 'utm_campaign')
-            ->hiddenInput([ 'id' => 'shortOrderForm-utm_campaign'])->label(false) ?>
+            ->hiddenInput([
+                    'value'=>isset($session['utm_campaign'])?$session['utm_campaign']:null,
+                    'id' => 'shortOrderForm-utm_campaign',
+            ])->label(false) ?>
         <?= $form->field($shortOrderForm, 'utm_term')
-            ->hiddenInput([ 'id' => 'shortOrderForm-utm_term'])->label(false) ?>
+            ->hiddenInput([
+                    'value'=>isset($session['utm_term'])?$session['utm_term']:null,
+                    'id' => 'shortOrderForm-utm_term',
+            ])->label(false) ?>
         <?= $form->field($shortOrderForm, 'utm_content')
-            ->hiddenInput([ 'id' => 'shortOrderForm-utm_content'])->label(false) ?>
+            ->hiddenInput([
+                    'value'=>isset($session['utm_content'])?$session['utm_content']:null,
+                    'id' => 'shortOrderForm-utm_content'])->label(false) ?>
 
         <div class="col-sm-6 col-sm-offset-3 text-center">
             <?= Html::submitButton('Уточнить цену', ['class' => 'btn btn-primary sendorder-btn mt10']) ?>

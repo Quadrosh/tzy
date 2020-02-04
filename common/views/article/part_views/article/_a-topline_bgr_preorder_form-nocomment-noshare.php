@@ -9,7 +9,7 @@ use common\widgets\Alert;
 $preorderForm = new \common\models\Preorders();
 
 ?>
-<div class="a-page_preorder_form">
+<div class="a-topline_bgr_preorder_form-nocomment-noshare ">
     <section
             class=" article_topLine_image  bgr"
         <?= $article->topimage_title?'title="'.$article->topimage_title.'"':null ?>

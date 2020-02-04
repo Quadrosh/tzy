@@ -11,6 +11,9 @@ return [
         'amo' => [
             'class' => 'common\components\Amo',
         ],
+        'helpers' => [
+            'class' => 'common\components\Helpers',
+        ],
         'i18n' => [
             'translations' => [
                 'yii2mod.comments' => [
