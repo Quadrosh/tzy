@@ -20,10 +20,10 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             [
                 'attribute'=>'date',
-                'value' => function($data)
-                {
-                    return \Yii::$app->formatter->asDatetime($data['date'], 'HH:mm dd/MM/yy');
+                'value' => function($data) {
+                    return  \Yii::$app->formatter->asDatetime($data['date'], 'EEEE dd/MM/yy HH:mm ');
                 },
+                'contentOptions' => ['style' => 'font-size:1.0rem;width:20%;line-height:1.2; white-space: normal;'],
                 'format'=> 'html',
             ],
             'id',
