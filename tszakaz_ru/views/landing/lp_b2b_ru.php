@@ -77,7 +77,7 @@ $preorder = new common\models\Preorders();
                        <a class="topMagLink"
                           href="/img/d_pic_tz_card.jpg"
                        ><i class="fa fa-file-image-o topIcon" aria-hidden="true"></i></a>
-                       <?= Html::a('скачать','/img/d_трансзаказ_реквизиты.jpg', ['class'=>'goLink downloadLink']) ?>
+                       <?= Html::a('скачать','/img/d_tz_card.pdf', ['class'=>'goLink downloadLink']) ?>
                    </div>
                    <div class="col-xs-12 text-right">
                        <?= Html::a('я не юридическое лицо','/lp/perevozki-po-rossii', ['class'=>'goLink i_m_not mt10']) ?>

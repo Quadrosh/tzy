@@ -6,7 +6,7 @@ use yii\helpers\Html;
 
 
 <section class="as-h_2col-text--fix_image fw <?= $model->color_key ?> <?= $model->custom_class ?> "
-    <?= $model->section_image_title?'title="'.$model->background_image_title.'"':null ?>
+    <?= $model->background_image_title?'title="'.$model->background_image_title.'"':null ?>
          style="background-image: url(/img/<?= $model->background_image ?>);"
 >
     <div class="row flex-sm" >

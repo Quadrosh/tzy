@@ -49,6 +49,7 @@ class Article extends \yii\db\ActiveRecord
     public $categories;
     const VIEW_OPTIONS = [
         '_a-default' => 'default',
+        '_a-lp' => 'lp',
         '_a-page_preorder_form' => 'page_preorder_form',
         '_a-page_preorder_form-nocomment' => 'page_preorder_form-nocomment',
         '_a-page_preorder_form-nocomment-noshare' => 'page_preorder_form-nocomment-noshare',
