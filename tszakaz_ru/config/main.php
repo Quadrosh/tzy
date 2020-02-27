@@ -92,6 +92,7 @@ return [
             'showScriptName' => false,
             'rules' => [
 
+                '<pagename:[perevozki\-city]+>.html' => 'article/page',
                 'confirm-email/<token:[0-9a-zA-Z\-\_]+>' => 'site/confirm-email',
                 'comments-unsubscribe/<token:[0-9a-zA-Z\-\_]+>' => 'site/comments-unsubscribe',
 
