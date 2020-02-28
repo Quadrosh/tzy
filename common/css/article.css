@@ -967,6 +967,7 @@ label .noBold{
     display: inline-block;
     width: auto;
     transform:  rotateX(0);
+    z-index: 100;
 }
 .submit_perspective .asbi-slick_top_h1_fullback .link:hover{
     text-decoration: none;

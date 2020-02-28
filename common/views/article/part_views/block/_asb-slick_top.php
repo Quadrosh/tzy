@@ -93,7 +93,7 @@ use yii\helpers\Html;
                      xmlns="http://www.w3.org/2000/svg"
                      xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                      viewBox="0 0 79.4 28.3"
-                     style="enable-background:new 0 0 79.4 28.3; width: 80px;height: 80px;margin-top: 50px;"
+                     style="enable-background:new 0 0 79.4 28.3; width: 80px;height: 80px;top: 50px;"
                      xml:space="preserve">
 <path fill="white"  d="M39.8,18.7L9.8,7.8C9.3,7.6,8.7,7.9,8.5,8.4s0.1,1.1,0.6,1.3l30.3,11h0.1c0.1,0,0.1,0,0.2,0s0.1,0,0.2,0H40l30.3-11
 	C70.7,9.6,71,9.2,71,8.8c0-0.1,0-0.2-0.1-0.3c-0.2-0.5-0.8-0.8-1.3-0.6L39.8,18.7z"/>
