@@ -53,56 +53,16 @@ $feedback = new \common\models\Feedback();
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close"  data-dismiss="modal"><span aria-hidden="true" class="b-icon b-icon__close"></span><span class="sr-only"></span></button>
-                <h4 class="modal-title">Заказать обратный звонок</h4>
+                <h4 class="modal-title">Заказ доставки</h4>
             </div>
-            <?php $form = ActiveForm::begin([
-                'id' => 'feedback-form',
-                'method' => 'post',
-                'action' => ['/site/feedback'],
-            ]); ?>
+
             <div class="modal-body">
-                <p>Оставьте ваши контактные данные,<br/>
-                    и наш специалист свяжется с Вами в течение 30 минут.</p>
-
-                <div id="feedbackLoading">
-                    <span class="b-icon b-icon__loading"></span>
-                </div>
-                <div id="feedbackNote"></div>
-
-                <div class="form-group clearfix">
-
-                    <?= Html::errorSummary($feedback, ['class' => 'errors']) ?>
-
-                    <div class="col-xs-6">
-                        <?= $form->field($feedback, 'name')
-                            ->textInput(['maxlength' => true, 'id' => 'feedback_form-name']) ?>
-                    </div>
-                    <div class="col-xs-6 text-right">
-                        <?= $form->field($feedback, 'phone')
-                            ->textInput(['maxlength' => true, 'id' => 'feedback_form-phone']) ?>
-                    </div>
-                    <?= $form->field($feedback, 'from_page')
-                        ->hiddenInput(['value'=>Yii::$app->view->params['meta']['list_name'], 'id' => 'feedback_form-from_page'])->label(false) ?>
-
-                    <?= $form->field($feedback, 'utm_source')
-                        ->hiddenInput([ 'id' => 'feedback_form-utm_source'])->label(false) ?>
-                    <?= $form->field($feedback, 'utm_medium')
-                        ->hiddenInput([ 'id' => 'feedback_form-utm_medium'])->label(false) ?>
-                    <?= $form->field($feedback, 'utm_campaign')
-                        ->hiddenInput([ 'id' => 'feedback_form-utm_campaign'])->label(false) ?>
-                    <?= $form->field($feedback, 'utm_term')
-                        ->hiddenInput([ 'id' => 'feedback_form-utm_term'])->label(false) ?>
-                    <?= $form->field($feedback, 'utm_content')
-                        ->hiddenInput([ 'id' => 'feedback_form-utm_content'])->label(false) ?>
-                </div>
-
+                <?= $this->render('/article/part_views/article/_order-form', [
+                    'id' => 'page_preorder_form',
+                ]) ?>
 
             </div>
-            <div class="modal-footer">
 
-                <?= Html::submitButton('Отправить', ['class' => 'btn btn-primary btn-sm']) ?>
-            </div>
-            <?php ActiveForm::end(); ?>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
@@ -343,37 +303,36 @@ $feedback = new \common\models\Feedback();
             </g>
 </svg>
         <span class="main_phone"><?= Yii::$app->params['phone'] ?></span>
-        <a class="btn btn-primary"   >Заказать доставку</a>
+        <a class="btn btn-primary"
+           href="#"
+           data-toggle="modal"
+           data-target="#feedbackForm"
+           title="Заказать доставку"
+        >Заказать доставку</a>
     </div>
+
     <?php
+        NavBar::begin([
+            'brandLabel' => '',
+            'brandUrl' => Yii::$app->homeUrl,
+            'options' => [
+                'class' => 'navbar-default ',
+            ],
+        ]);
+        $menuItems = [
+            ['label' => 'Главная', 'url' => ['/']],
+            ['label' => 'Услуги', 'url' => ['/uslugi']],
+            ['label' => 'Контакты', 'url' => ['/contacts']],
+        ];
 
-    $logoSvg = '';
-
-
-    NavBar::begin([
-        'brandLabel' => $logoSvg,
-        'brandUrl' => Yii::$app->homeUrl,
-        'options' => [
-            'class' => 'navbar-default ',
-        ],
-    ]);
-    $menuItems = [
-        ['label' => 'Главная', 'url' => ['/']],
-        ['label' => 'Услуги', 'url' => ['/uslugi']],
-        ['label' => 'Контакты', 'url' => ['/contacts']],
-    ];
-
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => $menuItems,
-    ]);
-    NavBar::end();
+        echo Nav::widget([
+            'options' => ['class' => 'navbar-nav navbar-right'],
+            'items' => $menuItems,
+        ]);
+        NavBar::end();
     ?>
 
     <div class="container">
-<!--        --><?//= Breadcrumbs::widget([
-//            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-//        ]) ?><!--        -->
         <?= \common\widgets\BreadcrumbsH2::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
@@ -381,6 +340,7 @@ $feedback = new \common\models\Feedback();
         <?= $content ?>
     </div>
 </div>
+
 
 
 
