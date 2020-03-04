@@ -72,7 +72,7 @@ $fromPage =  $_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
         <?= $form->field($preorderForm, 'utm_content')
             ->hiddenInput(['value'=> Visit::getUtm('utm_content'), 'id' => $id.'-utm_content'])->label(false) ?>
 
-        <div class="col-sm-6 col-sm-offset-3 text-center mt50 mb100">
+        <div class="col-sm-6 col-sm-offset-3 text-center mt50 mb50">
             <?= Html::submitButton('отправить заявку', ['class' => 'btn btn-primary sendorder-btn mt10']) ?>
         </div>
     </div>
