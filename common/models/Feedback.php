@@ -136,9 +136,9 @@ class Feedback extends \yii\db\ActiveRecord
     public function sendEmail($subject)
     {
 
-        if ($GLOBALS['YII_APP_MODE']=='DEV') {
+        if (mb_strtolower(YII_ENV)=='dev') {
             $this->emailForSend = Yii::$app->params['devOrderEmail'];
-        } elseif ($GLOBALS['YII_APP_MODE']=='PROD') {
+        } elseif (mb_strtolower(YII_ENV)=='prod') {
             $this->emailForSend = Yii::$app->params['prodOrderEmail'];
         }
 
@@ -207,7 +207,7 @@ class Feedback extends \yii\db\ActiveRecord
     {
         parent::afterSave($insert, $changedAttributes);
 
-        if ($GLOBALS['YII_APP_MODE']!='DEV') {
+        if (mb_strtolower(YII_ENV)=='dev') {
             Yii::$app->amo->send(
                 Yii::$app->params['site'].': Запрос обратного звонка'.PHP_EOL.
                 " Тел.: ".$this->phone .PHP_EOL.
