@@ -539,3 +539,14 @@ a.desc:after {
 .a-topline_bgr_preorder_form-nocomment-noshare  .sendorder-btn{
     margin-bottom: 80px;
 }
+.b-icon__close {
+    background: transparent url(/img/b-header__icon__close.png);
+    height: 16px;
+    width: 16px;
+}
+
+.b-icon {
+    position: relative;
+    display: inline-block;
+    line-height: 1;
+}
