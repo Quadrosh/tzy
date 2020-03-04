@@ -5,11 +5,15 @@ use \common\models\Visit;
 
 $preorder = new \common\models\Feedback();
 
+if (!isset($id)) {
+    $id = 'quickorder-form'.$section->id;
+}
+$fromPage =  $_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
 
 ?>
 <div class="phone-form ">
     <?php $form = yii\bootstrap\ActiveForm::begin([
-        'id' => 'quickorder-form-section'.$section->id,
+        'id' => $id,
         'method' => 'post',
         'action' => ['/site/feedback'],
         'layout' => 'horizontal',
@@ -30,30 +34,30 @@ $preorder = new \common\models\Feedback();
         ],
         'inputTemplate' => '<div class="input-group">{input}<span class="input-group-btn">'.
             '<button type="submit" class="btn btn-danger">'.$section->call2action_name.'</button></span></div>',
-    ])->textInput(['maxlength' => true, 'id' => 'quickorder-form-section'.$section->id.'-phone'])->label(false) ?>
+    ])->textInput(['maxlength' => true, 'id' => $id.'-phone'])->label(false) ?>
 
 
     <?= $form->field($preorder, 'name',['template' => '{input}', 'options' => ['tag' => false]])
         ->hiddenInput(['value'=>'-',
-            'id' => 'quickorder-form-section'.$section->id.'-name'])->label(false) ?>
+            'id' => $id.'-name'])->label(false) ?>
     <?= $form->field($preorder, 'utm_source',['template' => '{input}', 'options' => ['tag' => false]])
         ->hiddenInput(['value'=> Visit::getUtm('utm_source'),
-            'id' => 'quickorder-form-section'.$section->id.'-utm_sourse'])->label(false) ?>
+            'id' => $id.'-utm_sourse'])->label(false) ?>
     <?= $form->field($preorder, 'utm_medium',['template'=>'{input}','options'=>['tag'=>false]])
         ->hiddenInput(['value'=> Visit::getUtm('utm_medium'),
-            'id' => 'quickorder-form-section'.$section->id.'-utm_medium'])->label(false) ?>
+            'id' => $id.'-utm_medium'])->label(false) ?>
     <?= $form->field($preorder, 'utm_campaign',['template'=>'{input}','options'=>['tag'=>false]])
         ->hiddenInput(['value'=> Visit::getUtm('utm_campaign'),
-            'id' => 'quickorder-form-section'.$section->id.'-utm_campaign'])->label(false) ?>
+            'id' => $id.'-utm_campaign'])->label(false) ?>
     <?= $form->field($preorder, 'utm_term',['template' => '{input}', 'options' => ['tag' => false]])
         ->hiddenInput(['value'=> Visit::getUtm('utm_term'),
-            'id' => 'quickorder-form-section'.$section->id.'-utm_term'])->label(false) ?>
+            'id' => $id.'-utm_term'])->label(false) ?>
     <?= $form->field($preorder, 'utm_content',['template' => '{input}', 'options' => ['tag' => false]])
         ->hiddenInput(['value'=> Visit::getUtm('utm_content'),
-            'id' => 'quickorder-form-section'.$section->id.'-utm_content'])->label(false) ?>
+            'id' => $id.'-utm_content'])->label(false) ?>
 
     <?= $form->field($preorder, 'from_page',['template' => '{input}', 'options' => ['tag' => false]])
-        ->hiddenInput(['value'=>isset($article)&&$article ['hrurl']?$article ['hrurl']: $_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'],
-            'id' => 'quickorder-form-section'.$section->id.'-from_page'])->label(false) ?>
+        ->hiddenInput(['value'=>$fromPage,
+            'id' => $id.'-from_page'])->label(false) ?>
     <?php yii\bootstrap\ActiveForm::end(); ?>
 </div>
