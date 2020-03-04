@@ -11,8 +11,8 @@ $session = Yii::$app->session;
 if (!isset($id)) {
     $id = 'preorder_form';
 }
-//$fromPage = \yii\helpers\Url::base('').Yii::$app->request->url;
 $fromPage =  $_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
+
 
 ?>
 <?php $form = ActiveForm::begin([

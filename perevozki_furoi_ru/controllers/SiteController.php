@@ -1,8 +1,11 @@
 <?php
 namespace perevozki_furoi_ru\controllers;
 
+use common\models\Feedback;
+use common\models\Preorders;
 use Yii;
 use yii\base\InvalidParamException;
+use yii\helpers\Url;
 use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
@@ -75,139 +78,88 @@ class SiteController extends Controller
         return $this->render('index');
     }
 
-    /**
-     * Logs in a user.
-     *
-     * @return mixed
-     */
-    public function actionLogin()
+
+
+    public function actionFeedback()
     {
-        if (!Yii::$app->user->isGuest) {
-            return $this->goHome();
-        }
+        $feedback = new Feedback();
+        if ($feedback->load(Yii::$app->request->post())) {
+            $spamOrders = Preorders::find()
+                ->where(['ip'=>Yii::$app->request->userIP])
+                ->andWhere(['>','date',time()-86400])
+                ->all();
+            $spamFeedbacks = Feedback::find()
+                ->where(['ip'=>Yii::$app->request->userIP])
+                ->andWhere(['>','date',time()-86400])
+                ->all();
 
-        $model = new LoginForm();
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
-        } else {
-            return $this->render('login', [
-                'model' => $model,
-            ]);
-        }
-    }
-
-    /**
-     * Logs out the current user.
-     *
-     * @return mixed
-     */
-    public function actionLogout()
-    {
-        Yii::$app->user->logout();
-
-        return $this->goHome();
-    }
-
-    /**
-     * Displays contact page.
-     *
-     * @return mixed
-     */
-    public function actionContact()
-    {
-        $model = new ContactForm();
-        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-            if ($model->sendEmail(Yii::$app->params['adminEmail'])) {
-                Yii::$app->session->setFlash('success', 'Thank you for contacting us. We will respond to you as soon as possible.');
-            } else {
-                Yii::$app->session->setFlash('error', 'There was an error sending your message.');
+            if (count($spamOrders) + count($spamFeedbacks) > Yii::$app->params['spamCount']) {
+                Yii::$app->session->setFlash('error', 'Вы достигли лимита отправляемых заявок. <br> Свяжитесь с нами по телефону');
+                return $this->redirect(Url::previous());
             }
+            $feedback['site'] = Yii::$app->params['site'];
+            $feedback['ip'] = Yii::$app->request->userIP;
 
-            return $this->refresh();
-        } else {
-            return $this->render('contact', [
-                'model' => $model,
-            ]);
-        }
-    }
 
-    /**
-     * Displays about page.
-     *
-     * @return mixed
-     */
-    public function actionAbout()
-    {
-        return $this->render('about');
-    }
 
-    /**
-     * Signs user up.
-     *
-     * @return mixed
-     */
-    public function actionSignup()
-    {
-        $model = new SignupForm();
-        if ($model->load(Yii::$app->request->post())) {
-            if ($user = $model->signup()) {
-                if (Yii::$app->getUser()->login($user)) {
-                    return $this->goHome();
+            if ( $feedback->save()) {
+
+                if ($feedback->sendEmail( Yii::$app->params['site'].': Запрос обратного звонка')) {
+                    Yii::$app->session->setFlash('success', 'Ваша заявка отправлена. <br> Мы свяжемся с Вами в ближайшее время.');
+                    return $this->redirect(Url::previous());
+                } else {
+                    Yii::$app->session->setFlash('error', 'Во время отправки произошла ошибка, попробуйте еще раз.');
+                    return $this->redirect(Url::previous());
                 }
-            }
-        }
-
-        return $this->render('signup', [
-            'model' => $model,
-        ]);
-    }
-
-    /**
-     * Requests password reset.
-     *
-     * @return mixed
-     */
-    public function actionRequestPasswordReset()
-    {
-        $model = new PasswordResetRequestForm();
-        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-            if ($model->sendEmail()) {
-                Yii::$app->session->setFlash('success', 'Check your email for further instructions.');
-
-                return $this->goHome();
             } else {
-                Yii::$app->session->setFlash('error', 'Sorry, we are unable to reset password for the provided email address.');
+                Yii::$app->session->setFlash('error', 'Ошибка сохранения заявки. Оформите заявку по телефону.');
+                return $this->redirect(Url::previous());
             }
+
+        } else {
+            Yii::$app->session->setFlash('error', 'Во время отправки произошла ошибка, попробуйте еще раз. Или отправьте заявку в свободной форме на transzakaz@gmail.com или оформите заявку по телефону');
+            return $this->redirect(Url::previous());
         }
 
-        return $this->render('requestPasswordResetToken', [
-            'model' => $model,
-        ]);
     }
 
-    /**
-     * Resets password.
-     *
-     * @param string $token
-     * @return mixed
-     * @throws BadRequestHttpException
-     */
-    public function actionResetPassword($token)
+
+
+    public function actionOrder()
     {
-        try {
-            $model = new ResetPasswordForm($token);
-        } catch (InvalidParamException $e) {
-            throw new BadRequestHttpException($e->getMessage());
+        $preorder = new Preorders();
+        if ($preorder->load(Yii::$app->request->post())) {
+            $spamOrders = Preorders::find()
+                ->where(['ip'=>Yii::$app->request->userIP])
+                ->andWhere(['>','date',time()-86400])
+                ->all();
+            $spamFeedbacks = Feedback::find()
+                ->where(['ip'=>Yii::$app->request->userIP])
+                ->andWhere(['>','date',time()-86400])
+                ->all();
+            if ( count($spamOrders) + count($spamFeedbacks) > Yii::$app->params['spamCount']) {
+                Yii::$app->session->setFlash('error', 'Вы достигли лимита отправляемых заявок. <br> Свяжитесь с нами по телефону');
+                return $this->redirect(Url::previous());
+            }
+            $preorder['site'] = Yii::$app->params['site'];
+            $preorder['ip'] = Yii::$app->request->userIP;
+            if ($preorder->save()) {
+                if ($preorder->sendEmail( Yii::$app->params['site'].': Заявка на грузоперевозку')) {
+                    Yii::$app->session->setFlash('success', 'Ваша заявка отправлена. <br> Мы свяжемся с Вами в ближайшее время.');
+                    return $this->redirect(Url::previous());
+                } else {
+                    Yii::$app->session->setFlash('error', 'Во время отправки произошла ошибка, попробуйте еще раз.');
+                    return $this->redirect(Url::previous());
+                }
+            } else {
+                Yii::$app->session->setFlash('error', 'Ошибка сохранения заявки. Оформите заявку по телефону.');
+                return $this->redirect(Url::previous());
+            }
+        } else {
+
+            Yii::$app->session->setFlash('error', 'Во время отправки произошла ошибка, оформите заявку по телефону');
+            return $this->redirect(Url::previous());
         }
 
-        if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->resetPassword()) {
-            Yii::$app->session->setFlash('success', 'New password saved.');
-
-            return $this->goHome();
-        }
-
-        return $this->render('resetPassword', [
-            'model' => $model,
-        ]);
     }
 }
