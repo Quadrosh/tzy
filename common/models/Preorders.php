@@ -161,9 +161,9 @@ class Preorders extends \yii\db\ActiveRecord
     {
 
 
-        if ($GLOBALS['YII_APP_MODE']=='DEV') {
+        if (mb_strtolower(YII_ENV)=='dev') {
             $this->emailForSend =  Yii::$app->params['devOrderEmail'];
-        } elseif ($GLOBALS['YII_APP_MODE']=='PROD') {
+        } elseif (mb_strtolower(YII_ENV)=='prod') {
             $this->emailForSend =  Yii::$app->params['prodOrderEmail'];
         }
         return Yii::$app->mailer->compose()
@@ -190,8 +190,7 @@ class Preorders extends \yii\db\ActiveRecord
     public function afterSave($insert, $changedAttributes)
     {
         parent::afterSave($insert, $changedAttributes);
-
-        if ($GLOBALS['YII_APP_MODE']!='DEV') {
+        if (mb_strtolower(YII_ENV)!='dev') {
             Yii::$app->amo->send(
                 Yii::$app->params['site'].': предзаказ'.PHP_EOL.
                 " Откуда: ".$this->dispatch .PHP_EOL.

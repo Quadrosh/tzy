@@ -127,7 +127,11 @@ $feedback = new \common\models\Feedback();
                                 </p>
                             </div>
                             <div class="col-md-6 col-md-pull-6">
-                                <a class="btn btn-primary b-top-btn" href="#" data-toggle="modal" data-target="#feedbackForm" title="Заказать обратный звонок">
+                                <a class="btn btn-primary b-top-btn"
+                                   href="#"
+                                   data-toggle="modal"
+                                   data-target="#feedbackForm"
+                                   title="Заказать обратный звонок">
                                     <svg version="1.1"
                                          class="phoneIconSvg"
                                          xmlns="http://www.w3.org/2000/svg"
