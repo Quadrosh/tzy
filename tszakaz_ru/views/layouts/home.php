@@ -263,6 +263,9 @@ $feedback = new \common\models\Feedback();
 
 
 <?php $this->endBody() ?>
+<!-- чат -->
+<script type="text/javascript" src="//api.venyoo.ru/wnew.js?wc=venyoo/default/science&widget_id=6459688720400384"></script>
+<!-- /чат -->
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
     (function (d, w, c) {
