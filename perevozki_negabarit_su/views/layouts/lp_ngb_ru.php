@@ -52,7 +52,9 @@ perevozki_negabarit_su\assets\LpNgbAsset::register($this);
 
 
 
-
+<!-- чат -->
+<script type="text/javascript" src="//api.venyoo.ru/wnew.js?wc=venyoo/default/science&widget_id=6459688720400384"></script>
+<!-- /чат -->
 <?php include_once("stat_yandex.php") ?>
 
 </body>
