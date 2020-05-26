@@ -44,7 +44,7 @@ $preorder = new common\models\Preorders();
                                     <path  class="phone_icon_st0" d="M14.2,11.7l-0.3,0.5l-3.6-2.3l0.3-0.5c0.1-0.2,0.3-0.2,0.5-0.1l3,1.9
 		C14.2,11.3,14.3,11.5,14.2,11.7z"/>
                                 </g>
-                        </svg><span class="phone_num">(495) 150-05-83</span></li>
+                        </svg><span class="phone_num">8 800 707 63 74</span></li>
                         <!--                <li><a  id="navbarOrderBtn" class="btn btn-default">Заказать</a></li>-->
 
                     </ul>
