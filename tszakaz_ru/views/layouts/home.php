@@ -126,7 +126,7 @@ $feedback = new \common\models\Feedback();
                     <div class="b-top__info__above">
                         <div class="col-md-6 col-md-push-6">
                             <p>
-                                <span class="tel" title="+7 (495) 150-05-83">+7 (495) 150-05-83</span>
+                                <span class="tel" title="8 800 707 63 74">8 800 707 63 74</span>
                             </p>
                         </div>
                         <div class="col-md-6 col-md-pull-6">
