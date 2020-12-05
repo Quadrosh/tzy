@@ -58,54 +58,6 @@ class LandingController extends Controller
         $session = Yii::$app->session;
 //        $session->destroy();
 //
-//        if (Yii::$app->request->get('utm_source')) {
-//            // UTM из GET
-//            $utm['source'] = Yii::$app->request->get('utm_source');
-//            $utm['medium'] = Yii::$app->request->get('utm_medium');
-//            $utm['campaign'] = Yii::$app->request->get('utm_campaign');
-//            $utm['term'] = Yii::$app->request->get('utm_term');
-//            $utm['content'] = Yii::$app->request->get('utm_content');
-//
-//            // сохранение в сессию
-//            if (Yii::$app->request->get('utm_source')!= null) {
-//                $session['utm_source'] = $utm['source'];
-//                $session['utm_medium'] = $utm['medium'];
-//                $session['utm_campaign'] = $utm['campaign'];
-//                $session['utm_term'] = $utm['term'];
-//                $session['utm_content'] = $utm['content'];
-//            }
-//        } else {
-//            if ($session['utm_source']) {
-//                $utm['source'] = $session['utm_source'];
-//                $utm['medium'] = $session['utm_medium'];
-//                $utm['campaign'] = $session['utm_campaign'];
-//                $utm['term'] = $session['utm_term'];
-//                $utm['content'] = $session['utm_content'];
-//            } else { // если там что то есть
-//                $utm['source'] = Yii::$app->request->get('utm_source');
-//                $utm['medium'] = Yii::$app->request->get('utm_medium');
-//                $utm['campaign'] = Yii::$app->request->get('utm_campaign');
-//                $utm['term'] = Yii::$app->request->get('utm_term');
-//                $utm['content'] = Yii::$app->request->get('utm_content');
-//            }
-//        }
-//
-////        var_dump($utm);
-//
-//        //сохр визита в статистику
-//        $visit = new Visit();
-//        $visit['ip'] = Yii::$app->request->userIP;
-//        $visit['site'] = Yii::$app->params['site'];
-//        $visit['lp_hrurl'] = $PageName;
-//        $visit['url'] = 'http://'.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
-//        $visit['utm_source']=$utm['source'];
-//        $visit['utm_medium']=$utm['medium'];
-//        $visit['utm_campaign']=$utm['campaign'];
-//        $visit['utm_term']=$utm['term'];
-//        $visit['utm_content']=$utm['content'];
-//        $visit['qnt']=1;
-//        $visit->save();
-
 
 
         $this->landingPage = LandingPage::find()
@@ -129,20 +81,26 @@ class LandingController extends Controller
         $allSections = LandingSection::find()
             ->where(['page_id'=>$this->landingPage->id])
             ->orderBy('order_num')
+            ->asArray()
+            ->indexBy('section_type')
             ->all();
+
+
         $sections = [];
-        if ($this->landingPage->id < 6) {
-            $sections['top'] = $allSections[0];
-            $sections['action'] = $allSections[1];
-            $sections['services'] = $allSections[2];
-            $sections['call2action'] = $allSections[3];
-            $sections['whyWe'] = $allSections[4];
-            $sections['howWeWork'] = $allSections[5];
-            $sections['numbers'] = $allSections[6];
-            $sections['projects'] = $allSections[7];
-            $sections['reviews'] = $allSections[8];
-            $sections['clients'] = $allSections[9];
-            $sections['order'] = $allSections[10];
+        if ($this->landingPage->id < 6) { //
+
+            $sections['top'] = $allSections['top'];
+            $sections['action'] = $allSections['action_permanent'];
+            $sections['services'] = $allSections['services'];
+            $sections['call2action'] = $allSections['call2action'];
+            $sections['whyWe'] = $allSections['why_we'];
+            $sections['howWeWork'] = $allSections['how_we_work'];
+            $sections['numbers'] = $allSections['numbers'];
+            $sections['projects'] = $allSections['projects'];
+            $sections['reviews'] = $allSections['reviews'];
+            $sections['clients'] = $allSections['clients'];
+            $sections['order'] = $allSections['order_form'];
+            isset($allSections['map']) ? $sections['map'] = $allSections['map'] : null;
 
             // list items
             $sections['topListItems']=LandingListitem::find()
@@ -215,6 +173,9 @@ class LandingController extends Controller
                 }
                 elseif ($allSection['section_type']=='order_form'){
                     $sections['order'] = $allSection;
+                }
+                elseif ($allSection['section_type']=='map'){
+                    $sections['map'] = $allSection;
                 }
 
             }
