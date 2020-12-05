@@ -29,10 +29,11 @@ use yii\widgets\ActiveForm;
         </div>
         <div class="col-sm-4">
             <?= $form->field($model, 'stylekey')->dropDownList([
-                'dark' => 'Dark',
-                'bright'=>'Bright',
-                'grey'=>'Grey',
-                'blue'=>'Blue',
+                'dark' => 'dark',
+                'bright'=>'bright',
+                'grey'=>'grey',
+                'dark_grey'=>'dark_grey',
+                'blue'=>'blue',
             ]) ?>
         </div>
         <div class="col-sm-4">

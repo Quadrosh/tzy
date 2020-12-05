@@ -141,7 +141,55 @@ $preorder = new common\models\Preorders();
             </div>
         </div>
     </section>
+<!-- movizor -->
+    <?php if (isset($sections['map'])) : ?>
+    <section  class="<?= $sections['map']['stylekey'] ?> <?= $sections['map']['section_type'] ?>  fz1_5em mh500 ">
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <h2 class="head "><?= $sections['map']['head'] ?></h2>
+                <?php if (isset($sections['map']['lead'])) : ?>
+                <p class=" mb30"><?= $sections['map']['lead'] ?></p>
+                <?php endif; ?>
 
+                <div class="row">
+                    <div class="col-sm-6">
+
+                        <div class=" col-sm-11 col-sm-offset-1   col-md-8 col-md-offset-4 col-lg-7 col-lg-offset-5">
+                            <?php
+
+                            if ($sections['map']['image']) {
+                                echo Html::img('/img/'.$sections['map']['image'],[
+                                    'class'=> 'image',
+                                    'alt'=>'изображение системы отслеживания процесса грузоперевозки по России',
+                                    'title'=>'Отслеживание статуса грузоперевозки по РФ онлайн',
+                                ]);
+                            }
+
+                            ?>
+                        </div>
+
+
+                    </div>
+                    <div class="col-sm-6 text-left pt30">
+                        <?php if (isset($sections['map']['text'])) : ?>
+                            <p ><?= nl2br($sections['map']['text']) ?></p>
+                        <?php endif; ?>
+                    </div>
+
+                    <?php if (isset($sections['map']['extra'])) : ?>
+                        <div class="col-sm-12 text-center fz1_2em mt30 mb30">
+                            <p ><?= nl2br($sections['map']['extra']) ?></p>
+                        </div>
+                    <?php endif; ?>
+
+                </div>
+
+
+
+            </div>
+        </div>
+    </section>
+    <?php endif; ?>
 <!-- services -->
     <section
         id="servicesSection"

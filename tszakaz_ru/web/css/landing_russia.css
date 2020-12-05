@@ -129,6 +129,9 @@ section {
     min-height: 600px;
     overflow: hidden;
 }
+section.mh500 {
+    min-height: 500px;
+}
 .container > .navbar-header,
 .container-fluid > .navbar-header,
 .container > .navbar-collapse,
@@ -238,6 +241,11 @@ section {
     background-color: transparent;
     border-color: white;
 }
+
+.dark_grey{
+    background-color: rgba(0,0,0,.03);
+}
+
 
 .input-group .form-control:first-child,
 .input-group-addon:first-child,
@@ -701,8 +709,16 @@ section {
     font-size: 10px;
 }
 
+.fz1_2em{
+    font-size: 1.2em;
+}
+.fz1_5em{
+    font-size: 1.5em;
+}
 
-
+.fz2em{
+    font-size: 2em;
+}
 
 
 
@@ -1012,4 +1028,9 @@ section {
         right:250px;
     }
 
+}
+
+
+.map .image{
+    max-width: 100%;
 }
