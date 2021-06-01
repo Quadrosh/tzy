@@ -77,17 +77,16 @@ class LandingController extends Controller
         }
         $this->view->params['meta']=$this->landingPage;
 
+
         //секции
-        $allSections = LandingSection::find()
-            ->where(['page_id'=>$this->landingPage->id])
-            ->orderBy('order_num')
-            ->asArray()
-            ->indexBy('section_type')
-            ->all();
-
-
         $sections = [];
         if ($this->landingPage->id < 6) { //
+            $allSections = LandingSection::find()
+                ->where([LandingSection::tableName().'.page_id'=>$this->landingPage->id])
+                ->orderBy('order_num')
+                ->asArray()
+                ->indexBy('section_type')
+                ->all();
 
             $sections['top'] = $allSections['top'];
             $sections['action'] = $allSections['action_permanent'];
@@ -136,11 +135,23 @@ class LandingController extends Controller
                 ->orderBy('order_num')
                 ->all();
         } else {
+            $allSections = LandingSection::find()
+                ->where([LandingSection::tableName().'.page_id'=>$this->landingPage->id])
+                ->orderBy('order_num')
+//            ->asArray()
+                ->indexBy('section_type')
+                ->all();
+
             foreach ($allSections as $allSectionItem) {
+
                 $allSection = $allSectionItem->toArray();
+                $allSection['list_items'] = $allSectionItem->listItems;
+
+
                 if ($allSection['section_type']=='top') {
                     $sections['top'] = $allSection;
                 }
+
                 elseif ($allSection['section_type']=='garage'){
                     $sections['garage'] = $allSection;
                 }
@@ -182,9 +193,6 @@ class LandingController extends Controller
         }
 
 
-
-
-
         $preorderForm = new Preorders();
 
 
@@ -207,6 +215,7 @@ class LandingController extends Controller
         $this->view->params['chat'] = $chat;
         // !chat
 
+        Yii::error(['sections'=>$sections]);
 
 
 //        Yii::$app->session->setFlash('success', "Your message to display");

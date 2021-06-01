@@ -101,7 +101,8 @@ class LandingSection extends \yii\db\ActiveRecord
 
     public function getListItems()
     {
-        return $this->hasMany(LandingListitem::className(),['section_id'=>'id'])->orderBy('order_num');
+        return $this->hasMany(LandingListitem::className(),['section_id'=>'id'])
+            ->orderBy('order_num');
     }
 
     /**
