@@ -52,6 +52,7 @@ function actionTimer () {
 }
 actionTimer();
 
+
 window.onload = function(){
     var actionOrderButton = document.getElementById('actionOrderButton');
     var actionName = actionOrderButton.getAttribute('data-action');
