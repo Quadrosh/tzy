@@ -1,6 +1,8 @@
 <?php
 
-/* @var $this yii\web\View */
+/*
+ * @var $this yii\web\View
+ */
 
 use yii\helpers\Html;
 //use \yii\widgets\ActiveForm;
@@ -23,28 +25,41 @@ $preorder = new common\models\Preorders();
                 <h1 class="lead"><?= $sections['top']['lead'] ?></h1>
                 <h2 class="text"><?= $sections['top']['text'] ?></h2>
             </div>
-            <div class="col-sm-3">
+            <div class="col-sm-3 phoneColumn">
                 <div  class="navbar-collapse_">
                     <ul id="w11" class="navbar-nav navbar-right nav">
-                        <li><svg version="1.1"
-                                 class="phone_icon"
-                                 xmlns="http://www.w3.org/2000/svg"
-                                 xmlns:xlink="http://www.w3.org/1999/xlink"
-                                 x="0px" y="0px"
-                                 viewBox="0 0 16.2 14.6"
-                                 style="enable-background:new 0 0 16.2 14.6;"
-                                 xml:space="preserve">
-                        <style type="text/css">
-                            .phone_icon_st0{fill:#FFFFFF;}
-                        </style>
-                                <g >
-                                    <path  class="phone_icon_st0" d="M13.7,12.5c0,0-0.9,0.9-2.2,1.1c0,0-2.7-1.6-3.4-2c-0.7-0.4-2.9-2.4-4.2-4.3S1.9,4,1.9,4
-		S1.8,2.7,2.9,1.7l2.4,3.5c0,0-0.4,0.7,0,1.2c0.4,0.5,3.9,3.9,3.9,3.9s0.5,0.2,1-0.1L13.7,12.5z"/>
-                                    <path  class="phone_icon_st0" d="M6,4.6L5.6,4.9L3.2,1.5l0.5-0.3C3.8,1,4,1.1,4.1,1.2l2,2.9C6.2,4.3,6.2,4.5,6,4.6z"/>
-                                    <path  class="phone_icon_st0" d="M14.2,11.7l-0.3,0.5l-3.6-2.3l0.3-0.5c0.1-0.2,0.3-0.2,0.5-0.1l3,1.9
-		C14.2,11.3,14.3,11.5,14.2,11.7z"/>
-                                </g>
-                        </svg><span class="phone_num">8 800 707 63 74</span></li>
+                        <li>
+
+                            <div class="phoneBlockLine">
+                                <a href="https://wa.me/79654087121"
+                                   title="WhatsApp"
+                                   rel="nofollow"
+                                   class="whatsapp socialIcon"
+                                   target="_blank">
+                                    <img src="/img/whatsapp.svg"
+                                         alt="WhatsApp">
+
+                                </a>
+
+                                <span class="phone_num">+7 800 707 63 74</span>
+
+
+                            </div>
+                            <div class="phoneBlockLine">
+                                <a href="viber://chat?number=%2B79654087121"
+                                   title="Viber"
+                                   class="viber socialIcon"
+                                   rel="nofollow"
+                                   target="_blank">
+                                    <img src="/img/viber.svg"
+                                         width="25" height="25"
+                                         alt="Viber">
+                                </a>
+
+                                <span class="phone_num">+7 965 408 71 21</span>
+                            </div>
+
+                           </li>
                         <!--                <li><a  id="navbarOrderBtn" class="btn btn-default">Заказать</a></li>-->
 
                     </ul>
@@ -61,30 +76,40 @@ $preorder = new common\models\Preorders();
         style=" background-image: url(/img/<?= $sections['top']['image'] ?>)">
         <h1 class="head c_def"><?= $sections['top']['head'] ?></h1>
         <h2 class="extra c_def"><?= $sections['top']['extra'] ?></h2>
-        <div class="col-sm-4 col-sm-offset-4 ">
-            <?= common\widgets\Alert::widget() ?>
-            <div class="blackBox">
-               <div class="row">
-                   <div class="col-xs-6 text-center">
-                       <h5 class="c_def">Договор</h5>
-                       <a class="topMagLink"
-                           href="/img/d_pic_tz_contract.jpg"
-                       ><i class="fa fa-file-word-o topIcon" aria-hidden="true"></i></a>
-                       <?= Html::a('скачать','/img/d_договор_трансзаказ-перевозчик.docx', ['class'=>'goLink downloadLink']) ?>
-                   </div>
-                   <div class="col-xs-6 text-center">
-                       <h5 class="c_def">Наши реквизиты</h5>
-                       <a class="topMagLink"
-                          href="/img/d_pic_tz_card.jpg"
-                       ><i class="fa fa-file-image-o topIcon" aria-hidden="true"></i></a>
-                       <?= Html::a('скачать','/img/d_tz_card.pdf', ['class'=>'goLink downloadLink']) ?>
-                   </div>
-                   <div class="col-xs-12 text-right">
-                       <?= Html::a('я не юридическое лицо','/lp/perevozki-po-rossii', ['class'=>'goLink i_m_not mt10']) ?>
-                   </div>
-               </div>
 
+        <?= common\widgets\Alert::widget() ?>
+
+
+        <div class="col-sm-12 text-center ">
+            <div class="actionOrderButton">
+                <a  id="topLink"
+                    class="btn btn-danger">Рассчитать стоимость</a>
             </div>
+
+
+
+<!--            <div class="blackBox">-->
+<!--               <div class="row">-->
+<!--                   <div class="col-xs-6 text-center">-->
+<!--                       <h5 class="c_def">Договор</h5>-->
+<!--                       <a class="topMagLink"-->
+<!--                           href="/img/d_pic_tz_contract.jpg"-->
+<!--                       ><i class="fa fa-file-word-o topIcon" aria-hidden="true"></i></a>-->
+<!--                       --><?//= Html::a('скачать','/img/d_договор_трансзаказ-перевозчик.docx', ['class'=>'goLink downloadLink']) ?>
+<!--                   </div>-->
+<!--                   <div class="col-xs-6 text-center">-->
+<!--                       <h5 class="c_def">Наши реквизиты</h5>-->
+<!--                       <a class="topMagLink"-->
+<!--                          href="/img/d_pic_tz_card.jpg"-->
+<!--                       ><i class="fa fa-file-image-o topIcon" aria-hidden="true"></i></a>-->
+<!--                       --><?//= Html::a('скачать','/img/d_tz_card.pdf', ['class'=>'goLink downloadLink']) ?>
+<!--                   </div>-->
+<!--                   <div class="col-xs-12 text-right">-->
+<!--                       --><?//= Html::a('я не юридическое лицо','/lp/perevozki-po-rossii', ['class'=>'goLink i_m_not mt10']) ?>
+<!--                   </div>-->
+<!--               </div>-->
+<!---->
+<!--            </div>-->
         </div>
 
 
@@ -101,69 +126,81 @@ $preorder = new common\models\Preorders();
         </div>
         <div class="row">
             <div class="col-sm-12 col-md-12  col-lg-10 col-lg-offset-1 garageBox">
-                <div class="garageSlick">
+                <div class="_garageSlick row">
 
-                    <?php foreach ($sections['garage']['list_items'] as $car) : ?>
-                        <div class="row">
-                            <div class="col-sm-12 text-center">
-                                <div class="car_head">
-                                    <?= $car ['head'] ?>
+                    <?php foreach ($sections['garage']['list_items'] as $index => $car) : ?>
+
+                        <?php if (!isset($car['extra']) || $car['extra']!='hidden') :?>
+                            <div class="col-sm-4 <?=
+                            $index> 0 &&
+                            $index > count($sections['garage']['list_items'])-2 &&
+                            count($sections['garage']['list_items'])%3 == 1
+                                ?' col-sm-offset-4 ':''
+                            ?> item">
+                                <div class="row">
+                                    <div class="col-sm-12 text-center">
+                                        <div class="car_head">
+                                            <?= $car ['head'] ?>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 text-center">
+                                        <div class="car_image">
+                                            <?= Html::img('/img/'.$car ['image'],['alt'=>$car ['image_alt']]) ?>
+                                        </div>
+                                    </div>
+                                    <!--                            <div class="col-sm-12 text-center">-->
+                                    <!--                                <div class="car_text">-->
+                                    <!--                                    --><?//= nl2br($car ['text']) ?>
+                                    <!--                                </div>-->
+                                    <!--                            </div>-->
+                                    <div class="col-sm-12 text-center">
+                                        <a data-action="<?= $car ['head'] ?>"
+                                           class="btn btn-danger garageOrderButton">Заказать</a>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-sm-12 text-center">
-                                <div class="car_image">
-                                    <?= Html::img('/img/'.$car ['image'],['alt'=>$car ['image_alt']]) ?>
-                                </div>
-                            </div>
-                            <div class="col-sm-12 text-center">
-                                <div class="car_text">
-                                    <?= nl2br($car ['text']) ?>
-                                </div>
-                            </div>
-                            <div class="col-sm-12 text-center">
-                                <a data-action="<?= $car ['head'] ?>"
-                                   class="btn btn-danger garageOrderButton">Заказать</a>
-                            </div>
-                        </div>
+                        <?php endif; ?>
+
+
 
                     <?php endforeach; ?>
 
                 </div>
-                <a class="carouselControl garagePrev"><svg version="1.1"
-                                                           xmlns="http://www.w3.org/2000/svg"
-                                                           xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                           x="0px" y="0px"
-                                                           viewBox="0 0 100 100"
-                                                           style="enable-background:new 0 0 100 100;"
-                                                           xml:space="preserve">
-    <style type="text/css">
-        .button_x5F_left_st0{fill:none;stroke-width:3;stroke-miterlimit:10;}
-        .button_x5F_left_st1{fill:none;stroke-width:3;stroke-linecap:round;stroke-miterlimit:10;}
-    </style>
-                        <g >
-                            <circle  class="button_x5F_left_st0" cx="49.7" cy="50" r="46.4"/>
-                            <line  class="button_x5F_left_st1" x1="38.9" y1="50" x2="61.5" y2="27.5"/>
-                            <line  class="button_x5F_left_st1" x1="38.9" y1="50.5" x2="61.5" y2="73"/>
-                        </g>
-    </svg></a>
-
-                <a class="carouselControl garageNext" ><svg version="1.1"
-                                                            xmlns="http://www.w3.org/2000/svg"
-                                                            xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                            x="0px" y="0px"
-                                                            viewBox="0 0 100 100"
-                                                            style="enable-background:new 0 0 100 100;"
-                                                            xml:space="preserve">
-    <style type="text/css">
-        .button_x5F_right_st0{fill:none;stroke-width:3;stroke-miterlimit:10;}
-        .button_x5F_right_st1{fill:none;stroke-width:3;stroke-linecap:round;stroke-miterlimit:10;}
-    </style>
-                        <g >
-                            <circle  class="button_x5F_right_st0" cx="49.7" cy="50" r="46.4"/>
-                            <line  class="button_x5F_right_st1" x1="61.5" y1="50.5" x2="38.9" y2="73"/>
-                            <line  class="button_x5F_right_st1" x1="61.5" y1="50" x2="38.9" y2="27.5"/>
-                        </g>
-    </svg></a>
+<!--                <a class="carouselControl garagePrev"><svg version="1.1"-->
+<!--                                                           xmlns="http://www.w3.org/2000/svg"-->
+<!--                                                           xmlns:xlink="http://www.w3.org/1999/xlink"-->
+<!--                                                           x="0px" y="0px"-->
+<!--                                                           viewBox="0 0 100 100"-->
+<!--                                                           style="enable-background:new 0 0 100 100;"-->
+<!--                                                           xml:space="preserve">-->
+<!--    <style type="text/css">-->
+<!--        .button_x5F_left_st0{fill:none;stroke-width:3;stroke-miterlimit:10;}-->
+<!--        .button_x5F_left_st1{fill:none;stroke-width:3;stroke-linecap:round;stroke-miterlimit:10;}-->
+<!--    </style>-->
+<!--                        <g >-->
+<!--                            <circle  class="button_x5F_left_st0" cx="49.7" cy="50" r="46.4"/>-->
+<!--                            <line  class="button_x5F_left_st1" x1="38.9" y1="50" x2="61.5" y2="27.5"/>-->
+<!--                            <line  class="button_x5F_left_st1" x1="38.9" y1="50.5" x2="61.5" y2="73"/>-->
+<!--                        </g>-->
+<!--    </svg></a>-->
+<!---->
+<!--                <a class="carouselControl garageNext" ><svg version="1.1"-->
+<!--                                                            xmlns="http://www.w3.org/2000/svg"-->
+<!--                                                            xmlns:xlink="http://www.w3.org/1999/xlink"-->
+<!--                                                            x="0px" y="0px"-->
+<!--                                                            viewBox="0 0 100 100"-->
+<!--                                                            style="enable-background:new 0 0 100 100;"-->
+<!--                                                            xml:space="preserve">-->
+<!--    <style type="text/css">-->
+<!--        .button_x5F_right_st0{fill:none;stroke-width:3;stroke-miterlimit:10;}-->
+<!--        .button_x5F_right_st1{fill:none;stroke-width:3;stroke-linecap:round;stroke-miterlimit:10;}-->
+<!--    </style>-->
+<!--                        <g >-->
+<!--                            <circle  class="button_x5F_right_st0" cx="49.7" cy="50" r="46.4"/>-->
+<!--                            <line  class="button_x5F_right_st1" x1="61.5" y1="50.5" x2="38.9" y2="73"/>-->
+<!--                            <line  class="button_x5F_right_st1" x1="61.5" y1="50" x2="38.9" y2="27.5"/>-->
+<!--                        </g>-->
+<!--    </svg></a>-->
 
             </div>
 
@@ -176,90 +213,64 @@ $preorder = new common\models\Preorders();
 <!--  Акция  -->
     <section id="actionSection"
              class="<?= $sections['action']['stylekey'] ?> <?= $sections['action']['section_type'] ?>"
-             style=" background-image: url(/img/<?= $sections['action']['image'] ?>)">
+             >
         <div class="row">
-            <div class="col-sm-6 ">
-                <div class="left">
-                    <div class="square_box">
-                        <div class="row">
-                            <div class="col-xs-6 text-left">
-                                <h2 class="spurt"><?= $sections['action']['head'] ?></h2>
-                            </div>
-                            <div class="col-xs-6 text-right">
-                                <h4 class="tillTo">до <?php
-                                    $now = new \DateTime();
-                                    $add = -(($now->getTimestamp() /3600/24 ) % ($sections['action']['extra'])+1)+$sections['action']['extra'];
-                                    $modstr = '+'.$add.' day';
-                                    $actionEnd = $now->modify($modstr);
-                                    $date=$actionEnd->format('d.m.Y');
-                                    echo $date;
-                                    ?></h4>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-12 text-center">
-                                <h2 class="lead"><?= $sections['action']['lead'] ?></h2>
+            <div class="col-sm-12 text-center ">
 
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <h2 class="spurt text-center"><?= $sections['action']['head'] ?></h2>
 
-            </div>
-            <div class="col-sm-6 ">
-                <div class="right">
-                    <div class="square_box timer_box">
-                        <div id="dateObj" data-days="<?= $sections['action']['extra'] ?>" class="col-sm-10 col-sm-offset-1 text-center">
-                            <h4 class="remainHead">до конца акции осталось:</h4>
-
-                            <div class="col-xs-3"><span class="remainNumber" id="RemainsDays"></span><span class="remainDiscr">дней</span></div>
-                            <div class="col-xs-3"><span class="remainNumber" id="RemainsHours"></span><span class="remainDiscr">часов</span></div>
-                            <div class="col-xs-3"><span class="remainNumber" id="RemainsMinutes"></span><span class="remainDiscr">минут</span></div>
-                            <div class="col-xs-3"><span class="remainNumber" id="RemainsSeconds"></span><span class="remainDiscr">секунд</span></div>
+                <h3 class="_tillTo"><?= $sections['action']['text'] ?> до <?php
+                    $now = new \DateTime();
+                    $add = -(($now->getTimestamp() /3600/24 ) % ($sections['action']['extra'])+1)+$sections['action']['extra'];
+                    $modstr = '+'.$add.' day';
+                    $actionEnd = $now->modify($modstr);
+                    $date=$actionEnd->format('d.m.Y');
+                    echo $date;
+                    ?></h3>
 
 
+                <?php if (isset( $sections['action']['lead'])&& $sections['action']['lead']) : ?>
+                    <h2 class="lead"><?= $sections['action']['lead'] ?></h2>
+                <?php endif; ?>
 
 
-                        </div>
-                    </div>
-                </div>
+                <div class="row">
 
-            </div>
-        </div>
+                    <div class="col-sm-12 text-center pt80">
 
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="left">
-                    <div class="square_box">
-                        <div class="col-sm-12">
-                            <p class="comment"><?= $sections['action']['text'] ?></p>
-                        </div>
-
-                    </div>
-                </div>
-
-
-
-            </div>
-            <div class="col-sm-6 text-center">
-                <div class="right">
-                    <div class="square_box_transparent">
-                        <div class="col-sm-8 col-sm-offset-2">
+                        <div class="col-sm-6 col-sm-offset-3 col-lg-4 col-lg-offset-4">
                             <div class="actionOrderButton">
                                 <a  id="actionOrderButton"
-                                    data-action="<?= $sections['action']['lead'] ?>"
+                                    data-action="<?= $sections['action']['head'] ?>"
                                     data-action-comment="<?= $sections['action']['text'] ?>"
                                     class="btn btn-danger"><?= $sections['action']['call2action_name'] ?></a>
                             </div>
                         </div>
 
                     </div>
+
                 </div>
 
+                <div class="_square_box timer_box">
+                    <div id="dateObj" data-days="<?= $sections['action']['extra'] ?>" class="col-sm-10 col-sm-offset-1 text-center">
+                        <h4 class="remainHead">до конца акции осталось:</h4>
+
+                        <div class="row">
+                            <div class="col-sm-4 col-sm-offset-4  col-md-4 col-md-offset-4  col-lg-4 col-lg-offset-4  text-center">
+                                <div class="col-xs-4 "><span class="remainNumber" id="RemainsDays"></span><br><span class="remainDiscr">дней</span></div>
+                                <div class="col-xs-4"><span class="remainNumber" id="RemainsHours"></span><br><span class="remainDiscr">часов</span></div>
+                                <div class="col-xs-4"><span class="remainNumber" id="RemainsMinutes"></span><br><span class="remainDiscr">минут</span></div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
 
             </div>
 
         </div>
+
+
 
     </section>
 
@@ -933,10 +944,28 @@ $preorder = new common\models\Preorders();
                     <?php $form = ActiveForm::end(); ?>
                 </div>
             </div>
-            <div class="col-md-8 col-md-offset-2 text-center">
 
-                <p class="footer">&copy; Транспортная компания &ldquo;Трансзаказ&rdquo;, <?= date('Y') ?><br/>
-                    117535, Москва, 3-й дорожный проезд, д.3а</p>
+
+            <div class="col-sm-12  text-center">
+
+                <div class="row footer">
+                    <div class="col-sm-4 text-left">
+
+                        <p class="docs">
+                            <a href="/img/d_tz_card.pdf" target="_blank">РЕКВИЗИТЫ</a>
+                            <br>
+                            <a href="/img/d_договор_трансзаказ-перевозчик.docx" target="_blank">ДОГОВОР</a>
+                        </p>
+                    </div>
+                    <div class="col-sm-4">
+                        <p >&copy; Транспортная компания &ldquo;Трансзаказ&rdquo;, <?= date('Y') ?><br/>
+                            117535, Москва, 3-й дорожный проезд, д.3а</p>
+                    </div>
+
+
+                </div>
+
+
 
 <!--                <p class="footer">&copy; Транспортная компания ООО &ldquo;Трансзаказ&rdquo;, --><?//= date('Y') ?><!--<br/>-->
 <!--                    117535, Москва, 3-й дорожный проезд, д.3а<br/>-->
@@ -946,6 +975,9 @@ $preorder = new common\models\Preorders();
 
 
         </div>
+
+
+
 
 
     </section>

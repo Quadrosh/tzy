@@ -128,6 +128,17 @@ body {
     padding-top: 30px;
 }
 
+.pt50{
+    padding-top: 50px;
+}
+.pt80{
+    padding-top: 80px;
+}
+.pt100{
+    padding-top: 100px;
+}
+
+
 
 .dark {
     /*background-color: #487B97;*/
@@ -165,7 +176,7 @@ section {
     /*margin-left: -15px;*/
     position: relative;
     margin: 0;
-    padding: 0px 2px;
+    padding: 15px 2px;
 }
 
 .navbar-brand > img {
@@ -180,7 +191,8 @@ section {
     height: 25px;
     left: -25px;
     top:5px;
-    position: absolute;
+    position: relative;
+    display: inline-block;
 }
 .phone_num {
     position: relative;
@@ -190,6 +202,48 @@ section {
     margin-top: -1px;
     font-size: 24px;
 }
+@media only screen and (min-width : 768px)  and (max-width : 1005px) {
+    .phoneColumn{
+        padding-right: 0!important;
+    }
+    .phone_num {
+        font-size: 21px;
+    }
+}
+
+.socialIcon{
+    position: relative;
+    display: inline-block;
+    width: 19px;
+    height: 19px;
+}
+.socialIcon img{
+    position: absolute;
+    top: 0;
+}
+.socialIcon.whatsapp img{
+    width: 21px;
+    height: 21px;
+    left: -4px;
+}
+.socialIcon.viber img{
+    width: 27px;
+    height: 27px;
+    left: -8px;
+    top: -3px;
+}
+.phoneBlockLine{
+    display: block;
+}
+
+
+#topLink, #actionOrderButton{
+    margin-top: 20px;
+    padding: 12px 24px;
+    font-size: 1.2em;
+    border-radius: 100px;
+}
+
 .btn-default {
     background-color: transparent;
     color: #fff;
@@ -203,7 +257,8 @@ section {
     color: #fff;
 }
 .navbar-nav > li {
-    margin-top: 10px;
+    margin-top: 5px;
+    margin-bottom:5px;
 }
 
 .navbar-nav > li > a {
@@ -224,7 +279,7 @@ section {
 .navbar-centerlead .lead{
     text-align: center;
     position: relative;
-    margin-top: 5px;
+    margin-top: 18px;
     margin-bottom: 0;
     text-transform: uppercase;
     font-size:21px;
@@ -234,7 +289,6 @@ section {
 .top .extra {
     text-align: center;
     position: relative;
-    text-transform: uppercase;
     font-family: 'MyriadProRegular',sans-serif;
     color: #f7941e;
     text-shadow:
@@ -251,6 +305,7 @@ section {
             0 0 10px  #fff;
 }
 .top .head{
+    text-transform: uppercase;
     margin-top: 280px;
     margin-bottom: 20px;
     /*font-size:45px;*/
@@ -323,9 +378,17 @@ section {
 /*select:hover {*/
 /*outline: none !important;*/
 /*}*/
+
+#garageSection .item{
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+.garageOrderButton{
+    margin-top: 30px;
+}
 .garage {
     min-height: 550px;
-    max-height: 550px;
+    /*max-height: 550px;*/
 }
 .garageBox {
     background-color: rgba(0,0,0,0.4);
@@ -528,6 +591,10 @@ section {
 .timer_box{
     padding-top: 80px;
 }
+
+#actionSection{
+    padding-top: 100px;
+}
 .action_permanent .tillTo{
     font-family: "MyriadProRegular",sans-serif;
     font-size:18px;
@@ -552,15 +619,15 @@ section {
 }
 .action_permanent .remainHead {
     font-family: "Helvetica",sans-serif;
-    font-size:18px;
+    font-size:36px;
     /*margin:9px 0 0;*/
 }
 
 .action_permanent .remainNumber {
     width: 50px;
     height: 50px;
-    display: block;
-    border: 1px solid #fff;
+    display: inline-block;
+    border: 1px solid rgba(0,0,0,.4);
     -webkit-border-radius:5px;
     -moz-border-radius:5px;
     border-radius:5px;
@@ -573,7 +640,7 @@ section {
     margin:2px 0 0px;
 }
 .action_permanent .remainDiscr {
-    display: block;
+    display: inline-block;
     position: relative;
     width: 50px;
     text-align: center;
@@ -986,7 +1053,13 @@ section {
 .blue .order_form .footer {
     color: #fff;
 }
-
+#mainOrderSection .footer .docs {
+    line-height: 1.8em;
+    margin-bottom: 0;
+}
+#mainOrderSection .footer .docs a{
+    color: #838e9a;
+}
 
 
 
@@ -1050,14 +1123,14 @@ section {
     .action_permanent .remainNumber {
         width: 40px;
         height: 40px;
-        left: -15px;
+        /*left: -15px;*/
         font-size:24px;
         padding: 4px;
     }
     .action_permanent .remainDiscr {
         width: 40px;
         text-align: center;
-        left: -15px;
+        /*left: -15px;*/
         font-size: 10px;
     }
     .action_permanent .spurt{
@@ -1183,16 +1256,16 @@ section {
     .action_permanent .remainNumber {
         width: 60px;
         height: 60px;
-        left: 50%;
-        margin-left: -30px;
+        /*left: 50%;*/
+        /*margin-left: -30px;*/
         font-size:40px;
         padding: 4px;
     }
     .action_permanent .remainDiscr {
         width: 60px;
         text-align: center;
-        left: 50%;
-        margin-left: -30px;
+        /*left: 50%;*/
+        /*margin-left: -30px;*/
         font-size: 12px;
     }
     .actionOrderButton{
@@ -1370,15 +1443,15 @@ section {
         width: 1044px;
         height: 252px;
     }
-    .navbar .container  {
-        position: absolute;
-        width: 1200px;
-        left:50%;
-        margin-left: -600px;
+    /*.navbar .container  {*/
+    /*    position: absolute;*/
+    /*    width: 1200px;*/
+    /*    left:50%;*/
+    /*    margin-left: -600px;*/
 
-        /*border:none;*/
-        /*border-color: rgba(0,0,0,0.3);*/
-    }
+    /*    !*border:none;*!*/
+    /*    !*border-color: rgba(0,0,0,0.3);*!*/
+    /*}*/
     .service_type_icon svg {
         height:150px;
         width: 150px;
