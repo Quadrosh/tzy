@@ -229,10 +229,6 @@ $preorder = new common\models\Preorders();
                     ?></h3>
 
 
-                <?php if (isset( $sections['action']['lead'])&& $sections['action']['lead']) : ?>
-                    <h2 class="lead"><?= $sections['action']['lead'] ?></h2>
-                <?php endif; ?>
-
 
                 <div class="row">
 
@@ -949,7 +945,7 @@ $preorder = new common\models\Preorders();
             <div class="col-sm-12  text-center">
 
                 <div class="row footer">
-                    <div class="col-sm-4 text-left">
+                    <div class="col-sm-4 ">
 
                         <p class="docs">
                             <a href="/img/d_tz_card.pdf" target="_blank">РЕКВИЗИТЫ</a>
