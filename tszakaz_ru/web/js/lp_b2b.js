@@ -39,14 +39,14 @@ function actionTimer () {
         document.getElementById("RemainsDays").innerHTML=  RemainsFullDays;
         document.getElementById("RemainsHours").innerHTML=  hoursInLastDay;
         document.getElementById("RemainsMinutes").innerHTML=  minInLastHour;
-        document.getElementById("RemainsSeconds").innerHTML=  secInLastMinute;
+        // document.getElementById("RemainsSeconds").innerHTML=  secInLastMinute;
         setTimeout('actionTimer()',1000)
     }
     else {
         document.getElementById("RemainsDays").innerHTML=  0;
         document.getElementById("RemainsHours").innerHTML=  0;
         document.getElementById("RemainsMinutes").innerHTML=  0;
-        document.getElementById("RemainsSeconds").innerHTML=  0;
+        // document.getElementById("RemainsSeconds").innerHTML=  0;
     }
 
 }
@@ -105,6 +105,15 @@ window.onload = function(){
             garageOrderBtns[i].onclick = go2order;
         }
     }
+
+    var topLink = document.getElementById('topLink');
+    if (topLink){
+        topLink.addEventListener('click', function(){
+            orderSection.scrollIntoView({block: "start", behavior: "smooth"});
+        });
+    }
+
+
 };
 
 
