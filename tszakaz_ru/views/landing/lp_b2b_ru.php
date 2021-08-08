@@ -31,32 +31,40 @@ $preorder = new common\models\Preorders();
                         <li>
 
                             <div class="phoneBlockLine">
-                                <a href="https://wa.me/79654087121"
-                                   title="WhatsApp"
-                                   rel="nofollow"
-                                   class="whatsapp socialIcon"
-                                   target="_blank">
-                                    <img src="/img/whatsapp.svg"
-                                         alt="WhatsApp">
 
-                                </a>
 
                                 <span class="phone_num">+7 800 707 63 74</span>
 
 
                             </div>
-                            <div class="phoneBlockLine">
-                                <a href="viber://chat?number=%2B79654087121"
-                                   title="Viber"
-                                   class="viber socialIcon"
-                                   rel="nofollow"
-                                   target="_blank">
-                                    <img src="/img/viber.svg"
-                                         width="25" height="25"
-                                         alt="Viber">
-                                </a>
-
-                                <span class="phone_num">+7 965 408 71 21</span>
+                            <div class="phoneBlockLine social">
+                                <div class="iconBlock">
+                                    <a href="https://wa.me/79654087121"
+                                       title="WhatsApp"
+                                       rel="nofollow"
+                                       class="whatsapp socialIcon"
+                                       target="_blank">
+                                        <img src="/img/whatsapp.svg"
+                                             alt="WhatsApp">
+                                    </a>
+                                    <a href="https://telegram.im/@anonim1979"
+                                       title="Telegram"
+                                       rel="nofollow"
+                                       class="telegram socialIcon"
+                                       target="_blank">
+                                        <img src="/img/telegram.svg"
+                                             alt="Telegram"></a>
+                                    <a href="viber://chat?number=%2B79654087121"
+                                       title="Viber"
+                                       class="viber socialIcon"
+                                       rel="nofollow"
+                                       target="_blank">
+                                        <img src="/img/viber.svg"
+                                             width="25" height="25"
+                                             alt="Viber">
+                                    </a>
+                                </div>
+                                <span class="mobile phone_num">+7 965 408 71 21</span>
                             </div>
 
                            </li>
