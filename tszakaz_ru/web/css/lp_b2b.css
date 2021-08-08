@@ -202,12 +202,36 @@ section {
     margin-top: -1px;
     font-size: 24px;
 }
-@media only screen and (min-width : 768px)  and (max-width : 1005px) {
+.iconBlock{
+    display: inline-block;
+}
+/*@media only screen and (min-width : 768px)  and (max-width : 880px) {*/
+/*    .iconBlock{*/
+/*        display: block;*/
+/*        position: relative;*/
+/*        top: 2.7rem;*/
+/*    }*/
+/*    .phone_num.mobile {*/
+/*        position: relative;*/
+/*        top: -2.7rem;*/
+/*    }*/
+/*}*/
+.phone_num.mobile {
+    font-size: 19px;
+}
+
+@media only screen and (min-width : 768px)  and (max-width : 1072px) {
     .phoneColumn{
         padding-right: 0!important;
     }
-    .phone_num {
-        font-size: 21px;
+    .phone_num.mobile {
+        font-size: 17px;
+    }
+}
+
+@media only screen and (min-width : 768px)  and (max-width : 946px) {
+    .phone_num.mobile {
+        font-size: 15px;
     }
 }
 
@@ -216,24 +240,36 @@ section {
     display: inline-block;
     width: 19px;
     height: 19px;
+    margin-right: 3px;
 }
+
 .socialIcon img{
     position: absolute;
     top: 0;
 }
 .socialIcon.whatsapp img{
-    width: 21px;
-    height: 21px;
+    width: 23px;
+    height: 23px;
     left: -4px;
 }
 .socialIcon.viber img{
-    width: 27px;
-    height: 27px;
+    width: 29px;
+    height: 29px;
     left: -8px;
     top: -3px;
 }
+.socialIcon.telegram img{
+    text-align: left;
+    width: 21px;
+    height: 21px;
+    left: -4px;
+    top: 1px;
+}
+
+
 .phoneBlockLine{
     display: block;
+    text-align: right;
 }
 
 
