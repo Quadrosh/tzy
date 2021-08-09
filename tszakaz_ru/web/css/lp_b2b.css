@@ -203,7 +203,8 @@ section {
     font-size: 24px;
     color: white;
 }
-a.phoneLink{
+a.phoneLink,
+a.phoneLink:link{
     color: white;
 }
 .iconBlock{
