@@ -905,7 +905,8 @@ $preorder = new common\models\Preorders();
         <div class="row">
             <div class="col-sm-12 text-center">
                 <h2 class="head"><?= $sections['order']['head'] ?></h2>
-                <p class="top_comment">Вы так же можете заказать отправку по телефону (495) 150-05-83</p>
+<!--                <p class="top_comment">Вы так же можете заказать отправку по телефону (495) 150-05-83</p>-->
+                <p class="top_comment">Вы так же можете заказать отправку по телефону 8 800 707 63 74</p>
             </div>
 
             <div class="col-lg-8 col-lg-offset-2">
@@ -988,17 +989,18 @@ $preorder = new common\models\Preorders();
                     </div>
                     <div class="col-sm-4">
                         <p >&copy; Транспортная компания &ldquo;Трансзаказ&rdquo;, <?= date('Y') ?><br/>
-                            117535, Москва, 3-й дорожный проезд, д.3а</p>
+                            117535, Москва, 3-й дорожный проезд, д.3а<br>
+                            +7 800 707 63 74<br>
+                            +7 495 150-05-83 <br>
+                            <a class="mailLink"
+                               href="mailto:transzakaz@gmail.com">transzakaz@gmail.com</a>
+                        </p>
                     </div>
 
 
                 </div>
 
 
-
-<!--                <p class="footer">&copy; Транспортная компания ООО &ldquo;Трансзаказ&rdquo;, --><?//= date('Y') ?><!--<br/>-->
-<!--                    117535, Москва, 3-й дорожный проезд, д.3а<br/>-->
-<!--                    Телефон: +7 (495) 150-05-83</p>-->
             </div>
 
 

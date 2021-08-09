@@ -207,6 +207,12 @@ a.phoneLink,
 a.phoneLink:link{
     color: white;
 }
+
+a.mailLink,
+a.mailLink:link{
+    color: #838e9a;
+}
+
 .iconBlock{
     display: inline-block;
 }
