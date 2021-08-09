@@ -189,7 +189,7 @@ section {
 .phone_icon {
     width: 25px;
     height: 25px;
-    left: -25px;
+    /*left: -25px;*/
     top:5px;
     position: relative;
     display: inline-block;
@@ -201,6 +201,9 @@ section {
     display: inline-block;
     margin-top: -1px;
     font-size: 24px;
+    color: white;
+}
+a.phoneLink{
     color: white;
 }
 .iconBlock{
@@ -1341,6 +1344,7 @@ section {
         left: 0px;
         top:5px;
         position: relative;
+        display: inline-block;
     }
     #navbarOrderBtn {
         margin: 0px;

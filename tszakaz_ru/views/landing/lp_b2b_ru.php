@@ -32,8 +32,31 @@ $preorder = new common\models\Preorders();
 
                             <div class="phoneBlockLine">
 
+                                <a href="tel:+78007076374">
 
+                                     <svg version="1.1"
+                                          class="phone_icon"
+                                          xmlns="http://www.w3.org/2000/svg"
+                                          xmlns:xlink="http://www.w3.org/1999/xlink"
+                                          x="0px" y="0px"
+                                          viewBox="0 0 16.2 14.6"
+                                          style="enable-background:new 0 0 16.2 14.6;"
+                                          xml:space="preserve">
+                        <style type="text/css">
+                            .phone_icon_st0{fill:#FFFFFF;}
+                        </style>
+                                    <g >
+                                        <path  class="phone_icon_st0" d="M13.7,12.5c0,0-0.9,0.9-2.2,1.1c0,0-2.7-1.6-3.4-2c-0.7-0.4-2.9-2.4-4.2-4.3S1.9,4,1.9,4
+		S1.8,2.7,2.9,1.7l2.4,3.5c0,0-0.4,0.7,0,1.2c0.4,0.5,3.9,3.9,3.9,3.9s0.5,0.2,1-0.1L13.7,12.5z"/>
+                                        <path  class="phone_icon_st0" d="M6,4.6L5.6,4.9L3.2,1.5l0.5-0.3C3.8,1,4,1.1,4.1,1.2l2,2.9C6.2,4.3,6.2,4.5,6,4.6z"/>
+                                        <path  class="phone_icon_st0" d="M14.2,11.7l-0.3,0.5l-3.6-2.3l0.3-0.5c0.1-0.2,0.3-0.2,0.5-0.1l3,1.9
+		C14.2,11.3,14.3,11.5,14.2,11.7z"/>
+                                    </g>
+                        </svg>
+                                </a>
+                                <a href="tel:+78007076374" class="phoneLink">
                                 <span class="phone_num">+7 800 707 63 74</span>
+                                </a>
 
 
                             </div>
@@ -64,7 +87,9 @@ $preorder = new common\models\Preorders();
                                              alt="Viber">
                                     </a>
                                 </div>
-                                <span class="mobile phone_num">+7 965 408 71 21</span>
+                                <a href="tel:+78007076374" class="phoneLink">
+                                    <span class="mobile phone_num">+7 965 408 71 21</span>
+                                </a>
                             </div>
 
                            </li>
