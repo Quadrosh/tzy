@@ -89,20 +89,21 @@ class SiteController extends Controller
     public function actionIndex()
     {
         Url::remember();
+//        return Yii::$app->runAction('article/page', ['hrurl' => 'home']);
 
-        $this->layout = 'home';
+
         $this->view->params['feedback'] = new Feedback();
         $feedbackForm = new Feedback();
         $preorderForm = new Preorders();
-//        $preorderForm = new PreordersCaptcha();
 
-        $pageName = 'home';
+        $homePageName = 'home';
+
         $this->view->params['currentItem'] = 1;
-        $this->view->params['pageName']=$pageName;
+        $this->view->params['pageName']=$homePageName;
 
         $page = Pages::find()->where([
             'site'=>Yii::$app->params['site'],
-            'hrurl'=>$pageName
+            'hrurl'=>$homePageName
         ])->one();
         if (trim(strtolower($page->seo_logo)) =='title') {
             $page->seo_logo = $page->title;
@@ -110,8 +111,10 @@ class SiteController extends Controller
         $this->view->params['meta']=$page;
 
         if ($page->status == 'article') {
-            return Yii::$app->runAction('article/page', ['hrurl' => $pageName]);
+            return Yii::$app->runAction('article/page', ['hrurl' => $homePageName]);
         }
+
+        $this->layout = 'home';
 
         return $this->render('page',[
             'page' => $page,
