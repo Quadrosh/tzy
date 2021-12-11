@@ -31,6 +31,7 @@ blue2  #0e3e74
     url("fonts/HelveticaRegular/HelveticaRegular.ttf") format("truetype");
     font-style: normal;
     font-weight: normal;
+    font-display: swap;
 }
 @font-face {
     font-family: "NeoSansProBold";
@@ -40,6 +41,7 @@ blue2  #0e3e74
     url("fonts/NeoSansProBold/neosanspro-bold.ttf") format("truetype");
     font-style: normal;
     font-weight: bold;
+    font-display: swap;
 }
 @font-face {
     font-family: "NeoSansProRegular";
@@ -49,6 +51,7 @@ blue2  #0e3e74
     url("fonts/NeoSansProRegular/neosanspro-regular.ttf") format("truetype");
     font-style: normal;
     font-weight: bold;
+    font-display: swap;
 }
 .container {
     width: 100%;
