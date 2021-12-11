@@ -26,7 +26,7 @@ class UploadForm  extends Model
             [['imageFile'],
                 'file',
                 'skipOnEmpty' => true,
-                'extensions' => 'jpg,png,svg,pdf',
+                'extensions' => 'jpg,png,svg,pdf,webp,avif',
                 'checkExtensionByMimeType' => false
             ],
             [['jsonFile'],
