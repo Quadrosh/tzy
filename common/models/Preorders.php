@@ -190,20 +190,20 @@ class Preorders extends \yii\db\ActiveRecord
     public function afterSave($insert, $changedAttributes)
     {
         parent::afterSave($insert, $changedAttributes);
-        if (mb_strtolower(YII_ENV)!='dev') {
-            Yii::$app->amo->send(
-                Yii::$app->params['site'].': предзаказ'.PHP_EOL.
-                " Откуда: ".$this->dispatch .PHP_EOL.
-                " Куда: ".$this->destination .PHP_EOL.
-                " Тел.: ".$this->phone .PHP_EOL.
-                " Email: ".$this->email .PHP_EOL.
-                " Груз: ".$this->cargo .PHP_EOL.
-                " Вес: ".$this->weight .PHP_EOL.
-                " Комментарий:" .PHP_EOL.
-                nl2br($this->text).PHP_EOL.
-                " Со страницы: ".$this->from_page .PHP_EOL
-
-            );
-        }
+//        if (mb_strtolower(YII_ENV)!='dev') {
+//            Yii::$app->amo->send(
+//                Yii::$app->params['site'].': предзаказ'.PHP_EOL.
+//                " Откуда: ".$this->dispatch .PHP_EOL.
+//                " Куда: ".$this->destination .PHP_EOL.
+//                " Тел.: ".$this->phone .PHP_EOL.
+//                " Email: ".$this->email .PHP_EOL.
+//                " Груз: ".$this->cargo .PHP_EOL.
+//                " Вес: ".$this->weight .PHP_EOL.
+//                " Комментарий:" .PHP_EOL.
+//                nl2br($this->text).PHP_EOL.
+//                " Со страницы: ".$this->from_page .PHP_EOL
+//
+//            );
+//        }
     }
 }
