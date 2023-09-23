@@ -1193,7 +1193,10 @@ $preorder = new common\models\Preorders();
         <div class="row">
             <div class="col-sm-12 text-center">
                 <h2 class="head"><?= $sections['order']['head'] ?></h2>
-                <p class="top_comment">Вы так же можете заказать отправку по телефону <?= Yii::$app->params['mainPhone'] ?></p>
+                <p class="top_comment">
+                    Вы так же можете сделать заказ по телефону 8 (800) 350-05-56 (бесплатный звонок по России)
+                    <br>или +7 (495) 150-05-83 (для жителей Москвы и Московской области)
+                </p>
             </div>
 
             <div class="col-lg-8 col-lg-offset-2">
