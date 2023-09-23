@@ -32,7 +32,7 @@ $preorder = new common\models\Preorders();
 
                             <div class="phoneBlockLine">
 
-                                <a href="tel:+78007076374">
+                                <a href="tel:+78003500556">
 
                                      <svg version="1.1"
                                           class="phone_icon"
@@ -54,7 +54,7 @@ $preorder = new common\models\Preorders();
                                     </g>
                         </svg>
                                 </a>
-                                <a href="tel:+78007076374" class="phoneLink">
+                                <a href="tel:+78003500556" class="phoneLink">
                                 <span class="phone_num">+7 800 350 05 56</span>
                                 </a>
 
@@ -87,7 +87,7 @@ $preorder = new common\models\Preorders();
                                              alt="Viber">
                                     </a>
                                 </div>
-                                <a href="tel:+78007076374" class="phoneLink">
+                                <a href="tel:+78003500556" class="phoneLink">
                                     <span class="mobile phone_num">+7 965 408 71 21</span>
                                 </a>
                             </div>
@@ -905,8 +905,10 @@ $preorder = new common\models\Preorders();
         <div class="row">
             <div class="col-sm-12 text-center">
                 <h2 class="head"><?= $sections['order']['head'] ?></h2>
-<!--                <p class="top_comment">Вы так же можете заказать отправку по телефону (495) 150-05-83</p>-->
-                <p class="top_comment">Вы так же можете заказать отправку по телефону 8 800 350 05 56</p>
+                <p class="top_comment">
+                    Вы так же можете сделать заказ по телефону 8 (800) 350-05-56 (бесплатный звонок по России)
+                    <br>или +7 (495) 150-05-83 (для жителей Москвы и Московской области)
+                </p>
             </div>
 
             <div class="col-lg-8 col-lg-offset-2">
