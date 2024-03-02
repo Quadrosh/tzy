@@ -35,6 +35,8 @@ phpunit.phar
 /.vagrant
 
 
-# symlinks
+# symlinks - там индивидуальнык файлы .gitignore
 /tszakaz_ru/views/article/part_views
 /tszakaz_ru/web/css/common
+/tszakaz_ru/web/js/common
+/tszakaz_ru/web/img
