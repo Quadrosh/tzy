@@ -23,6 +23,7 @@ use yii\behaviors\TimestampBehavior;
  */
 class Feedback extends \yii\db\ActiveRecord
 {
+    public $captcha;
     public $emailForSend;
     /**
      * @inheritdoc
@@ -48,6 +49,7 @@ class Feedback extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['name', 'phone', 'captcha'], 'required'],
             [['done','date'], 'integer'],
             [['text'], 'string'],
             [['quality','site','manager','ip'], 'string', 'max' => 255],
@@ -94,7 +96,9 @@ class Feedback extends \yii\db\ActiveRecord
                 return $newValue;
             }],
             [['user_id','name', 'city', 'from_page', 'phone', 'email', 'contacts'], 'string', 'max' => 255],
-            [['name', 'phone'], 'required'],
+           
+
+            [['captcha'], 'captcha'],
 
             // спам фильтры
 //            [['name'], 'match', 'not'=>true, 'pattern' => '/рассылки/i',
@@ -125,6 +129,7 @@ class Feedback extends \yii\db\ActiveRecord
             'from_page' => 'From Page',
             'date' => 'Дата',
             'done' => 'Done',
+            'captcha' => 'Проверочный код',
         ];
     }
     /**

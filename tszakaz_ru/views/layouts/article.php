@@ -14,7 +14,6 @@ use yii\helpers\Url;
 
 //AppAsset::register($this);
 tszakaz_ru\assets\ArticleAsset::register($this);
-//$feedback = Yii::$app->view->params['feedback'];
 $feedback = new \common\models\Feedback();
 
 ?>
@@ -64,11 +63,8 @@ $feedback = new \common\models\Feedback();
                 'action' => ['/site/feedback'],
             ]); ?>
             <div class="modal-body">
-                <!-- >>>> -->
-                <p>Заявки временно принимаются только по телефону,<br>
-                    для заказа грузоперевозки позвоните 8 800 350 05 56
-                </p>
-                <!-- <p>Оставьте ваши контактные данные,<br/>
+                
+                <p>Оставьте ваши контактные данные,<br/>
                     и наш специалист свяжется с Вами в течение 30 минут.</p>
 
                 <div id="feedbackLoading">
@@ -88,6 +84,11 @@ $feedback = new \common\models\Feedback();
                         <?= $form->field($feedback, 'phone')
                             ->textInput(['maxlength' => true, 'id' => 'feedback_form-phone']) ?>
                     </div>
+                    <div class="col-xs-6 col-xs-offset-3">
+                        <?= $form->field($feedback, 'captcha')
+                            ->widget(\yii\captcha\Captcha::classname(), 
+                                ['options'=> ['placeholder'=> 'Введите проверочный код',]]) ?>
+                    </div>
                     <?= $form->field($feedback, 'from_page')
                         ->hiddenInput(['value'=>Yii::$app->view->params['meta']['list_name'], 'id' => 'feedback_form-from_page'])->label(false) ?>
 
@@ -101,13 +102,13 @@ $feedback = new \common\models\Feedback();
                         ->hiddenInput([ 'id' => 'feedback_form-utm_term'])->label(false) ?>
                     <?= $form->field($feedback, 'utm_content')
                         ->hiddenInput([ 'id' => 'feedback_form-utm_content'])->label(false) ?>
-                </div> -->
+                </div>
 
 
             </div>
             <div class="modal-footer">
 
-                <!-- <?= Html::submitButton('Отправить', ['class' => 'btn btn-primary btn-sm']) ?> -->
+                <?= Html::submitButton('Отправить', ['class' => 'btn btn-primary btn-sm']) ?>
             </div>
             <?php ActiveForm::end(); ?>
         </div><!-- /.modal-content -->

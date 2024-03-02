@@ -65,6 +65,11 @@ $feedback = new \common\models\Feedback();
                         <?= $form->field($feedback, 'phone')
                             ->textInput(['maxlength' => true, 'id' => 'feedback_form-phone']) ?>
                     </div>
+                    <div class="col-xs-6 col-xs-offset-3">
+                        <?= $form->field($feedback, 'captcha')
+                            ->widget(\yii\captcha\Captcha::classname(), 
+                                ['options'=> ['placeholder'=> 'Введите проверочный код']]) ?>
+                    </div>
                     <?= $form->field($feedback, 'from_page')
                         ->hiddenInput(['value'=>'error'])->label(false) ?>
 
