@@ -64,7 +64,11 @@ $feedback = new \common\models\Feedback();
                 'action' => ['/site/feedback'],
             ]); ?>
             <div class="modal-body">
-                <p>Оставьте ваши контактные данные,<br/>
+                <!-- >>>> -->
+                <p>Заявки временно принимаются только по телефону,<br>
+                    для заказа грузоперевозки позвоните 8 800 350 05 56
+                </p>
+                <!-- <p>Оставьте ваши контактные данные,<br/>
                     и наш специалист свяжется с Вами в течение 30 минут.</p>
 
                 <div id="feedbackLoading">
@@ -97,13 +101,13 @@ $feedback = new \common\models\Feedback();
                         ->hiddenInput([ 'id' => 'feedback_form-utm_term'])->label(false) ?>
                     <?= $form->field($feedback, 'utm_content')
                         ->hiddenInput([ 'id' => 'feedback_form-utm_content'])->label(false) ?>
-                </div>
+                </div> -->
 
 
             </div>
             <div class="modal-footer">
 
-                <?= Html::submitButton('Отправить', ['class' => 'btn btn-primary btn-sm']) ?>
+                <!-- <?= Html::submitButton('Отправить', ['class' => 'btn btn-primary btn-sm']) ?> -->
             </div>
             <?php ActiveForm::end(); ?>
         </div><!-- /.modal-content -->
