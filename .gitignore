@@ -33,3 +33,8 @@ phpunit.phar
 
 # vagrant runtime
 /.vagrant
+
+
+# symlinks
+/tszakaz_ru/views/article/part_views
+/tszakaz_ru/web/css/common
